@@ -2,30 +2,27 @@
 
 # NOTE: uses the curl-www repo for input!
 
+$csv = "../curl-www/docs/releases.csv";
+
 my %release;
 my @inorder;
 
 my $p;
 
-sub nicedate {
-    my ($d) = @_;
-    my $n = `date +%F -d "$d"`;
-    chomp $n;
-    return $n;
-}
-
-open(R, "<../curl-www/_changes.html") ||
-    die "no web repo";
-
-while(<R>) {
-    if(/^SUBTITLE\(Fixed in ([0-9.]+) - ([^)]+)\)/) {
-        my $ver = $1;
-        my $n = nicedate($2);
-        $release{$ver}=$n;
-        push @inorder, $ver;
-        $p = $n; # remmeber the last, which is the earliest
+sub buginfo {
+    open(C, "<$csv");
+    while(<C>) {
+        chomp;
+        my ($index, $version, $vulns, $date, $since, $ddays, $adays, $dbugs, $abugs,
+            $dchanges, $achanges) = split(';', $_);
+        $release{$version}=$date;
+        push @inorder, $version;
+        $p = $date; # remmeber the last date, which is the earliest
     }
+    close(C);
 }
+
+buginfo();
 
 sub days {
     my ($prev, $date) = @_;
