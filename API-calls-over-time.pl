@@ -55,6 +55,7 @@ sub readme2apicount {
 
 # 7.16.0 bumped the SONAME to 4
 print <<MOO
+curl 7.1.1;2000-08-21;31
 curl 7.13.0;2005-02-01;46
 curl 7.14.0;2005-05-16;46
 curl 7.15.0;2005-10-13;46
