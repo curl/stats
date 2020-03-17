@@ -25,7 +25,12 @@ print <<MOO
 MOO
     ;
 
+my $end;
 for my $m (sort keys %ym) {
     my $l = $ym{"$m"};
     printf "%s;%d\n", $m, $l;
+    $end = $l;
 }
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+    localtime(time);
+printf "%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $end;
