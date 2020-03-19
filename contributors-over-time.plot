@@ -20,6 +20,9 @@ set grid
 set timefmt "%Y-%m-%d"
 set xdata time
 
+# start Y at 0
+set yrange [0:]
+
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
