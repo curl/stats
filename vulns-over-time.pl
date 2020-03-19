@@ -15,22 +15,25 @@ for(reverse @vuln) {
         ($y, $m, $d)=(0+$1, 0+$2, 0+$3);
     }
     my $p = sprintf("%04d-%02d-%02d", $y, $m, $d);
-    $ym{"$p"} = ++$amount;
+    $amount{$cve} = ++$amount;
+    $when{$cve} = $p;
+    push @all, $cve;
 }
 
 my $l;
 
 print <<MOO
-1998-03-20;0
+none;1998-03-20;0
 MOO
     ;
 
 my $end;
-for my $m (sort keys %ym) {
-    my $l = $ym{"$m"};
-    printf "%s;%d\n", $m, $l;
+for my $cve (@all) {
+    my $l = $amount{$cve};
+    my $d = $when{$cve};
+    printf "%s;%s;%d\n", $cve, $d, $l;
     $end = $l;
 }
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
     localtime(time);
-printf "%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $end;
+printf "now;%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $end;
