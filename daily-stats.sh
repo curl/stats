@@ -58,19 +58,6 @@ git checkout master
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
 cat >stats.html <<EOF
-<html>
-<head>
-  <title>Daily curl stats</title>
-<style type="text/css">
-img {
-  max-width: 48%;
-}
-</style>
-</head>
-<body>
-
-<h1>Project curl stats</h1>
-
 <a href="$output/authors-per-year.svg"><img src="$output/authors-per-year.svg"></a>
 <a href="$output/commits-per-year.svg"><img src="$output/commits-per-year.svg"></a>
 <a href="$output/coreteam-per-year.svg"><img src="$output/coreteam-per-year.svg"></a>
@@ -91,9 +78,6 @@ img {
 <a href="$output/lines-over-time.svg"><img src="$output/lines-over-time.svg"></a>
 <a href="$output/vulns-plot.svg"><img src="$output/vulns-plot.svg"></a>
 <a href="$output/cve-plot.svg"><img src="$output/cve-plot.svg"></a>
-
-</body>
-</html>
 
 EOF
 
