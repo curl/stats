@@ -96,28 +96,28 @@ cat >stats.html <<EOF
 EOF
 
 cat >stats.list <<EOF
-API-calls-over-time.svg = $output/API-calls-over-time.svg
-authors-per-month.svg = $output/authors-per-month.svg
+API-calls-over-time = $output/API-calls-over-time.svg
+authors-per-month = $output/authors-per-month.svg
 authors-per-year = $output/authors-per-year.svg
-authors.svg = $output/authors.svg
-CI-jobs-over-time.svg = $output/CI-jobs-over-time.svg
-cmdline-options-over-time.svg = $output/cmdline-options-over-time.svg
-commits-per-month.svg = $output/commits-per-month.svg
+authors = $output/authors.svg
+CI-jobs-over-time = $output/CI-jobs-over-time.svg
+cmdline-options-over-time = $output/cmdline-options-over-time.svg
+commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
-contributors-over-time.svg = $output/contributors-over-time.svg
-coreteam-per-year.svg = $output/coreteam-per-year.svg
-cve-plot.svg = $output/cve-plot.svg
-daniel-vs-rest.svg = $output/daniel-vs-rest.svg
-days-per-release.svg = $output/days-per-release.svg
-docs-over-time.svg = $output/docs-over-time.svg
-firsttimers.svg = $output/firsttimers.svg
-lines-over-time.svg = $output/lines-over-time.svg
+contributors-over-time = $output/contributors-over-time.svg
+coreteam-per-year = $output/coreteam-per-year.svg
+cve-plot = $output/cve-plot.svg
+daniel-vs-rest = $output/daniel-vs-rest.svg
+days-per-release = $output/days-per-release.svg
+docs-over-time = $output/docs-over-time.svg
+firsttimers = $output/firsttimers.svg
+lines-over-time = $output/lines-over-time.svg
 protocols-over-time = $output/protocols-over-time.svg
-setopts-over-time.svg = $output/setopts-over-time.svg
-tests-over-time.svg = $output/tests-over-time.svg
+setopts-over-time = $output/setopts-over-time.svg
+tests-over-time = $output/tests-over-time.svg
 tls-over-time = $output/tls-over-time.svg
-vulns-per-year.svg = $output/vulns-per-year.svg
-vulns-plot.svg = $output/vulns-plot.svg
+vulns-per-year = $output/vulns-per-year.svg
+vulns-plot = $output/vulns-plot.svg
 EOF
 
 # make the dir world readable
