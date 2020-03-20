@@ -1,5 +1,8 @@
 #!bin/sh
 
+# custom dir for the web root directory
+webroot=$1
+
 # store the CSV intermediate files here
 temp=tmp
 # store the SVG output here
@@ -26,7 +29,7 @@ gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
 perl stats/setopts-over-time.pl | cut '-d;' -f2- > $temp/setopts-over-time.csv
 gnuplot -c stats/setopts-over-time.plot > $output/setopts-over-time.svg
 
-perl stats/days-per-release.pl | cut '-d;' -f2- > $temp/days-per-release.csv
+perl stats/days-per-release.pl $webroot | cut '-d;' -f2- > $temp/days-per-release.csv
 gnuplot -c stats/days-per-release.plot > $output/days-per-release.svg
 
 perl stats/cmdline-options-over-time.pl | cut '-d;' -f2- > $temp/cmdline-options-over-time.csv
@@ -49,13 +52,13 @@ gnuplot -c stats/commits-per-month.plot > $output/commits-per-month.svg
 perl stats/docs-over-time.pl > $temp/docs-over-time.csv
 gnuplot -c stats/docs-over-time.plot > $output/docs-over-time.svg
 
-perl stats/vulns-per-year.pl > $temp/vulns-per-year.csv
+perl stats/vulns-per-year.pl $webroot > $temp/vulns-per-year.csv
 gnuplot -c stats/vulns-per-year.plot > $output/vulns-per-year.svg
 
-perl stats/cve-plot.pl > $temp/cve-plot.csv
+perl stats/cve-plot.pl $webroot > $temp/cve-plot.csv
 gnuplot -c stats/cve-plot.plot > $output/cve-plot.svg
 
-perl stats/vulns-over-time.pl > $temp/vulns-over-time.csv
+perl stats/vulns-over-time.pl $webroot > $temp/vulns-over-time.csv
 gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
 
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv

@@ -3,7 +3,9 @@
 # Bug bounty payouts from the curl project over time
 #
 
-require "../curl-www/docs/vuln.pm";
+my $webroot = $ARGV[0] || "../curl-www";
+
+require "$webroot/docs/vuln.pm";
 
 my $total;
 for(reverse @vuln) {

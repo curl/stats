@@ -2,7 +2,8 @@
 
 # NOTE: uses the curl-www repo for input!
 
-$csv = "../curl-www/docs/releases.csv";
+my $webroot = $ARGV[0] || "../curl-www";
+$csv = "$webroot/docs/releases.csv";
 
 my %release;
 my @inorder;

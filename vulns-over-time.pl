@@ -5,7 +5,8 @@
 # This accesses the web site git repo to find the 'vuln.pm' file with the
 # proper meta-data!
 
-require "../curl-www/docs/vuln.pm";
+my $webroot = $ARGV[0] || "../curl-www";
+require "$webroot/docs/vuln.pm";
 
 my $amount = 0;
 for(reverse @vuln) {

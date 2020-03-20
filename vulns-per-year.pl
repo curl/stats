@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
-# un-preprocessed _changes-file as input
-#
 # number of vulns reported per year
 #
-require "../curl-www/docs/vuln.pm";
+my $webroot = $ARGV[0] || "../curl-www";
+require "$webroot/docs/vuln.pm";
+
 
 for(@vuln) {
     my ($id, $start, $stop, $desc, $cve, $date)=split('\|');
