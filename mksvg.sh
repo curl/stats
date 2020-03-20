@@ -5,6 +5,9 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
+perl stats/protocols-over-time.pl > $temp/protocols-over-time.csv
+gnuplot -c stats/protocols-over-time.plot > $output/protocols-over-time.svg
+
 perl stats/tls-over-time.pl > $temp/tls-over-time.csv
 gnuplot -c stats/tls-over-time.plot > $output/tls-over-time.svg
 
@@ -64,6 +67,7 @@ git checkout master
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
 cat >stats.html <<EOF
+<a href="$output/protocols-over-time.svg"><img src="$output/protocols-over-time.svg"></a>
 <a href="$output/tls-over-time.svg"><img src="$output/tls-over-time.svg"></a>
 <a href="$output/authors-per-year.svg"><img src="$output/authors-per-year.svg"></a>
 <a href="$output/commits-per-year.svg"><img src="$output/commits-per-year.svg"></a>
@@ -104,6 +108,7 @@ days-per-release.svg = $output/days-per-release.svg
 docs-over-time.svg = $output/docs-over-time.svg
 firsttimers.svg = $output/firsttimers.svg
 lines-over-time.svg = $output/lines-over-time.svg
+protocols-over-time = $output/protocols-over-time.svg
 setopts-over-time.svg = $output/setopts-over-time.svg
 tests-over-time.svg = $output/tests-over-time.svg
 tls-over-time = $output/tls-over-time.svg
