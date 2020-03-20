@@ -5,6 +5,9 @@ temp=tmp
 # store the SVG output here
 output=`mktemp --tmpdir=tmp -d svg-XXX`
 
+perl stats/daniel-vs-rest.pl | cut '-d;' -f1,3 > $temp/daniel-vs-rest.csv
+gnuplot -c stats/daniel-vs-rest.plot > $output/daniel-vs-rest.svg
+
 perl stats/authors-per-year.pl > $temp/authors-per-year.csv
 gnuplot -c stats/authors-per-year.plot > $output/authors-per-year.svg
 
