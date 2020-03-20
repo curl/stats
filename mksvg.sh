@@ -8,6 +8,9 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
+perl stats/API-calls-over-time.pl > $temp/API-calls-over-time.pl.csv
+gnuplot -c stats/API-calls-over-time.plot > $output/API-calls-over-time.svg
+
 perl stats/protocols-over-time.pl > $temp/protocols-over-time.csv
 gnuplot -c stats/protocols-over-time.plot > $output/protocols-over-time.svg
 
