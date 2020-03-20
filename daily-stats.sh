@@ -3,7 +3,10 @@
 # store the CSV intermediate files here
 temp=tmp
 # store the SVG output here
-output=`mktemp --tmpdir=tmp -d svg-XXX`
+output=`mktemp -d svg-XXXXXX`
+
+perl stats/tls-over-time.pl > $temp/tls-over-time.csv
+gnuplot -c stats/tls-over-time.plot > $output/tls-over-time.svg
 
 perl stats/daniel-vs-rest.pl | cut '-d;' -f1,3 > $temp/daniel-vs-rest.csv
 gnuplot -c stats/daniel-vs-rest.plot > $output/daniel-vs-rest.svg
@@ -61,6 +64,7 @@ git checkout master
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
 cat >stats.html <<EOF
+<a href="$output/tls-over-time.svg"><img src="$output/tls-over-time.svg"></a>
 <a href="$output/authors-per-year.svg"><img src="$output/authors-per-year.svg"></a>
 <a href="$output/commits-per-year.svg"><img src="$output/commits-per-year.svg"></a>
 <a href="$output/coreteam-per-year.svg"><img src="$output/coreteam-per-year.svg"></a>
@@ -81,7 +85,30 @@ cat >stats.html <<EOF
 <a href="$output/lines-over-time.svg"><img src="$output/lines-over-time.svg"></a>
 <a href="$output/vulns-plot.svg"><img src="$output/vulns-plot.svg"></a>
 <a href="$output/cve-plot.svg"><img src="$output/cve-plot.svg"></a>
+EOF
 
+cat >stats.list <<EOF
+API-calls-over-time.svg = $output/API-calls-over-time.svg
+authors-per-month.svg = $output/authors-per-month.svg
+authors-per-year = $output/authors-per-year.svg
+authors.svg = $output/authors.svg
+CI-jobs-over-time.svg = $output/CI-jobs-over-time.svg
+cmdline-options-over-time.svg = $output/cmdline-options-over-time.svg
+commits-per-month.svg = $output/commits-per-month.svg
+commits-per-year = $output/commits-per-year.svg
+contributors-over-time.svg = $output/contributors-over-time.svg
+coreteam-per-year.svg = $output/coreteam-per-year.svg
+cve-plot.svg = $output/cve-plot.svg
+daniel-vs-rest.svg = $output/daniel-vs-rest.svg
+days-per-release.svg = $output/days-per-release.svg
+docs-over-time.svg = $output/docs-over-time.svg
+firsttimers.svg = $output/firsttimers.svg
+lines-over-time.svg = $output/lines-over-time.svg
+setopts-over-time.svg = $output/setopts-over-time.svg
+tests-over-time.svg = $output/tests-over-time.svg
+tls-over-time = $output/tls-over-time.svg
+vulns-per-year.svg = $output/vulns-per-year.svg
+vulns-plot.svg = $output/vulns-plot.svg
 EOF
 
 # make the dir world readable
