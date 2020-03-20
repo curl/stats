@@ -68,8 +68,6 @@ perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 
 perl stats/tests-over-time.pl | cut '-d;' -f2- > tmp/tests-over-time.csv
-# restore
-git checkout master
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
 cat >stats.html <<EOF

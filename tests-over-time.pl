@@ -62,3 +62,6 @@ foreach my $t (sort sortthem @releases) {
     $t =~ s/-/ /g;
     print "$t;$d;$l\n";
 }
+
+# restore
+`git checkout -q master`;
