@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Command line options over time"
+set title "Command line options over time" font ",48"
 # where's the legend
 set key top left
 

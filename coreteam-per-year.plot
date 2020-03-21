@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Size of the core team per year, number of persons with 10 commits or more"
+set title "Size of the core team per year, number of persons with 10 commits or more" font ",48"
 # where's the legend
 set key top left
 
