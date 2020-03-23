@@ -115,34 +115,45 @@ sub traviscount {
 }
 
 
-sub cicount {
-    my ($tag)=@_;
-
-    return traviscount($tag) + cirruscount($tag) + appveyorcount($tag) +
-        azurecount($tag) + githubcount($tag);
-}
-
 print <<MOO
-curl-7.34.0;2013-10-17;2
-curl-7.45.0;2016-07-28;4
+curl-7.34.0;2013-10-17;2;2;0;0;0;0
+curl-7.45.0;2016-07-28;4;4;0;0;0;0
 MOO
     ;
 
-#push @releases, 'curl-7_68_0-179-g1f114be62';
+my @this = sort sortthem @releases;
 
-foreach my $t (sort sortthem @releases) {
+my $now = `git describe`;
+chomp $now;
 
-    if(num($t) < 75400) {
+# top off with the current state
+push @this, $now;
+
+foreach my $t (@this) {
+
+    if(($t ne $now) && num($t) < 75400) {
         # before 7.54.0 we find nothing
         next;
     }
 
-    my $c = cicount($t);
+    my $ctr = traviscount($t);
+    my $cci = cirruscount($t);
+    my $cap = appveyorcount($t);
+    my $caz = azurecount($t);
+    my $cgi = githubcount($t);
+
+    my $c = $ctr + $cci + $cap + $caz + $cgi;
     if($c) {
-        # prettyfy
+        # prettify
+        my $d;
         my $d = tag2date($t);
-        $t =~ s/_/./g;
-        $t =~ s/-/ /g;
-        print "$t;$d;$c\n";
+        if($t ne $now) {
+            $t =~ s/_/./g;
+            $t =~ s/-/ /g;
+        }
+        else {
+            $t = "now";
+        }
+        printf "$t;$d;$c;%d;%d;%d;%d;%d\n", $ctr, $cci, $cap, $caz, $cgi;
     }
 }
