@@ -115,16 +115,9 @@ sub traviscount {
 }
 
 
-sub cicount {
-    my ($tag)=@_;
-
-    return traviscount($tag) + cirruscount($tag) + appveyorcount($tag) +
-        azurecount($tag) + githubcount($tag);
-}
-
 print <<MOO
-curl-7.34.0;2013-10-17;2
-curl-7.45.0;2016-07-28;4
+curl-7.34.0;2013-10-17;2;2;0;0;0;0
+curl-7.45.0;2016-07-28;4;4;0;0;0;0
 MOO
     ;
 
@@ -137,12 +130,18 @@ foreach my $t (sort sortthem @releases) {
         next;
     }
 
-    my $c = cicount($t);
+    my $ctr = traviscount($t);
+    my $cci = cirruscount($t);
+    my $cap = appveyorcount($t);
+    my $caz = azurecount($t);
+    my $cgi = githubcount($t);
+
+    my $c = $ctr + $cci + $cap + $caz + $cgi;
     if($c) {
         # prettyfy
         my $d = tag2date($t);
         $t =~ s/_/./g;
         $t =~ s/-/ /g;
-        print "$t;$d;$c\n";
+        printf "$t;$d;$c;%d;%d;%d;%d;%d\n", $ctr, $cci, $cap, $caz, $cgi;
     }
 }
