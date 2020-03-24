@@ -39,22 +39,37 @@ sub tag2date {
     return $d;
 }
 
-#$travisbuilds=`grep -c -e "- os:" .travis.yml`;
-#$cirrusbuilds=`grep -c image_family .cirrus.yml`;
-#$appveyorbuilds=`grep -c "APPVEYOR_BUILD_WORKER_IMAGE" appveyor.yml`;
-#$azurebuilds=`grep -c -e "  - job:" .azure-pipelines.yml`;
-#$githubbuilds=`grep runs-on .github/workflows/* | wc -l`;
-
 sub githubcount {
     my ($tag)=@_;
     my @files= `git ls-files -- .github/workflows 2>/dev/null`;
     my $c = 0;
     foreach my $f (@files) {
         chomp $f;
+        my $matrix = 0;
+        if($f =~ "/macos.yml") {
+            # this introduced the use of the matrix style
+            $matrix = 1;
+        }
         open(G, "git show $tag:$f 2>/dev/null|");
-        while(<G>) {
-            if($_ =~ /^    runs-on:/) {
-                $c++;
+        if(!$matrix) {
+            while(<G>) {
+                if($_ =~ /^    runs-on:/) {
+                    $c++;
+                }
+            }
+        }
+        else {
+            my $mult = 0;
+            while(<G>) {
+                if($_ =~ /matrix:/) {
+                    $mult = 0;
+                }
+                elsif($_ =~ /- name:/) {
+                    $c += ($mult?$mult:1);
+                }
+                elsif($_ =~ /- CC:/) {
+                    $mult++;
+                }
             }
         }
         close(G);
