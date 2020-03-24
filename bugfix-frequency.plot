@@ -31,5 +31,5 @@ set xdata time
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/bugfixes.csv' using 1:2 with lines linestyle 1 title "Accumulated number of bugfixes", \
- 'tmp/bugfixes.csv' using 1:3 with lines linestyle 2 title "Bug-fixes per day (average over 5 releases)" axis x1y2
+plot 'tmp/bugfix-frequency.csv' using 1:2 with lines linestyle 1 title "Accumulated number of bugfixes", \
+ 'tmp/bugfix-frequency.csv' using 1:3 with lines linestyle 2 title "Bug-fixes per day (average over 5 releases)" axis x1y2
