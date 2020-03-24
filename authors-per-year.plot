@@ -27,6 +27,10 @@ set datafile separator ";"
 # start Y at 0
 set yrange [0:]
 
-set xrange ["2009-06-01":]
+# the dates need to be manipulated as strings - you can't do numerical arithmetic on them.
+# / Lee Philips
 
-plot 'tmp/authors-per-year.csv' using 1:2 with boxes title "All authors" fc 'green', 'tmp/authors-per-year.csv' using 1:3 with boxes title "First-time authors"
+dayoffset = '30'
+set xrange ["2009-06-".dayoffset:]
+
+plot 'tmp/authors-per-year.csv' using 1:2 with boxes title "All authors" fc 'green', 'tmp/authors-per-year.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "First-time authors"
