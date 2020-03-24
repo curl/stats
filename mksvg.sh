@@ -8,6 +8,9 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
+perl stats/bugfix-frequency.pl $webroot > $temp/bugfix-frequency.csv
+gnuplot -c stats/bugfix-frequency.plot > $output/bugfix-frequency.svg
+
 perl stats/API-calls-over-time.pl | cut "-d;" -f2- > $temp/API-calls-over-time.csv
 gnuplot -c stats/API-calls-over-time.plot > $output/API-calls-over-time.svg
 
@@ -70,36 +73,12 @@ gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 perl stats/tests-over-time.pl | cut '-d;' -f2- > tmp/tests-over-time.csv
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
-cat >stats.html <<EOF
-<a href="$output/protocols-over-time.svg"><img src="$output/protocols-over-time.svg"></a>
-<a href="$output/tls-over-time.svg"><img src="$output/tls-over-time.svg"></a>
-<a href="$output/authors-per-year.svg"><img src="$output/authors-per-year.svg"></a>
-<a href="$output/commits-per-year.svg"><img src="$output/commits-per-year.svg"></a>
-<a href="$output/coreteam-per-year.svg"><img src="$output/coreteam-per-year.svg"></a>
-<a href="$output/daniel-vs-rest.svg"><img src="$output/daniel-vs-rest.svg"></a>
-<a href="$output/tests-over-time.svg"><img src="$output/tests-over-time.svg"></a>
-<a href="$output/setopts-over-time.svg"><img src="$output/setopts-over-time.svg"></a>
-<a href="$output/days-per-release.svg"><img src="$output/days-per-release.svg"></a>
-<a href="$output/API-calls-over-time.svg"><img src="$output/API-calls-over-time.svg"></a>
-<a href="$output/cmdline-options-over-time.svg"><img src="$output/cmdline-options-over-time.svg"></a>
-<a href="$output/contributors-over-time.svg"><img src="$output/contributors-over-time.svg"></a>
-<a href="$output/firsttimers.svg"><img src="$output/firsttimers.svg"></a>
-<a href="$output/authors.svg"><img src="$output/authors.svg"></a>
-<a href="$output/authors-per-month.svg"><img src="$output/authors-per-month.svg"></a>
-<a href="$output/CI-jobs-over-time.svg"><img src="$output/CI-jobs-over-time.svg"></a>
-<a href="$output/commits-per-month.svg"><img src="$output/commits-per-month.svg"></a>
-<a href="$output/docs-over-time.svg"><img src="$output/docs-over-time.svg"></a>
-<a href="$output/vulns-per-year.svg"><img src="$output/vulns-per-year.svg"></a>
-<a href="$output/lines-over-time.svg"><img src="$output/lines-over-time.svg"></a>
-<a href="$output/vulns-plot.svg"><img src="$output/vulns-plot.svg"></a>
-<a href="$output/cve-plot.svg"><img src="$output/cve-plot.svg"></a>
-EOF
-
 cat >stats.list <<EOF
 API-calls-over-time = $output/API-calls-over-time.svg
 authors-per-month = $output/authors-per-month.svg
 authors-per-year = $output/authors-per-year.svg
 authors = $output/authors.svg
+bugfix-frequency = $output/bugfix-frequency.svg
 CI-jobs-over-time = $output/CI-jobs-over-time.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 commits-per-month = $output/commits-per-month.svg
