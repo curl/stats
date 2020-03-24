@@ -24,6 +24,9 @@ set xdata time
 set format x "%Y"
 set datafile separator ";"
 
+# start Y at 0
+set yrange [0:]
+
 set xrange ["2009-06-01":]
 
 plot 'tmp/authors-per-year.csv' using 1:2 with boxes title "All authors" fc 'green', 'tmp/authors-per-year.csv' using 1:3 with boxes title "First-time authors"
