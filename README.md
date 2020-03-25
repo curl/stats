@@ -49,6 +49,12 @@ Iterates over all git tags. It then counts how many CI jobs that seems to have
 been enabled at that time. Outputs version, date, total count, travis count,
 cirrus count, appveyor count, azure count and the github count.
 
+## CI-platforms
+
+Iterates over all git tags. It then counts how many CI jobs that seems to have
+been enabled at that time. Outputs date, total count, Linux count, macOS
+count, Windows count and FreeBSD count.
+
 ## authors-per-month
 
 Iterates over the git log. Counts number of differenth authors every month,
