@@ -36,10 +36,6 @@ Example:
 The scripts are written to output CSV data, usually having data and/or curl
 release versions included in each line.
 
-## License
-
-The scripts are provided under [MIT](LICENSE).
-
 # Scripts
 
 ## API-calls-over-time
@@ -115,7 +111,7 @@ Iterates over `vuln.pm` and `releases.csv` (from curl-www). Outputs CVE, date,
 flaw period, project age at that point, days since previous CVE, total CVE
 count to that point.
 
-# cve-plot
+## cve-plot
 
 Iterates over `vuln.pm` and `releases.csv` (from curl-www). Outputs CVE, total
 count, flaw period, project age at that point.
@@ -187,3 +183,7 @@ cve, date, the total CVE count.
 Iterates over all vulnerabilities in `vuln.pm` (in the curl-www repo). Outputs
 date ("$year-01-01;, CVEs that year and the total CVE count up and including
 that year.
+
+# License
+
+The scripts are provided under [MIT](LICENSE).
