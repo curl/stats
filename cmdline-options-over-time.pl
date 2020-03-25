@@ -103,3 +103,12 @@ foreach my $t (sort sortthem @releases) {
         print "$t;$d;$n\n";
     }
 }
+
+my $current = 0 + `ls docs/cmdline-opts/*.d | wc -l`;
+
+if($current) {
+    my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+        localtime(time);
+    $date = sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
+    print "now;$date;$current\n";
+}
