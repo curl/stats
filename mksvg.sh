@@ -41,7 +41,7 @@ gnuplot -c stats/days-per-release.plot > $output/days-per-release.svg
 perl stats/cmdline-options-over-time.pl | cut '-d;' -f2- > $temp/cmdline-options-over-time.csv
 gnuplot -c stats/cmdline-options-over-time.plot > $output/cmdline-options-over-time.svg
 
-perl stats/contributors-over-time.pl | cut '-d;' -f2- > tmp/contributors-over-time.csv
+perl stats/contributors-over-time.pl | cut '-d;' -f2- > $temp/contributors-over-time.csv
 gnuplot -c stats/contributors-over-time.plot > $output/contributors-over-time.svg
 
 perl stats/authors-per-month.pl > $temp/authors-per-month.csv
@@ -49,10 +49,10 @@ gnuplot -c stats/authors-per-month.plot > $output/authors-per-month.svg
 gnuplot -c stats/authors.plot > $output/authors.svg
 gnuplot -c stats/firsttimers.plot > $output/firsttimers.svg
 
-perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > tmp/CI.csv
+perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > $temp/CI.csv
 gnuplot -c stats/CI-jobs-over-time.plot > $output/CI-jobs-over-time.svg
 
-perl stats/CI-platforms.pl | tmp/CI-platforms.csv
+perl stats/CI-platforms.pl | > $temp/CI-platforms.csv
 gnuplot -c stats/CI-platforms.plot > $output/CI-platforms.svg
 
 perl stats/commits-per-month.pl > $temp/commits-per-month.csv
@@ -73,7 +73,7 @@ gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 
-perl stats/tests-over-time.pl | cut '-d;' -f2- > tmp/tests-over-time.csv
+perl stats/tests-over-time.pl | cut '-d;' -f2- > $temp/tests-over-time.csv
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
 cat >stats.list <<EOF
