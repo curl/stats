@@ -39,27 +39,10 @@ sub tag2date {
     return $d;
 }
 
-sub options {
-    my @file = @_;
-
-    foreach $f (@file) {
-        if($f =~ /curl_easy_setopt\(\) options: *(\d+)/) {
-            return $1;
-        }
-    }
-    return 0;
-}
-
-sub loc {
-    my ($tag) = @_;
-    `git checkout -f $tag 2>/dev/null`;
-    my @wc = `find lib include src -name "*.[ch]" | xargs wc -l`;
-    return int($wc[$#wc]);
-}
-
 sub contribs {
-    my @file = @_;
+    my ($tag) = @_;
 
+    my @file = `git show $tag:RELEASE-NOTES 2>/dev/null`;
     foreach $f (@file) {
         if($f =~ /ontributors: *(\d+)/) {
             return $1;
@@ -68,15 +51,26 @@ sub contribs {
     return 0;
 }
 
+# git show curl-7_8:docs/THANKS | grep -c ' - '
+# 67
+
+print <<EARLY
+curl 7.8;2001-06-07;67
+curl 7.9;2001-09-23;73
+curl 7.10;2002-10-01;80
+curl 7.11.0;2004-01-22;94
+curl 7.12.0;2004-06-02;96
+curl 7.13.0;2005-02-01;106
+EARLY
+    ;;
+
 foreach my $t (sort sortthem @releases) {
     my $d = tag2date($t);
-    my @out = `git show $t:RELEASE-NOTES 2>/dev/null`;
-    #my $n = options(@out);
-    my $c = contribs(@out);
+    my $c = contribs($t);
     if($c) {
         # prettyfy
         $t =~ s/_/./g;
         $t =~ s/-/ /g;
-        print "$t;$d;$c;$loc\n";
+        print "$t;$d;$c\n";
     }
 }
