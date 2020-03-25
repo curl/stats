@@ -4,7 +4,7 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "Number of days between releases" font ",48"
 # where's the legend
-set key top left
+set key top right
 
 # Identify the axes
 set xlabel "Time"

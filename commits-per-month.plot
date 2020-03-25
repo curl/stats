@@ -4,7 +4,7 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "Number of commits per month" font ",48"
 # where's the legend
-set key top left
+set key top right
 
 # Identify the axes
 set xlabel "Time"
@@ -27,5 +27,5 @@ set format x "%Y"
 set datafile separator ";"
 
 # plot the flaw periods and the project age with titles and line width 3
-plot 'tmp/commits-per-month.csv' using 1:2 with lines title "Commits per month"
+plot 'tmp/commits-per-month.csv' using 1:2 with lines title "Commits"
 

@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Number of unique authors over time" font ",48"
+set title "Number of authors" font ",48"
 # where's the legend
 set key top left
 
@@ -23,4 +23,4 @@ set xdata time
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/authors-per-month.csv' using 1:5 with lines linestyle 1 title "Number of authors"
+plot 'tmp/authors-per-month.csv' using 1:5 with lines linestyle 1 title "Authors"
