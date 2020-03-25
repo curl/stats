@@ -52,6 +52,9 @@ gnuplot -c stats/firsttimers.plot > $output/firsttimers.svg
 perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > tmp/CI.csv
 gnuplot -c stats/CI-jobs-over-time.plot > $output/CI-jobs-over-time.svg
 
+perl stats/CI-platforms.pl | tmp/CI-platforms.csv
+gnuplot -c stats/CI-platforms.plot > $output/CI-platforms.svg
+
 perl stats/commits-per-month.pl > $temp/commits-per-month.csv
 gnuplot -c stats/commits-per-month.plot > $output/commits-per-month.svg
 
@@ -74,27 +77,28 @@ perl stats/tests-over-time.pl | cut '-d;' -f2- > tmp/tests-over-time.csv
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
 cat >stats.list <<EOF
-API-calls-over-time = $output/API-calls-over-time.svg
+api-calls = $output/API-calls-over-time.svg
+authors = $output/authors.svg
 authors-per-month = $output/authors-per-month.svg
 authors-per-year = $output/authors-per-year.svg
-authors = $output/authors.svg
 bugfix-frequency = $output/bugfix-frequency.svg
-CI-jobs-over-time = $output/CI-jobs-over-time.svg
+ci-jobs = $output/CI-jobs-over-time.svg
+ci-platforms = $output/CI-platforms.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
-contributors-over-time = $output/contributors-over-time.svg
+contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
-cve-plot = $output/cve-plot.svg
+cve-time = $output/cve-plot.svg
 daniel-vs-rest = $output/daniel-vs-rest.svg
 days-per-release = $output/days-per-release.svg
-docs-over-time = $output/docs-over-time.svg
+docs = $output/docs-over-time.svg
 firsttimers = $output/firsttimers.svg
-lines-over-time = $output/lines-over-time.svg
-protocols-over-time = $output/protocols-over-time.svg
-setopts-over-time = $output/setopts-over-time.svg
-tests-over-time = $output/tests-over-time.svg
-tls-over-time = $output/tls-over-time.svg
+loc = $output/lines-over-time.svg
+protocols = $output/protocols-over-time.svg
+setopts = $output/setopts-over-time.svg
+tests = $output/tests-over-time.svg
+tls-backends = $output/tls-over-time.svg
 vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
 EOF
