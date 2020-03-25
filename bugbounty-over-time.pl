@@ -16,19 +16,19 @@ for(reverse @vuln) {
     }
     my $nice = sprintf("%04d-%02d-%02d", $y, $m, $d);
     $total += $usd;
-    $money{$nice} = $total;
+    $date{$cve} = $nice;
+    $money{$cve} = $total;
+    $bounty{$cve} = $usd;
+    push @all, $cve;
 }
 
 my $l;
 
 print <<START
-1998-03-20;0
+1998-03-20;0;0
 START
     ;
 
-for my $y (sort keys %money) {
-    my $usd = $money{$y};
-    if($usd) {
-        printf "%s;%d\n", $y, $usd;
-    }
+for my $cve (@all) {
+    printf "%s;%s;%d;%d\n", $cve, $date{$cve}, $money{$cve}, $bounty{$cve};
 }
