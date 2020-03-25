@@ -52,7 +52,7 @@ gnuplot -c stats/firsttimers.plot > $output/firsttimers.svg
 perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > $temp/CI.csv
 gnuplot -c stats/CI-jobs-over-time.plot > $output/CI-jobs-over-time.svg
 
-perl stats/CI-platforms.pl | > $temp/CI-platforms.csv
+perl stats/CI-platforms.pl > $temp/CI-platforms.csv
 gnuplot -c stats/CI-platforms.plot > $output/CI-platforms.svg
 
 perl stats/commits-per-month.pl > $temp/commits-per-month.csv
