@@ -20,7 +20,7 @@ gnuplot -c stats/protocols-over-time.plot > $output/protocols-over-time.svg
 perl stats/tls-over-time.pl > $temp/tls-over-time.csv
 gnuplot -c stats/tls-over-time.plot > $output/tls-over-time.svg
 
-perl stats/daniel-vs-rest.pl | cut '-d;' -f1,3 > $temp/daniel-vs-rest.csv
+perl stats/daniel-vs-rest.pl > $temp/daniel-vs-rest.csv
 gnuplot -c stats/daniel-vs-rest.plot > $output/daniel-vs-rest.svg
 
 perl stats/authors-per-year.pl > $temp/authors-per-year.csv
