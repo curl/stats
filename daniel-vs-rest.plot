@@ -22,6 +22,7 @@ set grid
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
+set ytics 10
 
 set yrange [0:]
 
