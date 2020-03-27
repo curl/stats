@@ -55,6 +55,12 @@ Iterates over all git tags. It then counts how many CI jobs that seems to have
 been enabled at that time. Outputs date, total count, Linux count, macOS
 count, Windows count and FreeBSD count.
 
+## authors
+
+Iterates over the git log. Counts how many comits each author did and when,
+then lists all dates when a new author appeared in the project. Date,
+single-commiter count, total authors count and a single/total share.
+
 ## authors-per-month
 
 Iterates over the git log. Counts number of differenth authors every month,

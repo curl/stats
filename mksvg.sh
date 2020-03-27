@@ -44,9 +44,11 @@ gnuplot -c stats/cmdline-options-over-time.plot > $output/cmdline-options-over-t
 perl stats/contributors-over-time.pl | cut '-d;' -f2- > $temp/contributors-over-time.csv
 gnuplot -c stats/contributors-over-time.plot > $output/contributors-over-time.svg
 
+perl stats/authors.pl > $temp/authors.csv
+gnuplot -c stats/authors.plot > $output/authors.svg
+
 perl stats/authors-per-month.pl > $temp/authors-per-month.csv
 gnuplot -c stats/authors-per-month.plot > $output/authors-per-month.svg
-gnuplot -c stats/authors.plot > $output/authors.svg
 gnuplot -c stats/firsttimers.plot > $output/firsttimers.svg
 
 perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > $temp/CI.csv
