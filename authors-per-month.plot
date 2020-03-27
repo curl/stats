@@ -10,17 +10,20 @@ set key top left
 set xlabel "Time"
 set ylabel "Authors"
 
-set style line 1 \
-    linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4
+# for the boxes
+set boxwidth 0.7 relative
+set style fill solid
 
 set grid
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
+set xtics out nomirror
+
+set xrange ["2010-01-01":]
 
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/authors-per-month.csv' using 1:3 with lines linestyle 1 title "Authors"
+plot 'tmp/authors-per-month.csv' using 1:3 with boxes title "Authors"
