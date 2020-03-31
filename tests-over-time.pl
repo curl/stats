@@ -45,11 +45,15 @@ sub tag2date {
     return $d;
 }
 
+sub counttests {
+    my @wc = `git ls-files "tests/data/test*" | wc -l`;
+    return int($wc[$#wc]);
+}
+
 sub tests {
     my ($tag) = @_;
     `git checkout -f $tag 2>/dev/null`;
-    my @wc = `git ls-files "tests/data/test*" | wc -l`;
-    return int($wc[$#wc]);
+    return counttests();
 }
 
 
@@ -65,3 +69,9 @@ foreach my $t (sort sortthem @releases) {
 
 # restore
 `git checkout -q master`;
+
+# repeat the last line with current date
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+    localtime(time);
+my $date = sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
+printf "now;$date;%d\n", counttests();
