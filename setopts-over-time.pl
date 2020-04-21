@@ -73,3 +73,9 @@ foreach my $t (sort sortthem @releases) {
         print "$t;$d;$n\n";
     }
 }
+
+my @out = `git show origin/master:RELEASE-NOTES 2>/dev/null`;
+my $n = options(@out);
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+    localtime(time);
+printf "now;%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $n;
