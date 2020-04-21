@@ -105,5 +105,33 @@ vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
 EOF
 
+# Use the same names but point to the used CSV/data/input file
+cat >stats.data <<EOF
+api-calls = $temp/API-calls-over-time.csv
+authors = $temp/authors.csv
+authors-per-month = $temp/authors-per-month.csv
+authors-per-year = $temp/authors-per-year.csv
+bugfix-frequency = $temp/bugfix-frequency.csv
+ci-jobs = $temp/CI.csv
+ci-platforms = $temp/CI-platforms.csv
+cmdline-options-over-time = $temp/cmdline-options-over-time.csv
+commits-per-month = $temp/commits-per-month.csv
+commits-per-year = $temp/commits-per-year.csv
+contributors = $temp/contributors-over-time.csv
+coreteam-per-year = $temp/coreteam-per-year.csv
+cve-time = $temp/cve-plot.csv
+daniel-vs-rest = $temp/daniel-vs-rest.csv
+days-per-release = $temp/days-per-release.csv
+docs = $temp/docs-over-time.csv
+firsttimers = $temp/authors-per-month.csv
+loc = $temp/lines-over-time.csv
+protocols = $temp/protocols-over-time.csv
+setopts = $temp/setopts-over-time.csv
+tests = $temp/tests-over-time.csv
+tls-backends = $temp/tls-over-time.csv
+vulns-per-year = $temp/vulns-per-year.csv
+vulns-plot = $temp/vulns-over-time.csv
+EOF
+
 # make the dir world readable
 chmod 755 $output
