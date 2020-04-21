@@ -77,3 +77,9 @@ foreach my $t (sort sortthem @releases) {
         print "$t;$d;$c\n";
     }
 }
+$t=`git describe`;
+chomp $t;
+$c = contribs($t);
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+    localtime(time);
+printf "now;%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $c;
