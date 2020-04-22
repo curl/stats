@@ -52,6 +52,8 @@ gnuplot -c stats/authors.plot > $output/authors.svg
 
 perl stats/authors-per-month.pl > $temp/authors-per-month.csv
 gnuplot -c stats/authors-per-month.plot > $output/authors-per-month.svg
+
+perl stats/firsttimers.pl > $temp/firsttimers.csv
 gnuplot -c stats/firsttimers.plot > $output/firsttimers.svg
 
 perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > $temp/CI.csv
