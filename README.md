@@ -171,11 +171,8 @@ version, date and counter.
 
 ## tests-over-time
 
-**Warning** this script iteratively checks out the git repository multiple
-times.
-
-Iterates over all git tags. Checks out the repository from each tag and counts
-the number of files matching `tests/data/test*`. Outputs version, date and
+Iterates over all git tags. Counts the number of files matching
+`tests/data/test[num]` at the time of each tag. Outputs version, date and
 counter.
 
 ## tls-over-time

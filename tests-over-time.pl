@@ -1,11 +1,5 @@
 #!/usr/bin/perl
 
-# WARNING!
-#
-# This script does actual 'git checkouts' of the code from the tags to get the
-# numbers.
-#
-
 sub num {
     my ($t)=@_;
     if($t =~ /^curl-(\d)_(\d+)_(\d+)/) {
@@ -45,15 +39,18 @@ sub tag2date {
     return $d;
 }
 
-sub counttests {
-    my @wc = `git ls-files "tests/data/test*" | wc -l`;
-    return int($wc[$#wc]);
-}
-
 sub tests {
     my ($tag) = @_;
-    `git checkout -f $tag 2>/dev/null`;
-    return counttests();
+    my $tests = 0;
+    # only count files matching "test[num]"
+    open(G, "git ls-tree -r --name-only $tag -- tests/data 2>/dev/null|");
+    while(<G>) {
+        if($_ =~ /test(\d)/) {
+            $tests++;
+        }
+    }
+    close(G);
+    return $tests;
 }
 
 
@@ -67,11 +64,10 @@ foreach my $t (sort sortthem @releases) {
     print "$t;$d;$l\n";
 }
 
-# restore
-`git checkout -q master`;
-
 # repeat the last line with current date
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
     localtime(time);
 my $date = sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
-printf "now;$date;%d\n", counttests();
+my $tag = `git describe`;
+chomp $tag;
+printf "now;$date;%d\n", tests($tag);
