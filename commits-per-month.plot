@@ -10,6 +10,14 @@ set key top right
 set xlabel "Time"
 set ylabel "Commits"
 
+set style line 1 \
+    linecolor rgb '#0060ad' \
+    linetype 1 linewidth 4
+
+set style line 2 \
+    linecolor rgb '#ff60ad' \
+    dt 1 linewidth 4
+
 # for the boxes
 set boxwidth 0.2 relative
 set style fill solid
@@ -26,6 +34,5 @@ set xdata time
 set format x "%Y"
 set datafile separator ";"
 
-# plot the flaw periods and the project age with titles and line width 3
-plot 'tmp/commits-per-month.csv' using 1:2 with lines title "Commits"
-
+plot  'tmp/commits-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average", \
+'tmp/commits-per-month.csv' using 1:2 with lines linestyle 1 title "Commits"

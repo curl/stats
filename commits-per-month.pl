@@ -15,6 +15,20 @@ while(<G>) {
     }
 }
 
+sub average {
+    my @p = @_;
+    my $sum;
+    for my $y (@p) {
+        $sum += $commit{$y};
+    }
+    return $sum / scalar(@p);
+}
+
+my @pp;
 for my $y (sort keys %commit) {
-    printf "%s-01;%d\n", $y, $commit{$y};
+    push @pp, $y;
+    if(scalar(@pp) > 12) {
+        shift @pp;
+    }
+    printf "%s-01;%d;%.2f\n", $y, $commit{$y}, average(@pp);
 }
