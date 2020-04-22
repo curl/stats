@@ -8,6 +8,9 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
+perl stats/files-over-time.pl > $temp/files-over-time.csv
+gnuplot -c stats/files-over-time.plot > $output/files-over-time.svg
+
 perl stats/bugfix-frequency.pl $webroot > $temp/bugfix-frequency.csv
 gnuplot -c stats/bugfix-frequency.plot > $output/bugfix-frequency.svg
 
@@ -95,6 +98,7 @@ cve-time = $output/cve-plot.svg
 daniel-vs-rest = $output/daniel-vs-rest.svg
 days-per-release = $output/days-per-release.svg
 docs = $output/docs-over-time.svg
+files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
 loc = $output/lines-over-time.svg
 protocols = $output/protocols-over-time.svg
@@ -123,6 +127,7 @@ cve-time = $temp/cve-plot.csv
 daniel-vs-rest = $temp/daniel-vs-rest.csv
 days-per-release = $temp/days-per-release.csv
 docs = $temp/docs-over-time.csv
+files = $temp/files-over-time.csv
 firsttimers = $temp/authors-per-month.csv
 loc = $temp/lines-over-time.csv
 protocols = $temp/protocols-over-time.csv
