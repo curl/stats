@@ -169,6 +169,11 @@ Iterates over all git tags. Extracs the setopt counter from the
 numbers from the time before the number was added to `RELEASES-NOTES`. Outputs
 version, date and counter.
 
+## files-over-time
+
+Iterates over all git tags. Counts the number of files in the repository at
+the time of each tag. Outputs version, date and counter.
+
 ## tests-over-time
 
 Iterates over all git tags. Counts the number of files matching
