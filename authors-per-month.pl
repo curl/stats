@@ -41,10 +41,25 @@ for my $a (sort keys %total) {
     }
 }
 
-#print "Month; First Commit; Unique Authors; Drive-by; Total uniques\n";
+sub average {
+    my @p = @_;
+    my $sum;
+    for my $y (@p) {
+        $sum += $whenmonth{$y};
+    }
+    return $sum / scalar(@p);
+}
+
+
+my @pp;
+#print "Month; Unique Authors;
 for my $y(sort keys %whenmonth) {
     if($y > 2009) {
-        printf("%s;%d;%d;%d;%d\n",
-               $y, $when{$y}, $whenmonth{$y}, $driveby{$y}, $uniqs{$y});
+        push @pp, $y;
+        if(scalar(@pp) > 12) {
+            shift @pp;
+        }
+        printf("%s;%d;%.2f\n",
+               $y, $whenmonth{$y}, average(@pp));
     }
 }

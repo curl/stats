@@ -23,7 +23,12 @@ set xtics out nomirror
 
 set xrange ["2010-01-01":]
 
+set style line 2 \
+    linecolor rgb '#ff60ad' \
+    dt 1 linewidth 4
+
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/authors-per-month.csv' using 1:3 with boxes title "Authors"
+plot  'tmp/authors-per-month.csv' using 1:2 with boxes fc "#408040" title "Authors",\
+ 'tmp/authors-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average"
