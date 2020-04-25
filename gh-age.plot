@@ -39,5 +39,5 @@ set xrange ["2014-11-30":]
 # set the format of the dates on the x axis
 set format x "%b %Y"
 set datafile separator ";"
-plot 'tmp/github-age.csv' using 1:2 with lines linestyle 1 title "Median age (in days) of closed issues", \
-'tmp/github-age.csv' using 1:3 with lines linestyle 2 title "Average age (in days) of closed issues"
+plot 'tmp/gh-age.csv' using 1:2 with lines linestyle 1 title "Median age (in days) of closed issues", \
+'tmp/gh-age.csv' using 1:3 with lines linestyle 2 title "Average age (in days) of closed issues"

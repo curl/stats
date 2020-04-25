@@ -39,6 +39,6 @@ set xrange ["2014-11-30":]
 # set the format of the dates on the x axis
 set format x "%b %Y"
 set datafile separator ";"
-plot 'tmp/github-monthly.csv' using 1:3 with lines linestyle 1 title "Created pull requests", \
- 'tmp/github-monthly.csv' using 1:4 with lines linestyle 2 title "Created issues", \
- 'tmp/github-monthly.csv' using 1:5 with lines linestyle 3 title "Median open issues + PRs"
+plot 'tmp/gh-monthly.csv' using 1:3 with lines linestyle 1 title "Created pull requests", \
+ 'tmp/gh-monthly.csv' using 1:4 with lines linestyle 2 title "Created issues", \
+ 'tmp/gh-monthly.csv' using 1:5 with lines linestyle 3 title "Median open issues + PRs"
