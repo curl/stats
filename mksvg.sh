@@ -8,6 +8,12 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
+perl stats/gh-monthly.pl stats/csv/github.csv > $temp/gh-monthly.csv
+gnuplot -c stats/gh-monthly.plot > $output/gh-monthly.svg
+
+perl stats/gh-age.pl stats/csv/github.csv > $temp/gh-age.csv
+gnuplot -c stats/gh-age.plot > $output/gh-age.svg
+
 perl stats/files-over-time.pl > $temp/files-over-time.csv
 gnuplot -c stats/files-over-time.plot > $output/files-over-time.svg
 
@@ -102,6 +108,8 @@ days-per-release = $output/days-per-release.svg
 docs = $output/docs-over-time.svg
 files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
+github-monthly = $output/gh-monthly.svg
+github-age = $output/gh-age.svg
 loc = $output/lines-over-time.svg
 protocols = $output/protocols-over-time.svg
 setopts = $output/setopts-over-time.svg
@@ -131,6 +139,8 @@ days-per-release = $temp/days-per-release.csv
 docs = $temp/docs-over-time.csv
 files = $temp/files-over-time.csv
 firsttimers = $temp/authors-per-month.csv
+github-monthly = $temp/gh-monthly.csv
+github-age = $temp/gh-age.csv
 loc = $temp/lines-over-time.csv
 protocols = $temp/protocols-over-time.csv
 setopts = $temp/setopts-over-time.csv
