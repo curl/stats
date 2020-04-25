@@ -15,7 +15,7 @@ if($ARGV[0] ne "") {
 }
 else {
     opendir(my $dh, $cache) || die "Can't opendir $cache: $!";
-    @json = grep { /\.json$/ && -f "$cache/$_" } readdir($dh);
+    @json = grep { /^(\d+)\.json$/ && -f "$cache/$_" } readdir($dh);
     closedir $dh;
 }
 
@@ -33,7 +33,7 @@ sub single {
 #    print Dumper($i);
 
     # P = pull-request, I = issue
-    my $t = $$i{'pull_request'}{'url'} ?"P":"I";
+    my $t = $$i{pull_request}{url} ?"P":"I";
     return ($$i{number},
             $t,
             $$i{created_at},
