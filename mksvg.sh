@@ -9,7 +9,7 @@ temp=tmp
 output=`mktemp -d svg-XXXXXX`
 
 perl stats/mail.pl > $temp/mail.csv
-gnuplot -c stats>mail.plot > $output/mail.svg
+gnuplot -c stats/mail.plot > $output/mail.svg
 
 perl stats/gh-monthly.pl stats/csv/github.csv > $temp/gh-monthly.csv
 gnuplot -c stats/gh-monthly.plot > $output/gh-monthly.svg
