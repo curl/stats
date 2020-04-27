@@ -148,12 +148,24 @@ of days between this release and the previous.
 Iterates over the git log and all commits done to the `docs/` folder. Outputs
 date and number of lines.
 
+## gh-monthly
+
+Uses the generated github.csv file to generate graphs on github activity.
+
+## gh-age
+
+Uses the generated github.csv file to generate graphs on github issue ages.
+
 ## lines-over-time
 
 Iterates over the git log and all commits done to the `src/`, `lib/` and
 `include/` folders. Outputs date and number of lines. The script contains a
 set of versions and LOC counts, manually counted from the time before the git
 repo.
+
+## mail
+
+Downloads the server-side CSV and generates a mailing list activity graph.
 
 ## protocols-over-time
 
