@@ -8,6 +8,9 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
+perl stats/mail.pl > $temp/mail.csv
+gnuplot -c stats>mail.plot > $output/mail.svg
+
 perl stats/gh-monthly.pl stats/csv/github.csv > $temp/gh-monthly.csv
 gnuplot -c stats/gh-monthly.plot > $output/gh-monthly.svg
 
@@ -111,6 +114,7 @@ firsttimers = $output/firsttimers.svg
 github-monthly = $output/gh-monthly.svg
 github-age = $output/gh-age.svg
 loc = $output/lines-over-time.svg
+mail = $output/mail.svg
 protocols = $output/protocols-over-time.svg
 setopts = $output/setopts-over-time.svg
 tests = $output/tests-over-time.svg
@@ -142,6 +146,7 @@ firsttimers = $temp/authors-per-month.csv
 github-monthly = $temp/gh-monthly.csv
 github-age = $temp/gh-age.csv
 loc = $temp/lines-over-time.csv
+mail = $temp/mail.csv
 protocols = $temp/protocols-over-time.csv
 setopts = $temp/setopts-over-time.csv
 tests = $temp/tests-over-time.csv
