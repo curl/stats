@@ -61,26 +61,25 @@ for my $y (sort keys %years) {
     foreach my $a (sort {$uniqyear{$b.$y} <=> $uniqyear{$a.$y}} @a) {
         my $l;
         my $combo = 0;
-        if($y != $lastyear) {
-            if($firstyear{$a} == $y) {
-                $l.=" (newcomer)";
-                $combo |= 1;
+        if($firstyear{$a} == $y) {
+            $l.=" (newcomer)";
+            $combo |= 1;
+        }
+        elsif(!$core[$y-1]{$a}) {
+            $l=" (back from break)";
+        }
+        if($lastyear{$a} == $y) {
+            if(($combo == 1) && ($firstyear{$a} != $y)) {
+                $l=" (single year)";
             }
-            elsif(!$core[$y-1]{$a}) {
-                $l=" (back from break)";
-            }
-            if($lastyear{$a} == $y) {
-                if($combo == 1) {
-                    $l=" (single year)";
-                }
-                else {
-                    $l.=" (final year)";
-                }
-            }
-            elsif(!$core[$y+1]{$a}) {
-                $l=" (before break)";
+            elsif($y != $lastyear) {
+                $l.=" (final year)";
             }
         }
+        elsif(!$core[$y+1]{$a}) {
+            $l=" (before break)";
+        }
+
         push @list, sprintf "$y - %s %d commits (%.1f%%)$l\n  ", $a, $uniqyear{$a.$y}, $uniqyear{$a.$y} * 100 / $years{$y};
 
         $coretotal += $uniqyear{$a.$y};
