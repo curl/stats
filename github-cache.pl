@@ -92,7 +92,7 @@ sub redownload {
 }
 
 for my $j (@json) {
-    my $i = single($_);
+    my $i = single($j);
     if($i)  {
         redownload($i);
     }
@@ -100,7 +100,7 @@ for my $j (@json) {
         # randomly get 1% of the old issues
         if(rand(1000) < 10) {
             $j =~ s/\.json//;
-            print "Random refetch of issue $j\n";
+            print "Randomly... ";
             redownload($j);
         }
     }
