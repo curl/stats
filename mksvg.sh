@@ -89,6 +89,9 @@ gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 
+perl stats/lines-per-month.pl > $temp/lines-per-month.csv
+gnuplot -c stats/lines-per-month.plot > $output/lines-per-month.svg
+
 perl stats/tests-over-time.pl | cut '-d;' -f2- > $temp/tests-over-time.csv
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
@@ -114,6 +117,7 @@ firsttimers = $output/firsttimers.svg
 github-monthly = $output/gh-monthly.svg
 github-age = $output/gh-age.svg
 loc = $output/lines-over-time.svg
+deltaloc = $output/lines-per-month.svg
 mail = $output/mail.svg
 protocols = $output/protocols-over-time.svg
 setopts = $output/setopts-over-time.svg
@@ -146,6 +150,7 @@ firsttimers = $temp/authors-per-month.csv
 github-monthly = $temp/gh-monthly.csv
 github-age = $temp/gh-age.csv
 loc = $temp/lines-over-time.csv
+deltaloc = $temp/lines-per-month.csv
 mail = $temp/mail.csv
 protocols = $temp/protocols-over-time.csv
 setopts = $temp/setopts-over-time.csv
