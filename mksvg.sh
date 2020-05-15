@@ -59,6 +59,9 @@ gnuplot -c stats/contributors-over-time.plot > $output/contributors-over-time.sv
 perl stats/authors.pl > $temp/authors.csv
 gnuplot -c stats/authors.plot > $output/authors.svg
 
+perl stats/todo-over-time.pl > $temp/todo-over-time.csv
+gnuplot -c stats/todo-over-time.plot > $output/todo-over-time.svg
+
 perl stats/authors-per-month.pl > $temp/authors-per-month.csv
 gnuplot -c stats/authors-per-month.plot > $output/authors-per-month.svg
 
@@ -122,6 +125,7 @@ mail = $output/mail.svg
 protocols = $output/protocols-over-time.svg
 setopts = $output/setopts-over-time.svg
 tests = $output/tests-over-time.svg
+todo = $output/todo-over-time.svg
 tls-backends = $output/tls-over-time.svg
 vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
@@ -155,6 +159,7 @@ mail = $temp/mail.csv
 protocols = $temp/protocols-over-time.csv
 setopts = $temp/setopts-over-time.csv
 tests = $temp/tests-over-time.csv
+todo = $temp/todo-over-time.csv
 tls-backends = $temp/tls-over-time.csv
 vulns-per-year = $temp/vulns-per-year.csv
 vulns-plot = $temp/vulns-over-time.csv
