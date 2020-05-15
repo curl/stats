@@ -4,7 +4,7 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "Lines of code added per month" font ",48"
 # where's the legend
-set key top right
+set key bottom left
 
 # Identify the axes
 set xlabel "Time"
