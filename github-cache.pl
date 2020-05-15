@@ -84,11 +84,24 @@ sub single {
     return ($$i{state} ne "closed" ? $$i{number} : 0);
 }
 
-for(@json) {
+sub redownload {
+    my ($i) = @_;
+    my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i -o $cache/$i.json -z $cache/$i.json";
+    print "Redownloads issue $i\n";
+    my $s = system($c);
+}
+
+for my $j (@json) {
     my $i = single($_);
     if($i)  {
-        my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i -o $cache/$i.json -z $cache/$i.json";
-        print "Redownloads issue $i\n";
-        my $s = system($c);
+        redownload($i);
+    }
+    else {
+        # randomly get 1% of the old issues
+        if(rand(1000) < 10) {
+            $j =~ s/\.json//;
+            print "Random refetch of issue $j\n";
+            redownload($j);
+        }
     }
 }
