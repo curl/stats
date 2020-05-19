@@ -129,12 +129,12 @@ sub cirruscount {
 }
 
 sub traviscount {
-    my ($tag)=@_;
+    my ($tag, $now)=@_;
     open(G, "git show $tag:.travis.yml 2>/dev/null|");
     my $c = 0;
     my $mac=0;
     my $linux=0;
-    if((num($tag) > 7700) || ($tag eq $now)) {
+    if((num($tag) > 77000) || ($tag eq $now)) {
         # white space edits and linux-only
         while(<G>) {
             if($_ =~ /^  - env:/) {
@@ -172,7 +172,7 @@ foreach my $t (@this) {
         next;
     }
 
-    my ($mac, $linux) = traviscount($t);
+    my ($mac, $linux) = traviscount($t, $now);
     my $freebsd = cirruscount($t);
     my $windows = appveyorcount($t);
     my ($m2, $l2, $w2) = azurecount($t);
