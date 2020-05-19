@@ -120,9 +120,19 @@ sub traviscount {
     my ($tag)=@_;
     open(G, "git show $tag:.travis.yml 2>/dev/null|");
     my $c = 0;
-    while(<G>) {
-        if($_ =~ /^        - os:/) {
-            $c++;
+    if((num($tag) > 7700) || ($tag eq $now)) {
+        # white space edits and linux-only
+        while(<G>) {
+            if($_ =~ /^  - env:/) {
+                $c++;
+            }
+        }
+    }
+    else {
+        while(<G>) {
+            if($_ =~ /^        - os:/) {
+                $c++;
+            }
         }
     }
     close(G);

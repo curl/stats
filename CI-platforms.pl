@@ -134,12 +134,22 @@ sub traviscount {
     my $c = 0;
     my $mac=0;
     my $linux=0;
-    while(<G>) {
-        if($_ =~ /os: osx/) {
-            $mac++;
+    if((num($tag) > 7700) || ($tag eq $now)) {
+        # white space edits and linux-only
+        while(<G>) {
+            if($_ =~ /^  - env:/) {
+                $linux++;
+            }
         }
-        elsif($_ =~ /os: linux/) {
-            $linux++;
+    }
+    else {
+        while(<G>) {
+            if($_ =~ /os: osx/) {
+                $mac++;
+            }
+            elsif($_ =~ /os: linux/) {
+                $linux++;
+            }
         }
     }
     close(G);
