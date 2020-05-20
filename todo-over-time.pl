@@ -51,7 +51,15 @@ sub options {
             }
         }
     }
-    if(num($tag) < 74900) {
+    if(num($tag) < 71300) {
+        # known bugs before 7.13.0
+        foreach $l (@t) {
+            if($l =~ /^\* /) {
+                $c++;
+            }
+        }
+    }
+    elsif(num($tag) < 74900) {
         # before 7.49.0 KNOWN_BUGS was different
         foreach $l (@t) {
             if($l =~ /^\d+\. /) {
