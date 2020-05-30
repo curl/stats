@@ -41,38 +41,44 @@ sub tag2date {
 
 sub githubcount {
     my ($tag)=@_;
-    my @files= `git ls-files -- .github/workflows 2>/dev/null`;
+    my @files= `git ls-tree -r --name-only $tag .github/workflows 2>/dev/null`;
     my $c = 0;
     foreach my $f (@files) {
+        my $j = 0;
+        my $m = -1;
         chomp $f;
-        my $matrix = 0;
-        if($f =~ "/macos.yml") {
-            # this introduced the use of the matrix style
-            $matrix = 1;
-        }
         open(G, "git show $tag:$f 2>/dev/null|");
-        if(!$matrix) {
-            while(<G>) {
-                if($_ =~ /^    runs-on:/) {
-                    $c++;
-                }
+        # start counting file jobs
+        while(<G>) {
+            if($_ =~ /runs-on:/) {
+                # non-matrix job
+                $c += $j;
+                $j = 1;
             }
-        }
-        else {
-            my $mult = 0;
-            while(<G>) {
-                if($_ =~ /matrix:/) {
-                    $mult = 0;
-                }
-                elsif($_ =~ /- name:/) {
-                    $c += ($mult?$mult:1);
+            elsif($_ =~ /matrix:/) {
+                # switch to matrix mode
+                $m = 0;
+                $j = 0;
+            }
+            elsif($m >= 0) {
+                if($_ =~ /- name:/) {
+                    # matrix job
+                    $j += ($m?$m:1);
                 }
                 elsif($_ =~ /- CC:/) {
-                    $mult++;
+                    # matrix multiplier
+                    $m++;
+                }
+                elsif($_ =~ /steps:/) {
+                    # disable matrix mode
+                    $m = -1;
                 }
             }
         }
         close(G);
+        # commit file jobs
+        $c += $j;
+        $j = 0;
     }
     return $c;
 }
