@@ -89,12 +89,36 @@ sub azurecount {
     my ($tag)=@_;
     open(G, "git show $tag:.azure-pipelines.yml 2>/dev/null|");
     my $c = 0;
+    my $j = 0;
+    my $m = -1;
     while(<G>) {
-        if($_ =~ /^  - job:/) {
-            $c++;
+        if($_ =~ /job:/) {
+            # commit previously counted jobs
+            $c += $j;
+            # initial value for non-matrix job
+            $j = 1;
+        }
+        elsif($_ =~ /matrix:/) {
+            # start of new matrix list(!)
+            $m = 0;
+            $j = 0;
+        }
+        elsif($m >= 0) {
+            if($_ =~ /name:/) {
+                # single matrix list entry job
+                $j++;
+            }
+            # azure matrix is a simple list,
+            # therefore no multiplier needed
+            elsif($_ =~ /steps:/) {
+                # disable matrix mode
+                $m = -1;
+            }
         }
     }
     close(G);
+    # commit final counted jobs
+    $c += $j;
     return $c;
 }
 

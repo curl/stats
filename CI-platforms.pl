@@ -112,20 +112,55 @@ sub azurecount {
     my $linux = 0;
     my $mac = 0;
     my $windows = 0;
+    my $j = 0;
+    my $m = -1;
+    my $os = "";
     while(<G>) {
-        if($_ =~ /vmImage: '(.*)'/) {
-            if($1 =~ /ubuntu/) {
-                $linux++;
+        if($_ =~ /vmImage: (.*)/) {
+            # commit previously counted jobs to previous os
+            my $n = $1;
+            if($os =~ /ubuntu/) {
+                $linux += $j;
             }
-            elsif($1 =~ /macos/i) {
-                $mac++;
+            elsif($os =~ /macos/i) {
+                $mac += $j;
             }
-            elsif($1 =~ /windows/i) {
-                $windows++;
+            elsif($os =~ /windows/i) {
+                $windows += $j;
+            }
+            $os = $n;
+            # non-matrix job
+            $j = 1;
+        }
+        elsif($_ =~ /matrix:/) {
+            # switch to matrix mode
+            $m = 0;
+            $j = 0;
+        }
+        elsif($m >= 0) {
+            if($_ =~ /name:/) {
+                # single matrix list entry job
+                $j++;
+            }
+            # azure matrix is a simple list,
+            # therefore no multiplier needed
+            elsif($_ =~ /steps:/) {
+                # disable matrix mode
+                $m = -1;
             }
         }
     }
     close(G);
+    # commit final counted jobs to last os
+    if($os =~ /ubuntu/) {
+        $linux += $j;
+    }
+    elsif($os =~ /macos/i) {
+        $mac += $j;
+    }
+    elsif($os =~ /windows/i) {
+        $windows += $j;
+    }
     return ($mac, $linux, $windows);
 }
 
