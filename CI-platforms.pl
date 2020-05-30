@@ -41,50 +41,77 @@ sub tag2date {
 
 sub githubcount {
     my ($tag)=@_;
-    my @files= `git ls-files -- .github/workflows 2>/dev/null`;
-    my $c = 0;
-    my $linux;
+    my @files= `git ls-tree -r --name-only $tag .github/workflows 2>/dev/null`;
+    my $linux = 0;
+    my $mac = 0;
+    my $windows = 0;
     foreach my $f (@files) {
+        my $j = 0;
+        my $m = -1;
+        my $os = "";
         chomp $f;
-        my $matrix = 0;
-        if($f =~ "/macos.yml") {
-            # this introduced the use of the matrix style
-            $matrix = 1;
-        }
         open(G, "git show $tag:$f 2>/dev/null|");
-        if(!$matrix) {
-            while(<G>) {
-                if($_ =~ /^    runs-on:/) {
-                    $linux++;
+        # start counting file jobs
+        while(<G>) {
+            if($_ =~ /runs-on: (.*)/) {
+                # commit previously counted jobs to previous os
+                my $n = $1;
+                if($os =~ /ubuntu/) {
+                    $linux += $j;
                 }
+                elsif($os =~ /macos/i) {
+                    $mac += $j;
+                }
+                elsif($os =~ /windows/i) {
+                    $windows += $j;
+                }
+                $os = $n;
+                # non-matrix job
+                $j = 1;
             }
-        }
-        else {
-            my $mult = 0;
-            while(<G>) {
-                if($_ =~ /matrix:/) {
-                    $mult = 0;
-                }
-                elsif($_ =~ /- name:/) {
-                    $c += ($mult?$mult:1);
+            elsif($_ =~ /matrix:/) {
+                # switch to matrix mode
+                $m = 0;
+                $j = 0;
+            }
+            elsif($m >= 0) {
+                if($_ =~ /- name:/) {
+                    # matrix job
+                    $j += ($m?$m:1);
                 }
                 elsif($_ =~ /- CC:/) {
-                    $mult++;
+                    # matrix multiplier
+                    $m++;
+                }
+                elsif($_ =~ /steps:/) {
+                    # disable matrix mode
+                    $m = -1;
                 }
             }
         }
         close(G);
+        # commit final counted jobs to last os
+        if($os =~ /ubuntu/) {
+            $linux += $j;
+        }
+        elsif($os =~ /macos/i) {
+            $mac += $j;
+        }
+        elsif($os =~ /windows/i) {
+            $windows += $j;
+        }
+        # reset internal job counter
+        $j = 0;
     }
-    return ($c, $linux);
+    return ($mac, $linux, $windows);
 }
 
 sub azurecount {
     my ($tag)=@_;
     open(G, "git show $tag:.azure-pipelines.yml 2>/dev/null|");
-    my $c = 0;
-    my $linux;
-    my $mac;
-    my $windows;
+    my $linux = 0;
+    my $mac = 0;
+    my $windows = 0;
     while(<G>) {
         if($_ =~ /vmImage: '(.*)'/) {
             if($1 =~ /ubuntu/) {
@@ -180,9 +207,10 @@ foreach my $t (@this) {
     $linux += $l2;
     $windows += $w2;
 
-    ($m2, $l2) = githubcount($t);
+    ($m2, $l2, $w2) = githubcount($t);
     $mac += $m2;
     $linux += $l2;
+    $windows += $w2;
 
     my $c = $mac + $linux + $windows + $freebsd;
     if($c) {

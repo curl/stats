@@ -51,8 +51,9 @@ sub githubcount {
         # start counting file jobs
         while(<G>) {
             if($_ =~ /runs-on:/) {
-                # non-matrix job
+                # commit previously counted jobs
                 $c += $j;
+                # non-matrix job
                 $j = 1;
             }
             elsif($_ =~ /matrix:/) {
@@ -76,8 +77,9 @@ sub githubcount {
             }
         }
         close(G);
-        # commit file jobs
+        # commit final counted jobs
         $c += $j;
+        # reset internal job counter
         $j = 0;
     }
     return $c;
