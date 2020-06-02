@@ -43,6 +43,7 @@ my $fail=3;
 for my $i (1 .. $top) {
     if(-f "$cache/$i.json") {
         # print "$i is cached\n";
+        $fail = 3;
     }
     else {
         my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i -o $cache/$i.json";
@@ -52,9 +53,13 @@ for my $i (1 .. $top) {
         if(!$s) {
             $fail = 3;
         }
-        elsif($s &&!--$fail) {
-            ## 22 means 404 basically, so end of the run
-            last;
+        else {
+            if($s &&!--$fail) {
+                ## 22 means 404 basically, so end of the run
+                print "... $i is the final fail\n";
+                last;
+            }
+            print "... $i failed ($fail more)\n";
         }
     }
 }
