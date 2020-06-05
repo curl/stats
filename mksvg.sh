@@ -98,17 +98,25 @@ gnuplot -c stats/lines-per-month.plot > $output/lines-per-month.svg
 perl stats/tests-over-time.pl | cut '-d;' -f2- > $temp/tests-over-time.csv
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
+perl stats/bugbounty-over-time.pl > $temp/bugbounty-over-time.csv
+gnuplot -c stats/bugbounty-over-time.plot > $output/bugbounty-over-time.svg
+
+perl stats/contributors-per-release.pl > $temp/contributors-per-release.csv
+gnuplot -c stats/contributors-per-release.plot > $output/contributors-per-release.svg
+
 cat >stats.list <<EOF
 api-calls = $output/API-calls-over-time.svg
 authors = $output/authors.svg
 authors-per-month = $output/authors-per-month.svg
 authors-per-year = $output/authors-per-year.svg
+bugbounty = $output/bugbounty-over-time.svg
 bugfix-frequency = $output/bugfix-frequency.svg
 ci-jobs = $output/CI-jobs-over-time.svg
 ci-platforms = $output/CI-platforms.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
+contribs-release = $output/contributors-per-release.svg
 contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
 cve-time = $output/cve-plot.svg
@@ -137,12 +145,14 @@ api-calls = $temp/API-calls-over-time.csv
 authors = $temp/authors.csv
 authors-per-month = $temp/authors-per-month.csv
 authors-per-year = $temp/authors-per-year.csv
+bugbounty = $temp/bugbounty-over-time.csv
 bugfix-frequency = $temp/bugfix-frequency.csv
 ci-jobs = $temp/CI.csv
 ci-platforms = $temp/CI-platforms.csv
 cmdline-options-over-time = $temp/cmdline-options-over-time.csv
 commits-per-month = $temp/commits-per-month.csv
 commits-per-year = $temp/commits-per-year.csv
+contribs-release = $temp/contributors-per-release.csv
 contributors = $temp/contributors-over-time.csv
 coreteam-per-year = $temp/coreteam-per-year.csv
 cve-time = $temp/cve-plot.csv
