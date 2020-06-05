@@ -11,20 +11,20 @@ set xlabel "Time"
 set ylabel "Number of posted mails"
 
 set style line 1 \
-    linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4
+    linecolor rgb '#c0c0ff' \
+    linetype 1 linewidth 2
 
 set style line 2 \
-    linecolor rgb '#ff60ad' \
-    dt 1 linewidth 4
+    linecolor rgb '#ffa0cd' \
+    dt 1 linewidth 2
 
 set style line 3 \
     linecolor rgb '#40a000' \
-    dt 1 linewidth 2
+    dt 1 linewidth 3
 
 set style line 4 \
     linecolor rgb '#000000' \
-    dt 1 linewidth 2
+    dt 1 linewidth 3
 
 # for the boxes
 set boxwidth 0.2 relative
@@ -43,6 +43,6 @@ set format x "%Y"
 set datafile separator ";"
 
 plot  'tmp/mail.csv' using 1:3 with lines linestyle 2 title "curl-users", \
+'tmp/mail.csv' using 1:5 with lines linestyle 4 title "curl-users 12 months average", \
 'tmp/mail.csv' using 1:2 with lines linestyle 1 title "curl-library", \
-'tmp/mail.csv' using 1:4 with lines linestyle 3 title "curl-library 12 months average", \
-'tmp/mail.csv' using 1:5 with lines linestyle 4 title "curl-users 12 months average"
+'tmp/mail.csv' using 1:4 with lines linestyle 3 title "curl-library 12 months average"
