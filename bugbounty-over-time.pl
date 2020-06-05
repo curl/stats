@@ -24,11 +24,6 @@ for(reverse @vuln) {
 
 my $l;
 
-print <<START
-1998-03-20;0;0
-START
-    ;
-
 for my $cve (@all) {
     printf "%s;%s;%d;%d\n", $cve, $date{$cve}, $money{$cve}, $bounty{$cve};
 }
