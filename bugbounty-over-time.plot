@@ -12,7 +12,7 @@ set ylabel "USD"
 
 set style line 1 \
     linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4
+    linetype 7 linewidth 3
 
 # for the boxes
 set boxwidth 10 relative
@@ -30,4 +30,4 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/bugbounty-over-time.csv' using 2:3 with linespoints lw 2 title "Total amount of reward payouts"
+plot 'tmp/bugbounty-over-time.csv' using 2:3 with linespoints linestyle 1 title "Total amount of reward payouts"
