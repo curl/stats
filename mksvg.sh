@@ -98,7 +98,7 @@ gnuplot -c stats/lines-per-month.plot > $output/lines-per-month.svg
 perl stats/tests-over-time.pl | cut '-d;' -f2- > $temp/tests-over-time.csv
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
-perl stats/bugbounty-over-time.pl > $temp/bugbounty-over-time.csv
+perl stats/bugbounty-over-time.pl $webroot > $temp/bugbounty-over-time.csv
 gnuplot -c stats/bugbounty-over-time.plot > $output/bugbounty-over-time.svg
 
 perl stats/contributors-per-release.pl > $temp/contributors-per-release.csv
