@@ -103,7 +103,7 @@ sub githubcount {
         # reset internal job counter
         $j = 0;
     }
-    return ($mac, $linux, $windows);
+    return ($linux, $mac, $windows);
 }
 
 sub azurecount {
@@ -161,7 +161,7 @@ sub azurecount {
     elsif($os =~ /windows/i) {
         $windows += $j;
     }
-    return ($mac, $linux, $windows);
+    return ($linux, $mac, $windows);
 }
 
 sub appveyorcount {
@@ -194,8 +194,8 @@ sub traviscount {
     my ($tag, $now)=@_;
     open(G, "git show $tag:.travis.yml 2>/dev/null|");
     my $c = 0;
-    my $mac=0;
     my $linux=0;
+    my $mac=0;
     if((num($tag) > 77000) || ($tag eq $now)) {
         # white space edits and linux-only
         while(<G>) {
@@ -206,16 +206,16 @@ sub traviscount {
     }
     else {
         while(<G>) {
-            if($_ =~ /os: osx/) {
-                $mac++;
-            }
-            elsif($_ =~ /os: linux/) {
+            if($_ =~ /os: linux/) {
                 $linux++;
+            }
+            elsif($_ =~ /os: osx/) {
+                $mac++;
             }
         }
     }
     close(G);
-    return ($mac, $linux);
+    return ($linux, $mac);
 }
 
 
@@ -234,20 +234,20 @@ foreach my $t (@this) {
         next;
     }
 
-    my ($mac, $linux) = traviscount($t, $now);
+    my ($linux, $mac) = traviscount($t, $now);
     my $freebsd = cirruscount($t);
     my $windows = appveyorcount($t);
-    my ($m2, $l2, $w2) = azurecount($t);
-    $mac += $m2;
+    my ($l2, $m2, $w2) = azurecount($t);
     $linux += $l2;
+    $mac += $m2;
     $windows += $w2;
 
-    ($m2, $l2, $w2) = githubcount($t);
-    $mac += $m2;
+    ($l2, $m2, $w2) = githubcount($t);
     $linux += $l2;
+    $mac += $m2;
     $windows += $w2;
 
-    my $c = $mac + $linux + $windows + $freebsd;
+    my $c = $linux + $mac + $windows + $freebsd;
     if($c) {
         # prettify
         my $d;
