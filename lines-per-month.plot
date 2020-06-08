@@ -11,16 +11,16 @@ set xlabel "Time"
 set ylabel "Delta number of lines of code"
 
 set style line 1 \
-    linecolor rgb '#0060ad' \
+    linecolor rgb '#c0c0ff' \
     linetype 1 linewidth 2
 
 set style line 2 \
     linecolor rgb '#ff60ad' \
-    dt 1 linewidth 3
+    dt 1 linewidth 4
 
 set style line 3 \
     linecolor rgb '#40a040' \
-    dt 1 linewidth 2
+    dt 1 linewidth 3
 
 # for the boxes
 set boxwidth 0.2 relative
