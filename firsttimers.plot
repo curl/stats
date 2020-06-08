@@ -11,8 +11,8 @@ set xlabel "Time"
 set ylabel "Authors"
 
 set style line 1 \
-    linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4
+    linecolor rgb '#c0c0ff' \
+    linetype 1 linewidth 2
 
 set style line 2 \
     linecolor rgb '#ff60ad' \
