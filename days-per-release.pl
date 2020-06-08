@@ -32,8 +32,27 @@ sub days {
     return int(($secs-$psecs)/86400);
 }
 
+sub median {
+    my @a = @_;
+    my @vals = sort {$a <=> $b} @a;
+    my $len = @vals;
+    if($len%2) { #odd?
+        return $vals[int($len/2)];
+    }
+    else {
+        #even
+        return ($vals[int($len/2)-1] + $vals[int($len/2)])/2;
+    }
+}
+
+
 for my $r (reverse @inorder) {
     my $da = days($p, $release{$r});
-    printf "%s;%s;%d\n", $r, $release{$r}, $da;
+    push @pp, $da;
+    if(scalar(@pp) > 7) {
+        shift @pp;
+    }
+    # skips r, the release version
+    printf "%s;%d;%.1f\n", $release{$r}, $da, median(@pp);
     $p = $release{$r};
 }
