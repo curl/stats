@@ -47,7 +47,7 @@ gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
 perl stats/setopts-over-time.pl | cut '-d;' -f2- > $temp/setopts-over-time.csv
 gnuplot -c stats/setopts-over-time.plot > $output/setopts-over-time.svg
 
-perl stats/days-per-release.pl $webroot $temp/days-per-release.csv
+perl stats/days-per-release.pl $webroot > $temp/days-per-release.csv
 gnuplot -c stats/days-per-release.plot > $output/days-per-release.svg
 
 perl stats/cmdline-options-over-time.pl | cut '-d;' -f2- > $temp/cmdline-options-over-time.csv
