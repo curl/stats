@@ -99,4 +99,4 @@ my $k = options($t, "docs/KNOWN_BUGS");
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
     localtime(time);
 $date = sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
-print "$date;$n:$k\n";
+print "$date;$n;$k\n";
