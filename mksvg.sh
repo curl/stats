@@ -11,10 +11,11 @@ output=`mktemp -d svg-XXXXXX`
 perl stats/mail.pl > $temp/mail.csv
 gnuplot -c stats/mail.plot > $output/mail.svg
 
-perl stats/gh-monthly.pl stats/csv/github.csv > $temp/gh-monthly.csv
+perl stats/github-json.pl > $temp/github.csv
+perl stats/gh-monthly.pl $temp/github.csv > $temp/gh-monthly.csv
 gnuplot -c stats/gh-monthly.plot > $output/gh-monthly.svg
 
-perl stats/gh-age.pl stats/csv/github.csv > $temp/gh-age.csv
+perl stats/gh-age.pl $temp/github.csv > $temp/gh-age.csv
 gnuplot -c stats/gh-age.plot > $output/gh-age.svg
 
 perl stats/files-over-time.pl > $temp/files-over-time.csv

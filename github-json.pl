@@ -7,7 +7,7 @@
 
 use JSON;
 #use Data::Dumper;
-my $cache="gh-cache";
+my $cache="stats/gh-cache";
 
 my @json;
 if($ARGV[0] ne "") {
