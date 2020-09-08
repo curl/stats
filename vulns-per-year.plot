@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "CVEs per year" font ",48"
+set title "CVEs reported per year" font ",48"
 # where's the legend
 set key top left
 
@@ -20,12 +20,13 @@ set grid
 set timefmt "%Y-%m-%d"
 set xdata time
 
-set xtics rotate
+set xtics rotate 3600*24*365.25
+set xrange ["1998-01-01":]
 
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
 
 # plot the flaw periods and the project age with titles and line width 3
-plot 'tmp/vulns-per-year.csv' using 1:2 with boxes title "CVEs per year"
+plot 'tmp/vulns-per-year.csv' using 1:2 with boxes title "Number of CVEs"
 
