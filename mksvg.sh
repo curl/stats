@@ -63,6 +63,9 @@ gnuplot -c stats/authors.plot > $output/authors.svg
 perl stats/todo-over-time.pl > $temp/todo-over-time.csv
 gnuplot -c stats/todo-over-time.plot > $output/todo-over-time.svg
 
+perl stats/symbols-over-time.pl > $temp/symbols-over-time.csv
+gnuplot -c stats/symbols-over-time.plot > $output/symbols-over-time.svg
+
 perl stats/authors-per-month.pl > $temp/authors-per-month.csv
 gnuplot -c stats/authors-per-month.plot > $output/authors-per-month.svg
 
@@ -123,19 +126,20 @@ coreteam-per-year = $output/coreteam-per-year.svg
 cve-time = $output/cve-plot.svg
 daniel-vs-rest = $output/daniel-vs-rest.svg
 days-per-release = $output/days-per-release.svg
+deltaloc = $output/lines-per-month.svg
 docs = $output/docs-over-time.svg
 files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
-github-monthly = $output/gh-monthly.svg
 github-age = $output/gh-age.svg
+github-monthly = $output/gh-monthly.svg
 loc = $output/lines-over-time.svg
-deltaloc = $output/lines-per-month.svg
 mail = $output/mail.svg
 protocols = $output/protocols-over-time.svg
 setopts = $output/setopts-over-time.svg
+symbols = $output/symbols-over-time.svg
 tests = $output/tests-over-time.svg
-todo = $output/todo-over-time.svg
 tls-backends = $output/tls-over-time.svg
+todo = $output/todo-over-time.svg
 vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
 EOF
@@ -159,19 +163,20 @@ coreteam-per-year = $temp/coreteam-per-year.csv
 cve-time = $temp/cve-plot.csv
 daniel-vs-rest = $temp/daniel-vs-rest.csv
 days-per-release = $temp/days-per-release.csv
+deltaloc = $temp/lines-per-month.csv
 docs = $temp/docs-over-time.csv
 files = $temp/files-over-time.csv
 firsttimers = $temp/authors-per-month.csv
-github-monthly = $temp/gh-monthly.csv
 github-age = $temp/gh-age.csv
+github-monthly = $temp/gh-monthly.csv
 loc = $temp/lines-over-time.csv
-deltaloc = $temp/lines-per-month.csv
 mail = $temp/mail.csv
 protocols = $temp/protocols-over-time.csv
 setopts = $temp/setopts-over-time.csv
+symbols = $temp/symbols-over-time.csv
 tests = $temp/tests-over-time.csv
-todo = $temp/todo-over-time.csv
 tls-backends = $temp/tls-over-time.csv
+todo = $temp/todo-over-time.csv
 vulns-per-year = $temp/vulns-per-year.csv
 vulns-plot = $temp/vulns-over-time.csv
 EOF
