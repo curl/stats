@@ -12,7 +12,7 @@ set ylabel "Lines of documentation"
 
 set style line 1 \
     linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4 
+    linetype 1 linewidth 4
 
 set grid
 
@@ -23,4 +23,4 @@ set xdata time
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/docs-over-time.csv' using 1:2 with lines linestyle 1 title "Lines of docs"
+plot 'tmp/docs-over-time.csv' using 1:2 with lines linestyle 1 title ""
