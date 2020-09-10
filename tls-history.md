@@ -5,7 +5,7 @@ PolarSSL 2010-05-01 4
 axTLS 2010-12-01 5
 wolfSSL 2011-04-01 6
 Schannel 2012-07-01 7
-Secure-Transport 2012-07-01 8
+Secure Transport 2012-07-01 8
 GSKit 2013-07-01 9
 libressl 2014-08-01 10
 BoringSSL 2015-01-01 11
