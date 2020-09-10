@@ -25,4 +25,4 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/API-calls-over-time.csv' using 1:2 with lines linestyle 1 title "API calls"
+plot 'tmp/API-calls-over-time.csv' using 1:2 with lines linestyle 1 title ""

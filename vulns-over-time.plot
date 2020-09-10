@@ -19,4 +19,4 @@ set xdata time
 set format x "%Y"
 
 set datafile separator ";"
-plot 'tmp/vulns-over-time.csv' using 2:3 with lines title "Flaws" lw 3
+plot 'tmp/vulns-over-time.csv' using 2:3 with lines title "" lw 3

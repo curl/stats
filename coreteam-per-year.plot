@@ -25,4 +25,4 @@ set xtics rotate 3600*24*365.25
 set format x "%Y"
 set datafile separator ";"
 
-plot 'tmp/coreteam-per-year.csv' using 1:2 with boxes title "Core team size"
+plot 'tmp/coreteam-per-year.csv' using 1:2 with boxes title ""
