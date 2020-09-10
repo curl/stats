@@ -33,6 +33,9 @@ gnuplot -c stats/protocols-over-time.plot > $output/protocols-over-time.svg
 perl stats/tls-over-time.pl > $temp/tls-over-time.csv
 gnuplot -c stats/tls-over-time.plot > $output/tls-over-time.svg
 
+perl stats/http-over-time.pl > $temp/http-over-time.csv
+gnuplot -c stats/http-over-time.plot > $output/http-over-time.svg
+
 perl stats/daniel-vs-rest.pl > $temp/daniel-vs-rest.csv
 gnuplot -c stats/daniel-vs-rest.plot > $output/daniel-vs-rest.svg
 
@@ -132,6 +135,7 @@ files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
 github-age = $output/gh-age.svg
 github-monthly = $output/gh-monthly.svg
+http-versions = $output/http-over-time.svg
 loc = $output/lines-over-time.svg
 mail = $output/mail.svg
 protocols = $output/protocols-over-time.svg
@@ -169,6 +173,7 @@ files = $temp/files-over-time.csv
 firsttimers = $temp/authors-per-month.csv
 github-age = $temp/gh-age.csv
 github-monthly = $temp/gh-monthly.csv
+http-versions = $temp/http-over-time.csv
 loc = $temp/lines-over-time.csv
 mail = $temp/mail.csv
 protocols = $temp/protocols-over-time.csv
