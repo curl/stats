@@ -30,4 +30,4 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/bugbounty-over-time.csv' using 2:3 with linespoints linestyle 1 title "Total amount of reward payouts"
+plot 'tmp/bugbounty-over-time.csv' using 2:3 with linespoints linestyle 1 title ""
