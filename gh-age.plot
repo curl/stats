@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Github issue ages per month in github/curl/curl" font ",48"
+set title "GitHub issue age" font ",48"
 # where's the legend
 set key top left
 
