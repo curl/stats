@@ -1,48 +1,34 @@
 #!/usr/bin/perl
-#my @a = `git log --reverse --pretty=fuller --no-color --date=short --decorate=full  | grep ^Author:`;
-
-print "Date;Commit;Daniel;Everyone else\n";
 
 my $c=0;
 
 open(G, "git log --reverse --pretty=fuller --no-color --date=short --decorate=full|");
 
-my $after = 1990;
-
-my $info;
-my $o;
 while(<G>) {
     chomp;
     my $line = $_;
-    if($line =~ /^CommitDate: (.*)/) {
-        my $date = $1;
-        my $cmp = $date <=> $after;
-
-        # if date is new enough...
-        if($cmp > 0) {
-            $o = sprintf("$date;$info");
-            if(!($c%10)) {
-                print "$o\n";
-                $info="";
-            }
-        }
+    if($line =~ /^CommitDate: (\d\d\d\d-\d\d)/) {
+        my $date = $1; # year + month
+        $commit{$author,$date}++;
+        $total{$author}++;
+        $when{$date}++;
+        $c++;
     }
     elsif($line =~ /^Author: *([^\<]*) \</) {
-        my ($auth)=($1);
-        if($auth ne "Daniel Stenberg") {
-            $auth = "else";
+        $author=$1;
+        if($author ne "Daniel Stenberg") {
+            $author = "else";
         }
-        $uniq{$auth}++;
-        $c++;
-        $info = sprintf("$c;%.2f;%.2f",
-                        $uniq{"Daniel Stenberg"}*100/$c,
-                        $uniq{"else"}*100/$c);
+        $uniq{$author}++;
     }
 }
 close(G);
 
-if($info) {
-    # final commit
-    print "$o\n";
+for my $date (sort keys %when) {
+    $alld += $commit{"Daniel Stenberg", $date};
+    $alltot += $when{$date};
+    printf "$date-01;%.2f;%.2f;%.2f\n",
+        ($alld/$alltot * 100),
+        100 - ($alld/$alltot * 100),
+        $commit{"Daniel Stenberg", $date}/$when{$date} * 100;
 }
-
