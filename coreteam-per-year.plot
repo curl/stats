@@ -7,7 +7,7 @@ set title "Size of the core team per year, number of persons with 10 commits or 
 set key top left
 
 # Identify the axes
-set xlabel "Years"
+#set xlabel "Years"
 set ylabel "Number of humans"
 
 # for the boxes

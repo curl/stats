@@ -7,7 +7,7 @@ set title "GitHub issue activity" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of issues and pull-requests"
 
 set style line 1 \

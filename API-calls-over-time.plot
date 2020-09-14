@@ -7,7 +7,7 @@ set title "API calls in libcurl" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of API calls"
 
 set style line 1 \

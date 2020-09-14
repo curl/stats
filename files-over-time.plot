@@ -7,7 +7,7 @@ set title "Number of files in version control" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of files"
 
 set style line 1 \

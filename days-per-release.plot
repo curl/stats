@@ -7,7 +7,7 @@ set title "Days between releases" font ",48"
 set key top right
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of days"
 
 set style line 1 \

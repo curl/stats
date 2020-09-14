@@ -7,7 +7,7 @@ set title "CVEs reported per year" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Years"
+#set xlabel "Years"
 set ylabel "CVE count"
 
 # for the boxes

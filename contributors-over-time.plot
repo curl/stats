@@ -7,7 +7,7 @@ set title "Contributors" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of contributors"
 
 set style line 1 \

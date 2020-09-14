@@ -7,7 +7,7 @@ set title "Accumulated curl bug-bounty payouts" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "USD"
 
 set style line 1 \

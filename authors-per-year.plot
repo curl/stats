@@ -7,7 +7,7 @@ set title "Commit authors per year" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Years"
+#set xlabel "Years"
 set ylabel "Number of humans"
 
 # for the boxes

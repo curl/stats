@@ -7,7 +7,7 @@ set title "Mailing list posts per month" font ",48"
 set key top right
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of posted mails"
 
 set style line 1 \

@@ -7,7 +7,7 @@ set title "Lines of code added per month" font ",48"
 set key bottom left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Delta number of lines of code"
 
 set style line 1 \

@@ -7,7 +7,7 @@ set title "Contributors credited in the RELEASE NOTES" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of humans who contributed to the release"
 
 set style line 1 \

@@ -7,7 +7,7 @@ set title "Commit authors" font ",48"
 set key bottom right
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of authors"
 
 set style line 1 \

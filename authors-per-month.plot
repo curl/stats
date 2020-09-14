@@ -7,7 +7,7 @@ set title "Authors per month" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Authors"
 
 # for the boxes

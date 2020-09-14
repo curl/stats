@@ -7,7 +7,7 @@ set title "TLS backends" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of supported TLS backends"
 
 set style line 1 \

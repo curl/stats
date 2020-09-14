@@ -7,7 +7,7 @@ set title "CI jobs per platform" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of jobs"
 
 set grid

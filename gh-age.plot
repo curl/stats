@@ -7,7 +7,7 @@ set title "GitHub issue age" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of days"
 
 set style line 1 \

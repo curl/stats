@@ -7,7 +7,7 @@ set title "Items listed in TODO and KNOWN BUGS" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of items listed"
 
 set style line 1 \

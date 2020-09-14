@@ -7,7 +7,7 @@ set title "Supported HTTP versions" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of HTTP versions supported"
 
 set style line 1 \

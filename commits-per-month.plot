@@ -7,7 +7,7 @@ set title "Commits per month" font ",48"
 set key top right
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Commits"
 
 set style line 1 \

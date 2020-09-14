@@ -7,7 +7,7 @@ set title "Daniel's share of commits" font ",48"
 set key top right
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Percentage of git commits"
 
 set style line 1 \

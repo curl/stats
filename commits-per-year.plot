@@ -7,7 +7,7 @@ set title "Commits per year" font ",48"
 set key top right
 
 # Identify the axes
-set xlabel "Years"
+#set xlabel "Years"
 set ylabel "Commits"
 
 # for the boxes

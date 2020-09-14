@@ -7,7 +7,7 @@ set title "Lines of code" font ",48"
 set key top left
 
 # Identify the axes
-set xlabel "Time"
+#set xlabel "Time"
 set ylabel "Number of lines of code in src/ lib/ and include/"
 
 set style line 1 \
