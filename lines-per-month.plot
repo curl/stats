@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Lines of code added per month" font ",48"
+set title "Lines of code delta per month" font ",48"
 # where's the legend
 set key bottom left
 
@@ -44,5 +44,5 @@ set datafile separator ";"
 
 plot 'tmp/lines-per-month.csv' using 1:4 with lines linestyle 3 title "Share per total LOC count" axis x1y2, \
 'tmp/lines-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average", \
-'tmp/lines-per-month.csv' using 1:2 with lines linestyle 1 title "Lines this month"
+'tmp/lines-per-month.csv' using 1:2 with lines linestyle 1 title "Line delta this month"
 
