@@ -115,14 +115,14 @@ foreach my $t (sort sortthem @releases) {
     }
 }
 
-$t=`git describe`;
-chomp $t;
-my $c = ncontribs($t);
-push @pp, $c;
-if(scalar(@pp) > 7) {
-    shift @pp;
-}
-my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
-    localtime(time);
-printf "%04d-%02d-%02d;%d;%d\n", $year + 1900, $mon + 1, $mday, $c,
-    median(@pp);
+#$t=`git describe`;
+#chomp $t;
+#my $c = ncontribs($t);
+#push @pp, $c;
+#if(scalar(@pp) > 7) {
+#    shift @pp;
+#}
+#my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+#    localtime(time);
+#printf "%04d-%02d-%02d;%d;%d\n", $year + 1900, $mon + 1, $mday, $c,
+#    median(@pp);

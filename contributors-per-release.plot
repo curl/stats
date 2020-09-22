@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Contributors credited in the RELEASE NOTES" font ",48"
+set title "Contributors in RELEASE NOTES" font ",48"
 # where's the legend
 set key top left
 
