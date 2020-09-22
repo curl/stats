@@ -40,6 +40,7 @@ set xdata time
 
 # set the format of the dates on the x axis
 set format x "%Y"
+set xrange ["2000-01-01":]
 set datafile separator ";"
 
 plot  'tmp/mail.csv' using 1:3 with lines linestyle 2 title "curl-users", \
