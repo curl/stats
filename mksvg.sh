@@ -14,6 +14,7 @@ gnuplot -c stats/mail.plot > $output/mail.svg
 perl stats/github-json.pl > $temp/github.csv
 perl stats/gh-monthly.pl $temp/github.csv > $temp/gh-monthly.csv
 gnuplot -c stats/gh-monthly.plot > $output/gh-monthly.svg
+gnuplot -c stats/gh-monthly-open.plot > $output/gh-monthly-open.svg
 
 perl stats/gh-age.pl $temp/github.csv > $temp/gh-age.csv
 gnuplot -c stats/gh-age.plot > $output/gh-age.svg
@@ -135,6 +136,7 @@ files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
 github-age = $output/gh-age.svg
 github-monthly = $output/gh-monthly.svg
+github-open = $output/gh-monthly-open.svg
 http-versions = $output/http-over-time.svg
 loc = $output/lines-over-time.svg
 mail = $output/mail.svg
@@ -173,6 +175,7 @@ files = $temp/files-over-time.csv
 firsttimers = $temp/authors-per-month.csv
 github-age = $temp/gh-age.csv
 github-monthly = $temp/gh-monthly.csv
+github-open = $temp/gh-monthly-open.csv
 http-versions = $temp/http-over-time.csv
 loc = $temp/lines-over-time.csv
 mail = $temp/mail.csv
