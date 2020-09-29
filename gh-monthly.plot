@@ -11,10 +11,18 @@ set ylabel "Number of created issues and pull-requests"
 
 set style line 1 \
     linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4
+    linetype 1 linewidth 1
 
 set style line 2 \
     linecolor rgb '#40a03d' \
+    dt 1 linewidth 1
+
+set style line 3 \
+    linecolor rgb '#c0a03d' \
+    dt 1 linewidth 4
+
+set style line 4 \
+    linecolor rgb '#80a0c0' \
     dt 1 linewidth 4
 
 set grid
@@ -30,5 +38,7 @@ set xrange ["2014-11-30":]
 # set the format of the dates on the x axis
 set format x "%b %Y"
 set datafile separator ";"
-plot 'tmp/gh-monthly.csv' using 1:3 with lines linestyle 1 title "Pull requests", \
- 'tmp/gh-monthly.csv' using 1:4 with lines linestyle 2 title "Issues"
+plot 'tmp/gh-monthly.csv' using 1:3 with lines linestyle 1 title "Monthly pull requests", \
+ 'tmp/gh-monthly.csv' using 1:4 with lines linestyle 2 title "Monthly issues", \
+ 'tmp/gh-monthly.csv' using 1:5 with lines linestyle 3 title "12 month average monthly PRs", \
+ 'tmp/gh-monthly.csv' using 1:6 with lines linestyle 4 title "12 month average monthly issues"

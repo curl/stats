@@ -54,29 +54,13 @@ sub addperiod {
     return $countdays;
 }
 
-sub median {
-    my @a = @_;
-    my @vals = sort {$a <=> $b} @a;
-    my $len = @vals;
-    if($len%2) { #odd?
-        return $vals[int($len/2)];
+sub average {
+    my @p = @_;
+    my $sum;
+    for my $y (@p) {
+        $sum += $y;
     }
-    else {
-        #even
-        return ($vals[int($len/2)-1] + $vals[int($len/2)])/2;
-    }
-}
-
-sub min {
-    my @a = @_;
-    my @vals = sort {$a <=> $b} @a;
-    return $vals[0];
-}
-
-sub max {
-    my @a = @_;
-    my @vals = sort {$b <=> $a} @a;
-    return $vals[0];
+    return $sum / scalar(@p);
 }
 
 sub today {
@@ -145,11 +129,14 @@ while(1) {
 # Store the median number of open issues per day during the month
 # Store the median "issue age" per that day
 for my $p (sort keys %perm) {
-    $median{$p} = median(split(" ", $perm{$p}));
-    $max{$p} = max(split(" ", $perm{$p}));
-    $min{$p} = min(split(" ", $perm{$p}));
-}
-
-for my $p (sort keys %count) {
-    printf "%s-01;%d;%d;%d;%.1f;%d;%d\n", $p, $count{$p}, $countp{$p}, $counti{$p}, $median{$p}, $max{$p}, $min{$p};
+    push @i12, $counti{$p};
+    if(scalar(@i12) > 12) {
+        shift @i12;
+    }
+    push @p12, $countp{$p};
+    if(scalar(@p12) > 12) {
+        shift @p12;
+    }
+    printf "%s-01;%d;%d;%d;%.1f;%.1f;\n",
+        $p, $count{$p}, $countp{$p}, $counti{$p}, average(@p12), average(@i12);
 }
