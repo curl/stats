@@ -14,12 +14,14 @@ set ylabel "Commits"
 set boxwidth 0.8 relative
 set style fill solid
 
-set grid
+set grid ytics
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set xtics rotate 3600*24*365.25
+set xtics rotate 3600*24*365.25 nomirror
+
+set xrange ["1999-06-01":]
 
 # set the format of the dates on the x axis
 set format x "%Y"
