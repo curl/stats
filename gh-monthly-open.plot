@@ -36,6 +36,6 @@ set xrange ["2014-11-30":]
 # set the format of the dates on the x axis
 set format x "%b %Y"
 set datafile separator ";"
-plot 'tmp/gh-monthly.csv' using 1:6 with lines linestyle 1 title "Max", \
- 'tmp/gh-monthly.csv' using 1:7 with lines linestyle 2 title "Min", \
- 'tmp/gh-monthly.csv' using 1:5 with lines linestyle 3 title "Median"
+plot 'tmp/gh-monthly-open.csv' using 1:6 with lines linestyle 1 title "Max", \
+ 'tmp/gh-monthly-open.csv' using 1:7 with lines linestyle 2 title "Min", \
+ 'tmp/gh-monthly-open.csv' using 1:5 with lines linestyle 3 title "Median"

@@ -14,6 +14,8 @@ gnuplot -c stats/mail.plot > $output/mail.svg
 perl stats/github-json.pl > $temp/github.csv
 perl stats/gh-monthly.pl $temp/github.csv > $temp/gh-monthly.csv
 gnuplot -c stats/gh-monthly.plot > $output/gh-monthly.svg
+
+perl stats/gh-monthly-open.pl $temp/github.csv > $temp/gh-monthly-open.csv
 gnuplot -c stats/gh-monthly-open.plot > $output/gh-monthly-open.svg
 
 perl stats/gh-age.pl $temp/github.csv > $temp/gh-age.csv
