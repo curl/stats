@@ -67,15 +67,16 @@ sub median {
     }
 }
 
-sub average {
+sub min {
     my @a = @_;
-    if(!scalar(@a)) {
-        return 0;
-    }
-    for my $e (@a) {
-        $sum += $e;
-    }
-    return $sum / scalar(@a);
+    my @vals = sort {$a <=> $b} @a;
+    return $vals[0];
+}
+
+sub max {
+    my @a = @_;
+    my @vals = sort {$b <=> $a} @a;
+    return $vals[0];
 }
 
 sub today {
@@ -145,10 +146,10 @@ while(1) {
 # Store the median "issue age" per that day
 for my $p (sort keys %perm) {
     $median{$p} = median(split(" ", $perm{$p}));
-    $medclose{$p} = median(split(/ +/, $closes{$p}));
-    $avgclose{$p} = average(split(/ +/, $closes{$p}));
+    $max{$p} = max(split(" ", $perm{$p}));
+    $min{$p} = min(split(" ", $perm{$p}));
 }
 
 for my $p (sort keys %count) {
-    printf "%s-01;%d;%d;%d;%.1f;%.1f;%.1f\n", $p, $count{$p}, $countp{$p}, $counti{$p}, $median{$p}, $medclose{$p}, $avgclose{$p};
+    printf "%s-01;%d;%d;%d;%.1f;%d;%d\n", $p, $count{$p}, $countp{$p}, $counti{$p}, $median{$p}, $max{$p}, $min{$p};
 }
