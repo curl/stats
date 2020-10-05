@@ -142,6 +142,15 @@ while(1) {
     }
 }
 
+sub averageaverage {
+    my @p = @_;
+    my $sum;
+    for my $y (@p) {
+        $sum += $y;
+    }
+    return $sum / scalar(@p);
+}
+
 # Store the median number of open issues per day during the month
 # Store the median "issue age" per that day
 for my $p (sort keys %perm) {
@@ -149,6 +158,12 @@ for my $p (sort keys %perm) {
     $avgclose{$p} = average(split(/ +/, $closes{$p}));
 }
 
+my @pp;
 for my $p (sort keys %count) {
-    printf "%s-01;%.1f;%.1f\n", $p, $medclose{$p}, $avgclose{$p};
+    push @pp, $avgclose{$p};
+    if(scalar(@pp) > 12) {
+        shift @pp;
+    }
+
+    printf "%s-01;%.1f;%.1f;%.1f\n", $p, $medclose{$p}, $avgclose{$p}, averageaverage(@pp);
 }
