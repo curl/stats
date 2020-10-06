@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Core team size per year, number of persons with 10 commits or more" font ",48"
+set title "Core team size (persons with 10 commits or more)" font ",48"
 # where's the legend
 set key top left
 
@@ -15,12 +15,16 @@ set boxwidth 0.9 relative
 set style fill solid
 
 set grid ytics
-set ytics nomirror
+set ytics nomirror 1
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set xtics rotate 3600*24*365.25 nomirror
+set xtics rotate 3600*24*365.25 nomirror out
+unset mxtics
+
+set xrange ["1999-06-01":]
+set yrange [0:]
 
 # set the format of the dates on the x axis
 set format x "%Y"
