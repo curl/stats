@@ -23,6 +23,9 @@ set grid
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
+set xtics 3600*24*365.25 nomirror rotate out
+unset mxtics
+set ytics nomirror
 
 # start Y at 0
 set yrange [0:]
