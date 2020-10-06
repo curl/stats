@@ -19,6 +19,8 @@ set grid
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
+set xtics 3600*24*365.25 nomirror rotate
+unset mxtics
 
 # set the format of the dates on the x axis
 set format x "%Y"
