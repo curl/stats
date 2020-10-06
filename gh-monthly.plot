@@ -34,9 +34,12 @@ set xdata time
 # limit the xrange simply because we didn't use github much before 2015
 set yrange [0:]
 set xrange ["2014-11-30":]
+set xtics 3600*24*365.25 nomirror
+set mxtics 12
+set ytics nomirror
 
 # set the format of the dates on the x axis
-set format x "%b %Y"
+set format x "%Y"
 set datafile separator ";"
 plot 'tmp/gh-monthly.csv' using 1:3 with lines linestyle 1 title "Monthly pull requests", \
  'tmp/gh-monthly.csv' using 1:4 with lines linestyle 2 title "Monthly issues", \
