@@ -26,15 +26,17 @@ set grid
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set xtics nomirror
+set xtics 3600*24*365.25 nomirror
+set mxtics 12
+
 set ytics nomirror
 
 # limit the xrange simply because we didn't use github much before 2015
 set yrange [0:]
-set xrange ["2014-11-30":]
+set xrange ["2014-10-30":]
 
 # set the format of the dates on the x axis
-set format x "%b %Y"
+set format x "%Y"
 set datafile separator ";"
 plot 'tmp/gh-monthly-open.csv' using 1:6 with lines linestyle 1 title "Max", \
  'tmp/gh-monthly-open.csv' using 1:7 with lines linestyle 2 title "Min", \
