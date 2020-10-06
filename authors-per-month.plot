@@ -11,7 +11,7 @@ set key top left
 set ylabel "Authors"
 
 # for the boxes
-set boxwidth 0.7 relative
+set boxwidth 0.6 relative
 set style fill solid
 
 set grid
@@ -20,8 +20,10 @@ set grid
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics out nomirror
+set mxtics 12
 
 set xrange ["2010-01-01":]
+set yrange [0:]
 
 set style line 2 \
     linecolor rgb '#ff60ad' \
@@ -30,5 +32,5 @@ set style line 2 \
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot  'tmp/authors-per-month.csv' using 1:2 with boxes fc "#408040" title "Authors",\
+plot  'tmp/authors-per-month.csv' using 1:2 with boxes fc "#60a060" title "Authors",\
  'tmp/authors-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average"
