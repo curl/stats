@@ -49,6 +49,7 @@ perl stats/commits-per-year.pl > $temp/commits-per-year.csv
 gnuplot -c stats/commits-per-year.plot > $output/commits-per-year.svg
 
 perl stats/coreteam-over-time.pl | grep "^[12]" | tr -d '(' | awk '{ print $1"-01-01;"$2; }' > $temp/coreteam-per-year.csv
+perl stats/coreteam-over-time.pl | grep "^[12]" | tr -d ' ' -f1,5 | awk '{ print $1"-01-01;"$2; }' > $temp/coreteam-percent.csv
 gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
 
 perl stats/setopts-over-time.pl | cut '-d;' -f2- > $temp/setopts-over-time.csv

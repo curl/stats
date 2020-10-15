@@ -10,6 +10,9 @@ set key top left
 #set xlabel "Years"
 set ylabel "Number of humans"
 
+set y2label "Core team share of all commits"
+set y2tics 10
+
 # for the boxes
 set boxwidth 0.9 relative
 set style fill solid
@@ -25,9 +28,11 @@ unset mxtics
 
 set xrange ["1999-06-01":]
 set yrange [0:]
+set y2range [0:]
 
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
 
-plot 'tmp/coreteam-per-year.csv' using 1:2 with boxes title ""
+plot 'tmp/coreteam-per-year.csv' using 1:2 with boxes title "size", \
+  'tmp/coreteam-percent.csv' using 1:2 with lines title "percent" axis x1y2 lw 4
