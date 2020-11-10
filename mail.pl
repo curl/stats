@@ -2,7 +2,7 @@
 
 # USe the remotely generated CSV
 
-open(D, "curl -s https://curl.haxx.se/mail/mail.csv|");
+open(D, "curl -s https://curl.se/mail/mail.csv|");
 
 sub libaverage {
     my @p = @_;
