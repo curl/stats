@@ -115,6 +115,9 @@ gnuplot -c stats/bugbounty-over-time.plot > $output/bugbounty-over-time.svg
 perl stats/contributors-per-release.pl > $temp/contributors-per-release.csv
 gnuplot -c stats/contributors-per-release.plot > $output/contributors-per-release.svg
 
+perl stats/lines-person.pl > $temp/lines-person.csv
+gnuplot -c stats/lines-person.plot > $output/lines-person.svg
+
 cat >stats.list <<EOF
 api-calls = $output/API-calls-over-time.svg
 authors = $output/authors.svg
@@ -141,6 +144,7 @@ github-age = $output/gh-age.svg
 github-monthly = $output/gh-monthly.svg
 github-open = $output/gh-monthly-open.svg
 http-versions = $output/http-over-time.svg
+lines = $output/lines-person.svg
 loc = $output/lines-over-time.svg
 mail = $output/mail.svg
 protocols = $output/protocols-over-time.svg
@@ -180,6 +184,7 @@ github-age = $temp/gh-age.csv
 github-monthly = $temp/gh-monthly.csv
 github-open = $temp/gh-monthly-open.csv
 http-versions = $temp/http-over-time.csv
+lines = $temp/lines-person.csv
 loc = $temp/lines-over-time.csv
 mail = $temp/mail.csv
 protocols = $temp/protocols-over-time.csv
