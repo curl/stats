@@ -94,6 +94,9 @@ gnuplot -c stats/docs-over-time.plot > $output/docs-over-time.svg
 perl stats/vulns-per-year.pl $webroot > $temp/vulns-per-year.csv
 gnuplot -c stats/vulns-per-year.plot > $output/vulns-per-year.svg
 
+perl stats/vulns-releases.pl $webroot > $temp/vulns-releases.csv
+gnuplot -c stats/vulns-releases.plot > $output/vulns-releases.svg
+
 perl stats/cve-plot.pl $webroot > $temp/cve-plot.csv
 gnuplot -c stats/cve-plot.plot > $output/cve-plot.svg
 
@@ -155,6 +158,7 @@ tls-backends = $output/tls-over-time.svg
 todo = $output/todo-over-time.svg
 vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
+vulns-releases = $output/vulns-releases.svg
 EOF
 
 # Use the same names but point to the used CSV/data/input file
@@ -195,6 +199,7 @@ tls-backends = $temp/tls-over-time.csv
 todo = $temp/todo-over-time.csv
 vulns-per-year = $temp/vulns-per-year.csv
 vulns-plot = $temp/vulns-over-time.csv
+vulns-releases = $output/vulns-releases.csv
 EOF
 
 # make the dir world readable
