@@ -1,0 +1,3 @@
+date (a month really) - curl-library mails - curl-users mails - 12 month curl-library average - 12 month curl-users average
+<p>
+This data is extracted from the mailing archives as stored on the web server.

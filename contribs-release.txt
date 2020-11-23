@@ -1,0 +1,3 @@
+date - number of contributors in that release - 7 release median
+<p>
+The data for this comes from the RELEASE-NOTES file in git at the time of releases. It can be noted that since this is per-release and some releases are done very quickly in time after a previous one, it is just natural that such releases have much fewer contributors.

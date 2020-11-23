@@ -1,0 +1,1 @@
+This data is fetched from github daily using their API, then stored and massaged by scripts on our server.

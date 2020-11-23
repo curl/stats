@@ -1,0 +1,4 @@
+date - number of options curl_easy_setopt accepts
+<p>
+The number of options comes from parsing the include/curl.h header file from git as it changed over time.
+

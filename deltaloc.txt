@@ -1,0 +1,4 @@
+date (month) - number of lines added that month - 12 month average number of added lines - the average amount as a share of total number of code - total number of lines of code
+<p>
+The data counts lines added and removed to files in src, lib and include over time, in the git repository.
+

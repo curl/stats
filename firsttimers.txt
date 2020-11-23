@@ -1,0 +1,5 @@
+date (month) - first time committers that month - 12 month average first time committers
+<p>
+This data comes from git repository.
+
+

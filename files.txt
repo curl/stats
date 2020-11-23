@@ -1,0 +1,3 @@
+date - number of files
+<p>
+This data comes from counting the files present in git at the time of releases.

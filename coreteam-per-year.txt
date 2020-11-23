@@ -1,0 +1,3 @@
+date (year) - number of core team members
+<p>
+The data comes from the git repository. A "core team" member is everyone who did 10 or more commits to the main git repository within the same calendar year.

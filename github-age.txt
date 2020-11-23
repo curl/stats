@@ -1,0 +1,4 @@
+This data is fetched from github daily using their API, then stored and massaged by scripts on our server.
+<p>
+The scripts counts integer days so an issue is always "present" at least one day.
+

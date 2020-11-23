@@ -1,0 +1,3 @@
+date (year) - vulns within that year - accumulated number of vulns
+<p>
+The data comes from the vuln.pm file.

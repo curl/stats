@@ -1,0 +1,3 @@
+CVE id - announce date - index
+<p>
+ This data comes from curl-www/docs/vuln.pm.

@@ -1,0 +1,3 @@
+date (year) - number of commit authors that year - number of first time commit authors that year
+<p>
+Data from the git repository

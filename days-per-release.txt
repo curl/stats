@@ -1,0 +1,4 @@
+release date - days since previous release - 7 release median number
+<p>
+This data comes from the main curl changelog's stored release dates.
+

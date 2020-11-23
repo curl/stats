@@ -1,0 +1,3 @@
+date - number of API calls
+<p>
+The number of calls is extracted by parsing the include/curl.h file in git at the time of past releases

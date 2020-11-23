@@ -1,0 +1,3 @@
+date - accumulated number of bugfixes through time - average number of fixes per release over the last 5 releases
+<p>
+This data comes from parsing the RELEASE-NOTES file in git at the time of each release.

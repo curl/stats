@@ -1,0 +1,4 @@
+date - TODO items - KNOWN_BUGS items
+<p>
+This data comes from parsing the two files in git at the time of releases (and currently). The scripts understand the file format used for these files.
+

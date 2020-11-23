@@ -1,0 +1,4 @@
+date - number of command line options
+<p>
+This data comes the counter in RELEASE-NOTES in git at the time of releases. The time from before we started doing that, the count has been manually counted.
+

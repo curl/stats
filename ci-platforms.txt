@@ -1,0 +1,3 @@
+date - all jobs accumulated - travis - linux - mac - windows - freebsd
+<p>
+The data comes from parsing the CI services instruction meta data files as stored in git.
