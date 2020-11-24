@@ -1,1 +1,3 @@
+date (month) - join total count this month - number of created PRs this month - number of created issues this month - 12 month average created PRs - 12 month average created issues
+<p>
 This data is fetched from github daily using their API, then stored and massaged by scripts on our server.

@@ -1,0 +1,3 @@
+date (month) - joined total open this month - number of open PRs this month - number of open issues this month - median number of i+p open this month - max number open - minimum number open
+<p>
+This data is fetched from github daily using their API, then stored and massaged by scripts on our server.

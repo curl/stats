@@ -1,0 +1,3 @@
+date - number of symbols in the file
+<p>
+The symbols are counted in the symbols-in-versions file in git at the time of releases.
