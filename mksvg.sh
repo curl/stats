@@ -199,7 +199,7 @@ tls-backends = $temp/tls-over-time.csv
 todo = $temp/todo-over-time.csv
 vulns-per-year = $temp/vulns-per-year.csv
 vulns-plot = $temp/vulns-over-time.csv
-vulns-releases = $output/vulns-releases.csv
+vulns-releases = $temp/vulns-releases.csv
 EOF
 
 # make the dir world readable
