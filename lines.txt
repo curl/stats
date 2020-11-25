@@ -1,0 +1,3 @@
+date (month) - Daniel's added lines - others' added lines - Daniel's deleted lines - others' deleted lines - total amount of lines present
+<p>
+The data comes from analyzing the git changes and includes all files and directories.
