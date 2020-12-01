@@ -9,6 +9,7 @@ set key top left
 # Identify the axes
 #set xlabel "Years"
 set ylabel "Number of humans"
+unset border
 
 set y2label "Core team share of all commits"
 set y2tics 10

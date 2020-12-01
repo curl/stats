@@ -18,6 +18,7 @@ set style line 2 \
     linewidth 4
 
 set grid
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"

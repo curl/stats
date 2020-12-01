@@ -15,6 +15,7 @@ set boxwidth 0.8 relative
 set style fill solid 0.5
 
 set grid ytics
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"

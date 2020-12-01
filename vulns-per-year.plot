@@ -14,7 +14,8 @@ set ylabel "CVEs reported within that year"
 set boxwidth 0.8 relative
 set style fill solid
 
-set grid ytics
+set grid ytics mytics
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
