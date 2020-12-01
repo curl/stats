@@ -97,8 +97,8 @@ gnuplot -c stats/vulns-per-year.plot > $output/vulns-per-year.svg
 perl stats/vulns-releases.pl $webroot > $temp/vulns-releases.csv
 gnuplot -c stats/vulns-releases.plot > $output/vulns-releases.svg
 
-perl stats/cve-plot.pl $webroot > $temp/cve-plot.csv
-gnuplot -c stats/cve-plot.plot > $output/cve-plot.svg
+perl stats/cve-age.pl $webroot > $temp/cve-age.csv
+gnuplot -c stats/cve-age.plot > $output/cve-age.svg
 
 perl stats/vulns-over-time.pl $webroot > $temp/vulns-over-time.csv
 gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
@@ -136,7 +136,7 @@ commits-per-year = $output/commits-per-year.svg
 contribs-release = $output/contributors-per-release.svg
 contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
-cve-time = $output/cve-plot.svg
+cve-time = $output/cve-age.svg
 daniel-vs-rest = $output/daniel-vs-rest.svg
 days-per-release = $output/days-per-release.svg
 deltaloc = $output/lines-per-month.svg
@@ -177,7 +177,7 @@ commits-per-year = $temp/commits-per-year.csv
 contribs-release = $temp/contributors-per-release.csv
 contributors = $temp/contributors-over-time.csv
 coreteam-per-year = $temp/coreteam-per-year.csv
-cve-time = $temp/cve-plot.csv
+cve-time = $temp/cve-age.csv
 daniel-vs-rest = $temp/daniel-vs-rest.csv
 days-per-release = $temp/days-per-release.csv
 deltaloc = $temp/lines-per-month.csv
