@@ -17,6 +17,7 @@ set style line 1 \
 
 set grid
 set yrange [0:6]
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"

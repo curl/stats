@@ -19,6 +19,7 @@ set boxwidth 10 relative
 set style fill solid
 
 set grid
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"

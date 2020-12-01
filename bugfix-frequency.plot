@@ -23,6 +23,7 @@ set ytics nomirror
 
 set y2label "Bug-fixes per day" tc "#ff60ad"
 set y2tics
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
