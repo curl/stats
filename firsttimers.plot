@@ -18,6 +18,7 @@ set style line 2 \
     dt 1 linewidth 4
 
 set grid
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
@@ -29,7 +30,7 @@ set style fill solid
 # set the format of the dates on the x axis
 set format x "%Y"
 set xrange ["2010-01-01":]
-set xtics out
+set xtics out nomirror
 set datafile separator ";"
 plot 'tmp/firsttimers.csv' using 1:2 with boxes linestyle 1 title "First timers", \
  'tmp/firsttimers.csv' using 1:3 with lines linestyle 2 title "12 month average"

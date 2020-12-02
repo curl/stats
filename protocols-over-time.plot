@@ -9,6 +9,7 @@ set key top left
 # Identify the axes
 #set xlabel "Time"
 set ylabel "Number of protocols"
+set xtics rotate 3600*24*365.25 nomirror
 
 set style line 1 \
     linecolor rgb '#0060ad' \
@@ -16,6 +17,7 @@ set style line 1 \
     pointtype 6
 
 set grid
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
