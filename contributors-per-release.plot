@@ -19,6 +19,7 @@ set style line 2 \
     dt 1 linewidth 1
 
 set grid
+unset border
 
 set yrange [0:]
 set xrange ["2005-01-01":]

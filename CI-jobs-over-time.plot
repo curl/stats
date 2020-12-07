@@ -11,6 +11,7 @@ set key top left
 set ylabel "Number of CI jobs"
 
 set grid
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"

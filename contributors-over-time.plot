@@ -15,6 +15,7 @@ set style line 1 \
     linetype 1 linewidth 4
 
 set grid
+unset border
 set xtics rotate 3600*24*365.25 nomirror
 
 # time formated using this format

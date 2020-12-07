@@ -10,6 +10,7 @@ set key top left
 set xlabel "Date of disclosure"
 set ylabel "Number of vulnerabilities"
 set grid
+unset border
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
