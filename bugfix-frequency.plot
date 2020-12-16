@@ -20,9 +20,11 @@ set style line 2 \
 
 # don't draw the left-yaxies tics on the right side
 set ytics nomirror
+set xtics 3600*24*365.25 nomirror rotate
 
 set y2label "Bug-fixes per day" tc "#ff60ad"
 set y2tics
+set grid
 unset border
 
 # time formated using this format
