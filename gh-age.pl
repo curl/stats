@@ -67,6 +67,19 @@ sub median {
     }
 }
 
+sub percentile75 {
+    my @a = @_;
+    my @vals = sort {$b <=> $a} @a;
+    my $len = @vals;
+    if($len%2) { #odd?
+        return $vals[int($len/4)];
+    }
+    else {
+        #even
+        return ($vals[int($len/4)-1] + $vals[int($len/4)])/2;
+    }
+}
+
 sub average {
     my @a = @_;
     my $sum;
@@ -89,21 +102,35 @@ open(G, "<$c");
 while(<G>) {
     chomp $_;
     my @f = split(";", $_);
-    if($f[2] =~ /^((\d\d\d\d)-(\d\d)-(\d\d))/) {
+    if($f[2] =~ /^((\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d))/) {
         my $p = "$2-$3";
-        my $start = $1;
+        my $start = "$2-$3-$4";
         my $closed = 1;
+
+        # how many seconds of the first day had passed when opened
+        my $startsecs = ($5*3600 + $6*60 + $7);
         $count{$p}++;
         $counti{$p}++ if($f[1]) eq "I";
         $countp{$p}++ if($f[1]) eq "P";
 
         my $end = $f[3];
+
+        # how many seconds of the last day left when closed
+        my $endsecs;
+        if($end =~ /^((\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d))/) {
+            $endsecs = 24*3600 - ($5*3600 + $6*60 + $7);
+        }
         $end =~ s/((\d\d\d\d)-(\d\d)-(\d\d)).*/$1/;
         if(!$end) {
             $end = today();
             $closed = 0;
         }
-        my $age = addperiod($start, $end);
+        my $days = addperiod($start, $end);
+
+        # deducts the parts before open and close
+        my $age = $days- ($startsecs + $endsecs)/(24*3600);
+        #printf STDERR "$f[2] => $f[3] == %.4f\n", $age;
+
         if($closed) {
             # the issue is closed, store the age at the close date
             $closeage{$end} .= "$age ";
@@ -155,6 +182,7 @@ sub averageaverage {
 # Store the median "issue age" per that day
 for my $p (sort keys %perm) {
     $medclose{$p} = median(split(/ +/, $closes{$p}));
+    $per75{$p} = percentile75(split(/ +/, $closes{$p}));
     $avgclose{$p} = average(split(/ +/, $closes{$p}));
 }
 
@@ -165,5 +193,5 @@ for my $p (sort keys %count) {
         shift @pp;
     }
 
-    printf "%s-01;%.1f;%.1f;%.1f\n", $p, $medclose{$p}, $avgclose{$p}, averageaverage(@pp);
+    printf "%s-01;%.2f;%.2f;%.2f;%.2f\n", $p, $medclose{$p}, $avgclose{$p}, averageaverage(@pp), $per75{$p};
 }
