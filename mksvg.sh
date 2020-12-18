@@ -100,6 +100,9 @@ gnuplot -c stats/vulns-releases.plot > $output/vulns-releases.svg
 perl stats/cve-age.pl $webroot > $temp/cve-age.csv
 gnuplot -c stats/cve-age.plot > $output/cve-age.svg
 
+perl stats/cve-fixtime.pl $webroot > $temp/cve-fixtime.csv
+gnuplot -c stats/cve-fixtime.plot > $output/cve-fixtime.svg
+
 perl stats/vulns-over-time.pl $webroot > $temp/vulns-over-time.csv
 gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
 
@@ -143,6 +146,7 @@ deltaloc = $output/lines-per-month.svg
 docs = $output/docs-over-time.svg
 files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
+fixtime = $output/cve-fixtime.svg
 github-age = $output/gh-age.svg
 github-monthly = $output/gh-monthly.svg
 github-open = $output/gh-monthly-open.svg
@@ -184,6 +188,7 @@ deltaloc = $temp/lines-per-month.csv
 docs = $temp/docs-over-time.csv
 files = $temp/files-over-time.csv
 firsttimers = $temp/authors-per-month.csv
+fixtime = $temp/cve-fixtime.csv
 github-age = $temp/gh-age.csv
 github-monthly = $temp/gh-monthly.csv
 github-open = $temp/gh-monthly-open.csv
