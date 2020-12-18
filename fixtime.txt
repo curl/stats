@@ -1,0 +1,7 @@
+CVE id - report date - time until fix in days - - 12 month average - index counter
+<p>
+ This data comes from curl-www/docs/vuln.pm.
+<p>
+ The time is simply the number of days from the report to the curl project until the fix was released and annnounced publicly.
+<p>
+ The graph has all the CVE ids on the xaxes under their corresponding bars.
