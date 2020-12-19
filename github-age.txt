@@ -1,4 +1,3 @@
-This data is fetched from github daily using their API, then stored and massaged by scripts on our server.
+date - median - average - 12 month aver average - 75th percentile
 <p>
-The scripts counts integer days so an issue is always "present" at least one day.
-
+This data is fetched from github daily using their API, then stored and massaged by scripts on our server.
