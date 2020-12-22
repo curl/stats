@@ -35,5 +35,5 @@ set xtics 3600*24*365.25 nomirror rotate
 set format x "%Y"
 set datafile separator ";"
 
-plot  'tmp/commits-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average", \
-'tmp/commits-per-month.csv' using 1:2 with lines linestyle 1 title "Commits"
+plot 'tmp/commits-per-month.csv' using 1:2 with lines linestyle 1 title "Commits", \
+ 'tmp/commits-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average"
