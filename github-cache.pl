@@ -19,6 +19,7 @@
 # https://api.github.com/repos/curl/curl/issues/$num
 
 use JSON;
+#use Data::Dumper;
 
 my $github="https://api.github.com/repos/curl/curl/issues";
 my $cache="gh-cache";
@@ -35,18 +36,26 @@ if(!$creds) {
     exit;
 }
 
-# there's probably a proper way to figure out the highest issue number used in
-# the project
-my $top = 10000;
+# Figure out the highest number used currently
 
-my $fail=3;
+my @j=`curl -s $github`;
+my $i = decode_json(join("", @j));
+#print Dumper($i);
+my $lastnum = $$i[0]{number};
+
+if($lastnum < 6592) {
+    print STDERR "Error, bail out!\n";
+    exit;
+}
+
+my $top = $lastnum;
+
 for my $i (1 .. $top) {
     if(-f "$cache/$i.json") {
         # print "$i is cached\n";
-        $fail = 3;
     }
     else {
-        my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i -o $cache/$i.json";
+        my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i > $cache/$i.json";
         print "Downloads issue $i\n";
         my $s = system($c);
         $s >>= 8;
@@ -54,12 +63,7 @@ for my $i (1 .. $top) {
             $fail = 3;
         }
         else {
-            if($s &&!--$fail) {
-                ## 22 means 404 basically, so end of the run
-                print "... $i is the final fail\n";
-                last;
-            }
-            print "... $i failed ($fail more)\n";
+            print "... $i failed\n";
         }
     }
 }
