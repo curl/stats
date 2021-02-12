@@ -24,7 +24,7 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics 3600*24*365.25 nomirror rotate
-#set mytics 10
+set ytics 5
 
 set boxwidth 0.8 relative
 set style fill solid
@@ -36,5 +36,5 @@ set format x "%Y"
 set xtics out
 set datafile separator ";"
 set key autotitle col
-plot 'tmp/vulns-releases.csv' using 1:3 with points pt 2 ps 1 title "",\
+plot 'tmp/vulns-releases.csv' using 1:3 with points pt 7 ps 0.6 title "",\
   'tmp/vulns-releases.csv' using 1:3:2 with labels offset 0,1.0 font ", 16" rotate by 90 title ""
