@@ -124,6 +124,9 @@ gnuplot -c stats/contributors-per-release.plot > $output/contributors-per-releas
 perl stats/lines-person.pl > $temp/lines-person.csv
 gnuplot -c stats/lines-person.plot > $output/lines-person.svg
 
+perl stats/release-number.pl > $temp/release-number.csv
+gnuplot -c stats/release-number.plot > $output/release-number.svg
+
 cat >stats.list <<EOF
 api-calls = $output/API-calls-over-time.svg
 authors = $output/authors.svg
@@ -155,6 +158,7 @@ lines = $output/lines-person.svg
 loc = $output/lines-over-time.svg
 mail = $output/mail.svg
 protocols = $output/protocols-over-time.svg
+releases = $output/release-number.svg
 setopts = $output/setopts-over-time.svg
 symbols = $output/symbols-over-time.svg
 tests = $output/tests-over-time.svg
@@ -197,6 +201,7 @@ lines = $temp/lines-person.csv
 loc = $temp/lines-over-time.csv
 mail = $temp/mail.csv
 protocols = $temp/protocols-over-time.csv
+releases = $temp/release-number.csv
 setopts = $temp/setopts-over-time.csv
 symbols = $temp/symbols-over-time.csv
 tests = $temp/tests-over-time.csv
