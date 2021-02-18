@@ -9,7 +9,7 @@ Schannel 2012-07-01 8
 Secure Transport 2012-07-01 9
 GSKit 2013-07-01 10
 libressl 2014-08-01 11
--QsoSSL 2014-10-10
+-QsoSSL 2014-10-10 10
 BoringSSL 2015-01-01 11
 mbedTLS 2015-10-01 12
 MesaLink 2018-09-01 13
