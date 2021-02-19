@@ -1,0 +1,5 @@
+date - third party name
+<p>
+If the name starts with a minus, support for that third party was removed.
+<p>
+This data comes from a list in the stats repository curated by hand.

@@ -36,6 +36,9 @@ gnuplot -c stats/protocols-over-time.plot > $output/protocols-over-time.svg
 perl stats/tls-over-time.pl > $temp/tls-over-time.csv
 gnuplot -c stats/tls-over-time.plot > $output/tls-over-time.svg
 
+perl stats/3rdparty-over-time.pl > $temp/3rdparty-over-time.csv
+gnuplot -c stats/3rdparty-over-time.plot > $output/3rdparty-over-time.svg
+
 perl stats/http-over-time.pl > $temp/http-over-time.csv
 gnuplot -c stats/http-over-time.plot > $output/http-over-time.svg
 
@@ -162,6 +165,7 @@ releases = $output/release-number.svg
 setopts = $output/setopts-over-time.svg
 symbols = $output/symbols-over-time.svg
 tests = $output/tests-over-time.svg
+third-parties = $output/3rdparty-over-time.svg
 tls-backends = $output/tls-over-time.svg
 todo = $output/todo-over-time.svg
 vulns-per-year = $output/vulns-per-year.svg
@@ -205,6 +209,7 @@ releases = $temp/release-number.csv
 setopts = $temp/setopts-over-time.csv
 symbols = $temp/symbols-over-time.csv
 tests = $temp/tests-over-time.csv
+third-parties = $temp/3rdparty-over-time.csv
 tls-backends = $temp/tls-over-time.csv
 todo = $temp/todo-over-time.csv
 vulns-per-year = $temp/vulns-per-year.csv
