@@ -1,4 +1,4 @@
-CVE id - report date - time until fix in days - - 12 month average - index counter
+CVE id - report date - time until fix in days - 12 month average - index counter - all-time average
 <p>
  This data comes from curl-www/docs/vuln.pm.
 <p>
