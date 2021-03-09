@@ -34,6 +34,9 @@ while(<G>) {
 close(G);
 
 my $singlec;
+my $tenc;
+my $fivec;
+my $twoc;
 my $o;
 for my $d (sort keys %dates) {
     #printf "%s: %s\n", $d, $dateauth{$d};
@@ -43,10 +46,19 @@ for my $d (sort keys %dates) {
         if($uniq{$a} == 1) {
             $singlec++;
         }
+        if($uniq{$a} >= 10) {
+            $tenc++;
+        }
+        if($uniq{$a} >= 5) {
+            $fivec++;
+        }
+        if($uniq{$a} >= 2) {
+            $twoc++;
+        }
         # $a is the author
-        $o = sprintf "%d;%d;%.2f",
+        $o = sprintf "%d;%d;%.2f;%d;%d;%d",
             $singlec, $uniqcount{$d},
-            $singlec*100/$uniqcount{$d};
+            $singlec*100/$uniqcount{$d}, $tenc, $fivec, $twoc;
         print "$d;$o\n";
     }
 }
