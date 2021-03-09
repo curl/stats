@@ -1,4 +1,3 @@
-release date - days since previous release - 7 release median number
+release date - days since previous release - 12 month average - all time average
 <p>
 This data comes from the main curl changelog's stored release dates.
-
