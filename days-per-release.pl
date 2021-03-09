@@ -29,30 +29,30 @@ sub days {
     my ($prev, $date) = @_;
     my $psecs = `date +%s -d "$prev"`;
     my $secs = `date +%s -d "$date"`;
-    return int(($secs-$psecs)/86400);
+    my $delta = int(($secs-$psecs)/86400);
+    return $delta;
 }
 
-sub median {
-    my @a = @_;
-    my @vals = sort {$a <=> $b} @a;
-    my $len = @vals;
-    if($len%2) { #odd?
-        return $vals[int($len/2)];
+sub average {
+    my @p = @_;
+    my $sum;
+    for my $y (@p) {
+        $sum += $y;
     }
-    else {
-        #even
-        return ($vals[int($len/2)-1] + $vals[int($len/2)])/2;
-    }
+    return $sum / scalar(@p);
 }
-
 
 for my $r (reverse @inorder) {
-    my $da = days($p, $release{$r});
-    push @pp, $da;
-    if(scalar(@pp) > 7) {
+    my $now = $release{$r};
+    my $delta = days($p, $now);
+    push @pp, $delta;
+    push @ppall, $delta;
+    push @da, $now;
+
+    while(days($da[0], $now) > 365) {
         shift @pp;
+        shift @da;
     }
-    # skips r, the release version
-    printf "%s;%d;%.1f\n", $release{$r}, $da, median(@pp);
-    $p = $release{$r};
+    printf "%s;%d;%.1f;%.1f\n", $now, $delta, average(@pp), average(@ppall);
+    $p = $now;
 }

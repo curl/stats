@@ -18,6 +18,10 @@ set style line 2 \
     linecolor rgb '#ff60ad' \
     dt 1 linewidth 4
 
+set style line 3 \
+    linecolor rgb '#00c0ad' \
+    dt 1 linewidth 4
+
 set grid
 unset border
 
@@ -30,4 +34,5 @@ set xtics rotate 3600*24*365.25
 set format x "%Y"
 set datafile separator ";"
 plot 'tmp/days-per-release.csv' using 1:2 with lines linestyle 1 title "Number of days since previous release", \
- 'tmp/days-per-release.csv' using 1:3 with lines linestyle 2 title "7-release Median"
+ 'tmp/days-per-release.csv' using 1:4 with lines linestyle 3 title "All-time average", \
+ 'tmp/days-per-release.csv' using 1:3 with lines linestyle 2 title "12 month average"
