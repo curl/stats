@@ -16,7 +16,11 @@ set style line 1 \
 
 set style line 2 \
     linecolor rgb '#ff60ad' \
-    dt 1 linewidth 4
+    dt 1 linewidth 3
+
+set style line 3 \
+    linecolor rgb '#3080ff' \
+    dt 1 linewidth 3
 
 # for the boxes
 set boxwidth 0.2 relative
@@ -35,5 +39,6 @@ set xtics 3600*24*365.25 nomirror rotate
 set format x "%Y"
 set datafile separator ";"
 
-plot 'tmp/commits-per-month.csv' using 1:2 with lines linestyle 1 title "Commits", \
+plot 'tmp/commits-per-month.csv' using 1:2 with lines linestyle 1 title "Monthly commits", \
+ 'tmp/commits-per-month.csv' using 1:4 with lines linestyle 3 title "All-time average", \
  'tmp/commits-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average"

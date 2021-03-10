@@ -27,8 +27,9 @@ sub average {
 my @pp;
 for my $y (sort keys %commit) {
     push @pp, $y;
+    push @ppall, $y;
     if(scalar(@pp) > 12) {
         shift @pp;
     }
-    printf "%s-01;%d;%.2f\n", $y, $commit{$y}, average(@pp);
+    printf "%s-01;%d;%.2f;%.2f\n", $y, $commit{$y}, average(@pp), average(@ppall);
 }
