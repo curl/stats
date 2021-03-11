@@ -12,7 +12,7 @@ set ylabel "Age in number of days when closed"
 
 set style line 1 \
     linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4
+    linetype 1 linewidth 2
 
 set style line 2 \
     linecolor rgb '#40a03d' \
@@ -42,7 +42,7 @@ set mxtics 12
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/gh-age.csv' using 1:2 with lines linestyle 1 title "Median", \
-'tmp/gh-age.csv' using 1:3 with lines linestyle 2 title "Average", \
-'tmp/gh-age.csv' using 1:5 with lines linestyle 4 title "75 percentile", \
+plot 'tmp/gh-age.csv' using 1:2 with lines linestyle 1 title "Median this month", \
+'tmp/gh-age.csv' using 1:3 with lines linestyle 2 title "Average this month", \
+'tmp/gh-age.csv' using 1:5 with lines linestyle 4 title "75 percentile this month", \
 'tmp/gh-age.csv' using 1:4 with lines linestyle 3 title "12 month average average"
