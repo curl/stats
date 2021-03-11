@@ -34,11 +34,11 @@ set ytics nomirror
 
 # limit the xrange simply because we didn't use github much before 2015
 set yrange [0:]
-set xrange ["2014-10-30":]
+set xrange ["2015-03-01":]
 
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/gh-monthly-open.csv' using 1:6 with lines linestyle 1 title "Max", \
- 'tmp/gh-monthly-open.csv' using 1:7 with lines linestyle 2 title "Min", \
- 'tmp/gh-monthly-open.csv' using 1:5 with lines linestyle 3 title "Median"
+plot 'tmp/gh-monthly-open.csv' using 1:6 with lines linestyle 1 title "Monthly max", \
+ 'tmp/gh-monthly-open.csv' using 1:7 with lines linestyle 2 title "Monthly min", \
+ 'tmp/gh-monthly-open.csv' using 1:5 with lines linestyle 3 title "Monthly median"
