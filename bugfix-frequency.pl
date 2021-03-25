@@ -46,35 +46,34 @@ my $firstrel = $inorder[ $#inorder ];
 
 my @sorder = reverse @inorder;
 
-sub bugup {
-    my ($i) = @_;
-    my $bugs;
-    my $days;
-    my $backversion = $i > $delta-1 ? $delta-1 : $i;
-    for my $p (0 .. $backversion) {
-        $bugs += $dfixes{ $sorder[$i-$p] };
-        $days += $dage{ $sorder[$i-$p] };
+sub sum {
+    my @p = @_;
+    my $sum;
+    for my $y (@p) {
+        $sum += $y;
     }
-    return ($bugs, $days);
+    return $sum;
 }
 
 for my $i (0 .. $#sorder) {
     my $r = $sorder[$i];
     my $compare = $i;
 
-    # attempt to compare with 5 releases back
-    if($compare > $delta) {
-        $compare -= $delta;
-    }
-    else {
-        $compare = 0;
-    }
-    $compver = $sorder[$compare];
-
     $addup += $dfixes{$r};
 
-    # bugfixes and days over the $delta recent releases
-    my ($bugs, $age) = bugup($i);
+    push @dv, $dfixes{$r};
+    push @da, $release{$r};
+
+    # keep the array less than one year
+    while(days($da[0], $release{$r}) > 365) {
+        shift @dv;
+        shift @da;
+    }
+    # get the age range
+    my $age = days($da[0], $release{$r});
+
+    # bugfixes within the range
+    my $bugs = sum(@dv);
 
     my $bugsperday = $bugs / ($age ? $age : 1);
     #print "bugs: $bugs ($afixes{$compver} - $afixes{$r}) / age: $age ($compver vs $r)\n";
