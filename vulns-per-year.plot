@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "CVEs" font ",48"
+set title "Reported Vulnerabilities" font ",48"
 # where's the legend
 set key top left
 
