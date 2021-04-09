@@ -1,0 +1,3 @@
+date (month) - number of commits until and including that month
+<p>
+The data comes from the git repository.
