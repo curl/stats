@@ -51,6 +51,9 @@ gnuplot -c stats/authors-per-year.plot > $output/authors-per-year.svg
 perl stats/commits-per-year.pl > $temp/commits-per-year.csv
 gnuplot -c stats/commits-per-year.plot > $output/commits-per-year.svg
 
+perl stats/commits-over-time.pl > $temp/commits-over-time.csv
+gnuplot -c stats/commits-over-time.plot > $output/commits-over-time.svg
+
 perl stats/coreteam-over-time.pl | grep "^[12]" | tr -d '(' | awk '{ print $1"-01-01;"$2; }' > $temp/coreteam-per-year.csv
 perl stats/coreteam-over-time.pl | grep '^[12]' | cut -d" " -f 1,5 | tr -d '%' | awk '{ if($2 > 0) {print $1"-01-01;"$2; }}' > $temp/coreteam-percent.csv
 gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
@@ -142,6 +145,7 @@ ci-platforms = $output/CI-platforms.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
+commits = $output/commits-over-time.svg
 contribs-release = $output/contributors-per-release.svg
 contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
@@ -186,6 +190,7 @@ ci-platforms = $temp/CI-platforms.csv
 cmdline-options-over-time = $temp/cmdline-options-over-time.csv
 commits-per-month = $temp/commits-per-month.csv
 commits-per-year = $temp/commits-per-year.csv
+commits = $temp/commits-over-time.csv
 contribs-release = $temp/contributors-per-release.csv
 contributors = $temp/contributors-over-time.csv
 coreteam-per-year = $temp/coreteam-per-year.csv
