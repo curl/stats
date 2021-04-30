@@ -109,6 +109,7 @@ gnuplot -c stats/cve-age.plot > $output/cve-age.svg
 perl stats/cve-fixtime.pl $webroot > $temp/cve-fixtime.csv
 gnuplot -c stats/cve-fixtime.plot > $output/cve-fixtime.svg
 
+perl stats/cve-intro.pl $webroot > $temp/cve-intro.csv
 perl stats/vulns-over-time.pl $webroot > $temp/vulns-over-time.csv
 gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
 
