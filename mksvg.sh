@@ -15,8 +15,8 @@ perl stats/github-json.pl > $temp/github.csv
 perl stats/gh-monthly.pl $temp/github.csv > $temp/gh-monthly.csv
 gnuplot -c stats/gh-monthly.plot > $output/gh-monthly.svg
 
-perl stats/gh-monthly-open.pl $temp/github.csv > $temp/gh-monthly-open.csv
-gnuplot -c stats/gh-monthly-open.plot > $output/gh-monthly-open.svg
+perl stats/gh-open.pl $temp/github.csv > $temp/gh-open.csv
+gnuplot -c stats/gh-open.plot > $output/gh-open.svg
 
 perl stats/gh-age.pl $temp/github.csv > $temp/gh-age.csv
 gnuplot -c stats/gh-age.plot > $output/gh-age.svg
@@ -160,7 +160,7 @@ firsttimers = $output/firsttimers.svg
 fixtime = $output/cve-fixtime.svg
 github-age = $output/gh-age.svg
 github-monthly = $output/gh-monthly.svg
-github-open = $output/gh-monthly-open.svg
+github-open = $output/gh-open.svg
 http-versions = $output/http-over-time.svg
 lines = $output/lines-person.svg
 loc = $output/lines-over-time.svg
@@ -205,7 +205,7 @@ firsttimers = $temp/firsttimers.csv
 fixtime = $temp/cve-fixtime.csv
 github-age = $temp/gh-age.csv
 github-monthly = $temp/gh-monthly.csv
-github-open = $temp/gh-monthly-open.csv
+github-open = $temp/gh-open.csv
 http-versions = $temp/http-over-time.csv
 lines = $temp/lines-person.csv
 loc = $temp/lines-over-time.csv
