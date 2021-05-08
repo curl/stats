@@ -22,6 +22,7 @@ set timefmt "%Y-%m-%d"
 set xdata time
 
 set yrange [0:]
+set xrange ["2009-03-01":]
 
 # set the format of the dates on the x axis
 set format x "%Y"
