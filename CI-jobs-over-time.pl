@@ -140,7 +140,7 @@ sub cirruscount {
     open(G, "git show $tag:.cirrus.yml 2>/dev/null|");
     my $c = 0;
     while(<G>) {
-        if($_ =~ /^      (image_family|image):/) {
+        if($_ =~ /^    ( |-) (name|image_family|image):/) {
             $c++;
         }
     }

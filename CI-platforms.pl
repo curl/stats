@@ -180,14 +180,18 @@ sub appveyorcount {
 sub cirruscount {
     my ($tag)=@_;
     open(G, "git show $tag:.cirrus.yml 2>/dev/null|");
-    my $c = 0;
+    my $freebsd = 0;
+    my $windows = 0;
     while(<G>) {
-        if($_ =~ /^      (image_family|image):/) {
-            $c++;
+        if($_ =~ /(image_family|image): freebsd/) {
+            $freebsd++;
+        }
+        elsif($_ =~ /- name: Windows/) {
+            $windows++;
         }
     }
     close(G);
-    return $c;
+    return ($freebsd, $windows);
 }
 
 sub traviscount {
@@ -235,17 +239,18 @@ foreach my $t (@this) {
     }
 
     my ($linux, $mac) = traviscount($t, $now);
-    my $freebsd = cirruscount($t);
-    my $windows = appveyorcount($t);
+    my ($freebsd, $windows) = cirruscount($t);
+    $windows += appveyorcount($t);
+
     my ($l2, $m2, $w2) = azurecount($t);
     $linux += $l2;
     $mac += $m2;
     $windows += $w2;
 
-    ($l2, $m2, $w2) = githubcount($t);
-    $linux += $l2;
-    $mac += $m2;
-    $windows += $w2;
+    my ($l3, $m3, $w3) = githubcount($t);
+    $linux += $l3;
+    $mac += $m3;
+    $windows += $w3;
 
     my $c = $linux + $mac + $windows + $freebsd;
     if($c) {
