@@ -29,7 +29,7 @@ set ytics 5
 set boxwidth 0.8 relative
 set style fill solid
 
-set xrange ["2010-01-01":]
+set xrange ["2015-01-01":]
 
 # set the format of the dates on the x axis
 set format x "%Y"
