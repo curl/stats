@@ -25,4 +25,5 @@ plot 'tmp/CI.csv' using 1:2 with lines lw 3 title "All jobs combined", \
  'tmp/CI.csv' using 1:4 with lines lw 3 title "Cirrus CI", \
  'tmp/CI.csv' using 1:5 with lines lw 3 title "Appveyor", \
  'tmp/CI.csv' using 1:6 with lines lw 3 title "Azure Pipelines", \
- 'tmp/CI.csv' using 1:7 with lines lw 3 title "Github Actions"
+ 'tmp/CI.csv' using 1:7 with lines lw 3 title "Github Actions", \
+ 'tmp/CI.csv' using 1:8 with lines lw 3 title "Circle CI"
