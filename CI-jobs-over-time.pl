@@ -148,6 +148,25 @@ sub cirruscount {
     return $c;
 }
 
+sub circlecicount {
+    my ($tag)=@_;
+    open(G, "git show $tag:.circleci/config.yml 2>/dev/null|");
+    my $c = 0;
+    my $wf = 0;
+    while(<G>) {
+        if($_ =~ /^workflows/) {
+            $wf = 1;
+        }
+        elsif($wf) {
+            if($_ =~ / *jobs:/) {
+                $c++;
+            }
+        }
+    }
+    close(G);
+    return $c;
+}
+
 sub traviscount {
     my ($tag, $now)=@_;
     open(G, "git show $tag:.travis.yml 2>/dev/null|");
@@ -198,8 +217,9 @@ foreach my $t (@this) {
     my $cap = appveyorcount($t);
     my $caz = azurecount($t);
     my $cgi = githubcount($t);
+    my $ci = circlecicount($t);
 
-    my $c = $ctr + $cci + $cap + $caz + $cgi;
+    my $c = $ctr + $cci + $cap + $caz + $cgi + $ci;
     if($c) {
         # prettify
         my $d;
@@ -211,6 +231,6 @@ foreach my $t (@this) {
         else {
             $t = "now";
         }
-        printf "$t;$d;$c;%d;%d;%d;%d;%d\n", $ctr, $cci, $cap, $caz, $cgi;
+        printf "$t;$d;$c;%d;%d;%d;%d;%d;%d\n", $ctr, $cci, $cap, $caz, $cgi, $ci;
     }
 }
