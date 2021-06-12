@@ -222,6 +222,25 @@ sub traviscount {
     return ($linux, $mac);
 }
 
+sub circlecicount {
+    my ($tag)=@_;
+    open(G, "git show $tag:.circleci/config.yml 2>/dev/null|");
+    my $linux = 0;
+    my $wf = 0;
+    while(<G>) {
+        if($_ =~ /^workflows/) {
+            $wf = 1;
+        }
+        elsif($wf) {
+            if($_ =~ / *jobs:/) {
+                $linux++;
+            }
+        }
+    }
+    close(G);
+    return $linux;
+}
+
 
 my @this = sort sortthem @releases;
 
@@ -251,6 +270,8 @@ foreach my $t (@this) {
     $linux += $l3;
     $mac += $m3;
     $windows += $w3;
+
+    $linux += circlecicount($t);
 
     my $c = $linux + $mac + $windows + $freebsd;
     if($c) {
