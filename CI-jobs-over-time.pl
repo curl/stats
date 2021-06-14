@@ -167,11 +167,29 @@ sub circlecicount {
     return $c;
 }
 
+sub zuulcount {
+    my ($tag)=@_;
+    open(G, "git show $tag:zuul.d/jobs.yaml 2>/dev/null|");
+    my $c = 0;
+    while(<G>) {
+        if($_ =~ /^- job:/) {
+            $c++;
+        }
+    }
+    close(G);
+    return $c;
+}
+
+
 sub traviscount {
     my ($tag, $now)=@_;
     open(G, "git show $tag:.travis.yml 2>/dev/null|");
     my $c = 0;
-    if((num($tag) > 77000) || ($tag eq $now)) {
+    if((num($tag) > 77700) || ($tag eq $now)) {
+        # travis is dead
+        return 0;
+    }
+    elsif(num($tag) > 77000) {
         # white space edits and linux-only
         while(<G>) {
             if($_ =~ /^  - env:/) {
@@ -218,8 +236,9 @@ foreach my $t (@this) {
     my $caz = azurecount($t);
     my $cgi = githubcount($t);
     my $ci = circlecicount($t);
+    my $zuul = zuulcount($t);
 
-    my $c = $ctr + $cci + $cap + $caz + $cgi + $ci;
+    my $c = $ctr + $cci + $cap + $caz + $cgi + $ci + $zuul;
     if($c) {
         # prettify
         my $d;
@@ -231,6 +250,7 @@ foreach my $t (@this) {
         else {
             $t = "now";
         }
-        printf "$t;$d;$c;%d;%d;%d;%d;%d;%d\n", $ctr, $cci, $cap, $caz, $cgi, $ci;
+        printf "$t;$d;$c;%d;%d;%d;%d;%d;%d;%d\n",
+            $ctr, $cci, $cap, $caz, $cgi, $ci, $zuul;
     }
 }

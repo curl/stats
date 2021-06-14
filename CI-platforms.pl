@@ -200,7 +200,11 @@ sub traviscount {
     my $c = 0;
     my $linux=0;
     my $mac=0;
-    if((num($tag) > 77000) || ($tag eq $now)) {
+    if((num($tag) > 77700) || ($tag eq $now)) {
+        # travis is dead
+        return (0, 0);
+    }
+    elsif(num($tag) > 77000) {
         # white space edits and linux-only
         while(<G>) {
             if($_ =~ /^  - env:/) {
@@ -241,6 +245,20 @@ sub circlecicount {
     return $linux;
 }
 
+sub zuulcount {
+    my ($tag)=@_;
+    open(G, "git show $tag:zuul.d/jobs.yml 2>/dev/null|");
+    my $linux = 0;
+    my $wf = 0;
+    while(<G>) {
+        if($_ =~ /- job:/) {
+            $linux++;
+        }
+    }
+    close(G);
+    return $linux;
+}
+
 
 my @this = sort sortthem @releases;
 
@@ -272,6 +290,7 @@ foreach my $t (@this) {
     $windows += $w3;
 
     $linux += circlecicount($t);
+    $linux += zuulcount($t);
 
     my $c = $linux + $mac + $windows + $freebsd;
     if($c) {
