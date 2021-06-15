@@ -247,11 +247,11 @@ sub circlecicount {
 
 sub zuulcount {
     my ($tag)=@_;
-    open(G, "git show $tag:zuul.d/jobs.yml 2>/dev/null|");
+    open(G, "git show $tag:zuul.d/jobs.yaml 2>/dev/null|");
     my $linux = 0;
     my $wf = 0;
     while(<G>) {
-        if($_ =~ /- job:/) {
+        if($_ =~ /^- job:/) {
             $linux++;
         }
     }
