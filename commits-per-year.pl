@@ -11,10 +11,25 @@ while(<G>) {
         if($date =~ /^(\d\d\d\d)-(\d\d)/) {
             $period = "$1";
         }
-        $commit{$period}++;
+        if($period >= 2000) {
+            $commit{$period}++;
+        }
     }
 }
 
+sub average {
+    my @p = @_;
+    my $sum;
+    for my $y (@p) {
+        $sum += $commit{$y};
+    }
+    return $sum / scalar(@p);
+}
+
 for my $y (sort keys %commit) {
-    printf "%s-01-01;%d\n", $y, $commit{$y};
+    push @l, $y;
+    if(scalar(@l) > 5) {
+        shift @l;
+    }
+    printf "%s-01-01;%d;%.1f\n", $y, $commit{$y}, average(@l);
 }
