@@ -87,6 +87,7 @@ gnuplot -c stats/firsttimers.plot > $output/firsttimers.svg
 
 perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > $temp/CI.csv
 gnuplot -c stats/CI-jobs-over-time.plot > $output/CI-jobs-over-time.svg
+gnuplot -c stats/CI-services.plot > $output/CI-services.svg
 
 perl stats/CI-platforms.pl > $temp/CI-platforms.csv
 gnuplot -c stats/CI-platforms.plot > $output/CI-platforms.svg
@@ -143,6 +144,7 @@ bugbounty = $output/bugbounty-over-time.svg
 bugfix-frequency = $output/bugfix-frequency.svg
 ci-jobs = $output/CI-jobs-over-time.svg
 ci-platforms = $output/CI-platforms.svg
+ci-services = $output/CI-services.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
@@ -188,6 +190,7 @@ bugbounty = $temp/bugbounty-over-time.csv
 bugfix-frequency = $temp/bugfix-frequency.csv
 ci-jobs = $temp/CI.csv
 ci-platforms = $temp/CI-platforms.csv
+ci-services = $temp/CI.csv
 cmdline-options-over-time = $temp/cmdline-options-over-time.csv
 commits-per-month = $temp/commits-per-month.csv
 commits-per-year = $temp/commits-per-year.csv
