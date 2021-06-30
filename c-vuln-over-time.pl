@@ -15,6 +15,7 @@ for(reverse @vuln) {
     $ciss++ if($cissue ne "-");
     $count++;
     $overtime{$date} = sprintf("%.1f", $ciss * 100 / $count);
+    $issues{$date}=$count;
     $rolling{$date}= ($cissue ne "-") ? 1 : 0;
 }
 
@@ -41,6 +42,7 @@ sub lastyear {
 
 for my $d (sort keys %overtime) {
     if($d =~ /(\d\d\d\d)(\d\d)(\d\d)/) {
-        printf "$1-$2-$3;%.1f;%.1f\n", $overtime{$d}, lastyear($d);
+        printf "$1-$2-$3;%.1f;%.1f;%d\n", $overtime{$d}, lastyear($d),
+            $issues{$d};
     }
 }
