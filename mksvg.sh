@@ -61,6 +61,9 @@ gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
 perl stats/80-percent.pl > $temp/80-percent.csv
 gnuplot -c stats/80-percent.plot > $output/80-percent.svg
 
+perl stats/comments.pl > $temp/comments.csv
+gnuplot -c stats/comments.plot > $output/comments.svg
+
 perl stats/setopts-over-time.pl | cut '-d;' -f2- > $temp/setopts-over-time.csv
 gnuplot -c stats/setopts-over-time.plot > $output/setopts-over-time.svg
 
@@ -150,6 +153,7 @@ ci-jobs = $output/CI-jobs-over-time.svg
 ci-platforms = $output/CI-platforms.svg
 ci-services = $output/CI-services.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
+comments = $output/comments.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
 commits = $output/commits-over-time.svg
@@ -197,6 +201,7 @@ ci-jobs = $temp/CI.csv
 ci-platforms = $temp/CI-platforms.csv
 ci-services = $temp/CI.csv
 cmdline-options-over-time = $temp/cmdline-options-over-time.csv
+comments = $temp/comments.csv
 commits-per-month = $temp/commits-per-month.csv
 commits-per-year = $temp/commits-per-year.csv
 commits = $temp/commits-over-time.csv
