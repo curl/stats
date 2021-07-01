@@ -186,7 +186,7 @@ EOF
 
 # Use the same names but point to the used CSV/data/input file
 cat >stats.data <<EOF
-80-percent = $output/80-percent.csv
+80-percent = $temp/80-percent.csv
 api-calls = $temp/API-calls-over-time.csv
 authors = $temp/authors.csv
 authors-per-month = $temp/authors-per-month.csv
