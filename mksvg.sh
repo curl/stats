@@ -58,6 +58,9 @@ perl stats/coreteam-over-time.pl | grep "^[12]" | tr -d '(' | awk '{ print $1"-0
 perl stats/coreteam-over-time.pl | grep '^[12]' | cut -d" " -f 1,5 | tr -d '%' | awk '{ if($2 > 0) {print $1"-01-01;"$2; }}' > $temp/coreteam-percent.csv
 gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
 
+perl stats/80-percent.pl > $temp/80-percent.csv
+gnuplot -c stats/80-percent.plot > $output/80-percent.svg
+
 perl stats/setopts-over-time.pl | cut '-d;' -f2- > $temp/setopts-over-time.csv
 gnuplot -c stats/setopts-over-time.plot > $output/setopts-over-time.svg
 
@@ -136,6 +139,7 @@ perl stats/release-number.pl > $temp/release-number.csv
 gnuplot -c stats/release-number.plot > $output/release-number.svg
 
 cat >stats.list <<EOF
+80-percent = $output/80-percent.svg
 api-calls = $output/API-calls-over-time.svg
 authors = $output/authors.svg
 authors-per-month = $output/authors-per-month.svg
@@ -182,6 +186,7 @@ EOF
 
 # Use the same names but point to the used CSV/data/input file
 cat >stats.data <<EOF
+80-percent = $output/80-percent.csv
 api-calls = $temp/API-calls-over-time.csv
 authors = $temp/authors.csv
 authors-per-month = $temp/authors-per-month.csv
