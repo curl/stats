@@ -32,9 +32,6 @@ for(@a) {
 for my $a (sort keys %total) {
     for my $y (sort keys %years) {
         #print STDERR "check $a for $y\n";
-        if($uniqyear{$a.$y} && ($uniqyear{$a.$y} < 3)) {
-            $driveby{$y}++;
-        }
         if($uniqyear{$a.$y} && ($uniqyear{$a.$y} > 2)) {
             $tenmore{$y}++;
             $tenner[$y] .= "$a;";
@@ -71,6 +68,7 @@ for my $y (sort keys %years) {
     my @a = split(/;/, $tenner[$y]);
     my $coretotal;
     my @list;
+    my @alist;
     my $limit = 80;
     foreach my $a (sort {$uniqyear{$b.$y} <=> $uniqyear{$a.$y}} @a) {
 
@@ -88,5 +86,28 @@ for my $y (sort keys %years) {
     if(scalar(@pp) > 5) {
         shift @pp;
     }
-    printf "$y-01-01;%u;%.2f\n", scalar(@list), average(@pp);
+
+    # count for all years from 2000 until this year
+    my $totcommits;
+    my %totauth;
+    for my $y2 (2000 .. $y) {
+        $totcommits += $years{$y2};
+        foreach my $auth (keys %uniq) {
+            $totauth{$auth} += $uniqyear{$auth.$y2};
+        }
+    }
+    #printf "Until $y ($totcommits, 80%% = %u):\n", 0.8 * $totcommits;
+    my $share = 80;
+    for my $t (sort {$totauth{$b} <=> $totauth{$a}} keys %uniq) {
+        #printf "  $t: %s\n", $totauth{$t};
+        push @alist, $t;
+        $share -= $totauth{$t} * 100 / $totcommits;
+        if($share <= 0) {
+            last;
+        }
+    }
+
+
+    printf "$y-01-01;%u;%.2f;%u\n",
+        scalar(@list), average(@pp), scalar(@alist);
 }
