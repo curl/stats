@@ -22,7 +22,6 @@ set timefmt "%Y-%m-%d"
 set xdata time
 
 set xtics rotate 3600*24*365.25 nomirror out
-set mxtics 1
 set mytics 5
 set xrange ["1998-01-01":]
 
@@ -31,5 +30,5 @@ set format x "%Y"
 set datafile separator ";"
 
 # plot the flaw periods and the project age with titles and line width 3
-plot 'tmp/vulns-per-year.csv' using 1:2 with boxes title ""
-
+plot 'tmp/vulns-per-year.csv' using 1:2 with boxes title "", \
+ 'tmp/vulns-per-year.csv' using 1:4 with lines lw 3 title "5 year average"
