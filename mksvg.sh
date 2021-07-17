@@ -141,7 +141,7 @@ gnuplot -c stats/contributors-per-release.plot > $output/contributors-per-releas
 perl stats/lines-person.pl > $temp/lines-person.csv
 gnuplot -c stats/lines-person.plot > $output/lines-person.svg
 
-perl stats/release-number.pl > $temp/release-number.csv
+perl stats/release-number.pl $webroot > $temp/release-number.csv
 gnuplot -c stats/release-number.plot > $output/release-number.svg
 
 cat >stats.list <<EOF
