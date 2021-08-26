@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-my @all=`git shortlog -s`;
+my @all=`LANG=C git shortlog -s`;
 
 for $e (@all) {
     if($e =~ /^ *(\d+)[ \t]+(.*)/) {
@@ -11,4 +11,7 @@ for $e (@all) {
 my $index = 1;
 for $a (sort {$commits{$b} <=> $commits{$a}} keys %commits) {
     printf "%s;%u;%u\n", $a, $commits{$a}, $index++;
+}
+if($index == 1) {
+    print "badness ensued\n";
 }
