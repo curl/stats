@@ -8,6 +8,9 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
+perl stats/contrib-tail.pl > $temp/contrib-tail.csv
+gnuplot -c stats/contrib-tail.plot > $output/contrib-tail.svg
+
 perl stats/mail.pl > $temp/mail.csv
 gnuplot -c stats/mail.plot > $output/mail.svg
 
@@ -60,9 +63,6 @@ gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
 
 perl stats/80-percent.pl > $temp/80-percent.csv
 gnuplot -c stats/80-percent.plot > $output/80-percent.svg
-
-perl stats/contrib-tail.pl > $temp/contrib-tail.csv
-gnuplot -c stats/contrib-tail.plot > $output/contrib-tail.svg
 
 perl stats/comments.pl > $temp/comments.csv
 gnuplot -c stats/comments.plot > $output/comments.svg
