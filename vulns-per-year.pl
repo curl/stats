@@ -2,15 +2,27 @@
 
 # number of vulns reported per year
 #
-my $webroot = $ARGV[0] || "../curl-www";
+my $webroot = $ARGV[0];
+my $cveintro = $ARGV[1];
 require "$webroot/docs/vuln.pm";
 
+if(!$cveintro) {
+    die "missing argument(s)";
+}
 
 for(@vuln) {
     my ($id, $start, $stop, $desc, $cve, $date)=split('\|');
     my $year=int($date/10000);
     $v{$year}++;
 }
+
+open(I, "<$cveintro");
+while(<I>) {
+    if($_ =~ /^(\d+)-(\d+)-(\d+);(\d*)/) {
+        $intro{$1}++;
+    }
+}
+close(I);
 
 sub average {
     my @p = @_;
@@ -34,6 +46,11 @@ for(1998 .. $year) {
     if(scalar(@pp) > 5) {
         shift @pp;
     }
+    push @ipp, $intro{$_};
+    if(scalar(@ipp) > 5) {
+        shift @ipp;
+    }
     # writes a full date just to be parsable
-    printf "%d-01-01;%d;%d;%.2f\n", $_, $v{$_}, $total, average(@pp);
+    printf "%d-01-01;%d;%d;%d;%.2f;%.2f\n", $_, $v{$_}, $intro{$_}, $total,
+        average(@pp), average(@ipp);
 }

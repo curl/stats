@@ -107,9 +107,6 @@ gnuplot -c stats/commits-per-month.plot > $output/commits-per-month.svg
 perl stats/docs-over-time.pl > $temp/docs-over-time.csv
 gnuplot -c stats/docs-over-time.plot > $output/docs-over-time.svg
 
-perl stats/vulns-per-year.pl $webroot > $temp/vulns-per-year.csv
-gnuplot -c stats/vulns-per-year.plot > $output/vulns-per-year.svg
-
 perl stats/vulns-releases.pl $webroot > $temp/vulns-releases.csv
 gnuplot -c stats/vulns-releases.plot > $output/vulns-releases.svg
 
@@ -122,6 +119,9 @@ gnuplot -c stats/cve-fixtime.plot > $output/cve-fixtime.svg
 perl stats/cve-intro.pl $webroot > $temp/cve-intro.csv
 perl stats/vulns-over-time.pl $webroot > $temp/vulns-over-time.csv
 gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
+
+perl stats/vulns-per-year.pl $webroot $temp/cve-intro.csv > $temp/vulns-per-year.csv
+gnuplot -c stats/vulns-per-year.plot > $output/vulns-per-year.svg
 
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
