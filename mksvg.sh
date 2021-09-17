@@ -132,6 +132,9 @@ gnuplot -c stats/lines-per-month.plot > $output/lines-per-month.svg
 perl stats/tests-over-time.pl | cut '-d;' -f2- > $temp/tests-over-time.csv
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
+perl stats/manpages-over-time.pl > $temp/manpages-over-time.csv
+gnuplot -c stats/manpages-over-time.plot > $output/manpages-over-time.svg
+
 perl stats/bugbounty-over-time.pl $webroot > $temp/bugbounty-over-time.csv
 gnuplot -c stats/bugbounty-over-time.plot > $output/bugbounty-over-time.svg
 
@@ -179,6 +182,7 @@ http-versions = $output/http-over-time.svg
 lines = $output/lines-person.svg
 loc = $output/lines-over-time.svg
 mail = $output/mail.svg
+manpages = $output/manpages-over-time.svg
 protocols = $output/protocols-over-time.svg
 releases = $output/release-number.svg
 setopts = $output/setopts-over-time.svg
@@ -228,6 +232,7 @@ http-versions = $temp/http-over-time.csv
 lines = $temp/lines-person.csv
 loc = $temp/lines-over-time.csv
 mail = $temp/mail.csv
+manpages = $temp/manpages-over-time.csv
 protocols = $temp/protocols-over-time.csv
 releases = $temp/release-number.csv
 setopts = $temp/setopts-over-time.csv
