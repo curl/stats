@@ -52,10 +52,15 @@ print <<CACHE
 2021-06-16;42;103
 2021-07-01;43;105
 2021-07-01;43;106
+2021-07-04;44;107
+2021-07-05;45;108
+2021-07-07;45;109
+2021-09-16;45;111
+2021-09-17;46;112
 CACHE
     ;
 
-open(L, "git log --reverse --pretty=fuller --date=short --stat --since=2021-07-02 |");
+open(L, "git log --reverse --pretty=fuller --date=short --stat --since=2021-09-18 |");
 my $hash;
 my $prev="0.0";
 while(<L>) {
