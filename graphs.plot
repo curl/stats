@@ -34,6 +34,6 @@ set xdata time
 # set the format of the dates on the x axis
 set format x "%b %Y"
 set datafile separator ";"
-plot  'tmp/graphs.csv' using 1:2 with lines linestyle 1 title "Separate images",\
- 'tmp/graphs.csv' using 1:3 with lines linestyle 2 title "Individual plots"
+plot  'tmp/graphs.csv' using 1:2 with steps linestyle 1 title "Separate images",\
+ 'tmp/graphs.csv' using 1:3 with steps linestyle 2 title "Individual plots"
 
