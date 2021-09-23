@@ -147,6 +147,9 @@ gnuplot -c stats/lines-person.plot > $output/lines-person.svg
 perl stats/release-number.pl $webroot > $temp/release-number.csv
 gnuplot -c stats/release-number.plot > $output/release-number.svg
 
+perl stats/releases-per-year.pl $webroot > $temp/releases-per-year.csv
+gnuplot -c stats/releases-per-year.plot > $output/releases-per-year.svg
+
 cat >stats.list <<EOF
 80-percent = $output/80-percent.svg
 api-calls = $output/API-calls-over-time.svg
@@ -185,6 +188,7 @@ mail = $output/mail.svg
 manpages = $output/manpages-over-time.svg
 protocols = $output/protocols-over-time.svg
 releases = $output/release-number.svg
+releases-per-year = $output/releases-per-year.svg
 setopts = $output/setopts-over-time.svg
 symbols = $output/symbols-over-time.svg
 tests = $output/tests-over-time.svg
@@ -235,6 +239,7 @@ mail = $temp/mail.csv
 manpages = $temp/manpages-over-time.csv
 protocols = $temp/protocols-over-time.csv
 releases = $temp/release-number.csv
+releases-per-year = $temp/releases-per-year.csv
 setopts = $temp/setopts-over-time.csv
 symbols = $temp/symbols-over-time.csv
 tests = $temp/tests-over-time.csv
