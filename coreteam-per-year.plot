@@ -19,7 +19,7 @@ set boxwidth 0.9 relative
 set style fill solid
 
 set grid ytics
-set ytics nomirror
+set ytics nomirror 1
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
