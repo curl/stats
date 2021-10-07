@@ -24,6 +24,9 @@ gnuplot -c stats/gh-open.plot > $output/gh-open.svg
 perl stats/gh-age.pl $temp/github.csv > $temp/gh-age.csv
 gnuplot -c stats/gh-age.plot > $output/gh-age.svg
 
+perl stats/gh-fixes.pl $temp/github.csv > $temp/gh-fixes.csv
+gnuplot -c stats/gh-fixes.plot > $output/gh-fixes.svg
+
 perl stats/files-over-time.pl > $temp/files-over-time.csv
 gnuplot -c stats/files-over-time.plot > $output/files-over-time.svg
 
@@ -179,6 +182,7 @@ files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
 fixtime = $output/cve-fixtime.svg
 github-age = $output/gh-age.svg
+github-fixes = $output/gh-fixes.svg
 github-monthly = $output/gh-monthly.svg
 github-open = $output/gh-open.svg
 http-versions = $output/http-over-time.svg
@@ -230,6 +234,7 @@ files = $temp/files-over-time.csv
 firsttimers = $temp/firsttimers.csv
 fixtime = $temp/cve-fixtime.csv
 github-age = $temp/gh-age.csv
+github-fixes = $temp/gh-fixes.csv
 github-monthly = $temp/gh-monthly.csv
 github-open = $temp/gh-open.csv
 http-versions = $temp/http-over-time.csv
