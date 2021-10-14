@@ -69,7 +69,6 @@ while(<G>) {
     elsif(($_ =~ /^    fixes (#|)(\d+)/i) ||
           ($_ =~ /^    fixes https:\/\/([^0-9]*)\/(\d+)/i) ) {
         my $issue = $2;
-        print STDERR "$issue: $_";
         if(!$created{$issue}) {
             #print STDERR "fixed non-existing issue $issue\n";
         }
