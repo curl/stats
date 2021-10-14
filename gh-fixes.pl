@@ -66,8 +66,10 @@ while(<G>) {
     if($_ =~ /^CommitDate: (.*)/) {
         $commit = $1;
     }
-    elsif($_ =~ /^    fixes (#|)(\d+)/i) {
+    elsif(($_ =~ /^    fixes (#|)(\d+)/i) ||
+          ($_ =~ /^    fixes https:\/\/([^0-9]*)\/(\d+)/i) ) {
         my $issue = $2;
+        print STDERR "$issue: $_";
         if(!$created{$issue}) {
             #print STDERR "fixed non-existing issue $issue\n";
         }
@@ -77,7 +79,8 @@ while(<G>) {
             #print "fixed existing issue $issue\n";
         }
     }
-    elsif($_ =~ /^    clo(s|)ses (#|)(\d+)/i) {
+    elsif(($_ =~ /^    clo(s|)ses (#|)(\d+)/i) ||
+          ($_ =~ /^    clo(s|)ses https:\/\/([^0-9]*)\/(\d+)/i) ) {
         my $issue = $3;
         if(!$created{$issue}) {
             #print STDERR "closed non-existing issue $issue\n";
