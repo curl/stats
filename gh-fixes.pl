@@ -79,7 +79,7 @@ while(<G>) {
         }
     }
     elsif(($_ =~ /^    clo(s|)ses (#|)(\d+)/i) ||
-          ($_ =~ /^    clo(s|)ses https:\/\/([^0-9]*)\/(\d+)/i) ) {
+          ($_ =~ /^    clo(s|)ses https:\/\/github.com\/curl\/curl\/(.*)\/(\d+)/i) ) {
         my $issue = $3;
         if(!$created{$issue}) {
             #print STDERR "closed non-existing issue $issue\n";
