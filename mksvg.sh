@@ -141,6 +141,9 @@ gnuplot -c stats/manpages-over-time.plot > $output/manpages-over-time.svg
 perl stats/bugbounty-over-time.pl $webroot > $temp/bugbounty-over-time.csv
 gnuplot -c stats/bugbounty-over-time.plot > $output/bugbounty-over-time.svg
 
+perl stats/bugbounty-amounts.pl $webroot > $temp/bugbounty-amounts.csv
+gnuplot -c stats/bugbounty-amounts.plot > $output/bugbounty-amounts.svg
+
 perl stats/contributors-per-release.pl > $temp/contributors-per-release.csv
 gnuplot -c stats/contributors-per-release.plot > $output/contributors-per-release.svg
 
@@ -160,6 +163,7 @@ authors = $output/authors.svg
 authors-per-month = $output/authors-per-month.svg
 authors-per-year = $output/authors-per-year.svg
 bugbounty = $output/bugbounty-over-time.svg
+bugbounty-amounts = $output/bugbounty-amounts.svg
 bugfix-frequency = $output/bugfix-frequency.svg
 ci-jobs = $output/CI-jobs-over-time.svg
 ci-platforms = $output/CI-platforms.svg
@@ -212,6 +216,7 @@ authors = $temp/authors.csv
 authors-per-month = $temp/authors-per-month.csv
 authors-per-year = $temp/authors-per-year.csv
 bugbounty = $temp/bugbounty-over-time.csv
+bugbounty-amounts = $temp/bugbounty-amounts.csv
 bugfix-frequency = $temp/bugfix-frequency.csv
 ci-jobs = $temp/CI.csv
 ci-platforms = $temp/CI-platforms.csv
