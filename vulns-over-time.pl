@@ -35,6 +35,6 @@ for my $cve (@all) {
     printf "%s;%s;%d\n", $cve, $d, $l;
     $end = $l;
 }
-my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
-    localtime(time);
-printf "now;%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $end;
+#my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+#    localtime(time);
+#printf "now;%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $end;
