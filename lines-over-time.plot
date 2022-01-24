@@ -29,5 +29,5 @@ set xdata time
 set format x "%Y"
 set xtics rotate 3600*24*365.25
 set datafile separator ";"
-plot 'tmp/lines-over-time.csv' using 1:2 with lines linestyle 1 title "lib + src + include", \
- 'tmp/lines-over-time.csv' using 1:3 with lines linestyle 2 title "lib only"
+plot 'tmp/lines-over-time.csv' using 1:2 with lines linestyle 1 title "all product code", \
+ 'tmp/lines-over-time.csv' using 1:3 with lines linestyle 2 title "library only"
