@@ -36,6 +36,8 @@ set xdata time
 set yrange [0:]
 set xrange ["2010-01-01":]
 
+set xtics rotate 3600*24*365.25 nomirror
+
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
