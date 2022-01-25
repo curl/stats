@@ -20,6 +20,7 @@ unset border
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
+set xtics rotate 3600*24*365.25 nomirror out
 
 set yrange [0:]
 set xrange ["2009-03-01":]
