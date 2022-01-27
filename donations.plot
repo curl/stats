@@ -2,16 +2,17 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Donations" font ",48"
+set title "Open Collective Donations to curl" font ",48"
 # where's the legend
 set key top left
 
 # Identify the axes
 #set xlabel "Time"
 set ylabel "Donated USD per month"
+set ytics nomirror
 
 set y2label "Net total amount of donations (USD)"
-set y2tics 10000
+set y2tics 
 
 set style line 1 \
     linecolor rgb '#c0c0ff' \
@@ -40,7 +41,7 @@ set xrange ["2018-03-15":]
 hour = 60*60
 day = 24*hour
 
-set xtics 30*day rotate by -80 nomirror
+set xtics 30*day rotate nomirror
 
 # set the format of the dates on the x axis
 set format x "%b %Y"
