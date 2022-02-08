@@ -251,7 +251,7 @@ sub zuulcount {
     my $linux = 0;
     my $wf = 0;
     while(<G>) {
-        if($_ =~ /^- job:/) {
+        if($_ =~ /^      - curl-/) {
             $linux++;
         }
     }

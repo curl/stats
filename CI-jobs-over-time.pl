@@ -172,7 +172,7 @@ sub zuulcount {
     open(G, "git show $tag:zuul.d/jobs.yaml 2>/dev/null|");
     my $c = 0;
     while(<G>) {
-        if($_ =~ /^- job:/) {
+        if($_ =~ /^      - curl-/) {
             $c++;
         }
     }
