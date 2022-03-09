@@ -1,6 +1,9 @@
 #!/usr/bin/perl
 my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short --decorate=full  | egrep "^(Author|CommitDate):"`;
 
+my $percent = 80;
+$percent = $ARGV[0] if($ARGV[0]);
+
 my $year=2000;
 for(@a) {
     chomp;
@@ -69,7 +72,7 @@ for my $y (sort keys %years) {
     my $coretotal;
     my @list;
     my @alist;
-    my $limit = 80;
+    my $limit = $percent;
     foreach my $a (sort {$uniqyear{$b.$y} <=> $uniqyear{$a.$y}} @a) {
 
         my $perc = $uniqyear{$a.$y} * 100 / $years{$y};
@@ -96,8 +99,8 @@ for my $y (sort keys %years) {
             $totauth{$auth} += $uniqyear{$auth.$y2};
         }
     }
-    #printf "Until $y ($totcommits, 80%% = %u):\n", 0.8 * $totcommits;
-    my $share = 80;
+
+    my $share = $percent;
     for my $t (sort {$totauth{$b} <=> $totauth{$a}} keys %uniq) {
         #printf "  $t: %s\n", $totauth{$t};
         push @alist, $t;
