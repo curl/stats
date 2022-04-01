@@ -21,7 +21,7 @@ set ytics nomirror 1
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set xtics rotate 3500*24*365.25 nomirror in
+set xtics rotate 3600*24*365.25 nomirror in
 unset mxtics
 
 set xrange ["1999-06-01":]
