@@ -33,4 +33,4 @@ set datafile separator ";"
 
 plot 'tmp/60-percent.csv' using 1:2 with boxes title "", \
   'tmp/60-percent.csv' using 1:3 with lines title "5-year average" lw 4, \
-  'tmp/60-percent.csv' using 1:4 with lines title "All-time accumulated" lw 4
+  'tmp/60-percent.csv' using 1:4 with lines title "All-time average" lw 4
