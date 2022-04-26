@@ -5,7 +5,7 @@ print <<MOO
 MOO
     ;
 
-open(T, "<stats/tls-history.md");
+open(T, "<stats/idn-history.md");
 while(<T>) {
     chomp;
     if($_ =~ /^(.*) (\d\d\d\d-\d\d-\d\d) (\d+)/) {

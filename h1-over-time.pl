@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 
 print <<MOO
-1998-03-20;;0
+1998-03-20;native;1
 MOO
     ;
 
-open(T, "<stats/tls-history.md");
+open(T, "<stats/h1-history.md");
 while(<T>) {
     chomp;
     if($_ =~ /^(.*) (\d\d\d\d-\d\d-\d\d) (\d+)/) {
