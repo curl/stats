@@ -40,7 +40,13 @@ perl stats/protocols-over-time.pl > $temp/protocols-over-time.csv
 gnuplot -c stats/protocols-over-time.plot > $output/protocols-over-time.svg
 
 perl stats/tls-over-time.pl > $temp/tls-over-time.csv
-gnuplot -c stats/tls-over-time.plot > $output/tls-over-time.svg
+perl stats/ssh-over-time.pl > $temp/ssh-over-time.csv
+perl stats/h1-over-time.pl > $temp/h1-over-time.csv
+perl stats/h2-over-time.pl > $temp/h2-over-time.csv
+perl stats/h3-over-time.pl > $temp/h3-over-time.csv
+perl stats/idn-over-time.pl > $temp/idn-over-time.csv
+perl stats/resolver-over-time.pl > $temp/resolver-over-time.csv
+gnuplot -c stats/backends-over-time.plot > $output/backends-over-time.svg
 
 perl stats/3rdparty-over-time.pl > $temp/3rdparty-over-time.csv
 gnuplot -c stats/3rdparty-over-time.plot > $output/3rdparty-over-time.svg
