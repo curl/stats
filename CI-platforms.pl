@@ -83,7 +83,7 @@ sub githubcount {
                     # matrix multiplier
                     $m++;
                 }
-                elsif($_ =~ /steps:/) {
+                elsif($_ =~ / steps:/) {
                     # disable matrix mode
                     $m = -1;
                 }
