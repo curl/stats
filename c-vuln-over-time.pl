@@ -13,11 +13,12 @@ for(reverse @vuln) {
         print "$cve!\n";
         exit;
     }
-    if($start eq "7.1") {
-        $start = "7.1.1";
+    my $d = $start;
+    if($d eq "7.1") {
+        $d = "7.1.1";
     }
-    $start =~ s/\./_/g;
-    $date = tag2date("curl-$start");
+    $d =~ s/\./_/g;
+    $date = tag2date("curl-$d");
     if(!$date) {
         $date = "2000-01-01";
     }
@@ -32,7 +33,7 @@ for my $d (keys %rolling) {
     $seconds{$d} = `date +%s -d "$d"`;
 }
 
-print "1998-03-20;0;0\n";
+print "1998-03-20;0;0;0\n";
 
 my $all;
 my $cmistakes;
@@ -40,6 +41,6 @@ for my $d (sort keys %overtime) {
     if($d =~ /(\d\d\d\d)-(\d\d)-(\d\d)/) {
         $all += $numissues{$d};
         $cmistakes += $numcissues{$d};
-        printf "$1-$2-$3;%u;%u\n", $all, $cmistakes;
+        printf "$1-$2-$3;%u;%u;%u\n", $all, $cmistakes, $all - $cmistakes;
     }
 }

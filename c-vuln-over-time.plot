@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Vulnerabilities and C mistakes\n{/*0.4per date of first version shipped with the flaw}" font ",48"
+set title "125 curl vulnerabilities: C vs non-C mistakes\n{/*0.4per date of first curl version shipped with the flaw}" font ",48"
 # where's the legend
 set key top left
 
@@ -28,6 +28,11 @@ set style line 2 \
     linecolor rgb '#800080' \
     linetype 2 linewidth 3
 
+set style line 3 \
+    linecolor rgb '#40C040' \
+    linetype 2 linewidth 3
+
 set datafile separator ";"
-plot 'tmp/c-vuln-over-time.csv' using 1:3 with steps linestyle 1 title "Vulnerabilities due to C mistakes", \
- 'tmp/c-vuln-over-time.csv' using 1:2 with steps linestyle 2 title "All vulnerabilities"
+plot 'tmp/c-vuln-over-time.csv' using 1:3 with lines linestyle 1 title "Created C mistake vulnerability", \
+ 'tmp/c-vuln-over-time.csv' using 1:4 with lines linestyle 3 title "Created vulnerability NOT due to a C mistake"
+# 'tmp/c-vuln-over-time.csv' using 1:2 with steps linestyle 2 title "All vulnerabilities"
