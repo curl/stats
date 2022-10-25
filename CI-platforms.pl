@@ -169,7 +169,7 @@ sub appveyorcount {
     open(G, "git show $tag:appveyor.yml 2>/dev/null|");
     my $c = 0;
     while(<G>) {
-        if($_ =~ /^      - APPVEYOR_BUILD_WORKER_IMAGE:/) {
+        if($_ =~ /^.*APPVEYOR_BUILD_WORKER_IMAGE:/) {
             $c++;
         }
     }
