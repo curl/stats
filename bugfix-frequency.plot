@@ -8,7 +8,7 @@ set key top left
 
 # Identify the axes
 #set xlabel "Time"
-set ylabel "Logged bug-fixes"
+set ylabel "Logged bugfixes"
 
 set style line 1 \
     linecolor rgb '#0060ad' \
