@@ -22,7 +22,7 @@ set style line 2 \
 set ytics nomirror
 set xtics 3600*24*365.25 nomirror rotate
 
-set y2label "Bug-fixes per day" tc "#ff60ad"
+set y2label "Bugfixes per day" tc "#ff60ad"
 set y2tics
 set grid
 unset border
