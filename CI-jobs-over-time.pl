@@ -132,7 +132,6 @@ sub appveyorcount {
         }
     }
     close(G);
-    print STDERR "Appveyor: $c\n";
     return $c;
 }
 
