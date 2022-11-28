@@ -40,9 +40,9 @@ sub tag2date {
 }
 
 sub filecount {
-    my ($tag)=@_;
+    my ($tag, $pref)=@_;
     my $count;
-    open(G, "git ls-tree -r --name-only $tag 2>/dev/null|");
+    open(G, "git ls-tree -r --name-only $tag -- $pref 2>/dev/null|");
     my @file=<G>;
     close(G);
     return scalar(@file);
@@ -60,6 +60,7 @@ push @this, $now;
 foreach my $t (@this) {
 
     my $c = filecount($t);
+    my $testsonly = filecount($t, "tests");
 
     if($c) {
         # prettify
@@ -72,6 +73,6 @@ foreach my $t (@this) {
         else {
             $t = "now";
         }
-        printf "$d;$c\n";
+        printf "$d;$c;%u\n", $c-$testsonly;
     }
 }
