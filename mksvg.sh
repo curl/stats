@@ -70,8 +70,8 @@ perl stats/coreteam-over-time.pl | grep "^[12]" | tr -d '(' | awk '{ print $1"-0
 perl stats/coreteam-over-time.pl | grep '^[12]' | cut -d" " -f 1,5 | tr -d '%' | awk '{ if($2 > 0) {print $1"-01-01;"$2; }}' > $temp/coreteam-percent.csv
 gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
 
-perl stats/95-percent.pl 80 > $temp/95-percent.csv
-perl stats/90-percent.pl 80 > $temp/90-percent.csv
+perl stats/80-percent.pl 95 > $temp/95-percent.csv
+perl stats/80-percent.pl 90 > $temp/90-percent.csv
 perl stats/80-percent.pl 80 > $temp/80-percent.csv
 perl stats/80-percent.pl 70 > $temp/70-percent.csv
 perl stats/80-percent.pl 60 > $temp/60-percent.csv
