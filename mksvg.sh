@@ -138,6 +138,9 @@ gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
 perl stats/vulns-per-year.pl $webroot $temp/cve-intro.csv > $temp/vulns-per-year.csv
 gnuplot -c stats/vulns-per-year.plot > $output/vulns-per-year.svg
 
+perl stats/c-vulns-over-time.pl > $temp/c-vulns-over-time.csv
+gnuplot -c stats/c-vulns-over-time.plot > $output/c-vulns.svg
+
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 
@@ -181,14 +184,15 @@ backends = $output/backends-over-time.svg
 bugbounty = $output/bugbounty-over-time.svg
 bugbounty-amounts = $output/bugbounty-amounts.svg
 bugfix-frequency = $output/bugfix-frequency.svg
+c-vulns = $output/c-vulns.svg
 ci-jobs = $output/CI-jobs-over-time.svg
 ci-platforms = $output/CI-platforms.svg
 ci-services = $output/CI-services.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 comments = $output/comments.svg
+commits = $output/commits-over-time.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
-commits = $output/commits-over-time.svg
 contribs-release = $output/contributors-per-release.svg
 contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
@@ -235,6 +239,7 @@ authors-per-year = $temp/authors-per-year.csv
 bugbounty = $temp/bugbounty-over-time.csv
 bugbounty-amounts = $temp/bugbounty-amounts.csv
 bugfix-frequency = $temp/bugfix-frequency.csv
+c-vulns = $output/c-vulns-over-time.csv
 ci-jobs = $temp/CI.csv
 ci-platforms = $temp/CI-platforms.csv
 ci-services = $temp/CI.csv
