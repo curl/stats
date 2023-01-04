@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "125 curl vulnerabilities: C vs non-C mistakes\n{/*0.4per date of first curl version shipped with the flaw}" font ",48"
+set title "curl vulnerabilities: C vs non-C mistakes\n{/*0.4per date of first version shipped with the flaw}" font ",48"
 # where's the legend
 set key top left
 
@@ -10,6 +10,9 @@ set key top left
 set ylabel "Number of vulnerabilities"
 set grid
 unset border
+
+set y2label "Lines of code" tc "#800080"
+set y2tics
 
 # time formated using this format
 set timefmt "%Y-%m-%d"
@@ -33,6 +36,7 @@ set style line 3 \
     linetype 2 linewidth 3
 
 set datafile separator ";"
-plot 'tmp/c-vuln-over-time.csv' using 1:3 with lines linestyle 1 title "Created C mistake vulnerability", \
- 'tmp/c-vuln-over-time.csv' using 1:4 with lines linestyle 3 title "Created vulnerability NOT due to a C mistake"
-# 'tmp/c-vuln-over-time.csv' using 1:2 with steps linestyle 2 title "All vulnerabilities"
+plot \
+ 'tmp/c-vuln-over-time.csv' using 1:3 with lines linestyle 1 title "C mistake vulnerability", \
+ 'tmp/c-vuln-over-time.csv' using 1:4 with lines linestyle 3 title "Vulnerability NOT a C mistake", \
+ 'tmp/lines-over-time.csv' using 1:2 axis x1y2 with lines linestyle 2 title "Lines of code"
