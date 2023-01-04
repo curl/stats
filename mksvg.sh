@@ -70,10 +70,14 @@ perl stats/coreteam-over-time.pl | grep "^[12]" | tr -d '(' | awk '{ print $1"-0
 perl stats/coreteam-over-time.pl | grep '^[12]' | cut -d" " -f 1,5 | tr -d '%' | awk '{ if($2 > 0) {print $1"-01-01;"$2; }}' > $temp/coreteam-percent.csv
 gnuplot -c stats/coreteam-per-year.plot > $output/coreteam-per-year.svg
 
+perl stats/95-percent.pl 80 > $temp/95-percent.csv
+perl stats/90-percent.pl 80 > $temp/90-percent.csv
 perl stats/80-percent.pl 80 > $temp/80-percent.csv
 perl stats/80-percent.pl 70 > $temp/70-percent.csv
 perl stats/80-percent.pl 60 > $temp/60-percent.csv
 perl stats/80-percent.pl 50 > $temp/50-percent.csv
+gnuplot -c stats/95-percent.plot > $output/95-percent.svg
+gnuplot -c stats/90-percent.plot > $output/90-percent.svg
 gnuplot -c stats/80-percent.plot > $output/80-percent.svg
 gnuplot -c stats/70-percent.plot > $output/70-percent.svg
 gnuplot -c stats/60-percent.plot > $output/60-percent.svg
@@ -172,6 +176,8 @@ perl stats/releases-per-year.pl $webroot > $temp/releases-per-year.csv
 gnuplot -c stats/releases-per-year.plot > $output/releases-per-year.svg
 
 cat >stats.list <<EOF
+95-percent = $output/95-percent.svg
+90-percent = $output/90-percent.svg
 80-percent = $output/80-percent.svg
 70-percent = $output/70-percent.svg
 60-percent = $output/60-percent.svg
@@ -228,6 +234,8 @@ EOF
 
 # Use the same names but point to the used CSV/data/input file
 cat >stats.data <<EOF
+95-percent = $temp/80-percent.csv
+90-percent = $temp/80-percent.csv
 80-percent = $temp/80-percent.csv
 70-percent = $temp/70-percent.csv
 60-percent = $temp/60-percent.csv
