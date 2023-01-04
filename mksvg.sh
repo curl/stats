@@ -138,7 +138,7 @@ gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
 perl stats/vulns-per-year.pl $webroot $temp/cve-intro.csv > $temp/vulns-per-year.csv
 gnuplot -c stats/vulns-per-year.plot > $output/vulns-per-year.svg
 
-perl stats/c-vuln-over-time.pl > $temp/c-vuln-over-time.csv
+perl stats/c-vuln-over-time.pl $webroot > $temp/c-vuln-over-time.csv
 gnuplot -c stats/c-vuln-over-time.plot > $output/c-vulns.svg
 
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
