@@ -31,11 +31,10 @@ for(@a) {
     }
 }
 
-# iterate over all authors, count those who did less than three that year
 for my $a (sort keys %total) {
     for my $y (sort keys %years) {
         #print STDERR "check $a for $y\n";
-        if($uniqyear{$a.$y} && ($uniqyear{$a.$y} > 2)) {
+        if($uniqyear{$a.$y}) {
             $tenmore{$y}++;
             $tenner[$y] .= "$a;";
             $tenagain{$a}++;
@@ -69,7 +68,6 @@ sub average {
 my @pp;
 for my $y (sort keys %years) {
     my @a = split(/;/, $tenner[$y]);
-    my $coretotal;
     my @list;
     my $limit = $percent;
     foreach my $a (sort {$uniqyear{$b.$y} <=> $uniqyear{$a.$y}} @a) {
@@ -78,7 +76,6 @@ for my $y (sort keys %years) {
         push @list, sprintf "$y - %s %d commits (%.1f%%)$l\n  ", $a,
             $uniqyear{$a.$y}, $perc;
 
-        $coretotal += $uniqyear{$a.$y};
         $limit -= $perc;
         if($limit <= 0) {
             last;
