@@ -50,6 +50,14 @@ sub tests {
         }
     }
     close(G);
+    # now count the httpd test cases in tests/tests-httpd
+    open(G, "git ls-tree -r --name-only $tag -- tests/tests-httpd 2>/dev/null|");
+    while(<G>) {
+        if($_ =~ /\/test_(\d).*\.py/) {
+            $tests++;
+        }
+    }
+    close(G);
     return $tests;
 }
 
