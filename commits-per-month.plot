@@ -23,7 +23,7 @@ set style line 3 \
     dt 1 linewidth 3
 
 # for the boxes
-set boxwidth 0.2 relative
+set boxwidth 0.6 relative
 set style fill solid
 
 set grid
@@ -39,6 +39,6 @@ set xtics 3600*24*365.25 nomirror rotate
 set format x "%Y"
 set datafile separator ";"
 
-plot 'tmp/commits-per-month.csv' using 1:2 with lines linestyle 1 title "Monthly commits", \
+plot 'tmp/commits-per-month.csv' using 1:2 with boxes fc "#c0c0c0" title "Monthly commits", \
  'tmp/commits-per-month.csv' using 1:4 with lines linestyle 3 title "All-time average", \
  'tmp/commits-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average"
