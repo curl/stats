@@ -151,7 +151,7 @@ gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 perl stats/lines-per-month.pl > $temp/lines-per-month.csv
 gnuplot -c stats/lines-per-month.plot > $output/lines-per-month.svg
 
-perl stats/tests-over-time.pl | cut '-d;' -f2- > $temp/tests-over-time.csv
+perl stats/tests-over-time.pl > $temp/tests-over-time.csv
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
 perl stats/manpages-over-time.pl > $temp/manpages-over-time.csv
