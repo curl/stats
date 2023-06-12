@@ -148,6 +148,9 @@ gnuplot -c stats/c-vuln-over-time.plot > $output/c-vulns.svg
 perl stats/c-vuln-reports.pl $webroot > $temp/c-vuln-reports.csv
 gnuplot -c stats/c-vuln-reports.plot > $output/c-reports.svg
 
+perl stats/high-vuln-reports.pl $webroot > $temp/high-vuln-reports.csv
+gnuplot -c stats/high-vuln-reports.plot > $output/high-reports.svg
+
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 
@@ -218,6 +221,7 @@ github-age = $output/gh-age.svg
 github-fixes = $output/gh-fixes.svg
 github-monthly = $output/gh-monthly.svg
 github-open = $output/gh-open.svg
+high-vuln = $output/high-reports.svg
 http-versions = $output/http-over-time.svg
 lines = $output/lines-person.svg
 loc = $output/lines-over-time.svg
@@ -276,6 +280,7 @@ github-age = $temp/gh-age.csv
 github-fixes = $temp/gh-fixes.csv
 github-monthly = $temp/gh-monthly.csv
 github-open = $temp/gh-open.csv
+high-vuln = $output/high-reports.csv
 http-versions = $temp/http-over-time.csv
 lines = $temp/lines-person.csv
 loc = $temp/lines-over-time.csv
