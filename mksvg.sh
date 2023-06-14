@@ -163,6 +163,9 @@ gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 perl stats/manpages-over-time.pl > $temp/manpages-over-time.csv
 gnuplot -c stats/manpages-over-time.plot > $output/manpages-over-time.svg
 
+perl stats/examples-over-time.pl > $temp/examples-over-time.csv
+gnuplot -c stats/examples-over-time.plot > $output/examples-over-time.svg
+
 perl stats/bugbounty-over-time.pl $webroot > $temp/bugbounty-over-time.csv
 gnuplot -c stats/bugbounty-over-time.plot > $output/bugbounty-over-time.svg
 
@@ -214,6 +217,7 @@ daniel-vs-rest = $output/daniel-vs-rest.svg
 days-per-release = $output/days-per-release.svg
 deltaloc = $output/lines-per-month.svg
 docs = $output/docs-over-time.svg
+examples = $output/examples-over-time.svg
 files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
 fixtime = $output/cve-fixtime.svg
@@ -273,6 +277,7 @@ daniel-vs-rest = $temp/daniel-vs-rest.csv
 days-per-release = $temp/days-per-release.csv
 deltaloc = $temp/lines-per-month.csv
 docs = $temp/docs-over-time.csv
+examples = $temp/examples-over-time.csv
 files = $temp/files-over-time.csv
 firsttimers = $temp/firsttimers.csv
 fixtime = $temp/cve-fixtime.csv
