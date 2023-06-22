@@ -21,7 +21,7 @@ set style line 2 \
 set grid
 unset border
 set xtics nomirror
-set ytics nomirror 10
+set ytics nomirror
 unset mxtics
 
 # time formated using this format
