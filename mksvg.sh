@@ -151,6 +151,9 @@ gnuplot -c stats/c-vuln-reports.plot > $output/c-reports.svg
 perl stats/high-vuln-reports.pl $webroot > $temp/high-vuln-reports.csv
 gnuplot -c stats/high-vuln-reports.plot > $output/high-reports.svg
 
+perl stats/sev-per-year.pl $webroot > $temp/sev-per-year.csv
+gnuplot -c stats/sev-per-year.plot > $output/sev-per-year.svg
+
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 
@@ -235,6 +238,7 @@ protocols = $output/protocols-over-time.svg
 releases = $output/release-number.svg
 releases-per-year = $output/releases-per-year.svg
 setopts = $output/setopts-over-time.svg
+sev-per-year = $output/sev-per-year.svg
 symbols = $output/symbols-over-time.svg
 tests = $output/tests-over-time.svg
 third-parties = $output/3rdparty-over-time.svg
@@ -295,6 +299,7 @@ protocols = $temp/protocols-over-time.csv
 releases = $temp/release-number.csv
 releases-per-year = $temp/releases-per-year.csv
 setopts = $temp/setopts-over-time.csv
+sev-per-year = $output/sev-per-year.csv
 symbols = $temp/symbols-over-time.csv
 tests = $temp/tests-over-time.csv
 third-parties = $temp/3rdparty-over-time.csv
