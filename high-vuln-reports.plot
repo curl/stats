@@ -26,9 +26,30 @@ set xrange ["2010-01-01":]
 set y2range [0:]
 
 set datafile separator ";"
+
+set style line 1 \
+    linecolor rgb '#40c040' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .5
+
+set style line 2 \
+    linecolor rgb '#c0c040' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .5
+
+set style line 3 \
+    linecolor rgb '#4040FF' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .5
+
+set style line 4 \
+    linecolor rgb '#FF4040' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .5
+
 plot \
- 'tmp/high-vuln-reports.csv' using 1:3 with lines lw 3 title "Severity Low reports", \
- 'tmp/high-vuln-reports.csv' using 1:4 with lines lw 3 title "Severity Medium reports", \
- 'tmp/high-vuln-reports.csv' using 1:5 with lines lw 3 title "Severity High reports", \
- 'tmp/high-vuln-reports.csv' using 1:6 with lines lw 3 title "Severity Critical reports", \
+ 'tmp/high-vuln-reports.csv' using 1:3 with linespoints linestyle 1 title "Severity Low reports", \
+ 'tmp/high-vuln-reports.csv' using 1:4 with linespoints linestyle 2 title "Severity Medium reports", \
+ 'tmp/high-vuln-reports.csv' using 1:5 with linespoints linestyle 3 title "Severity High reports", \
+ 'tmp/high-vuln-reports.csv' using 1:6 with linespoints linestyle 4 title "Severity Critical reports", \
  'tmp/high-vuln-reports.csv' using 1:7 with lines lc "#000000" lw 3 title "% share reported High or Critical"

@@ -45,6 +45,11 @@ my $allmed;
 my $allhigh;
 my $allcrit;
 
+my $olow;
+my $omed;
+my $ohi;
+my $ocr;
+
 for my $d (sort keys %overtime) {
     if($d =~ /(\d\d\d\d)(\d\d)(\d\d)/) {
         $all += $numissues{$d};
@@ -55,7 +60,22 @@ for my $d (sort keys %overtime) {
         $allhigh += $numhigh{$d};
         $allcrit += $numcrit{$d};
 
-        printf "$1-$2-$3;%u;%u;%u;%u;%u;%.2f\n", $all, $alllow, $allmed,
-            $allhigh, $allcrit, $hmistakes * 100/ $all;
+        my $slow = $alllow;
+        my $smed = $allmed;
+        my $shi = $allhigh;
+        my $scr = $allcrit;
+
+        $slow = "" if($alllow == $olow);
+        $smed = "" if($allmed == $omed);
+        $shi = "" if($allhigh == $ohi);
+        $scr = "" if($allcrit == $ocr);
+
+        printf "$1-$2-$3;%u;%s;%s;%s;%s;%.2f\n", $all, $slow, $smed,
+            $shi, $scr, $hmistakes * 100/ $all;
+
+        $olow = $alllow;
+        $omed = $allmed;
+        $ohi = $allhigh;
+        $ocr = $allcrit;
     }
 }
