@@ -14,12 +14,10 @@ for(reverse @vuln) {
         exit;
     }
     my $d = $start;
-    if($d eq "7.1") {
-        $d = "7.1.1";
-    }
     $d =~ s/\./_/g;
     $date = tag2date("curl-$d");
     if(!$date) {
+        print STDERR "Tag $d has no date!\n";
         $date = "2000-01-01";
     }
 
@@ -32,8 +30,6 @@ for(reverse @vuln) {
 for my $d (keys %rolling) {
     $seconds{$d} = `date +%s -d "$d"`;
 }
-
-print "1998-03-20;0;0;0\n";
 
 my $all;
 my $cmistakes;
