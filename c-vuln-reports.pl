@@ -13,15 +13,6 @@ for(reverse @vuln) {
         print "$cve!\n";
         exit;
     }
-    my $d = $start;
-    if($d eq "7.1") {
-        $d = "7.1.1";
-    }
-    $d =~ s/\./_/g;
-    #$date = tag2date("curl-$d");
-    if(!$date) {
-        $date = "2000-01-01";
-    }
 
     # there can be several on the same date
     $numissues{$date}++;
