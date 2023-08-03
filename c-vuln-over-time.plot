@@ -25,7 +25,8 @@ set ytics 10
 
 set style line 1 \
     linecolor rgb '#FF4040' \
-    linetype 2 linewidth 3
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .5
 
 set style line 2 \
     linecolor rgb '#800080' \
@@ -33,10 +34,11 @@ set style line 2 \
 
 set style line 3 \
     linecolor rgb '#40C040' \
-    linetype 2 linewidth 3
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .5
 
 set datafile separator ";"
 plot \
- 'tmp/c-vuln-over-time.csv' using 1:3 with lines linestyle 1 title "C mistake vulnerability", \
- 'tmp/c-vuln-over-time.csv' using 1:4 with lines linestyle 3 title "Vulnerability NOT a C mistake", \
+ 'tmp/c-vuln-over-time.csv' using 1:3 with linespoints linestyle 1 title "C mistake vulnerability", \
+ 'tmp/c-vuln-over-time.csv' using 1:4 with linespoints linestyle 3 title "Vulnerability NOT a C mistake", \
  'tmp/lines-over-time.csv' using 1:2 axis x1y2 with lines linestyle 2 title "Lines of code"

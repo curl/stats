@@ -37,10 +37,24 @@ print "1998-03-20;0;0;0\n";
 
 my $all;
 my $cmistakes;
+my $oc;
+my $onc;
 for my $d (sort keys %overtime) {
     if($d =~ /(\d\d\d\d)-(\d\d)-(\d\d)/) {
         $all += $numissues{$d};
         $cmistakes += $numcissues{$d};
-        printf "$1-$2-$3;%u;%u;%u\n", $all, $cmistakes, $all - $cmistakes;
+        my $nonc = $all - $cmistakes;
+
+        my $showc = $cmistakes;
+        my $shownc = $nonc;
+        if($cmistakes == $oc) {
+            $showc = "";
+        }
+        if($nonc == $onc) {
+            $shownc = "";
+        }
+        printf "$1-$2-$3;%u;%s;%s\n", $all, $showc, $shownc;
+        $oc = $cmistakes;
+        $onc = $nonc;
     }
 }
