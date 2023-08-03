@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+require "./stats/tag2date.pm";
+
 sub num {
     my ($t)=@_;
     if($t =~ /^curl-(\d)_(\d+)_(\d+)/) {
@@ -22,21 +24,6 @@ foreach my $t (@alltags) {
     if($t =~ /^curl-([0-9_]*[0-9])\z/) {
         push @releases, $t;
     }
-}
-
-sub tag2date {
-    my ($t)=@_;
-    open(G, "git show $t --pretty=\"Date: %ci\" -s 2>/dev/null|");
-    my $d;
-    while(<G>) {
-        if($_ =~ /^Date: (\d+-\d+-\d+) (\d+:\d+:\d+)/) {
-            # strip off the time zone and time
-            $d = "$1";
-            last;
-        }
-    }
-    close(G);
-    return $d;
 }
 
 sub contribs {
