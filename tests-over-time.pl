@@ -52,11 +52,12 @@ sub tests {
 foreach my $t (sort sortthem @releases) {
     my $d = tag2date($t);
     my $l = tests($t);
-
-    # prettyfy
-    $t =~ s/_/./g;
-    $t =~ s/-/ /g;
-    print "$t;$d;$l\n";
+    if($l) {
+        # prettyfy
+        $t =~ s/_/./g;
+        $t =~ s/-/ /g;
+        print "$t;$d;$l\n";
+    }
 }
 
 # repeat the last line with current date
