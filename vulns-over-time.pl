@@ -24,7 +24,7 @@ for(reverse @vuln) {
 my $l;
 
 print <<MOO
-none;1998-03-20;0
+none;1998-03-20;
 MOO
     ;
 
