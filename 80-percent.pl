@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+
+require "./stats/average.pm";
+
 my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short --decorate=full  | egrep "^(Author|CommitDate):"`;
 
 my $percent = 80;
@@ -54,15 +57,6 @@ for my $y (sort keys %years) {
         #print STDERR "set $y $a to 1\n";
     }
     $lastyear = $y;
-}
-
-sub average {
-    my @p = @_;
-    my $sum;
-    for my $y (@p) {
-        $sum += $y;
-    }
-    return $sum / scalar(@p);
 }
 
 my @pp;
