@@ -11,11 +11,11 @@ set key top left
 set ylabel "Number of items listed"
 
 set style line 1 \
-    linecolor rgb '#0060ad' \
-    linewidth 4
+    linecolor rgb '#ad0000' \
+    linewidth 3
 set style line 2 \
     linecolor rgb '#40c040' \
-    linewidth 4
+    linewidth 3
 
 set grid
 unset border

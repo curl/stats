@@ -67,14 +67,12 @@ foreach my $t (sort sortthem @releases) {
     my $d = tag2date($t);
     my $n = options($t, "docs/TODO");
     my $k = options($t, "docs/KNOWN_BUGS");
-#    my $c = contribs(@out);
-#    my $loc = loc($t);
 
     if($n || $k) {
         # prettyfy
         $t =~ s/_/./g;
         $t =~ s/-/ /g;
-        print "$d;$n;$k\n";
+        printf "$d;$n;%s\n", $k ? $k : "";
     }
 }
 
