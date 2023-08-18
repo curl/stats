@@ -197,8 +197,8 @@ sub traviscount {
 
 
 print <<MOO
-curl-7.34.0;2013-10-17;2;2;0;0;0;0
-curl-7.45.0;2016-07-28;4;4;0;0;0;0
+curl-7.34.0;2013-10-17;2;2;;;;
+curl-7.45.0;2016-07-28;4;4;;;;
 MOO
     ;
 
@@ -237,7 +237,13 @@ foreach my $t (@this) {
         else {
             $t = "now";
         }
-        printf "$t;$d;$c;%d;%d;%d;%d;%d;%d;%d\n",
-            $ctr, $cci, $cap, $caz, $cgi, $ci, $zuul;
+        printf "$t;$d;$c;%s;%s;%s;%s;%s;%s;%s\n",
+            $ctr ? $ctr : "",
+            $cci ? $cci : "",
+            $cap ? $cap : "",
+            $caz ? $caz : "",
+            $cgi ? $cgi : "",
+            $ci ? $ci : "",
+            $zuul ? $zuul : "";
     }
 }
