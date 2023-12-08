@@ -11,7 +11,7 @@ set ylabel "C mistake share %"
 set grid
 unset border
 
-set y2label "Total number of vulnerabilities" tc "#800080"
+set y2label "Number of vulnerabilities" tc "#800080"
 set y2tics
 
 # time formated using this format
@@ -31,9 +31,20 @@ set style line 1 \
 
 set style line 2 \
     linecolor rgb '#800080' \
-    linetype 2 linewidth 3
+    linetype 2 linewidth 2
+
+set style line 3 \
+    linecolor rgb '#404040' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .3
+
+set style line 4 \
+    linecolor rgb '#4040e0' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .3
 
 set datafile separator ";"
-plot \
- 'tmp/c-vuln-reports.csv' using 1:5 with lines linestyle 1 title "C mistake share", \
- 'tmp/c-vuln-reports.csv' using 1:2 axis x1y2 with lines linestyle 2 title "Total number of reported vulnerabilities"
+plot 'tmp/c-vuln-reports.csv' using 1:2 axis x1y2 with lines linestyle 2 title "Number of vulnerabilities", \
+ 'tmp/c-vuln-reports.csv' using 1:3 axis x1y2 with linespoints linestyle 3 title "C mistakes", \
+ 'tmp/c-vuln-reports.csv' using 1:4 axis x1y2 with linespoints linestyle 4 title "Not C mistakes", \
+ 'tmp/c-vuln-reports.csv' using 1:5 with lines linestyle 1 title "C mistake share"
