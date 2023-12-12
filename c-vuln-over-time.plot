@@ -37,8 +37,20 @@ set style line 3 \
     linetype 1 linewidth 2 \
     pointtype 7 pointsize .5
 
+set style line 4 \
+    linecolor rgb '#40C0FF' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .5
+
+set style line 5 \
+    linecolor rgb '#c0c040' \
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .5
+
 set datafile separator ";"
 plot \
- 'tmp/c-vuln-over-time.csv' using 1:3 with linespoints linestyle 1 title "C mistake vulnerability", \
- 'tmp/c-vuln-over-time.csv' using 1:4 with linespoints linestyle 3 title "Vulnerability NOT a C mistake", \
+ 'tmp/c-vuln-over-time.csv' using 1:3 with linespoints linestyle 1 title "All C mistake vulnerabilities", \
+ 'tmp/c-vuln-over-time.csv' using 1:5 with linespoints linestyle 4 title "high/critical C mistake vulnerabilities", \
+ 'tmp/c-vuln-over-time.csv' using 1:4 with linespoints linestyle 3 title "All vulnerabilities not C mistakes", \
+ 'tmp/c-vuln-over-time.csv' using 1:6 with linespoints linestyle 5 title "high/critical vulnerabilities not C mistakes", \
  'tmp/lines-over-time.csv' using 1:2 axis x1y2 with lines linestyle 2 title "Lines of code"
