@@ -187,6 +187,9 @@ gnuplot -c stats/release-number.plot > $output/release-number.svg
 perl stats/releases-per-year.pl $webroot > $temp/releases-per-year.csv
 gnuplot -c stats/releases-per-year.plot > $output/releases-per-year.svg
 
+perl stats/cpy-over-time.pl > $temp/cpy-over-time.csv
+gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
+
 cat >stats.list <<EOF
 95-percent = $output/95-percent.svg
 90-percent = $output/90-percent.svg
@@ -224,6 +227,7 @@ examples = $output/examples-over-time.svg
 files = $output/files-over-time.svg
 firsttimers = $output/firsttimers.svg
 fixtime = $output/cve-fixtime.svg
+func-calls = $output/cpy-over-time.svg
 github-age = $output/gh-age.svg
 github-fixes = $output/gh-fixes.svg
 github-monthly = $output/gh-monthly.svg
@@ -285,6 +289,7 @@ examples = $temp/examples-over-time.csv
 files = $temp/files-over-time.csv
 firsttimers = $temp/firsttimers.csv
 fixtime = $temp/cve-fixtime.csv
+func-calls = $output/cpy-over-time.csv
 github-age = $temp/gh-age.csv
 github-fixes = $temp/gh-fixes.csv
 github-monthly = $temp/gh-monthly.csv
