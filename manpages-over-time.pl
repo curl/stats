@@ -29,15 +29,24 @@ foreach my $t (@alltags) {
 sub manpages {
     my ($tag) = @_;
     my $manpages = 0;
-    # limited to docs and lib to avoid 'ares' in the early repos
-    open(G, "git ls-tree -r --name-only $tag -- docs lib 2>/dev/null|");
-    while(<G>) {
-        chomp;
-        if($_ =~ /\.[31]\z/) {
-            $manpages++;
-        }
+
+    if(num($tag) >= 80500) {
+        open(G, "git show curl-8_5_0:docs/libcurl/Makefile.inc curl-8_5_0:docs/libcurl/opts/Makefile.inc | grep '\.3'|");
+        my @p = <G>;
+        close(G);
+        $manpages = scalar(@p) + 3;
     }
-    close(G);
+    else {
+        # limited to docs and lib to avoid 'ares' in the early repos
+        open(G, "git ls-tree -r --name-only $tag -- docs lib 2>/dev/null|");
+        while(<G>) {
+            chomp;
+            if($_ =~ /\.[31]\z/) {
+                $manpages++;
+            }
+        }
+        close(G);
+    }
     return $manpages;
 }
 
