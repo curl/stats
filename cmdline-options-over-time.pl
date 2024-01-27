@@ -94,7 +94,7 @@ foreach my $t (sort sortthem @releases) {
     }
 }
 
-my $current = 0 + `ls docs/cmdline-opts/*.d | wc -l`;
+my $current = 0 + `grep -E '^  {"... --' src/tool_listhelp.c | wc -l`;
 
 if($current) {
     my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
