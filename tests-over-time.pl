@@ -37,11 +37,26 @@ sub tests {
         }
     }
     close(G);
-    # now count the httpd test cases in tests/tests-httpd
-    open(G, "git ls-tree -r --name-only $tag -- tests/tests-httpd 2>/dev/null|");
+
+    my $pydir = "tests/http";
+    if(num($tag) < 80000) {
+        # before 8.0.0 this named was used
+        $pydir = "tests/tests-httpd";
+    }
+
+    # find all test py files in 'tests/http'
+    open(G, "git ls-tree -r --name-only $tag -- $pydir 2>/dev/null|");
     while(<G>) {
+        chomp;
+        # count each invidual tests inside these pythong scripts
         if($_ =~ /\/test_(\d).*\.py/) {
-            $tests++;
+            open(GIT, "git show $tag:$_|");
+            while(<GIT>) {
+                if(/def test_/) {
+                    $tests++;
+                }
+            }
+            close(GIT);
         }
     }
     close(G);
