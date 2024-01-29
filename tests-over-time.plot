@@ -15,11 +15,11 @@ set y2tics
 
 set style line 1 \
     linecolor rgb '#0060ad' \
-    linetype 1 linewidth 3
+    linetype 1 linewidth 4
 
 set style line 2 \
     linecolor rgb '#40c040' \
-    linetype 2 linewidth 3
+    linetype 2 linewidth 2
 
 set grid
 unset border
