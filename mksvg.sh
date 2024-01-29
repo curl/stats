@@ -198,7 +198,7 @@ gnuplot -c stats/lines-per-docs.plot > $output/lines-per-docs.svg
 
 # lines of code per test case
 
-perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/tests-over-time.csv 0:1 1:2 > $emp/lines-per-test.csv
+perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/tests-over-time.csv 0:1 1:2 > $temp/lines-per-test.csv
 gnuplot -c stats/lines-per-test.plot > $output/lines-per-test.svg
 
 cat >stats.list <<EOF
