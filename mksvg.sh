@@ -190,6 +190,12 @@ gnuplot -c stats/releases-per-year.plot > $output/releases-per-year.svg
 perl stats/cpy-over-time.pl > $temp/cpy-over-time.csv
 gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
 
+# lines of code per docs line
+#
+# uses already generated CSV files to make a new one
+perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/docs-over-time.csv 0:1 0:1 > $temp/lines-per-docs.csv
+gnuplot -c stats/lines-per-docs.plot > $output/lines-per-docs.svg
+
 cat >stats.list <<EOF
 95-percent = $output/95-percent.svg
 90-percent = $output/90-percent.svg
@@ -235,6 +241,7 @@ github-open = $output/gh-open.svg
 high-vuln = $output/high-reports.svg
 http-versions = $output/http-over-time.svg
 lines = $output/lines-person.svg
+lines-per-docs = $output/lines-per-docs.svg
 loc = $output/lines-over-time.svg
 mail = $output/mail.svg
 manpages = $output/manpages-over-time.svg
@@ -297,6 +304,7 @@ github-open = $temp/gh-open.csv
 high-vuln = $output/high-reports.csv
 http-versions = $temp/http-over-time.csv
 lines = $temp/lines-person.csv
+lines-per-docs = $temp/lines-per-docs.csv
 loc = $temp/lines-over-time.csv
 mail = $temp/mail.csv
 manpages = $temp/manpages-over-time.csv
