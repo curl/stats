@@ -201,6 +201,11 @@ gnuplot -c stats/lines-per-docs.plot > $output/lines-per-docs.svg
 perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/tests-over-time.csv 0:1 1:2 > $temp/lines-per-test.csv
 gnuplot -c stats/lines-per-test.plot > $output/lines-per-test.svg
 
+# lines of code per known vulnerability
+
+perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/vulns-releases.csv 0:1 0:2 > $temp/lines-per-knownvulns.csv
+gnuplot -c stats/lines-per-knownvulns.plot > $output/lines-per-knownvulns.svg
+
 cat >stats.list <<EOF
 95-percent = $output/95-percent.svg
 90-percent = $output/90-percent.svg
@@ -248,6 +253,7 @@ http-versions = $output/http-over-time.svg
 lines = $output/lines-person.svg
 lines-per-docs = $output/lines-per-docs.svg
 lines-per-test = $output/lines-per-test.svg
+lines-per-vuln = $output/lines-per-knownvulns.svg
 loc = $output/lines-over-time.svg
 mail = $output/mail.svg
 manpages = $output/manpages-over-time.svg
@@ -312,6 +318,7 @@ http-versions = $temp/http-over-time.csv
 lines = $temp/lines-person.csv
 lines-per-docs = $temp/lines-per-docs.csv
 lines-per-test = $temp/lines-per-test.csv
+lines-per-vuln = $temp/lines-per-knownvulns.csv
 loc = $temp/lines-over-time.csv
 mail = $temp/mail.csv
 manpages = $temp/manpages-over-time.csv
