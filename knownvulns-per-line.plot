@@ -8,7 +8,7 @@ set key top left
 
 # Identify the axes
 #set xlabel "Time"
-set ylabel "lines of code / number of known CVEs present"
+set ylabel "number of known CVEs present / KLOC"
 
 set style line 1 \
     linecolor rgb '#4000ff' \
