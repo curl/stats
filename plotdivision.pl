@@ -10,6 +10,8 @@ my $plot2 = $ARGV[1]; # file name
 my $col1 = $ARGV[2]; # [date column]:[data column]
 my $col2 = $ARGV[3]; # [date column]:[data column]
 
+my $scaler = $ARGV[4]; # scale the values by this number
+
 if(!$col2) {
     print <<USAGE
 plotdivision <csv> <csv> <date:data> <date:data>
@@ -21,6 +23,10 @@ USAGE
 
 my ($coldate1, $coldata1)=split(/:/, $col1);
 my ($coldate2, $coldata2)=split(/:/, $col2);
+
+if(!$scaler) {
+    $scaler = 1;
+}
 
 sub readall {
     my ($f) = @_;
@@ -85,5 +91,5 @@ for my $d (sort keys %anyday) {
         # avoid division by zero
         next;
     }
-    printf "$d;%.2f\n", $day1{$d} / $by;
+    printf "$d;%.6f\n", $day1{$d} / ($by / $scaler);
 }
