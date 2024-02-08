@@ -8,8 +8,8 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
-#perl stats/contrib-tail.pl > $temp/contrib-tail.csv
-#gnuplot -c stats/contrib-tail.plot > $output/contrib-tail.svg
+perl stats/contrib-tail.pl > $temp/contrib-tail.csv
+gnuplot -c stats/contrib-tail.plot > $output/contrib-tail.svg
 
 perl stats/mail.pl > $temp/mail.csv
 gnuplot -c stats/mail.plot > $output/mail.svg
@@ -237,6 +237,7 @@ commits = $output/commits-over-time.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
 contribs-release = $output/contributors-per-release.svg
+contrib-tail = $output/contrib-tail.svg
 contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
 cve-time = $output/cve-age.svg
@@ -303,6 +304,7 @@ commits-per-month = $temp/commits-per-month.csv
 commits-per-year = $temp/commits-per-year.csv
 commits = $temp/commits-over-time.csv
 contribs-release = $temp/contributors-per-release.csv
+contrib-tail = $temp/contrib-tail.csv
 contributors = $temp/contributors-over-time.csv
 coreteam-per-year = $temp/coreteam-per-year.csv
 cve-time = $temp/cve-age.csv
