@@ -206,6 +206,11 @@ gnuplot -c stats/lines-per-test.plot > $output/lines-per-test.svg
 perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/vulns-releases.csv 0:1 0:2 > $temp/lines-per-knownvulns.csv
 gnuplot -c stats/lines-per-knownvulns.plot > $output/lines-per-knownvulns.svg
 
+# known vulnerability per KLOC
+
+perl stats/plotdivision.pl $temp/vulns-releases.csv $temp/lines-over-time.csv 0:2 0:1 1000 > $temp/knownvulns-per-line.csv
+gnuplot -c stats/knownvulns-per-line.plot > $output/knownvulns-per-line.svg
+
 cat >stats.list <<EOF
 95-percent = $output/95-percent.svg
 90-percent = $output/90-percent.svg
@@ -269,6 +274,7 @@ todo = $output/todo-over-time.svg
 vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
 vulns-releases = $output/vulns-releases.svg
+vulns-per-kloc = $output/knownvulns-per-line.svg
 EOF
 
 # Use the same names but point to the used CSV/data/input file
@@ -335,6 +341,7 @@ todo = $temp/todo-over-time.csv
 vulns-per-year = $temp/vulns-per-year.csv
 vulns-plot = $temp/vulns-over-time.csv
 vulns-releases = $temp/vulns-releases.csv
+vulns-per-kloc = $temp/knownvulns-per-line.csv
 EOF
 
 # make the dir world readable
