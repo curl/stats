@@ -15,5 +15,6 @@ for $a (sort {$commits{$b} <=> $commits{$a}} keys %commits) {
 }
 if($index == 1) {
     print "badness ensued: \n";
+    print `pwd`;
     print `$c 2>&1`;
 }
