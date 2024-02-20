@@ -206,6 +206,15 @@ gnuplot -c stats/lines-per-test.plot > $output/lines-per-test.svg
 perl stats/plotdivision.pl $temp/vulns-releases.csv $temp/lines-over-time.csv 0:2 0:1 1000 > $temp/knownvulns-per-line.csv
 gnuplot -c stats/knownvulns-per-line.plot > $output/knownvulns-per-line.svg
 
+# lines of code per amount of commit authors and contributors
+
+perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/authors.csv 0:1 0:2 > $temp/lines-per-author.csv
+perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/contributors-over-time.csv 0:1 1:2 > $temp/lines-per-contributor.csv
+gnuplot -c stats/lines-per-author.plot > $output/lines-per-author.svg
+
+# per contributor
+
+
 cat >stats.list <<EOF
 95-percent = $output/95-percent.svg
 90-percent = $output/90-percent.svg
@@ -252,6 +261,7 @@ github-open = $output/gh-open.svg
 high-vuln = $output/high-reports.svg
 http-versions = $output/http-over-time.svg
 lines = $output/lines-person.svg
+lines-per-author = $output/lines-per-author.svg
 lines-per-docs = $output/lines-per-docs.svg
 lines-per-test = $output/lines-per-test.svg
 loc = $output/lines-over-time.svg
@@ -318,6 +328,7 @@ github-open = $temp/gh-open.csv
 high-vuln = $output/high-reports.csv
 http-versions = $temp/http-over-time.csv
 lines = $temp/lines-person.csv
+lines-per-author = $temp/lines-per-author.csv
 lines-per-docs = $temp/lines-per-docs.csv
 lines-per-test = $temp/lines-per-test.csv
 loc = $temp/lines-over-time.csv
