@@ -21,7 +21,7 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics rotate 3600*24*365.25 nomirror
-set yrange [0:]
+#set yrange [0:]
 
 # set the format of the dates on the x axis
 set format x "%Y"
