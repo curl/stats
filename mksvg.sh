@@ -101,6 +101,9 @@ gnuplot -c stats/contributors-over-time.plot > $output/contributors-over-time.sv
 perl stats/authors.pl > $temp/authors.csv
 gnuplot -c stats/authors.plot > $output/authors.svg
 
+perl stats/authorremains.pl > $temp/authorremains.csv
+gnuplot -c stats/authorremains.plot > $output/authorremains.svg
+
 perl stats/todo-over-time.pl > $temp/todo-over-time.csv
 gnuplot -c stats/todo-over-time.plot > $output/todo-over-time.svg
 
@@ -226,6 +229,7 @@ api-calls = $output/API-calls-over-time.svg
 authors = $output/authors.svg
 authors-per-month = $output/authors-per-month.svg
 authors-per-year = $output/authors-per-year.svg
+authorremains = $output/authorremains.svg
 backends = $output/backends-over-time.svg
 bugbounty = $output/bugbounty-over-time.svg
 bugbounty-amounts = $output/bugbounty-amounts.svg
@@ -294,6 +298,7 @@ api-calls = $temp/API-calls-over-time.csv
 authors = $temp/authors.csv
 authors-per-month = $temp/authors-per-month.csv
 authors-per-year = $temp/authors-per-year.csv
+authorremains = $temp/authorremains.csv
 bugbounty = $temp/bugbounty-over-time.csv
 bugbounty-amounts = $temp/bugbounty-amounts.csv
 bugfix-frequency = $temp/bugfix-frequency.csv

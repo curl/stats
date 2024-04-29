@@ -26,4 +26,4 @@ set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
 set datafile separator ";"
-plot 'tmp/authorremains.csv' using 1:2 with lines linestyle 1 title "Remaining authors"
+plot 'tmp/authorremains.csv' using 1:2 with lines linestyle 1 title ""
