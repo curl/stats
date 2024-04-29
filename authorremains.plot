@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Authors with code left in product code" font ",48"
+set title "Authors with code left in product code\n{/*0.6 at least one line attributed to them by git blame -CCC in src/, lib/ or include/}" font ",48"
 # where's the legend
 set key top left
 
@@ -11,11 +11,7 @@ set key top left
 set ylabel "Number of authors"
 
 set style line 1 \
-    linecolor rgb '#0060ad' \
-    linetype 1 linewidth 3
-
-set style line 2 \
-    linecolor rgb '#00c0ad' \
+    linecolor rgb '#8060ad' \
     linetype 1 linewidth 3
 
 set grid
@@ -30,5 +26,4 @@ set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
 set datafile separator ";"
-plot 'tmp/authorremains.csv' using 1:2 with lines linestyle 1 title "Remaining authors", \
- 'tmp/authorremains.csv' using 1:3 with lines linestyle 2 title "Former authors"
+plot 'tmp/authorremains.csv' using 1:2 with lines linestyle 1 title "Remaining authors"
