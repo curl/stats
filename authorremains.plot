@@ -42,7 +42,7 @@ set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
 set datafile separator ";"
-plot 'tmp/authorremains.csv' using 1:2 with lines linestyle 1 title "at least one line", \
+plot 'tmp/authorremains.csv' using 1:2 with lines linestyle 1 title "one line or more", \
  'tmp/authorremains.csv' using 1:3 with lines linestyle 2 title "10 lines or more", \
  'tmp/authorremains.csv' using 1:4 with lines linestyle 3 title "100 lines or more", \
  'tmp/authorremains.csv' using 1:5 with lines linestyle 4 title "1,000 lines or more", \
