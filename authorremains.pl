@@ -262,7 +262,7 @@ CACHE
     ;
 
 foreach my $t (sort sortthem @releases) {
-    if(num($t) <= 0) {
+    if(num($t) <= 80701) {
         next;
     }
     my $d = tag2date($t);
