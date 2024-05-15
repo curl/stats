@@ -2,12 +2,12 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Lines of libcurl code per function use" font ",48"
+set title "Function calls per KLOC" font ",48"
 # where's the legend
-set key top left
+set key top center
 
 # Identify the axes
-set ylabel "Lines of code per function (excl comments)"
+set ylabel "Functions calls per KLOC (excl comments)"
 
 set style line 1 \
     linecolor rgb '#c060ad' \
@@ -27,8 +27,8 @@ set xdata time
 # set the format of the dates on the x axis
 set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
-set xrange ["2010-01-01":]
 unset mxtics
 set datafile separator ";"
-plot 'tmp/cpy-over-time.csv' using 1:2 with lines linestyle 1 title "lines of code per (mem|str|strn)cpy", \
- 'tmp/cpy-over-time.csv' using 1:4 with lines linestyle 2 title "lines of code per (re|m|c)alloc"
+plot 'tmp/cpy-over-time.csv' using 1:2 with lines linestyle 1 title "(mem|str|strn)cpy", \
+ 'tmp/cpy-over-time.csv' using 1:4 with lines linestyle 2 title "(re|m|c)alloc"
+ 
