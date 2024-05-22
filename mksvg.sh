@@ -86,6 +86,9 @@ gnuplot -c stats/50-percent.plot > $output/50-percent.svg
 perl stats/comments.pl > $temp/comments.csv
 gnuplot -c stats/comments.plot > $output/comments.svg
 
+perl stats/filesize-over-time.pl > $temp/filesize-over-time.csv
+gnuplot -c stats/filesize-over-time.plot > $output/filesize-over-time.svg
+
 perl stats/setopts-over-time.pl | cut '-d;' -f2- > $temp/setopts-over-time.csv
 gnuplot -c stats/setopts-over-time.plot > $output/setopts-over-time.svg
 
@@ -257,6 +260,7 @@ deltaloc = $output/lines-per-month.svg
 docs = $output/docs-over-time.svg
 examples = $output/examples-over-time.svg
 files = $output/files-over-time.svg
+filesize = $output/filesize-over-time.svg
 firsttimers = $output/firsttimers.svg
 fixtime = $output/cve-fixtime.svg
 func-calls = $output/cpy-over-time.svg
@@ -326,6 +330,7 @@ deltaloc = $temp/lines-per-month.csv
 docs = $temp/docs-over-time.csv
 examples = $temp/examples-over-time.csv
 files = $temp/files-over-time.csv
+filesize = $temp/filesize-over-time.csv
 firsttimers = $temp/firsttimers.csv
 fixtime = $temp/cve-fixtime.csv
 func-calls = $output/cpy-over-time.csv
