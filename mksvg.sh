@@ -203,9 +203,9 @@ gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
 perl stats/plotdivision.pl $temp/docs-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/lines-per-docs.csv
 gnuplot -c stats/lines-per-docs.plot > $output/lines-per-docs.svg
 
-# lines of code per test case
+# number of tests per KLOC
 
-perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/tests-over-time.csv 0:1 1:2 > $temp/lines-per-test.csv
+perl stats/plotdivision.pl $temp/tests-over-time.csv $temp/lines-over-time.csv  1:2 0:1 1000 > $temp/lines-per-test.csv
 gnuplot -c stats/lines-per-test.plot > $output/lines-per-test.svg
 
 # known vulnerability per KLOC
