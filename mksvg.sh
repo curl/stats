@@ -213,10 +213,10 @@ gnuplot -c stats/lines-per-test.plot > $output/lines-per-test.svg
 perl stats/plotdivision.pl $temp/vulns-releases.csv $temp/lines-over-time.csv 0:2 0:1 1000 > $temp/knownvulns-per-line.csv
 gnuplot -c stats/knownvulns-per-line.plot > $output/knownvulns-per-line.svg
 
-# lines of code per amount of commit authors and contributors
+# authors and contributors per KLOC
 
-perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/authors.csv 0:1 0:2 > $temp/lines-per-author.csv
-perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/contributors-over-time.csv 0:1 0:1 > $temp/lines-per-contributor.csv
+perl stats/plotdivision.pl $temp/authors.csv $temp/lines-over-time.csv 0:2 0:1 1000 > $temp/lines-per-author.csv
+perl stats/plotdivision.pl $temp/contributors-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/lines-per-contributor.csv
 gnuplot -c stats/lines-per-author.plot > $output/lines-per-author.svg
 
 # per contributor
