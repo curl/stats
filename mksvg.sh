@@ -197,10 +197,10 @@ gnuplot -c stats/releases-per-year.plot > $output/releases-per-year.svg
 perl stats/cpy-over-time.pl > $temp/cpy-over-time.csv
 gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
 
-# lines of code per docs line
+# lines of docs per KLOC
 #
 # uses already generated CSV files to make a new one
-perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/docs-over-time.csv 0:1 0:1 > $temp/lines-per-docs.csv
+perl stats/plotdivision.pl $temp/docs-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/lines-per-docs.csv
 gnuplot -c stats/lines-per-docs.plot > $output/lines-per-docs.svg
 
 # lines of code per test case
