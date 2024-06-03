@@ -219,8 +219,10 @@ perl stats/plotdivision.pl $temp/authors.csv $temp/lines-over-time.csv 0:2 0:1 1
 perl stats/plotdivision.pl $temp/contributors-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/lines-per-contributor.csv
 gnuplot -c stats/lines-per-author.plot > $output/lines-per-author.svg
 
-# per contributor
+# remaining authors per KLOC
 
+perl stats/plotdivision.pl $temp/authorremains.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/remains-per-kloc.csv
+gnuplot -c stats/remains-per-kloc.plot > $output/remains-per-kloc.svg
 
 cat >stats.list <<EOF
 95-percent = $output/95-percent.svg
@@ -257,6 +259,7 @@ cve-time = $output/cve-age.svg
 daniel-vs-rest = $output/daniel-vs-rest.svg
 days-per-release = $output/days-per-release.svg
 deltaloc = $output/lines-per-month.svg
+density = $output/remains-per-kloc.svg
 docs = $output/docs-over-time.svg
 examples = $output/examples-over-time.svg
 files = $output/files-over-time.svg
@@ -327,6 +330,7 @@ cve-time = $temp/cve-age.csv
 daniel-vs-rest = $temp/daniel-vs-rest.csv
 days-per-release = $temp/days-per-release.csv
 deltaloc = $temp/lines-per-month.csv
+density = $temp/remains-per-kloc.csv
 docs = $temp/docs-over-time.csv
 examples = $temp/examples-over-time.csv
 files = $temp/files-over-time.csv
