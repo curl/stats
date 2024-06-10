@@ -1,10 +1,5 @@
 #!/usr/bin/perl
 
-print <<MOO
-1998-03-20;;0
-MOO
-    ;
-
 open(T, "<stats/ssh-history.md");
 while(<T>) {
     chomp;
