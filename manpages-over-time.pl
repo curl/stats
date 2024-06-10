@@ -31,7 +31,7 @@ sub manpages {
     my $manpages = 0;
 
     if(num($tag) >= 80500) {
-        open(G, "git show curl-8_5_0:docs/libcurl/Makefile.inc curl-8_5_0:docs/libcurl/opts/Makefile.inc | grep '\.3'|");
+        open(G, "git show $tag:docs/libcurl/Makefile.inc $tag:docs/libcurl/opts/Makefile.inc | grep '\.3'|");
         my @p = <G>;
         close(G);
         $manpages = scalar(@p) + 3;
