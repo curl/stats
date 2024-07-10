@@ -57,6 +57,9 @@ gnuplot -c stats/http-over-time.plot > $output/http-over-time.svg
 perl stats/daniel-vs-rest.pl > $temp/daniel-vs-rest.csv
 gnuplot -c stats/daniel-vs-rest.plot > $output/daniel-vs-rest.svg
 
+perl stats/daniel-commit-share.pl > $temp/daniel-commit-share.csv
+gnuplot -c stats/daniel-commit-share.plot > $output/daniel-commit-share.svg
+
 perl stats/authors-per-year.pl > $temp/authors-per-year.csv
 gnuplot -c stats/authors-per-year.plot > $output/authors-per-year.svg
 
@@ -256,6 +259,7 @@ contrib-tail = $output/contrib-tail.svg
 contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
 cve-time = $output/cve-age.svg
+daniel-commits = $output/daniel-commit-share.svg
 daniel-vs-rest = $output/daniel-vs-rest.svg
 days-per-release = $output/days-per-release.svg
 deltaloc = $output/lines-per-month.svg
@@ -327,6 +331,7 @@ contrib-tail = $temp/contrib-tail.csv
 contributors = $temp/contributors-over-time.csv
 coreteam-per-year = $temp/coreteam-per-year.csv
 cve-time = $temp/cve-age.csv
+daniel-commits = $temp/daniel-commit-share.csv
 daniel-vs-rest = $temp/daniel-vs-rest.csv
 days-per-release = $temp/days-per-release.csv
 deltaloc = $temp/lines-per-month.csv
