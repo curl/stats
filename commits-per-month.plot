@@ -4,7 +4,7 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "Commits per month" font ",48"
 # where's the legend
-set key top right
+set key top center
 
 # Identify the axes
 #set xlabel "Time"
@@ -39,6 +39,6 @@ set xtics 3600*24*365.25 nomirror rotate
 set format x "%Y"
 set datafile separator ";"
 
-plot 'tmp/commits-per-month.csv' using 1:2 with boxes fc "#c0c0c0" title "Monthly commits", \
+plot 'tmp/commits-per-month.csv' using 1:2 with boxes fc "#80c080" title "Monthly commits", \
  'tmp/commits-per-month.csv' using 1:4 with lines linestyle 3 title "All-time average", \
  'tmp/commits-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average"
