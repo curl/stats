@@ -301,8 +301,8 @@ EOF
 
 # Use the same names but point to the used CSV/data/input file
 cat >stats.data <<EOF
-95-percent = $temp/80-percent.csv
-90-percent = $temp/80-percent.csv
+95-percent = $temp/95-percent.csv
+90-percent = $temp/90-percent.csv
 80-percent = $temp/80-percent.csv
 70-percent = $temp/70-percent.csv
 60-percent = $temp/60-percent.csv
