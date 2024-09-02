@@ -200,6 +200,11 @@ gnuplot -c stats/releases-per-year.plot > $output/releases-per-year.svg
 perl stats/cpy-over-time.pl > $temp/cpy-over-time.csv
 gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
 
+# Added LOC per LOC still present
+perl stats/addedcode.pl > $temp/addedcode.csv
+perl stats/plotdivision.pl $temp/addedcode.csv $temp/lines-over-time.csv  0:1 0:1 > $temp/added-per-line.csv
+gnuplot -c stats/added-per-line.plot > $output/added-per-line.svg
+
 # lines of docs per KLOC
 #
 # uses already generated CSV files to make a new one
@@ -234,6 +239,7 @@ cat >stats.list <<EOF
 70-percent = $output/70-percent.svg
 60-percent = $output/60-percent.svg
 50-percent = $output/50-percent.svg
+added-per-line = $output/added-per-line.svg
 api-calls = $output/API-calls-over-time.svg
 authors = $output/authors.svg
 authors-per-month = $output/authors-per-month.svg
@@ -307,6 +313,7 @@ cat >stats.data <<EOF
 70-percent = $temp/70-percent.csv
 60-percent = $temp/60-percent.csv
 50-percent = $temp/50-percent.csv
+added-per-line = $temp/added-per-line.csv
 api-calls = $temp/API-calls-over-time.csv
 authors = $temp/authors.csv
 authors-per-month = $temp/authors-per-month.csv
