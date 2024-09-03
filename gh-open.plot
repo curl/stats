@@ -35,5 +35,5 @@ set xrange ["2015-03-01":]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/gh-open.csv' using 1:2 with lines linestyle 1 title "Open at end of day", \
+plot 'tmp/gh-open.csv' using 1:2 with lines linestyle 1 title "Open that day", \
  'tmp/gh-open.csv' using 1:3 with lines linestyle 2 title "90 day average"
