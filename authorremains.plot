@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Authors with code left in product code\n{/*0.6lines attributed to them by git blame -CCC in src/, lib/ or include/}" font ",48"
+set title "Authors with code left in product code\n{/*0.6lines attributed to them by git blame -CCC in product code}" font ",48"
 # where's the legend
 set key top left
 
