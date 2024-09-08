@@ -63,6 +63,9 @@ gnuplot -c stats/daniel-commit-share.plot > $output/daniel-commit-share.svg
 perl stats/authors-per-year.pl > $temp/authors-per-year.csv
 gnuplot -c stats/authors-per-year.plot > $output/authors-per-year.svg
 
+perl stats/authors-active.pl > $temp/authors-active.csv
+gnuplot -c stats/authors-active.plot > $output/authors-per-year.svg
+
 perl stats/commits-per-year.pl > $temp/commits-per-year.csv
 gnuplot -c stats/commits-per-year.plot > $output/commits-per-year.svg
 
