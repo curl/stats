@@ -64,7 +64,7 @@ perl stats/authors-per-year.pl > $temp/authors-per-year.csv
 gnuplot -c stats/authors-per-year.plot > $output/authors-per-year.svg
 
 perl stats/authors-active.pl > $temp/authors-active.csv
-gnuplot -c stats/authors-active.plot > $output/authors-per-year.svg
+gnuplot -c stats/authors-active.plot > $output/authors-active.svg
 
 perl stats/commits-per-year.pl > $temp/commits-per-year.csv
 gnuplot -c stats/commits-per-year.plot > $output/commits-per-year.svg
@@ -246,6 +246,7 @@ added-per-line = $output/added-per-line.svg
 api-calls = $output/API-calls-over-time.svg
 authors = $output/authors.svg
 authors-per-month = $output/authors-per-month.svg
+authors-active = $output/authors-active.svg
 authors-per-year = $output/authors-per-year.svg
 authorremains = $output/authorremains.svg
 authorremains-top = $output/authorremains-top.svg
@@ -320,6 +321,7 @@ added-per-line = $temp/added-per-line.csv
 api-calls = $temp/API-calls-over-time.csv
 authors = $temp/authors.csv
 authors-per-month = $temp/authors-per-month.csv
+authors-active = $temp/authors-active.csv
 authors-per-year = $temp/authors-per-year.csv
 authorremains = $temp/authorremains.csv
 authorremains-top = $temp/authorremains.csv
