@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Total commits done per month" font ",48"
+set title "Commits per month" font ",48"
 # where's the legend
 set key top center
 
