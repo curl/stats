@@ -14,6 +14,9 @@ gnuplot -c stats/date-of-year.plot > $output/date-of-year.svg
 perl stats/month-of-year.pl > $temp/month-of-year.csv
 gnuplot -c stats/month-of-year.plot > $output/month-of-year.svg
 
+perl stats/weekday-of-year.pl > $temp/weekday-of-year.csv
+gnuplot -c stats/weekday-of-year.plot > $output/weekday-of-year.svg
+
 perl stats/contrib-tail.pl > $temp/contrib-tail.csv
 gnuplot -c stats/contrib-tail.plot > $output/contrib-tail.svg
 
@@ -315,6 +318,7 @@ vulns-per-kloc = $output/knownvulns-per-line.svg
 vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
 vulns-releases = $output/vulns-releases.svg
+weekly-commits = $output/weekday-of-year.svg
 EOF
 
 # Use the same names but point to the used CSV/data/input file
@@ -392,6 +396,7 @@ vulns-per-kloc = $temp/knownvulns-per-line.csv
 vulns-per-year = $temp/vulns-per-year.csv
 vulns-plot = $temp/vulns-over-time.csv
 vulns-releases = $temp/vulns-releases.csv
+weekly-commits = $temp/weekday-of-year.csv
 EOF
 
 # make the dir world readable
