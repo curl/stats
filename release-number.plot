@@ -11,9 +11,9 @@ set key top left
 set ylabel "Number of curl releases"
 
 set style line 1 \
-    linecolor rgb '#a0303d' \
+    linecolor rgb '#c0303d' \
     linetype 1 linewidth 2 \
-    pointtype 7 pointsize 0.6
+    pointtype 7 pointsize 0.4
 
 set grid
 unset border
