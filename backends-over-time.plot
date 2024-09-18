@@ -64,10 +64,10 @@ plot 'tmp/tls-over-time.csv' using 1:3 with linespoints linestyle 1 title "TLS",
  'tmp/h3-over-time.csv' using 1:3 with linespoints linestyle 3 title "HTTP/3", \
  'tmp/idn-over-time.csv' using 1:3 with linespoints linestyle 6 title "IDN", \
  'tmp/resolver-over-time.csv' using 1:3 with linespoints linestyle 7 title "resolver", \
-'tmp/tls-over-time.csv' using 1:3:2 with labels center offset -2,1 font ",14" rotate by -22 tc "#0060ad" title "", \
- 'tmp/ssh-over-time.csv' using 1:3:2 with labels offset -2,1 font ",14" rotate by -22 tc "#808080" title "", \
- 'tmp/h1-over-time.csv' using 1:3:2 with labels offset -3,0.4 font ",14" rotate by -22 tc "#c000c0" title "", \
- 'tmp/h2-over-time.csv' using 1:3:2 with labels offset -3,0.5 font ",14" rotate by -22 tc "#c00040" title "", \
- 'tmp/h3-over-time.csv' using 1:3:2 with labels offset -2,1 font ",14" rotate by -22 tc "#c0c080" title "", \
- 'tmp/idn-over-time.csv' using 1:3:2 with labels offset -1,1 font ",14" rotate by -22 tc "#900040" title "", \
- 'tmp/resolver-over-time.csv' using 1:3:2 with labels offset -1,1 font ",14" rotate by -22 tc "#300090" title ""
+'tmp/tls-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#0060ad" title "", \
+ 'tmp/ssh-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#808080" title "", \
+ 'tmp/h1-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#c000c0" title "", \
+ 'tmp/h2-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#c00040" title "", \
+ 'tmp/h3-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#c0c080" title "", \
+ 'tmp/idn-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#900040" title "", \
+ 'tmp/resolver-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#300090" title ""
