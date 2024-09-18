@@ -27,4 +27,4 @@ set xtics rotate 3600*24*365.25 nomirror
 set format x "%Y"
 set datafile separator ";"
 plot 'tmp/release-number.csv' using 1:3 with points linestyle 1 title "", \
- 'tmp/release-number.csv' using 1:3:2 every 7 with labels left offset 0.2,-0.2 font ",18" rotate by -45 tc "#00c000" title ""
+ 'tmp/release-number.csv' using 1:3:2 every 5 with labels left offset 0.2,-0.2 font ",18" rotate by -45 tc "#00c000" title ""
