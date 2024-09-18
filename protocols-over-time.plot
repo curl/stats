@@ -13,7 +13,7 @@ set xtics rotate 3600*24*365.25 nomirror
 
 set style line 1 \
     linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4 \
+    linetype 1 linewidth 2 \
     pointtype 6
 
 set grid
@@ -27,4 +27,4 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/protocols-over-time.csv' using 1:3 with linespoints linestyle 1 title "", 'tmp/protocols-over-time.csv' using 1:3:2 with labels offset -2,0.4 font ",18" tc "#ff0000" title ""
+plot 'tmp/protocols-over-time.csv' using 1:3 with linespoints linestyle 1 title "", 'tmp/protocols-over-time.csv' using 1:3:2 with labels right rotate by -22 offset -.5,0.2 font ",18" tc "#ff0000" title ""
