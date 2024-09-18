@@ -244,6 +244,10 @@ gnuplot -c stats/lines-per-author.plot > $output/lines-per-author.svg
 perl stats/plotdivision.pl $temp/authorremains.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/remains-per-kloc.csv
 gnuplot -c stats/remains-per-kloc.plot > $output/remains-per-kloc.svg
 
+# top-40 authors with production code remaining in master
+perl stats/top-remains.pl > $temp/top-remains.csv
+gnuplot -c stats/top-remains.plot > $output/top-remains.svg
+
 cat >stats.list <<EOF
 50-percent = $output/50-percent.svg
 60-percent = $output/60-percent.svg
@@ -314,6 +318,7 @@ symbols = $output/symbols-over-time.svg
 tests = $output/tests-over-time.svg
 third-parties = $output/3rdparty-over-time.svg
 todo = $output/todo-over-time.svg
+top40 = $output/top-remains.svg
 vulns-per-kloc = $output/knownvulns-per-line.svg
 vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
@@ -392,6 +397,7 @@ symbols = $temp/symbols-over-time.csv
 tests = $temp/tests-over-time.csv
 third-parties = $temp/3rdparty-over-time.csv
 todo = $temp/todo-over-time.csv
+top40 = $temp/top-remains.csv
 vulns-per-kloc = $temp/knownvulns-per-line.csv
 vulns-per-year = $temp/vulns-per-year.csv
 vulns-plot = $temp/vulns-over-time.csv
