@@ -8,7 +8,7 @@ set key top center
 
 # Identify the axes
 #set xlabel "Years"
-set ylabel "Number of releases"
+#set ylabel "Number of releases"
 #set grid ytics mytics
 unset border
 
