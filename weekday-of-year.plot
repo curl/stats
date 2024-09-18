@@ -25,4 +25,4 @@ set yrange [0:]
 set datafile separator ";"
 
 plot 'tmp/weekday-of-year.csv' using 1:3 with boxes fc "#000060" title "", \
- 'tmp/weekday-of-year.csv' using 1:3:2 with labels title "" offset 0,-4.5 font ", 36" rotate tc lt 5
+ 'tmp/weekday-of-year.csv' using 1:3:2 with labels title "" offset 0,-.5 font ", 36" rotate right tc lt 5
