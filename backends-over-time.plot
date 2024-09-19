@@ -12,37 +12,37 @@ set ylabel "Number of backends"
 set style line 1 \
     linecolor rgb '#0060ad' \
     linetype 2 linewidth 1 \
-    pointtype 7
+    pointtype 7 pointsize 0.5
 
 set style line 2 \
     linecolor rgb '#808080' \
     linetype 1 linewidth 1 \
-    pointtype 7
+    pointtype 7 pointsize 0.5
 
 set style line 3 \
     linecolor rgb '#c0c080' \
     linetype 1 linewidth 1 \
-    pointtype 7
+    pointtype 7 pointsize 0.5
 
 set style line 4 \
     linecolor rgb '#c000c0' \
     linetype 1 linewidth 1 \
-    pointtype 7
+    pointtype 7 pointsize 0.5
 
 set style line 5 \
     linecolor rgb '#c00040' \
     linetype 1 linewidth 1 \
-    pointtype 11
+    pointtype 11 pointsize 0.5
 
 set style line 6 \
     linecolor rgb '#900040' \
     linetype 1 linewidth 1 \
-    pointtype 17
+    pointtype 17 pointsize 0.5
 
 set style line 7 \
     linecolor rgb '#300090' \
     linetype 1 linewidth 1 \
-    pointtype 17
+    pointtype 17 pointsize 0.5
 
 set grid
 unset border
