@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Function calls per KLOC" font ",48"
+set title "Memory function call density" font ",48"
 # where's the legend
 set key bottom center
 
