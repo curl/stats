@@ -2,13 +2,13 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Manpages" font ",48"
+set title "Man pages" font ",48"
 # where's the legend
 set key top left
 
 # Identify the axes
 #set xlabel "Time"
-set ylabel "Number of manpages"
+set ylabel "Number of man pages"
 
 set style line 1 \
     linecolor rgb '#0060ad' \
