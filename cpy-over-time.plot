@@ -27,6 +27,8 @@ set style line 4 \
     linecolor rgb '#0040ff' \
     linetype 1 dt "_" linewidth 1
 
+set ytics nomirro
+
 set grid
 unset border
 
@@ -40,7 +42,7 @@ set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
 set datafile separator ";"
-plot 'tmp/cpy-over-time.csv' using 1:3 with lines linestyle 3 title "(mem|str|strn)cpy calls in total" axis x1y2, \
-'tmp/cpy-over-time.csv' using 1:5 with lines linestyle 4 title "(re|m|c)alloc calls in total" axis x1y2, \
-'tmp/cpy-over-time.csv' using 1:2 with lines linestyle 1 title "(mem|str|strn)cpy/KLOC", \
- 'tmp/cpy-over-time.csv' using 1:4 with lines linestyle 2 title "(re|m|c)alloc/KLOC",
+plot 'tmp/cpy-over-time.csv' using 1:3 with lines linestyle 3 title "(mem|str|strn)cpy total count" axis x1y2, \
+'tmp/cpy-over-time.csv' using 1:5 with lines linestyle 4 title "(re|m|c)alloc total count" axis x1y2, \
+'tmp/cpy-over-time.csv' using 1:2 with lines linestyle 1 title "(mem|str|strn)cpy density", \
+ 'tmp/cpy-over-time.csv' using 1:4 with lines linestyle 2 title "(re|m|c)alloc density",
