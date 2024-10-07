@@ -249,7 +249,7 @@ perl stats/top-remains.pl > $temp/top-remains.csv
 gnuplot -c stats/top-remains.plot > $output/top-remains.svg
 
 # CVE severity pie chart
-perl stats/cve-pie-chart.pl > $temp/cve-pie-chart.csv
+perl stats/cve-pie-chart.pl $webroot > $temp/cve-pie-chart.csv
 gnuplot -c stats/cve-pie-chart.plot > $output/cve-pie-chart.svg
 
 cat >stats.list <<EOF
