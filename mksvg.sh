@@ -248,6 +248,10 @@ gnuplot -c stats/remains-per-kloc.plot > $output/remains-per-kloc.svg
 perl stats/top-remains.pl > $temp/top-remains.csv
 gnuplot -c stats/top-remains.plot > $output/top-remains.svg
 
+# CVE severity pie chart
+perl stats/cve-pie-chart.pl > $temp/cve-pie-chart.csv
+gnuplot -c stats/cve-pie-chart.plot > $output/cve-pie-chart.svg
+
 cat >stats.list <<EOF
 50-percent = $output/50-percent.svg
 60-percent = $output/60-percent.svg
@@ -281,6 +285,7 @@ contrib-tail = $output/contrib-tail.svg
 contribs-release = $output/contributors-per-release.svg
 contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
+cve-pie = $output/cve-pie-chart.svg
 cve-time = $output/cve-age.svg
 daily-commits = $output/date-of-year.svg
 daniel-commits = $output/daniel-commit-share.svg
@@ -360,6 +365,7 @@ contrib-tail = $temp/contrib-tail.csv
 contribs-release = $temp/contributors-per-release.csv
 contributors = $temp/contributors-over-time.csv
 coreteam-per-year = $temp/coreteam-per-year.csv
+cve-pie = $temp/cve-pie-chart.csv
 cve-time = $temp/cve-age.csv
 daily-commits = $temp/date-of-year.csv
 daniel-commits = $temp/daniel-commit-share.csv
