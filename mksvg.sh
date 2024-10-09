@@ -212,6 +212,9 @@ gnuplot -c stats/releases-per-year.plot > $output/releases-per-year.svg
 perl stats/cpy-over-time.pl > $temp/cpy-over-time.csv
 gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
 
+perl stats/strncpy-over-time.pl > $temp/strncpy-over-time.csv
+gnuplot -c stats/strncpy-over-time.plot > $output/strncpy-over-time.svg
+
 # Added LOC per LOC still present
 perl stats/addedcode.pl > $temp/addedcode.csv
 perl stats/plotdivision.pl $temp/addedcode.csv $temp/lines-over-time.csv  0:1 0:1 > $temp/added-per-line.csv
@@ -319,6 +322,7 @@ releases = $output/release-number.svg
 releases-per-year = $output/releases-per-year.svg
 setopts = $output/setopts-over-time.svg
 sev-per-year = $output/sev-per-year.svg
+strncpy = $output/strncpy-over-time.svg
 symbols = $output/symbols-over-time.svg
 tests = $output/tests-over-time.svg
 third-parties = $output/3rdparty-over-time.svg
@@ -399,6 +403,7 @@ releases = $temp/release-number.csv
 releases-per-year = $temp/releases-per-year.csv
 setopts = $temp/setopts-over-time.csv
 sev-per-year = $temp/sev-per-year.csv
+strncpy = $temp/strncpy-over-time.csv
 symbols = $temp/symbols-over-time.csv
 tests = $temp/tests-over-time.csv
 third-parties = $temp/3rdparty-over-time.csv
