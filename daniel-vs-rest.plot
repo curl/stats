@@ -29,7 +29,7 @@ unset border
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set ytics 10
+set ytics 10 nomirror
 
 set yrange [0:]
 set xrange ["1999-10-01":]
