@@ -18,7 +18,7 @@ set grid
 unset border
 
 unset xtics
-set ytics out
+set ytics out nomirror
 set yrange [0:]
 
 # set the format of the dates on the x axis
