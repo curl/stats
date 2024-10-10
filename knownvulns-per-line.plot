@@ -2,13 +2,13 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Number of vulnerabilities per KLOC" font ",48"
+set title "Vulnerability density" font ",48"
 # where's the legend
 set key top left
 
 # Identify the axes
 #set xlabel "Time"
-set ylabel "number of known CVEs present / KLOC"
+set ylabel "Number of known CVEs present / KLOC"
 
 set style line 1 \
     linecolor rgb '#4000ff' \
