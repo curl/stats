@@ -12,14 +12,15 @@ set ylabel "Number of tests"
 
 set y2label "Lines of code" tc "#40c040"
 set y2tics
+set ytics nomirror
 
 set style line 1 \
-    linecolor rgb '#0060ad' \
+    linecolor rgb '#00a000' \
     linetype 1 linewidth 4
 
 set style line 2 \
-    linecolor rgb '#40c040' \
-    linetype 2 linewidth 2
+    linecolor rgb '#a00000' \
+    linetype 2 dt "_" linewidth 2
 
 set grid
 unset border
