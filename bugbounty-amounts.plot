@@ -22,6 +22,9 @@ set style line 1 \
     linecolor rgb '#ff8040' \
     linetype 1 linewidth 4
 
+set pixmap 1 "stats/curl-symbol-light.png"
+set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
+
 set datafile separator ";"
 plot 'tmp/bugbounty-amounts.csv' using 1:4 with boxes title 'Individual reward' lc "#80c040", \
  'tmp/bugbounty-amounts.csv' using 1:5 with lines title '5-reward average' linestyle 1, \

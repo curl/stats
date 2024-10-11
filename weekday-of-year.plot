@@ -21,6 +21,9 @@ unset xtics
 set ytics out nomirror
 set yrange [0:]
 
+set pixmap 1 "stats/curl-symbol-light.png"
+set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
+
 # set the format of the dates on the x axis
 set datafile separator ";"
 
