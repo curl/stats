@@ -42,7 +42,7 @@ gnuplot -c stats/files-over-time.plot > $output/files-over-time.svg
 perl stats/bugfix-frequency.pl $webroot > $temp/bugfix-frequency.csv
 gnuplot -c stats/bugfix-frequency.plot > $output/bugfix-frequency.svg
 
-perl stats/API-calls-over-time.pl | cut "-d;" -f2- > $temp/API-calls-over-time.csv
+perl stats/API-calls-over-time.pl > $temp/API-calls-over-time.csv
 gnuplot -c stats/API-calls-over-time.plot > $output/API-calls-over-time.svg
 
 perl stats/protocols-over-time.pl > $temp/protocols-over-time.csv

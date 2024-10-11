@@ -70,7 +70,7 @@ foreach my $t (sort sortthem @releases) {
         # prettyfy
         $t =~ s/_/./g;
         $t =~ s/-/ /g;
-        print "$t;$d;$c\n";
+        print "$d;$c\n";
     }
 }
 
@@ -79,4 +79,4 @@ chomp $t;
 my $c = readme2apicount($t);
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
     localtime(time);
-printf "now;%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $c;
+printf "%04d-%02d-%02d;%d\n", $year + 1900, $mon + 1, $mday, $c;
