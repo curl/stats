@@ -110,7 +110,7 @@ gnuplot -c stats/setopts-over-time.plot > $output/setopts-over-time.svg
 perl stats/days-per-release.pl $webroot > $temp/days-per-release.csv
 gnuplot -c stats/days-per-release.plot > $output/days-per-release.svg
 
-perl stats/cmdline-options-over-time.pl | cut '-d;' -f2- > $temp/cmdline-options-over-time.csv
+perl stats/cmdline-options-over-time.pl > $temp/cmdline-options-over-time.csv
 gnuplot -c stats/cmdline-options-over-time.plot > $output/cmdline-options-over-time.svg
 
 perl stats/contributors-over-time.pl | cut '-d;' -f2- > $temp/contributors-over-time.csv
