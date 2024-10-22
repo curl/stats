@@ -215,6 +215,10 @@ gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
 perl stats/strncpy-over-time.pl > $temp/strncpy-over-time.csv
 gnuplot -c stats/strncpy-over-time.plot > $output/strncpy-over-time.svg
 
+perl stats/complexity.pl > $temp/complexity.csv
+gnuplot -c stats/complexity.plot > $output/complexity.svg
+gnuplot -c stats/funclen.plot > $output/funclen.svg
+
 # Added LOC per LOC still present
 perl stats/addedcode.pl > $temp/addedcode.csv
 perl stats/plotdivision.pl $temp/addedcode.csv $temp/lines-over-time.csv  0:1 0:1 > $temp/added-per-line.csv
@@ -284,6 +288,7 @@ comments = $output/comments.svg
 commits = $output/commits-over-time.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
+complexity = $output/complexity.svg
 contrib-tail = $output/contrib-tail.svg
 contribs-release = $output/contributors-per-release.svg
 contributors = $output/contributors-over-time.svg
@@ -303,6 +308,7 @@ filesize = $output/filesize-over-time.svg
 firsttimers = $output/firsttimers.svg
 fixtime = $output/cve-fixtime.svg
 func-calls = $output/cpy-over-time.svg
+funclen = $output/funclen.svg
 github-age = $output/gh-age.svg
 github-fixes = $output/gh-fixes.svg
 github-monthly = $output/gh-monthly.svg
@@ -365,6 +371,7 @@ comments = $temp/comments.csv
 commits = $temp/commits-over-time.csv
 commits-per-month = $temp/commits-per-month.csv
 commits-per-year = $temp/commits-per-year.csv
+complexity = $temp/complexity.csv
 contrib-tail = $temp/contrib-tail.csv
 contribs-release = $temp/contributors-per-release.csv
 contributors = $temp/contributors-over-time.csv
@@ -384,6 +391,7 @@ filesize = $temp/filesize-over-time.csv
 firsttimers = $temp/firsttimers.csv
 fixtime = $temp/cve-fixtime.csv
 func-calls = $temp/cpy-over-time.csv
+funclen = $temp/complexity.csv
 github-age = $temp/gh-age.csv
 github-fixes = $temp/gh-fixes.csv
 github-monthly = $temp/gh-monthly.csv
