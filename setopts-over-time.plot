@@ -10,10 +10,12 @@ set key top left
 #set xlabel "Time"
 set ylabel "Number of options"
 set xtics rotate 3600*24*365.25 nomirror
+unset mxtics
+set ytics nomirror
 
 set style line 1 \
     linecolor rgb '#0060ad' \
-    linetype 1 linewidth 4 
+    linetype 1 linewidth 4
 
 set grid
 unset border
