@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Names listed in symbols-in-versions" font ",48"
+set title "Public symbols exposed in headers" font ",48"
 # where's the legend
 set key bottom right
 
@@ -21,6 +21,8 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics rotate 3600*24*365.25 nomirror out
+unset mxtics
+set ytics nomirror
 
 set yrange [0:]
 set xrange ["2009-03-01":]
