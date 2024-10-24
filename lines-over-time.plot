@@ -34,7 +34,8 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 # set the format of the dates on the x axis
 set format x "%Y"
-set xtics rotate 3600*24*365.25 nomirror
+set xtics rotate 3600*24*365.25 nomirror out
+set ytics nomirror
 unset mxtics
 set datafile separator ";"
 plot 'tmp/lines-over-time.csv' using 1:2 with lines linestyle 1 title "all product code", \
