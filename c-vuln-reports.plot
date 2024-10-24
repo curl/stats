@@ -23,9 +23,11 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 # set the format of the dates on the x axis
 set format x "%Y"
-set xtics rotate 3600*24*365.25 nomirror
-set ytics 10
+set xtics rotate 3600*24*365.25 nomirror out
+unset mxtics
+set ytics 10 nomirror
 
+set yrange [0:]
 set xrange ["2010-01-01":]
 
 set style line 1 \
@@ -34,7 +36,8 @@ set style line 1 \
 
 set style line 2 \
     linecolor rgb '#800080' \
-    linetype 2 linewidth 2
+    linetype 1 linewidth 2 \
+    pointtype 7 pointsize .3
 
 set style line 3 \
     linecolor rgb '#404040' \
@@ -47,7 +50,7 @@ set style line 4 \
     pointtype 7 pointsize .3
 
 set datafile separator ";"
-plot 'tmp/c-vuln-reports.csv' using 1:2 axis x1y2 with lines linestyle 2 title "Number of vulnerabilities", \
+plot 'tmp/c-vuln-reports.csv' using 1:2 axis x1y2 with linespoints linestyle 2 title "Number of vulnerabilities", \
  'tmp/c-vuln-reports.csv' using 1:3 axis x1y2 with linespoints linestyle 3 title "C mistakes", \
  'tmp/c-vuln-reports.csv' using 1:4 axis x1y2 with linespoints linestyle 4 title "Not C mistakes", \
  'tmp/c-vuln-reports.csv' using 1:5 with lines linestyle 1 title "C mistake share"
