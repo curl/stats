@@ -32,6 +32,7 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
+set ytics nomirror
 set datafile separator ";"
 plot 'tmp/authorremains.csv' using 1:5 with lines linestyle 4 title "1,000 lines or more", \
  'tmp/authorremains.csv' using 1:6 with lines linestyle 5 title "10,000 lines or more"

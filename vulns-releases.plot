@@ -24,6 +24,7 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics 3600*24*365.25 nomirror rotate
+unset mxtics
 set ytics 5
 
 set boxwidth 0.8 relative
