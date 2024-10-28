@@ -36,7 +36,9 @@ set yrange [0:]
 
 dayoffset = '30'
 set xrange ["2009-06-".dayoffset:]
-set xtics 3600*24*365.25 nomirror
-set mxtics 1
+set xtics rotate 3600*24*365.25 nomirror out
+unset mxtics
+set ytics nomirror
 
-plot 'tmp/authors-per-year.csv' using 1:2 with boxes title "All authors" fc 'green', 'tmp/authors-per-year.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "First-time authors"
+plot 'tmp/authors-per-year.csv' using 1:2 with boxes title "All authors" fc 'green', 'tmp/authors-per-year.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "First-time authors", \
+ 'tmp/authors-per-year.csv' using 1:2:2 with labels title "" offset 0,.5 font ", 20" tc lt 1
