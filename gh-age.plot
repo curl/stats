@@ -37,7 +37,8 @@ set xdata time
 set yrange [0:]
 set xrange ["2014-11-30":]
 set xtics 3600*24*365.25 nomirror
-set mxtics 12
+set ytics nomirror
+unset mxtics
 
 set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind

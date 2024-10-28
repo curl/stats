@@ -29,7 +29,8 @@ unset border
 set timefmt "%Y-%m-%d %H:%M:%S"
 set xdata time
 set xtics 3600*24*365.25 nomirror
-set mxtics 12
+unset mxtics
+set ytics nomirror
 
 #set mytics 10
 
