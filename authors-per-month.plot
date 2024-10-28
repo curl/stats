@@ -21,6 +21,8 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics rotate 3600*24*365.25 nomirror out
+set ytics nomirror
+unset mxtics
 
 set xrange ["2010-01-01":]
 set yrange [0:]
