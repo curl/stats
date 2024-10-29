@@ -4,7 +4,7 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "Daniel Stenberg's share of authored commits" font ",48"
 # where's the legend
-set key top right font ",20"
+set key top right horizontal
 
 # Identify the axes
 #set xlabel "Time"
