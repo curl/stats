@@ -4,7 +4,7 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "Daniel Stenberg's share of committing changes\n{/*0.6separate from actually authoring the change}" font ",48"
 # where's the legend
-set key top center font ",20"
+set key top right horizontal
 
 # Identify the axes
 #set xlabel "Time"
@@ -33,7 +33,7 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 # set the format of the dates on the x axis
 set format x "%Y"
-set xtics rotate 3600*24*365.25 out
+set xtics rotate 3600*24*365.25 out nomirror
 unset mxtics
 
 set datafile separator ";"
