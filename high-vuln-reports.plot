@@ -19,11 +19,13 @@ set timefmt "%Y-%m-%d"
 set xdata time
 
 set pixmap 1 "stats/curl-symbol-light.png"
-set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
+set pixmap 1 at screen 0.15, 0.25 width screen 0.30 behind
 
 # set the format of the dates on the x axis
 set format x "%Y"
-set xtics rotate 3600*24*365.25 nomirror
+set xtics rotate 3600*24*365.25 nomirror out
+unset mxtics
+set ytics nomirror
 
 set xrange ["2010-01-01":]
 set y2range [0:]
@@ -51,8 +53,8 @@ set style line 4 \
     pointtype 7 pointsize .5
 
 plot \
- 'tmp/high-vuln-reports.csv' using 1:3 with linespoints linestyle 1 title "Severity Low reports", \
- 'tmp/high-vuln-reports.csv' using 1:4 with linespoints linestyle 2 title "Severity Medium reports", \
- 'tmp/high-vuln-reports.csv' using 1:5 with linespoints linestyle 3 title "Severity High reports", \
- 'tmp/high-vuln-reports.csv' using 1:6 with linespoints linestyle 4 title "Severity Critical reports", \
- 'tmp/high-vuln-reports.csv' using 1:7 with lines lc "#000000" lw 3 title "% share reported High or Critical"
+ 'tmp/high-vuln-reports.csv' using 1:3 with linespoints linestyle 1 title "Low", \
+ 'tmp/high-vuln-reports.csv' using 1:4 with linespoints linestyle 2 title "Medium", \
+ 'tmp/high-vuln-reports.csv' using 1:5 with linespoints linestyle 3 title "High", \
+ 'tmp/high-vuln-reports.csv' using 1:6 with linespoints linestyle 4 title "Critical", \
+ 'tmp/high-vuln-reports.csv' using 1:7 with lines lc "#000000" lw 4 title "% share High or Critical"

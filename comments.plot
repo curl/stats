@@ -8,6 +8,7 @@ set ylabel "Percent of lines that are comments"
 
 set ytics nomirror
 set xtics rotate 3600*24*365.25 nomirror
+unset mxtics
 
 set style line 1 \
     linecolor rgb '#00a06d' \

@@ -20,7 +20,7 @@ unset border
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set ytics 10
+set ytics 10 nomirror
 
 set yrange [0:]
 set xrange ["1999-10-01":]
@@ -33,7 +33,8 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 # set the format of the dates on the x axis
 set format x "%Y"
-set xtics rotate 3600*24*365.25
+set xtics rotate 3600*24*365.25 out
+unset mxtics
 
 set datafile separator ";"
 plot  'tmp/daniel-commit-share.csv' using 1:3 with boxes linestyle 3 title "Monthly share of commits", \

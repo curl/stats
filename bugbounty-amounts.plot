@@ -9,6 +9,7 @@ set key top left
 # Identify the axes
 set ylabel "USD"
 set grid
+set ytics nomirror
 unset xtics
 unset border
 

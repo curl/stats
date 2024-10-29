@@ -24,9 +24,8 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics 3600*24*365.25 nomirror
-set mxtics 12
-
-set ytics 10
+unset mxtics
+set ytics 10 nomirror
 
 # limit the xrange simply because we didn't use github much before 2015
 set yrange [0:]

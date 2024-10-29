@@ -42,7 +42,8 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 # set the format of the dates on the x axis
 set format x "%Y"
-set xtics rotate 3600*24*365.25
+set xtics rotate 3600*24*365.25 out
+unset mxtics
 
 set datafile separator ";"
 plot  'tmp/daniel-vs-rest.csv' using 1:4 with boxes linestyle 3 title "Monthly share of commit count", \
