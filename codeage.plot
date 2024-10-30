@@ -8,7 +8,7 @@ set key top left
 
 # Identify the axes
 #set xlabel "Time"
-set ylabel "Age in number of months"
+set ylabel "Age in years"
 
 set grid
 unset border
@@ -22,7 +22,7 @@ set yrange [0:]
 
 set xtics rotate 3600*24*365.25 nomirror out
 unset mxtics
-set ytics 12 out
+set ytics out
 
 set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30
