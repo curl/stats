@@ -31,6 +31,10 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30
 
 # set the format of the dates on the x axis
 set format x "%Y"
+
+# instead of, e.g.,  200000, show 200k
+set format y2 "%.0s%c"
+
 set datafile separator ";"
 plot 'tmp/codeage.csv' using 1:15 axes x1y2 with filledcurves above title "≥ 2024", \
  'tmp/codeage.csv' using 1:14 axes x1y2 with filledcurves above title "≥ 2022", \
