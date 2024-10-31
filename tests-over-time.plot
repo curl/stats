@@ -38,6 +38,8 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 # set the format of the dates on the x axis
 set format x "%Y"
+set format y2 "%.0s%c"
+
 set datafile separator ";"
 plot 'tmp/tests-over-time.csv' using 2:3 with lines linestyle 1 title "Test cases", \
  'tmp/lines-over-time.csv' using 1:2 axis x1y2 with lines linestyle 2 title "Lines of code"
