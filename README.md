@@ -31,7 +31,7 @@ Example:
 
     perl stats/script.pl > tmp/script.csv
 
-## Render graph
+### Render graph
 
 The rendering of the graph is separate from the data gathering part. We
 gnuplot script is named the same as the perl script and uses the CSV file as
@@ -39,7 +39,7 @@ input to generate a SVG output:
 
     gnuplot -c stats/script.plot > tmp/script.svg
 
-## The curl dashboard
+### The curl dashboard
 
 The entire collection of scripts is run by the `mksvg.sh` script once per day
 in the curl webserver to generate the [curl
