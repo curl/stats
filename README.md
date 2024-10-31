@@ -29,7 +29,21 @@ the curl source code root.
 
 Example:
 
-    perl stats/CI-jobs-over-time.pl
+    perl stats/script.pl > tmp/script.csv
+
+## Run the graph scripts
+
+The rendering of the graph is separate from the data gathering part. We
+gnuplot script is named the same as the perl script and uses the CSV file as
+input to generate a SVG output:
+
+    gnuplot -c stats/script.plot > tmp/script.svg
+
+## The curl dashboard
+
+The entire collection of scripts is run by the `mksvg.sh` script once per day
+in the curl webserver to generate the [curl
+dashboard](https://curl.se/dashboard.hmtl).
 
 ## Output
 
@@ -38,178 +52,23 @@ release versions included in each line.
 
 # Scripts
 
-## API-calls-over-time
+All perl scripts use the extension `.pl` and they generate CSV files with
+data. Several of them are written with a "cache", so that repeated invokes
+only scans for the part that is not cached. To run faster and avoid repeating
+doing the same things every day.
 
-Iterates over git tags. Extracts the number of function calls as mentioned in
-the RELEASE-NOTES of the tag moment. Outputs version, date and a counter.
+The gnuplot scripts use the extension `.plot` and they generate SVG output.
 
-## CI-jobs-over-time
+## git details
 
-Iterates over all git tags. It then counts how many CI jobs that seems to have
-been enabled at that time. Outputs version, date, total count, travis count,
-cirrus count, appveyor count, azure count and the github count.
+Lots of git operations work with the assumption that we can list all tags
+(which correspond to releases) and sort them, and then act on the git
+repository at the times when those tags were set.
 
-## CI-platforms
-
-Iterates over all git tags. It then counts how many CI jobs that seems to have
-been enabled at that time. Outputs date, total count, Linux count, macOS
-count, Windows count and FreeBSD count.
-
-## authors
-
-Iterates over the git log. Counts how many comits each author did and when,
-then lists all dates when a new author appeared in the project. Date,
-single-commiter count, total authors count and a single/total share.
-
-## authors-per-month
-
-Iterates over the git log. Counts number of differenth authors every month,
-then for all years after 2009, outputs: year, first-commiters, unique authors,
-drive-by count and total uniues. The *drive-by* count is an author with less
-than three commits done within that month.
-
-## authors-per-year
-
-Iterates over the git log. Counts number of differenth authors every year,
-then outputs date (as "$year-01-01"), total count and first-timer count. The
-latter being the number of authors who did their first commit that year.
-
-## bugbounty-over-time
-
-Iterates over all vulnerabilities in `vuln.pm` (in the curl-www repo). Outputs
-cve, date, the accumulated amount and the individual payout amount. Amounts in
-USD. Note that this then does not include CVE reports that received payout but
-have since been retracted from the list of vulnerabilities.
-
-## bugfix-frequency
-
-Iterates over all releases in `releases.csv` (built in the curl-www repo). For
-each release, it outputs version release date, total number of bugfixes in
-that release and then the averaged bugs per day count for the last 5
-releases. The first 5 lines obviously then have less releases for the average.
-
-## cmdline-options-over-time
-
-Iterates over all git tags. Extracs the counter from the `RELEASES-NOTES` from
-each tag. This script also contains a bunch of manually added lines from the
-times before the `RELEASES-NOTES` file contained the necessary information.
-Outputs version, date and a counter.
-
-## commits-per-month
-
-Iterates over the git log. Counts number of commits done per month. Outputs
-date ("$y-$m-01") and a counter.
-
-## commits-per-year
-
-Iterates over the git log. Counts number of commits done per year. Outputs
-date ("$y-01-01") and a counter.
-
-## contributors-over-time
-
-Iterates over all git tags. Extracs the counter from the `RELEASES-NOTES` from
-each tag. The script contains a set of manually added numbers from the time
-before the number was added to `RELEASES-NOTES`.
-
-## coreteam-over-time
-
-Iterates over the git log. Counts how many authors that have done 10 commits
-or more within the same calendar year, count them as "core team" members and
-outputs information about them.
-
-## cve-age
-
-Iterates over `vuln.pm` and `releases.csv` (from curl-www). Outputs CVE, date,
-flaw period, project age at that point, days since previous CVE, total CVE
-count to that point.
-
-## cve-plot
-
-Iterates over `vuln.pm` and `releases.csv` (from curl-www). Outputs CVE, total
-count, flaw period, project age at that point.
-
-## daniel-per-year
-
-Iterates over the git log. Counts how many commits Daniel did and how many
-others did each year. Outputs date ("$year-12-31") and a share for that year.
-
-## daniel-vs-rest
-
-Iterates over the git log. Outputs date, total commit count, Daniel's share of
-all commits, the others's share of all commits.
-
-## days-per-release
-
-Iterates over `releases.csv` (from curl-www). Outputs version, date and number
-of days between this release and the previous.
-
-## docs-over-time
-
-Iterates over the git log and all commits done to the `docs/` folder. Outputs
-date and number of lines.
-
-## gh-monthly
-
-Uses the generated github.csv file to generate graphs on github activity.
-
-## gh-age
-
-Uses the generated github.csv file to generate graphs on github issue ages.
-
-## lines-over-time
-
-Iterates over the git log and all commits done to the `src/`, `lib/` and
-`include/` folders. Outputs date and number of lines. The script contains a
-set of versions and LOC counts, manually counted from the time before the git
-repo.
-
-## mail
-
-Downloads the server-side CSV and generates a mailing list activity graph.
-
-## protocols-over-time
-
-Iterates over `protocol-history.md`, which is a human maintained input
-source. Outputs date, protocol, total count. The protocol being the one that
-was added at that particular moment in time. The initial protocols were added
-*before* the first curl release...
-
-## setopts-over-time
-
-Iterates over all git tags. Extracs the setopt counter from the
-`RELEASES-NOTES` from each tag. The script contains a set of manually added
-numbers from the time before the number was added to `RELEASES-NOTES`. Outputs
-version, date and counter.
-
-## files-over-time
-
-Iterates over all git tags. Counts the number of files in the repository at
-the time of each tag. Outputs version, date and counter.
-
-## tests-over-time
-
-Iterates over all git tags. Counts the number of files matching
-`tests/data/test[num]` at the time of each tag. Outputs version, date and
-counter.
-
-## tls-over-time
-
-Iterates over `tls-history.md`, which is a human maintained input
-source. Outputs date, backend, total count. The "backend" being the TLS
-library that was added (or removed) at that particular moment in time. Removed
-backends are prefixed with a minus.
-
-## vulns-over-time
-
-Iterates over all vulnerabilities in `vuln.pm` (in the curl-www repo). Outputs
-cve, date, the total CVE count.
-
-## vulns-per-year
-
-Iterates over all vulnerabilities in `vuln.pm` (in the curl-www repo). Outputs
-date ("$year-01-01;, CVEs that year and the total CVE count up and including
-that year.
+Lots of git operations also scan specific directory paths of the source code
+tree, like `src/` and `lib/` since we know the layout we know the meaning of
+that.
 
 # License
 
-The scripts are provided under [MIT](LICENSE).
+All scripts in this repository are provided under the [MIT](LICENSE).
