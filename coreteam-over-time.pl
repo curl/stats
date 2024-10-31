@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short --decorate=full  | egrep "^(Author|CommitDate):"`;
+my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short --decorate=full  | grep -E "^(Author|CommitDate):"`;
 
 my $year=1999;
 for(@a) {

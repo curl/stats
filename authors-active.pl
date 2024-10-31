@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short --decorate=full --since='2015-01-01'  | egrep "^(Author|CommitDate):"`;
+my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short --decorate=full --since='2015-01-01'  | grep -E "^(Author|CommitDate):"`;
 
 use Time::Piece;
 
