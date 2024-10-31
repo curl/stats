@@ -2,7 +2,7 @@
 
 require "./stats/average.pm";
 
-my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short --decorate=full  | egrep "^(Author|CommitDate):"`;
+my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short --decorate=full  | grep -E "^(Author|CommitDate):"`;
 
 my $percent = 80;
 $percent = $ARGV[0] if($ARGV[0]);
