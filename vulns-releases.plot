@@ -30,7 +30,7 @@ set ytics 5
 set boxwidth 0.8 relative
 set style fill solid
 
-set xrange ["2018-01-01":]
+set xrange ["2020-01-01":]
 
 set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
