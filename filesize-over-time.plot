@@ -8,7 +8,7 @@ set key top right
 
 # Identify the axes
 #set xlabel "Time"
-set ylabel "Number of lines in source code"
+set ylabel "Number of lines in .c source files"
 
 set style line 1 \
     linecolor rgb '#0060ad' \
@@ -20,10 +20,6 @@ set style line 2 \
 
 set style line 3 \
     linecolor rgb '#ff404d' \
-    linetype 1 linewidth 3
-
-set style line 4 \
-    linecolor rgb '#c0c04d' \
     linetype 1 linewidth 3
 
 set grid
@@ -43,8 +39,8 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
+set ytics nomirror
 set datafile separator ";"
-plot 'tmp/filesize-over-time.csv' using 1:2 with lines linestyle 1 title "average libcurl", \
- 'tmp/filesize-over-time.csv' using 1:3 with lines linestyle 2 title "median libcurl", \
- 'tmp/filesize-over-time.csv' using 1:4 with lines linestyle 3 title "average curl tool", \
- 'tmp/filesize-over-time.csv' using 1:5 with lines linestyle 4 title "median curl tool"
+plot 'tmp/filesize-over-time.csv' using 1:2 with lines linestyle 1 title "largest", \
+ 'tmp/filesize-over-time.csv' using 1:3 with lines linestyle 2 title "p90", \
+ 'tmp/filesize-over-time.csv' using 1:4 with lines linestyle 3 title "median"
