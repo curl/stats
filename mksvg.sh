@@ -225,6 +225,9 @@ gnuplot -c stats/funclen.plot > $output/funclen.svg
 perl stats/codeage.pl > $temp/codeage.csv
 gnuplot -c stats/codeage.plot > $output/codeage.svg
 
+perl stats/top-cwe.pl $webroot > $temp/top-cwe.csv
+gnuplot -c stats/top-cwe.plot > $output/top-cwe.svg
+
 # Added LOC per LOC still present
 perl stats/addedcode.pl > $temp/addedcode.csv
 perl stats/plotdivision.pl $temp/addedcode.csv $temp/lines-over-time.csv  0:1 0:1 > $temp/added-per-line.csv
@@ -302,6 +305,7 @@ contributors = $output/contributors-over-time.svg
 coreteam-per-year = $output/coreteam-per-year.svg
 cve-pie = $output/cve-pie-chart.svg
 cve-time = $output/cve-age.svg
+cwe-top = $output/cwe-top.svg
 daily-commits = $output/date-of-year.svg
 daniel-commits = $output/daniel-commit-share.svg
 daniel-vs-rest = $output/daniel-vs-rest.svg
@@ -387,6 +391,7 @@ contributors = $temp/contributors-over-time.csv
 coreteam-per-year = $temp/coreteam-per-year.csv
 cve-pie = $temp/cve-pie-chart.csv
 cve-time = $temp/cve-age.csv
+cwe-top = $temp/cwe-top.csv
 daily-commits = $temp/date-of-year.csv
 daniel-commits = $temp/daniel-commit-share.csv
 daniel-vs-rest = $temp/daniel-vs-rest.csv
