@@ -39,8 +39,6 @@ sub readall {
 my @p1 = readall($plot1);
 my @p2 = readall($plot2);
 
-my $daysaccum = 10;
-
 print STDERR <<WILLDO
 Date column $coldate1 data $coldata1 from $plot1
  divided by
@@ -54,14 +52,14 @@ for(@p1) {
     my $date = $s[$coldate1];
     if($date =~ /^(\d\d\d\d)-(\d\d)-(\d\d)/) {
         my($year, $mon, $day) = ($1, $2, $3);
-        $day = int($day/$daysaccum) * $daysaccum;
-        $date="$year-$mon-$day";
+        $date=sprintf("%04d-%02d-%02d", $year, $mon, $day);
     }
     else {
         print STDERR "date column in $plot1 is wrong!\n";
         last;
     }
     $day1{$date}=$s[$coldata1];
+    $anyday{$date} |= 1;
 }
 
 for(@p2) {
@@ -70,7 +68,6 @@ for(@p2) {
     my $date = $s[$coldate2];
     if($date =~ /^(\d\d\d\d)-(\d\d)-(\d\d)/) {
         my($year, $mon, $day) = ($1, $2, $3);
-        $day = int($day / $daysaccum) * $daysaccum;
         $date=sprintf("%04d-%02d-%02d", $year, $mon, $day);
     }
     else {
@@ -79,17 +76,24 @@ for(@p2) {
     }
     $day2{$date}=$s[$coldata2];
 
-    if($day1{$date}) {
-        # both arrays have this
-        $anyday{$date} = 1;
-    }
+    $anyday{$date} |= 2;
 }
 
+my $d1, $d2;
+my $start;
+
 for my $d (sort keys %anyday) {
-    my $by = $day2{$d};
-    if($by == 0) {
-        # avoid division by zero
+    if($anyday{$d} & 1) {
+        $d1 = $day1{$d};
+        $start |= 1;
+    }
+    if($anyday{$d} & 2) {
+        $d2 = $day2{$d};
+        $start |= 2;
+    }
+    my $by = $d2;
+    if(($by == 0) || ($start != 3)) {
         next;
     }
-    printf "$d;%.6f\n", $day1{$d} / ($by / $scaler);
+    printf "$d;%.6f\n", $d1 / ($by / $scaler);
 }
