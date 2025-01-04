@@ -26,6 +26,7 @@ set xdata time
 
 # start Y at 1
 set yrange [1:]
+set xrange ["2000-03-01":]
 
 set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.35, 0.15 width screen 0.30 behind
