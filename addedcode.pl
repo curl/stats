@@ -1,13 +1,16 @@
 #!/usr/bin/perl
 
-open(G, "git log --reverse --stat --date=short -- src lib include 2>/dev/null|");
+open(G, "git log --reverse --stat --date=short --pretty=\"Date: %cd\" -- src lib include 2>/dev/null|");
 my $date;
 my $lines;
 my $pdate;
 
 sub display {
     my ($d)=@_;
-    if($d ne $pdate) {
+    if(!$pdate) {
+        $pdate = $d;
+    }
+    elsif($d ne $pdate) {
         printf "$pdate;$lines;%d\n", $l{$pdate};
         $pdate = $d;
     }
