@@ -228,6 +228,15 @@ gnuplot -c stats/codeage.plot > $output/codeage.svg
 perl stats/top-cwe.pl $webroot > $temp/top-cwe.csv
 gnuplot -c stats/top-cwe.plot > $output/top-cwe.svg
 
+perl stats/testinfra-over-time.pl > $temp/testinfra-over-time.csv
+gnuplot -c stats/testinfra-over-time.plot > $output/testinfra-over-time.svg
+
+perl stats/plotdivision.pl $temp/testinfra-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/testinfra-per-line.csv
+gnuplot -c stats/testinfra-per-line.plot > $output/testinfra-per-line.svg
+
+perl stats/plotdivision.pl $temp/testinfra-over-time.csv $temp/tests-over-time.csv 0:1 1:2 > $temp/testinfra-per-test.csv
+gnuplot -c stats/testinfra-per-test.plot > $output/testinfra-per-test.svg
+
 # Added LOC per LOC still present
 perl stats/addedcode.pl > $temp/addedcode.csv
 perl stats/plotdivision.pl $temp/addedcode.csv $temp/lines-over-time.csv  0:1 0:1 > $temp/added-per-line.csv
@@ -342,6 +351,9 @@ sev-per-year = $output/sev-per-year.svg
 strncpy = $output/strncpy-over-time.svg
 sscanf = $output/sscanf-over-time.svg
 symbols = $output/symbols-over-time.svg
+testinfra = $output/testinfra-over-time.svg
+testinfra-kloc = $output/testinfra-per-line.svg
+testinfra-test = $output/testinfra-per-test.svg
 tests = $output/tests-over-time.svg
 third-parties = $output/3rdparty-over-time.svg
 todo = $output/todo-over-time.svg
@@ -428,6 +440,9 @@ sev-per-year = $temp/sev-per-year.csv
 strncpy = $temp/strncpy-over-time.csv
 sscanf = $temp/sscanf-over-time.csv
 symbols = $temp/symbols-over-time.csv
+testinfra = $temp/testinfra-over-time.csv
+testinfra-kloc = $temp/testinfra-per-line.csv
+testinfra-test = $temp/testinfra-per-test.csv
 tests = $temp/tests-over-time.csv
 third-parties = $temp/3rdparty-over-time.csv
 todo = $temp/todo-over-time.csv
