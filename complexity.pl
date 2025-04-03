@@ -86,6 +86,11 @@ sub complexity {
     while(<G>) {
         if($_ =~ /^(\d+)\t(\d+)\t(\d+)\t(\d+)\t(\d+)/) {
             my ($modmccabe, $mccabe, $statements, $first, $lines)=($1, $2, $3, $4, $5);
+            if($modmccabe > 1000) {
+                # something is wrong
+                print STDERR $_;
+                next;
+            }
             push @mod, $modmccabe;
             push @mcb, $mccabe;
             push @sta, $statements;
