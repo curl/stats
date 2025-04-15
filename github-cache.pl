@@ -13,16 +13,43 @@
 #
 
 # Open issues:
-# https://api.github.com/repos/curl/curl/issues
+# https://api.github.com/repos/$owner/$repo/issues
 
 # Single issue
-# https://api.github.com/repos/curl/curl/issues/$num
+# https://api.github.com/repos/$owner/$repo/issues/$num
 
 use JSON;
 #use Data::Dumper;
 
-my $github="https://api.github.com/repos/curl/curl/issues";
+use Getopt::Long;
+use Pod::Usage;
+
+my $man = 0;
+my $help = 0;
+
+my $owner = 'curl';
+my $repo = 'curl';
+GetOptions ('owner=s' => \$owner,
+            'repo=s' => \$repo,
+            'help|?' => \$help,
+            man => \$man) or pod2usage(2);
+
+pod2usage(1) if $help;
+pod2usage(-exitval => 0, -verbose => 2) if $man;
+
+
+my $agent = "$owner/$repo-repo-stats-bot";
+
+my $github="https://api.github.com/repos/$owner/$repo/issues";
 my $cache="gh-cache";
+
+if( not -d $cache) {
+    die "directory $cache does not exist.\n";
+}
+
+if( not -w $cache) {
+    die "directory $cache not writeable.\n";
+}
 
 # Store github "userid:password" in this file to get better rate-limiting
 # No quotes or whitespace but the colon must be there
@@ -55,7 +82,7 @@ for my $i (1 .. $top) {
         # print "$i is cached\n";
     }
     else {
-        my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i > $cache/$i.json";
+        my $c = "curl -sf -u $creds -A '$agent' $github/$i > $cache/$i.json";
         print "Downloads issue $i\n";
         my $s = system($c);
         $s >>= 8;
@@ -95,7 +122,7 @@ sub single {
 
 sub redownload {
     my ($i) = @_;
-    my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i -o $cache/$i.json -z $cache/$i.json";
+    my $c = "curl -sf -u $creds -A '$agent' $github/$i -o $cache/$i.json -z $cache/$i.json";
     print "Redownloads issue $i\n";
     my $s = system($c);
 }
@@ -114,3 +141,52 @@ for my $j (@json) {
         }
     }
 }
+
+__END__
+
+=head1 NAME
+
+github-cache.pl - Cache GitHub issue data
+
+=head1 SYNOPSIS
+
+github-cache.pl [options]
+
+ Options:
+   -owner           repository owner
+   -repo            repository name
+   -help            brief help message
+   -man             full documentation
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<-owner>
+
+Owner of the repository to be cached
+
+=over 8
+
+=item B<-repo>
+
+Name of the repository to be cached
+
+=over 8
+
+=item B<-help>
+
+Print a brief help message and exits.
+
+=item B<-man>
+
+Prints the manual page and exits.
+
+=back
+
+=head1 DESCRIPTION
+
+B<github-cache.pl> saves data about GitHub issues for a particular
+repository.
+
+=cut
