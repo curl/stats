@@ -70,7 +70,9 @@ my $i = decode_json(join("", @j));
 #print Dumper($i);
 my $lastnum = $$i[0]{number};
 
-if($lastnum < 6592) {
+use Scalar::Util qw(looks_like_number);
+
+unless(looks_like_number($lastnum)) {
     print STDERR "Error, bail out!\n";
     exit;
 }
