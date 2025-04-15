@@ -71,7 +71,7 @@ my $i = decode_json(join("", @j));
 my $lastnum = $$i[0]{number};
 
 unless($lastnum =~ /^\d+\z/) {
-    print STDERR "Error, bail out!\n";
+    die "Error fetching last issue. Got: $lastnum";
     exit;
 }
 
