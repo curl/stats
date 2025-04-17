@@ -23,7 +23,8 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set datafile separator ";"
 
-set pixmap 1 "stats/curl-symbol-light.png"
+if (!exists("logo")) logo="stats/curl-symbol-light.png"
+set pixmap 1 logo
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 plot 'tmp/top-remains.csv' using 1:3 with boxes fc "#a0a0e0" title "", \
