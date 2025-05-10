@@ -76,7 +76,7 @@ foreach my $t (sort sortthem @releases) {
     }
 }
 
-$t=`git describe`;
+$t=`git describe --match "curl*"`;
 chomp $t;
 
 my $n = options($t, "docs/TODO");

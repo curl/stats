@@ -269,7 +269,7 @@ foreach my $t (sort sortthem @releases) {
         $comments*100/($code+$blanks+$comments);
 }
 
-$t=`git describe`;
+$t=`git describe --match "curl*"`;
 chomp $t;
 
 my ($blanks, $comments, $code, $files) = comments($t);

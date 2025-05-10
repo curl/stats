@@ -64,7 +64,7 @@ foreach my $t (sort sortthem @releases) {
         print "$t;$d;$c\n";
     }
 }
-$t=`git describe`;
+$t=`git describe --match "curl*"`;
 chomp $t;
 $c = contribs($t);
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =

@@ -204,7 +204,7 @@ MOO
 
 my @this = sort sortthem @releases;
 
-my $now = `git describe`;
+my $now = `git describe --match "curl*"`;
 chomp $now;
 
 # top off with the current state

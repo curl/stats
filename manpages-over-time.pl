@@ -259,6 +259,6 @@ foreach my $t (sort sortthem @releases) {
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
     localtime(time);
 my $date = sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
-my $tag = `git describe`;
+my $tag = `git describe --match "curl*"`;
 chomp $tag;
 printf "now;$date;%d\n", manpages($tag);
