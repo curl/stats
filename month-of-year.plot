@@ -24,9 +24,9 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set datafile separator ";"
 
-if (!exists("logo")) logo="stats/curl-symbol-light.png"
-set pixmap 1 logo
-set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
+load "stats/config.plot"
+
+
 
 plot 'tmp/month-of-year.csv' using 1:3 with boxes fc "#606000" title "", \
  'tmp/month-of-year.csv' using 1:3:2 with labels title "" offset 0,-1 font ", 36" rotate right tc lt 5

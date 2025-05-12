@@ -23,9 +23,9 @@ set style line 1 \
     linecolor rgb '#ff8040' \
     linetype 1 linewidth 4
 
-if (!exists("logo")) logo="stats/curl-symbol-light.png"
-set pixmap 1 logo
-set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
+load "stats/config.plot"
+
+
 
 set datafile separator ";"
 plot 'tmp/bugbounty-amounts.csv' using 1:4 with boxes title 'Individual reward' lc "#80c040", \

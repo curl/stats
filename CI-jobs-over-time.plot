@@ -18,9 +18,9 @@ set timefmt "%Y-%m-%d"
 set xdata time
 set xrange ["2013-08-01":]
 
-if (!exists("logo")) logo="stats/curl-symbol-light.png"
-set pixmap 1 logo
-set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
+load "stats/config.plot"
+
+
 
 # set the format of the dates on the x axis
 set format x "%Y"

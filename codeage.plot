@@ -26,8 +26,8 @@ unset mxtics
 set y2tics mirror out
 unset ytics
 
-if (!exists("logo")) logo="stats/curl-symbol-light.png"
-set pixmap 1 logo
+load "stats/config.plot"
+
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30
 
 # set the format of the dates on the x axis

@@ -37,9 +37,9 @@ set xrange ["1999-10-01":]
 set boxwidth 0.5 relative
 set style fill solid
 
-if (!exists("logo")) logo="stats/curl-symbol-light.png"
-set pixmap 1 logo
-set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
+load "stats/config.plot"
+
+
 
 # set the format of the dates on the x axis
 set format x "%Y"
