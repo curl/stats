@@ -16,6 +16,9 @@ set style line 1 \
 set style line 2 \
     linecolor rgb '#c04040' \
     linewidth 4
+set style line 3 \
+    linecolor rgb '#40c040' \
+    linewidth 4
 
 set grid
 unset border
@@ -36,4 +39,5 @@ set yrange [0:]
 set format x "%Y"
 set datafile separator ";"
 plot 'tmp/complexity.csv' using 1:2 with lines linestyle 2 title "P99", \
- 'tmp/complexity.csv' using 1:3 with lines linestyle 1 title "Worst"
+ 'tmp/complexity.csv' using 1:3 with lines linestyle 3 title "P90", \
+ 'tmp/complexity.csv' using 1:4 with lines linestyle 1 title "Worst"
