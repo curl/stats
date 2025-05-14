@@ -9,6 +9,20 @@ use JSON;
 #use Data::Dumper;
 my $cache="stats/gh-cache";
 
+use Getopt::Long;
+use Pod::Usage;
+
+my $man = 0;
+my $help = 0;
+
+GetOptions ('cache=s' => \$cache,
+            'help|?' => \$help,
+            man => \$man) or pod2usage(2);
+
+pod2usage(1) if $help;
+pod2usage(-exitval => 0, -verbose => 2) if $man;
+
+
 my @json;
 if($ARGV[0] ne "") {
     push @json, @ARGV;

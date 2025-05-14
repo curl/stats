@@ -1,5 +1,9 @@
 #!bin/sh
 
+# Uncomment to debug this script:
+set -x
+#set -e
+
 # custom dir for the web root directory
 webroot=$1
 
@@ -8,77 +12,85 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
-perl stats/date-of-year.pl > $temp/date-of-year.csv
+generate_csv () {
+    perl stats/$1.pl $2 > $temp/$1.csv
+}
+
+generate_plot () {
+    gnuplot -c stats/$1.plot > $output/$1.svg
+}
+
+generate_csv date-of-year
 gnuplot -c stats/date-of-year.plot > $output/date-of-year.svg
 
-perl stats/month-of-year.pl > $temp/month-of-year.csv
+generate_csv month-of-year
 gnuplot -c stats/month-of-year.plot > $output/month-of-year.svg
 
-perl stats/weekday-of-year.pl > $temp/weekday-of-year.csv
+generate_csv weekday-of-year
 gnuplot -c stats/weekday-of-year.plot > $output/weekday-of-year.svg
 
-perl stats/contrib-tail.pl > $temp/contrib-tail.csv
+generate_csv contrib-tail
 gnuplot -c stats/contrib-tail.plot > $output/contrib-tail.svg
 
-perl stats/mail.pl > $temp/mail.csv
+generate_csv mail
 gnuplot -c stats/mail.plot > $output/mail.svg
 
 perl stats/github-json.pl > $temp/github.csv
-perl stats/gh-monthly.pl $temp/github.csv > $temp/gh-monthly.csv
+generate_csv gh-monthly $temp/github.csv
 gnuplot -c stats/gh-monthly.plot > $output/gh-monthly.svg
 
-perl stats/gh-open.pl $temp/github.csv > $temp/gh-open.csv
+generate_csv gh-open $temp/github.csv
 gnuplot -c stats/gh-open.plot > $output/gh-open.svg
 
-perl stats/gh-age.pl $temp/github.csv > $temp/gh-age.csv
+generate_csv gh-age $temp/github.csv
 gnuplot -c stats/gh-age.plot > $output/gh-age.svg
 
-perl stats/gh-fixes.pl $temp/github.csv > $temp/gh-fixes.csv
+generate_csv gh-fixes $temp/github.csv
 gnuplot -c stats/gh-fixes.plot > $output/gh-fixes.svg
 
-perl stats/files-over-time.pl > $temp/files-over-time.csv
+generate_csv files-over-time
 gnuplot -c stats/files-over-time.plot > $output/files-over-time.svg
 
-perl stats/bugfix-frequency.pl $webroot > $temp/bugfix-frequency.csv
+generate_csv bugfix-frequency $webroot
 gnuplot -c stats/bugfix-frequency.plot > $output/bugfix-frequency.svg
 
-perl stats/API-calls-over-time.pl > $temp/API-calls-over-time.csv
+generate_csv API-calls-over-time
 gnuplot -c stats/API-calls-over-time.plot > $output/API-calls-over-time.svg
 
-perl stats/protocols-over-time.pl > $temp/protocols-over-time.csv
+generate_csv protocols-over-time
 gnuplot -c stats/protocols-over-time.plot > $output/protocols-over-time.svg
 
-perl stats/tls-over-time.pl > $temp/tls-over-time.csv
-perl stats/ssh-over-time.pl > $temp/ssh-over-time.csv
-perl stats/h1-over-time.pl > $temp/h1-over-time.csv
-perl stats/h2-over-time.pl > $temp/h2-over-time.csv
-perl stats/h3-over-time.pl > $temp/h3-over-time.csv
-perl stats/idn-over-time.pl > $temp/idn-over-time.csv
-perl stats/resolver-over-time.pl > $temp/resolver-over-time.csv
+generate_csv tls-over-time
+generate_csv ssh-over-time
+generate_csv h1-over-time
+generate_csv h2-over-time
+generate_csv h3-over-time
+generate_csv idn-over-time
+generate_csv resolver-over-time
 gnuplot -c stats/backends-over-time.plot > $output/backends-over-time.svg
 
-perl stats/3rdparty-over-time.pl > $temp/3rdparty-over-time.csv
+generate_csv 3rdparty-over-time
 gnuplot -c stats/3rdparty-over-time.plot > $output/3rdparty-over-time.svg
 
-perl stats/http-over-time.pl > $temp/http-over-time.csv
+generate_csv http-over-time
 gnuplot -c stats/http-over-time.plot > $output/http-over-time.svg
 
-perl stats/daniel-vs-rest.pl > $temp/daniel-vs-rest.csv
+generate_csv daniel-vs-rest
 gnuplot -c stats/daniel-vs-rest.plot > $output/daniel-vs-rest.svg
 
-perl stats/daniel-commit-share.pl > $temp/daniel-commit-share.csv
+generate_csv daniel-commit-share
 gnuplot -c stats/daniel-commit-share.plot > $output/daniel-commit-share.svg
 
-perl stats/authors-per-year.pl > $temp/authors-per-year.csv
+generate_csv authors-per-year
 gnuplot -c stats/authors-per-year.plot > $output/authors-per-year.svg
 
-perl stats/authors-active.pl > $temp/authors-active.csv
+generate_csv authors-active
 gnuplot -c stats/authors-active.plot > $output/authors-active.svg
 
-perl stats/commits-per-year.pl > $temp/commits-per-year.csv
+generate_csv commits-per-year
 gnuplot -c stats/commits-per-year.plot > $output/commits-per-year.svg
 
-perl stats/commits-over-time.pl > $temp/commits-over-time.csv
+generate_csv commits-over-time
 gnuplot -c stats/commits-over-time.plot > $output/commits-over-time.svg
 
 perl stats/coreteam-over-time.pl | grep "^[12]" | tr -d '(' | awk '{ print $1"-01-01;"$2; }' > $temp/coreteam-per-year.csv
@@ -98,10 +110,10 @@ gnuplot -c stats/70-percent.plot > $output/70-percent.svg
 gnuplot -c stats/60-percent.plot > $output/60-percent.svg
 gnuplot -c stats/50-percent.plot > $output/50-percent.svg
 
-perl stats/comments.pl > $temp/comments.csv
+generate_csv comments
 gnuplot -c stats/comments.plot > $output/comments.svg
 
-perl stats/filesize-over-time.pl > $temp/filesize-over-time.csv
+generate_csv filesize-over-time
 gnuplot -c stats/filesize-over-time.plot > $output/filesize-over-time.svg
 
 perl stats/setopts-over-time.pl | cut '-d;' -f2- > $temp/setopts-over-time.csv
@@ -110,42 +122,42 @@ gnuplot -c stats/setopts-over-time.plot > $output/setopts-over-time.svg
 perl stats/days-per-release.pl $webroot > $temp/days-per-release.csv
 gnuplot -c stats/days-per-release.plot > $output/days-per-release.svg
 
-perl stats/cmdline-options-over-time.pl > $temp/cmdline-options-over-time.csv
+generate_csv cmdline-options-over-time
 gnuplot -c stats/cmdline-options-over-time.plot > $output/cmdline-options-over-time.svg
 
 perl stats/contributors-over-time.pl | cut '-d;' -f2- > $temp/contributors-over-time.csv
 gnuplot -c stats/contributors-over-time.plot > $output/contributors-over-time.svg
 
-perl stats/authors.pl > $temp/authors.csv
+generate_csv authors
 gnuplot -c stats/authors.plot > $output/authors.svg
 
-perl stats/authorremains.pl > $temp/authorremains.csv
+generate_csv authorremains
 gnuplot -c stats/authorremains.plot > $output/authorremains.svg
 gnuplot -c stats/authorremains-top.plot > $output/authorremains-top.svg
 
-perl stats/todo-over-time.pl > $temp/todo-over-time.csv
+generate_csv todo-over-time
 gnuplot -c stats/todo-over-time.plot > $output/todo-over-time.svg
 
-perl stats/symbols-over-time.pl > $temp/symbols-over-time.csv
+generate_csv symbols-over-time
 gnuplot -c stats/symbols-over-time.plot > $output/symbols-over-time.svg
 
-perl stats/authors-per-month.pl > $temp/authors-per-month.csv
+generate_csv authors-per-month
 gnuplot -c stats/authors-per-month.plot > $output/authors-per-month.svg
 
-perl stats/firsttimers.pl > $temp/firsttimers.csv
+generate_csv firsttimers
 gnuplot -c stats/firsttimers.plot > $output/firsttimers.svg
 
 perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > $temp/CI.csv
 gnuplot -c stats/CI-jobs-over-time.plot > $output/CI-jobs-over-time.svg
 gnuplot -c stats/CI-services.plot > $output/CI-services.svg
 
-perl stats/CI-platforms.pl > $temp/CI-platforms.csv
+generate_csv CI-platforms
 gnuplot -c stats/CI-platforms.plot > $output/CI-platforms.svg
 
-perl stats/commits-per-month.pl > $temp/commits-per-month.csv
+generate_csv commits-per-month
 gnuplot -c stats/commits-per-month.plot > $output/commits-per-month.svg
 
-perl stats/docs-over-time.pl > $temp/docs-over-time.csv
+generate_csv docs-over-time
 gnuplot -c stats/docs-over-time.plot > $output/docs-over-time.svg
 
 perl stats/vulns-releases.pl $webroot > $temp/vulns-releases.csv
@@ -179,16 +191,16 @@ gnuplot -c stats/sev-per-year.plot > $output/sev-per-year.svg
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 
-perl stats/lines-per-month.pl > $temp/lines-per-month.csv
+generate_csv lines-per-month
 gnuplot -c stats/lines-per-month.plot > $output/lines-per-month.svg
 
-perl stats/tests-over-time.pl > $temp/tests-over-time.csv
+generate_csv tests-over-time
 gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 
-perl stats/manpages-over-time.pl > $temp/manpages-over-time.csv
+generate_csv manpages-over-time
 gnuplot -c stats/manpages-over-time.plot > $output/manpages-over-time.svg
 
-perl stats/examples-over-time.pl > $temp/examples-over-time.csv
+generate_csv examples-over-time
 gnuplot -c stats/examples-over-time.plot > $output/examples-over-time.svg
 
 perl stats/bugbounty-over-time.pl $webroot > $temp/bugbounty-over-time.csv
@@ -197,10 +209,10 @@ gnuplot -c stats/bugbounty-over-time.plot > $output/bugbounty-over-time.svg
 perl stats/bugbounty-amounts.pl $webroot > $temp/bugbounty-amounts.csv
 gnuplot -c stats/bugbounty-amounts.plot > $output/bugbounty-amounts.svg
 
-perl stats/contributors-per-release.pl > $temp/contributors-per-release.csv
+generate_csv contributors-per-release
 gnuplot -c stats/contributors-per-release.plot > $output/contributors-per-release.svg
 
-perl stats/lines-person.pl > $temp/lines-person.csv
+generate_csv lines-person
 gnuplot -c stats/lines-person.plot > $output/lines-person.svg
 
 perl stats/release-number.pl $webroot > $temp/release-number.csv
@@ -209,26 +221,26 @@ gnuplot -c stats/release-number.plot > $output/release-number.svg
 perl stats/releases-per-year.pl $webroot > $temp/releases-per-year.csv
 gnuplot -c stats/releases-per-year.plot > $output/releases-per-year.svg
 
-perl stats/cpy-over-time.pl > $temp/cpy-over-time.csv
+generate_csv cpy-over-time
 gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
 
-perl stats/strncpy-over-time.pl > $temp/strncpy-over-time.csv
+generate_csv strncpy-over-time
 gnuplot -c stats/strncpy-over-time.plot > $output/strncpy-over-time.svg
 
-perl stats/sscanf-over-time.pl > $temp/sscanf-over-time.csv
+generate_csv sscanf-over-time
 gnuplot -c stats/sscanf-over-time.plot > $output/sscanf-over-time.svg
 
-perl stats/complexity.pl > $temp/complexity.csv
+generate_csv complexity
 gnuplot -c stats/complexity.plot > $output/complexity.svg
 gnuplot -c stats/funclen.plot > $output/funclen.svg
 
-perl stats/codeage.pl > $temp/codeage.csv
+generate_csv codeage
 gnuplot -c stats/codeage.plot > $output/codeage.svg
 
 perl stats/top-cwe.pl $webroot > $temp/top-cwe.csv
 gnuplot -c stats/top-cwe.plot > $output/top-cwe.svg
 
-perl stats/testinfra-over-time.pl > $temp/testinfra-over-time.csv
+generate_csv testinfra-over-time
 gnuplot -c stats/testinfra-over-time.plot > $output/testinfra-over-time.svg
 
 perl stats/plotdivision.pl $temp/testinfra-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/testinfra-per-line.csv
@@ -238,7 +250,7 @@ perl stats/plotdivision.pl $temp/testinfra-over-time.csv $temp/tests-over-time.c
 gnuplot -c stats/testinfra-per-test.plot > $output/testinfra-per-test.svg
 
 # Added LOC per LOC still present
-perl stats/addedcode.pl > $temp/addedcode.csv
+generate_csv addedcode
 perl stats/plotdivision.pl $temp/addedcode.csv $temp/lines-over-time.csv  0:1 0:1 > $temp/added-per-line.csv
 gnuplot -c stats/added-per-line.plot > $output/added-per-line.svg
 
@@ -270,7 +282,7 @@ perl stats/plotdivision.pl $temp/authorremains.csv $temp/lines-over-time.csv 0:1
 gnuplot -c stats/remains-per-kloc.plot > $output/remains-per-kloc.svg
 
 # top-40 authors with production code remaining in master
-perl stats/top-remains.pl > $temp/top-remains.csv
+generate_csv top-remains
 gnuplot -c stats/top-remains.plot > $output/top-remains.svg
 
 # CVE severity pie chart

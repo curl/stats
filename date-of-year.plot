@@ -27,8 +27,7 @@ set xtics 3600*24*30.44 nomirror out offset 4
 set ytics out nomirror
 unset mxtics
 
-set pixmap 1 "stats/curl-symbol-light.png"
-set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
+load "stats/config.plot"
 
 # set the format of the dates on the x axis
 set format x "%B"

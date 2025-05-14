@@ -28,7 +28,8 @@ set xdata time
 set yrange [1:]
 set xrange ["2000-03-01":]
 
-set pixmap 1 "stats/curl-symbol-light.png"
+load "stats/config.plot"
+
 set pixmap 1 at screen 0.35, 0.15 width screen 0.30 behind
 
 # set the format of the dates on the x axis
