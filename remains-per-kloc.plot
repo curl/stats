@@ -28,8 +28,6 @@ set xrange ["2010-01-01":]
 
 load "stats/config.plot"
 
-
-
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"

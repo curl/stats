@@ -45,8 +45,6 @@ set xtics 30*day rotate nomirror
 
 load "stats/config.plot"
 
-
-
 # set the format of the dates on the x axis
 set format x "%b %Y"
 set datafile separator ";"

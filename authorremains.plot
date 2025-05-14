@@ -39,8 +39,6 @@ set xrange ["2010-01-01":]
 
 load "stats/config.plot"
 
-
-
 # set the format of the dates on the x axis
 set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror out

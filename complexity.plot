@@ -32,8 +32,6 @@ unset mxtics
 
 load "stats/config.plot"
 
-
-
 set yrange [0:]
 
 # set the format of the dates on the x axis

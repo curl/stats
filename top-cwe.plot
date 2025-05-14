@@ -25,7 +25,5 @@ set datafile separator ";"
 
 load "stats/config.plot"
 
-
-
 plot 'tmp/top-cwe.csv' using 1:3 with boxes fc "#f0d0d0" title "", \
 'tmp/top-cwe.csv' using 1:-1:2 with labels title "" offset 0,1 font ", 24" rotate left tc lt 0

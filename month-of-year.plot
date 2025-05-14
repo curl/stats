@@ -26,7 +26,5 @@ set datafile separator ";"
 
 load "stats/config.plot"
 
-
-
 plot 'tmp/month-of-year.csv' using 1:3 with boxes fc "#606000" title "", \
  'tmp/month-of-year.csv' using 1:3:2 with labels title "" offset 0,-1 font ", 36" rotate right tc lt 5

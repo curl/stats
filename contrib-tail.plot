@@ -23,9 +23,6 @@ unset border
 
 load "stats/config.plot"
 
-
-
-
 set datafile separator ";"
 
 plot 'tmp/contrib-tail.csv' using 3:2 with lines linestyle 1 title ""

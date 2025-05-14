@@ -25,8 +25,6 @@ set style line 1 \
 
 load "stats/config.plot"
 
-
-
 set datafile separator ";"
 plot 'tmp/bugbounty-amounts.csv' using 1:4 with boxes title 'Individual reward' lc "#80c040", \
  'tmp/bugbounty-amounts.csv' using 1:5 with lines title '5-reward average' linestyle 1, \

@@ -25,7 +25,5 @@ set datafile separator ";"
 
 load "stats/config.plot"
 
-
-
 plot 'tmp/top-remains.csv' using 1:3 with boxes fc "#a0a0e0" title "", \
 'tmp/top-remains.csv' using 1:0:2 with labels title "" offset 0,1 font ", 24" rotate left tc lt 1

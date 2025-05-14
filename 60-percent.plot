@@ -29,8 +29,6 @@ set yrange [0:]
 
 load "stats/config.plot"
 
-
-
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"

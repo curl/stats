@@ -20,8 +20,6 @@ set xdata time
 
 load "stats/config.plot"
 
-
-
 # set the format of the dates on the x axis
 set format x "%Y"
 set format y2 "%.0s%c"

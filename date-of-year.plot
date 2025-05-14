@@ -29,8 +29,6 @@ unset mxtics
 
 load "stats/config.plot"
 
-
-
 # set the format of the dates on the x axis
 set format x "%B"
 set datafile separator ";"
