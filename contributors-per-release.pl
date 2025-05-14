@@ -102,7 +102,7 @@ foreach my $t (sort sortthem @releases) {
     }
 }
 
-#$t=`git describe`;
+#$t=`git describe --match "curl*"`;
 #chomp $t;
 #my $c = ncontribs($t);
 #push @pp, $c;

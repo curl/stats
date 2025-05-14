@@ -17,7 +17,7 @@ sub sortthem {
     return num($a) <=> num($b);
 }
 
-@alltags= `git tag -l`;
+@alltags= `git tag -l "curl*"`;
 
 foreach my $t (@alltags) {
     chomp $t;
@@ -39,7 +39,8 @@ sub tests {
     close(G);
 
     my $pydir = "tests/http";
-    if(num($tag) < 80000) {
+    my $version = num($tag);
+    if($version && ($version < 80000)) {
         # before 8.0.0 this named was used
         $pydir = "tests/tests-httpd";
     }
@@ -48,7 +49,7 @@ sub tests {
     open(G, "git ls-tree -r --name-only $tag -- $pydir 2>/dev/null|");
     while(<G>) {
         chomp;
-        # count each invidual tests inside these pythong scripts
+        # count each invidual tests inside these python scripts
         if($_ =~ /\/test_(\d).*\.py/) {
             open(GIT, "git show $tag:$_|");
             while(<GIT>) {
@@ -79,6 +80,6 @@ foreach my $t (sort sortthem @releases) {
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
     localtime(time);
 my $date = sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
-my $tag = `git describe`;
+my $tag = `git describe --match "curl*"`;
 chomp $tag;
 printf "now;$date;%d\n", tests($tag);

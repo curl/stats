@@ -74,7 +74,7 @@ foreach my $t (sort sortthem @releases) {
     }
 }
 
-$t=`git describe`;
+$t=`git describe --match "curl*"`;
 chomp $t;
 my $c = readme2apicount($t);
 my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
