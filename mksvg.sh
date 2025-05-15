@@ -225,6 +225,9 @@ gnuplot -c stats/funclen.plot > $output/funclen.svg
 perl stats/line-complex.pl > $temp/line-complex.csv
 gnuplot -c stats/line-complex.plot > $output/line-complex.svg
 
+perl stats/complex-dist.pl > $temp/complex-dist.csv
+gnuplot -c stats/complex-dist.plot > $output/complex-dist.svg
+
 perl stats/codeage.pl > $temp/codeage.csv
 gnuplot -c stats/codeage.plot > $output/codeage.svg
 
@@ -310,6 +313,7 @@ comments = $output/comments.svg
 commits = $output/commits-over-time.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
+complex-dist = $output/complex-dist.svg
 complexity = $output/complexity.svg
 contrib-tail = $output/contrib-tail.svg
 contribs-release = $output/contributors-per-release.svg
@@ -400,6 +404,7 @@ comments = $temp/comments.csv
 commits = $temp/commits-over-time.csv
 commits-per-month = $temp/commits-per-month.csv
 commits-per-year = $temp/commits-per-year.csv
+complex-dist = $temp/complex-dist.csv
 complexity = $temp/complexity.csv
 contrib-tail = $temp/contrib-tail.csv
 contribs-release = $temp/contributors-per-release.csv
