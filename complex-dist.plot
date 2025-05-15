@@ -10,16 +10,6 @@ set key bottom left opaque
 #set xlabel "Time"
 set ylabel "Percentage share of the product code"
 
-set style line 1 \
-    linecolor rgb '#4040C0' \
-    linewidth 4
-set style line 2 \
-    linecolor rgb '#c04040' \
-    linewidth 4
-set style line 3 \
-    linecolor rgb '#40c040' \
-    linewidth 4
-
 set grid
 unset border
 
@@ -38,9 +28,9 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/complex-dist.csv' using 1:7 with filledcurves above title "above 200", \
- 'tmp/complex-dist.csv' using 1:6 with filledcurves above title "up to 200", \
- 'tmp/complex-dist.csv' using 1:5 with filledcurves above title "up to 100", \
- 'tmp/complex-dist.csv' using 1:4 with filledcurves above title "up to 75", \
- 'tmp/complex-dist.csv' using 1:3 with filledcurves above title "up to 50", \
- 'tmp/complex-dist.csv' using 1:2 with filledcurves above title "up to 15"
+plot 'tmp/complex-dist.csv' using 1:7 with filledcurves above fc "#fe0000" title "above 200", \
+ 'tmp/complex-dist.csv' using 1:6 with filledcurves above fc "#001280" title "up to 200", \
+ 'tmp/complex-dist.csv' using 1:5 with filledcurves above fc "#ffd800" title "up to 100", \
+ 'tmp/complex-dist.csv' using 1:4 with filledcurves above fc "#007f0e" title "up to 75", \
+ 'tmp/complex-dist.csv' using 1:3 with filledcurves above fc "#0094fe" title "up to 50", \
+ 'tmp/complex-dist.csv' using 1:2 with filledcurves above fc "#b100fe" title "up to 15"
