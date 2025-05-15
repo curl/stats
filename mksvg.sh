@@ -223,7 +223,7 @@ gnuplot -c stats/complexity.plot > $output/complexity.svg
 gnuplot -c stats/funclen.plot > $output/funclen.svg
 
 perl stats/line-complex.pl > $temp/line-complex.csv
-gnuplot -c stats/linex-complex.plot > $output/line-complex.svg
+gnuplot -c stats/line-complex.plot > $output/line-complex.svg
 
 perl stats/codeage.pl > $temp/codeage.csv
 gnuplot -c stats/codeage.plot > $output/codeage.svg
