@@ -17,7 +17,7 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics rotate 3600*24*365.25 nomirror out
-set ytics nomirror
+set ytics out
 unset mxtics
 
 set pixmap 1 "stats/curl-symbol-light.png"
