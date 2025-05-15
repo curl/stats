@@ -222,6 +222,9 @@ perl stats/complexity.pl > $temp/complexity.csv
 gnuplot -c stats/complexity.plot > $output/complexity.svg
 gnuplot -c stats/funclen.plot > $output/funclen.svg
 
+perl stats/line-complex.pl > $temp/line-complex.csv
+gnuplot -c stats/linex-complex.plot > $output/line-complex.svg
+
 perl stats/codeage.pl > $temp/codeage.csv
 gnuplot -c stats/codeage.plot > $output/codeage.svg
 
@@ -336,6 +339,7 @@ github-open = $output/gh-open.svg
 high-vuln = $output/high-reports.svg
 http-versions = $output/http-over-time.svg
 lines = $output/lines-person.svg
+line-complex = $output/line-complex.svg
 lines-per-author = $output/lines-per-author.svg
 lines-per-docs = $output/lines-per-docs.svg
 lines-per-test = $output/lines-per-test.svg
@@ -425,6 +429,7 @@ github-open = $temp/gh-open.csv
 high-vuln = $temp/high-vuln-reports.csv
 http-versions = $temp/http-over-time.csv
 lines = $temp/lines-person.csv
+line-complex = $temp/line-complex.csv
 lines-per-author = $temp/lines-per-author.csv
 lines-per-docs = $temp/lines-per-docs.csv
 lines-per-test = $temp/lines-per-test.csv
