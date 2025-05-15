@@ -11,6 +11,19 @@ of them.
 This allows everyone to help out to improve the scripts and to provide new
 ones that generate even more, better and more interesting project stats.
 
+## Prerequisites
+
+To generate these plots, you'll need:
+
+* [Perl](https://www.perl.org/get.html)
+* [Gnuplot](http://www.gnuplot.info/download.html)
+* [curl](https://curl.se/download.html) (natch)
+* [Gnu
+date](https://www.gnu.org/software/coreutils/manual/html_node/date-invocation.html#date-invocation)
+from [coreutils](https://www.gnu.org/software/coreutils/) 
+* [cloc](https://github.com/AlDanial/cloc)
+* [pmccabe](https://gitlab.com/pmccabe/pmccabe)
+
 ## Run the scripts
 
 ### Check out the main curl git repository
