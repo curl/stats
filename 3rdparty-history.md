@@ -51,3 +51,5 @@
 2023-07-29 -NSS
 2023-08-07 -GSKit
 2024-12-21 -hyper
+2025-06-11 -BearSSL
+2025-06-11 -Secure Transport
