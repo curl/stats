@@ -176,6 +176,9 @@ gnuplot -c stats/high-vuln-reports.plot > $output/high-reports.svg
 perl stats/sev-per-year.pl $webroot > $temp/sev-per-year.csv
 gnuplot -c stats/sev-per-year.plot > $output/sev-per-year.svg
 
+perl stats/severity.pl $webroot > $temp/severity.csv
+gnuplot -c stats/severity.plot > $output/severity.svg
+
 perl stats/lines-over-time.pl > $temp/lines-over-time.csv
 gnuplot -c stats/lines-over-time.plot > $output/lines-over-time.svg
 
@@ -356,6 +359,7 @@ releases = $output/release-number.svg
 releases-per-year = $output/releases-per-year.svg
 setopts = $output/setopts-over-time.svg
 sev-per-year = $output/sev-per-year.svg
+severity = $output/severity.svg
 strncpy = $output/strncpy-over-time.svg
 sscanf = $output/sscanf-over-time.svg
 symbols = $output/symbols-over-time.svg
@@ -447,6 +451,7 @@ releases = $temp/release-number.csv
 releases-per-year = $temp/releases-per-year.csv
 setopts = $temp/setopts-over-time.csv
 sev-per-year = $temp/sev-per-year.csv
+severity = $temp/severity.csv
 strncpy = $temp/strncpy-over-time.csv
 sscanf = $temp/sscanf-over-time.csv
 symbols = $temp/symbols-over-time.csv
