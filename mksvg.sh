@@ -167,8 +167,8 @@ gnuplot -c stats/vulns-over-time.plot > $output/vulns-plot.svg
 perl stats/vulns-per-year.pl $webroot $temp/cve-intro.csv > $temp/vulns-per-year.csv
 gnuplot -c stats/vulns-per-year.plot > $output/vulns-per-year.svg
 
-perl stats/c-vuln-over-time.pl $webroot > $temp/c-vuln-over-time.csv
-gnuplot -c stats/c-vuln-over-time.plot > $output/c-vulns.svg
+perl stats/c-vuln-code.pl $webroot > $temp/c-vuln-code.csv
+gnuplot -c stats/c-vuln-code.plot > $output/c-vuln-code.svg
 
 perl stats/c-vuln-reports.pl $webroot > $temp/c-vuln-reports.csv
 gnuplot -c stats/c-vuln-reports.plot > $output/c-reports.svg
@@ -309,7 +309,7 @@ bugbounty = $output/bugbounty-over-time.svg
 bugbounty-amounts = $output/bugbounty-amounts.svg
 bugfix-frequency = $output/bugfix-frequency.svg
 c-reports = $output/c-reports.svg
-c-vulns = $output/c-vulns.svg
+c-vuln-code = $output/c-vuln-code.svg
 ci-jobs = $output/CI-jobs-over-time.svg
 ci-platforms = $output/CI-platforms.svg
 ci-services = $output/CI-services.svg
@@ -401,7 +401,7 @@ bugbounty = $temp/bugbounty-over-time.csv
 bugbounty-amounts = $temp/bugbounty-amounts.csv
 bugfix-frequency = $temp/bugfix-frequency.csv
 c-reports = $temp/c-vuln-reports.csv
-c-vulns = $temp/c-vuln-over-time.csv
+c-vuln-code = $temp/c-vuln-code.csv
 ci-jobs = $temp/CI.csv
 ci-platforms = $temp/CI-platforms.csv
 ci-services = $temp/CI.csv
