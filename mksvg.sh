@@ -149,7 +149,10 @@ perl stats/docs-over-time.pl > $temp/docs-over-time.csv
 gnuplot -c stats/docs-over-time.plot > $output/docs-over-time.svg
 
 perl stats/vulns-releases.pl $webroot > $temp/vulns-releases.csv
-gnuplot -c stats/vulns-releases.plot > $output/vulns-releases.svg
+#gnuplot -c stats/vulns-releases.plot > $output/vulns-releases.svg
+
+perl stats/vuln-dist-code.pl > $temp/vuln-dist-code.csv
+gnuplot -c stats/vuln-dist-code.plot > $output/vuln-dist-code.svg
 
 perl stats/cve-age.pl $webroot > $temp/cve-age.csv
 gnuplot -c stats/cve-age.plot > $output/cve-age.svg
@@ -370,10 +373,10 @@ tests = $output/tests-over-time.svg
 third-parties = $output/3rdparty-over-time.svg
 todo = $output/todo-over-time.svg
 top40 = $output/top-remains.svg
+vuln-dist = $output/vuln-dist-code.svg
 vulns-per-kloc = $output/knownvulns-per-line.svg
 vulns-per-year = $output/vulns-per-year.svg
 vulns-plot = $output/vulns-plot.svg
-vulns-releases = $output/vulns-releases.svg
 weekly-commits = $output/weekday-of-year.svg
 EOF
 
@@ -462,10 +465,10 @@ tests = $temp/tests-over-time.csv
 third-parties = $temp/3rdparty-over-time.csv
 todo = $temp/todo-over-time.csv
 top40 = $temp/top-remains.csv
+vuln-dist = $temp/vuln-dist-code.csv
 vulns-per-kloc = $temp/knownvulns-per-line.csv
 vulns-per-year = $temp/vulns-per-year.csv
 vulns-plot = $temp/vulns-over-time.csv
-vulns-releases = $temp/vulns-releases.csv
 weekly-commits = $temp/weekday-of-year.csv
 EOF
 
