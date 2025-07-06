@@ -151,7 +151,7 @@ gnuplot -c stats/docs-over-time.plot > $output/docs-over-time.svg
 perl stats/vulns-releases.pl $webroot > $temp/vulns-releases.csv
 #gnuplot -c stats/vulns-releases.plot > $output/vulns-releases.svg
 
-perl stats/vuln-dist-code.pl > $temp/vuln-dist-code.csv
+perl stats/vuln-dist-code.pl $webroot > $temp/vuln-dist-code.csv
 gnuplot -c stats/vuln-dist-code.plot > $output/vuln-dist-code.svg
 
 perl stats/cve-age.pl $webroot > $temp/cve-age.csv
