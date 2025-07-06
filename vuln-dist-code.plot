@@ -2,12 +2,12 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Vulnerability distribution present in curl code" font ",48"
+set title "Vulnerabilities present in curl code" font ",48"
 # where's the legend
 set key top left
 
 # Identify the axes
-set ylabel "CVEs existing in the releas"
+set ylabel "Number of vulnerabilities existing in code"
 
 # for the boxes
 set boxwidth 0.6 relative
