@@ -50,29 +50,27 @@ if($lastnum < 6592) {
 
 my $top = $lastnum;
 
+my @dl;
+my $c;
 for my $i (1 .. $top) {
     if(-f "$cache/$i.json") {
         # print "$i is cached\n";
     }
     else {
-        my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i > $cache/$i.json";
-        print "Downloads issue $i\n";
-        my $s = system($c);
-        $s >>= 8;
-        if(!$s) {
-            $fail = 3;
-        }
-        else {
-            print "... $i failed\n";
-        }
+        $c .= "$github/$i -o $cache/$i.json ";
+        push @dl, "$i";
     }
 }
 
+if(scalar(@dl)) {
+    printf "Download %d issues\n", scalar(@dl);
+    my $cmd = "curl -Z -sf -u $creds -A 'curl/curl-repo-stats-bot' $c";
+    my $s = system($cmd);
+}
 print "Range download phase done. Now redownload the open issues\n";
 
-my @json;
 opendir(my $dh, $cache) || die "Can't opendir $cache: $!";
-@json = grep { /\.json$/ && -f "$cache/$_" } readdir($dh);
+my @json = grep { /\.json$/ && -f "$cache/$_" } readdir($dh);
 closedir $dh;
 
 # the file is JSON
@@ -93,12 +91,15 @@ sub single {
     return ($$i{state} ne "closed" ? $$i{number} : 0);
 }
 
+$c = ""; # start over
+undef @dl;
 sub redownload {
     my ($i) = @_;
-    my $c = "curl -sf -u $creds -A 'curl/curl-repo-stats-bot' $github/$i -o $cache/$i.json -z $cache/$i.json";
-    print "Redownloads issue $i\n";
-    my $s = system($c);
+    $c .= "$github/$i -o $cache/$i.json -z $cache/$i.json ";
+    push @dl, "$i";
 }
+
+printf "Interate over %d local JSON files\n", scalar(@json);
 
 for my $j (@json) {
     my $i = single($j);
@@ -109,8 +110,11 @@ for my $j (@json) {
         # randomly get 1% of the old issues
         if(rand(1000) < 10) {
             $j =~ s/\.json//;
-            print "Randomly... ";
             redownload($j);
         }
     }
 }
+
+printf "Redownload %d issues\n", scalar(@dl);
+my $cmd = "curl -Z -u $creds -A 'curl/curl-repo-stats-bot' $c";
+my $s = system($cmd);
