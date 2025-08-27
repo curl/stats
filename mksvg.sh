@@ -194,6 +194,9 @@ gnuplot -c stats/tests-over-time.plot > $output/tests-over-time.svg
 perl stats/manpages-over-time.pl > $temp/manpages-over-time.csv
 gnuplot -c stats/manpages-over-time.plot > $output/manpages-over-time.svg
 
+perl stats/manpage.pl > $temp/manpage.csv
+gnuplot -c stats/manpage.plot > $output/manpage.svg
+
 perl stats/examples-over-time.pl > $temp/examples-over-time.csv
 gnuplot -c stats/examples-over-time.plot > $output/examples-over-time.svg
 
@@ -313,6 +316,7 @@ ci-jobs = $output/CI-jobs-over-time.svg
 ci-platforms = $output/CI-platforms.svg
 ci-services = $output/CI-services.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
+curl-man-page-size = $output/manpage.svg
 source-code-age = $output/codeage.svg
 comments = $output/comments.svg
 commits = $output/commits-over-time.svg
@@ -405,6 +409,7 @@ ci-jobs = $temp/CI.csv
 ci-platforms = $temp/CI-platforms.csv
 ci-services = $temp/CI.csv
 cmdline-options-over-time = $temp/cmdline-options-over-time.csv
+curl-man-page-size = $temp/manpage.csv
 source-code-age = $temp/codeage.csv
 comments = $temp/comments.csv
 commits = $temp/commits-over-time.csv
