@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "curl backends" font ",48"
+set title "backends" font ",48"
 # where's the legend
 set key top left
 
@@ -50,9 +50,9 @@ unset border
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set yrange [0:]
-set ytics 1 nomirror
-set xtics rotate 3600*24*365.25 nomirror
+set yrange [0.5:]
+set ytics 1 nomirror out
+set xtics rotate 3600*24*365.25 nomirror out
 unset mxtics
 
 set pixmap 1 "stats/curl-symbol-light.png"
@@ -70,7 +70,7 @@ plot 'tmp/tls-over-time.csv' using 1:3 with linespoints linestyle 1 title "TLS",
  'tmp/resolver-over-time.csv' using 1:3 with linespoints linestyle 7 title "resolver", \
 'tmp/tls-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#0060ad" title "", \
  'tmp/ssh-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#808080" title "", \
- 'tmp/h1-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#c000c0" title "", \
+ 'tmp/h1-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -2 tc "#c000c0" title "", \
  'tmp/h2-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#c00040" title "", \
  'tmp/h3-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#c0c080" title "", \
  'tmp/idn-over-time.csv' using 1:3:2 with labels right offset -0.5,0.2 font ",14" rotate by -22 tc "#900040" title "", \
