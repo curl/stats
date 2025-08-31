@@ -55,7 +55,7 @@ for(@p1) {
         $date=sprintf("%04d-%02d-%02d", $year, $mon, $day);
     }
     else {
-        print STDERR "date column in $plot1 is wrong!\n";
+        print STDERR "date column in $plot1 is wrong!: \"$date\"\n";
         last;
     }
     $day1{$date}=$s[$coldata1];
