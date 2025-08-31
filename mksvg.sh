@@ -279,6 +279,10 @@ perl stats/plotdivision.pl $temp/authors.csv $temp/lines-over-time.csv 0:2 0:1 1
 perl stats/plotdivision.pl $temp/contributors-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/lines-per-contributor.csv
 gnuplot -c stats/lines-per-author.plot > $output/lines-per-author.svg
 
+# curl man page size per option
+perl stats/plotdivision.pl $temp/manpage.csv $temp/cmdline-options-over-time.csv 1:2 0:1 > $temp/manpage-lines-per-option.csv
+gnuplot -c stats/manpage-lines-per-option.plot > $output/manpage-lines-per-option.svg
+
 # remaining authors per KLOC
 
 perl stats/plotdivision.pl $temp/authorremains.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/remains-per-kloc.csv
@@ -317,6 +321,7 @@ ci-platforms = $output/CI-platforms.svg
 ci-services = $output/CI-services.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 curl-man-page-size = $output/manpage.svg
+curl-man-size-per-option = $output/manpage-lines-per-option.svg
 source-code-age = $output/codeage.svg
 comments-in-source-code = $output/comments.svg
 commits = $output/commits-over-time.svg
@@ -410,6 +415,7 @@ ci-platforms = $temp/CI-platforms.csv
 ci-services = $temp/CI.csv
 cmdline-options-over-time = $temp/cmdline-options-over-time.csv
 curl-man-page-size = $temp/manpage.csv
+curl-man-size-per-option = $temp/manpage-lines-per-option.csv
 source-code-age = $temp/codeage.csv
 comments-in-source-code = $temp/comments.csv
 commits = $temp/commits-over-time.csv
