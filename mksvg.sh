@@ -329,6 +329,7 @@ commits-by-daniel = $output/daniel-commit-share.svg
 commits-per-day = $output/date-of-year.svg
 commits-per-month = $output/commits-per-month.svg
 commits-per-year = $output/commits-per-year.svg
+commits-weekly = $output/weekday-of-year.svg
 complexity = $output/complexity.svg
 complexity-averarge = $output/line-complex.svg
 complexity-distribution = $output/complex-dist.svg
@@ -386,7 +387,6 @@ vulnerabilities-per-time = $output/vulns-plot.svg
 vulnerabilities-per-year = $output/vulns-per-year.svg
 vulnerability-severity = $output/high-reports.svg
 vulnerability-severity-distribution = $output/severity.svg
-weekly-commits = $output/weekday-of-year.svg
 EOF
 
 # Use the same names but point to the used CSV/data/input file
@@ -423,6 +423,7 @@ commits-by-daniel = $temp/daniel-commit-share.csv
 commits-per-day = $temp/date-of-year.csv
 commits-per-month = $temp/commits-per-month.csv
 commits-per-year = $temp/commits-per-year.csv
+commits-weekly = $temp/weekday-of-year.csv
 complexity = $temp/complexity.csv
 complexity-averarge = $temp/line-complex.csv
 complexity-distribution = $temp/complex-dist.csv
@@ -480,7 +481,6 @@ vulnerabilities-per-time = $temp/vulns-over-time.csv
 vulnerabilities-per-year = $temp/vulns-per-year.csv
 vulnerability-severity = $temp/high-vuln-reports.csv
 vulnerability-severity-distribution = $temp/severity.csv
-weekly-commits = $temp/weekday-of-year.csv
 EOF
 
 # make the dir world readable
