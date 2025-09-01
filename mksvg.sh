@@ -342,10 +342,6 @@ contributors-per-release = $output/contributors-per-release.svg
 coreteam-per-year = $output/coreteam-per-year.svg
 curl-man-page-size = $output/manpage.svg
 curl-man-size-per-option = $output/manpage-lines-per-option.svg
-cve-age = $output/cve-age.svg
-cve-high-low = $output/sev-per-year.svg
-cve-share = $output/cve-pie-chart.svg
-cve-time-to-fix = $output/cve-fixtime.svg
 cwe-top = $output/top-cwe.svg
 daniel-vs-rest = $output/daniel-vs-rest.svg
 documentation = $output/docs-over-time.svg
@@ -387,6 +383,10 @@ vulnerabilities-per-time = $output/vulns-plot.svg
 vulnerabilities-per-year = $output/vulns-per-year.svg
 vulnerability-severity = $output/high-reports.svg
 vulnerability-severity-distribution = $output/severity.svg
+vulnerability-age = $output/cve-age.svg
+vulnerability-high-low = $output/sev-per-year.svg
+vulnerability-share = $output/cve-pie-chart.svg
+vulnerability-time-to-fix = $output/cve-fixtime.svg
 EOF
 
 # Use the same names but point to the used CSV/data/input file
@@ -436,10 +436,6 @@ contributors-per-release = $temp/contributors-per-release.csv
 coreteam-per-year = $temp/coreteam-per-year.csv
 curl-man-page-size = $temp/manpage.csv
 curl-man-size-per-option = $temp/manpage-lines-per-option.csv
-cve-age = $temp/cve-age.csv
-cve-high-low = $temp/sev-per-year.csv
-cve-share = $temp/cve-pie-chart.csv
-cve-time-to-fix = $temp/cve-fixtime.csv
 cwe-top = $temp/top-cwe.csv
 daniel-vs-rest = $temp/daniel-vs-rest.csv
 documentation = $temp/docs-over-time.csv
@@ -481,6 +477,10 @@ vulnerabilities-per-time = $temp/vulns-over-time.csv
 vulnerabilities-per-year = $temp/vulns-per-year.csv
 vulnerability-severity = $temp/high-vuln-reports.csv
 vulnerability-severity-distribution = $temp/severity.csv
+vulnerability-age = $temp/cve-age.csv
+vulnerability-high-low = $temp/sev-per-year.csv
+vulnerability-share = $temp/cve-pie-chart.csv
+vulnerability-time-to-fix = $temp/cve-fixtime.csv
 EOF
 
 # make the dir world readable
