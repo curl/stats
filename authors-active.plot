@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Commit author activity since 2018" font ",48"
+set title "Commit author activity" font ",48"
 # where's the legend
 set key top left
 
@@ -35,7 +35,7 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/authors-active.csv' using 1:2 with lines linestyle 3 title "Within 120 days", \
+plot 'tmp/authors-active.csv' using 1:2 with lines linestyle 1 title "Within 120 days", \
  'tmp/authors-active.csv' using 1:4 with lines linestyle 2 title "Within 60 days", \
  'tmp/authors-active.csv' using 1:5 with lines linestyle 5 title "Within 30 days", \
- 'tmp/authors-active.csv' using 1:6 with lines linestyle 1 title "Within 7 days"
+ 'tmp/authors-active.csv' using 1:6 with lines linestyle 3 title "Within 7 days"
