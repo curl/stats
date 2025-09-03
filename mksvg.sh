@@ -249,6 +249,9 @@ gnuplot -c stats/testinfra-over-time.plot > $output/testinfra-over-time.svg
 perl stats/project-age.pl > $temp/project-age.csv
 gnuplot -c stats/project-age.plot > $output/project-age.svg
 
+perl stats/plotdivision.pl $temp/lines-over-time.csv $temp/project-age.csv 0:1 0:1 > $temp/loc-per-day.csv
+gnuplot -c stats/loc-per-day.plot > $output/loc-per-day.svg
+
 perl stats/plotdivision.pl $temp/testinfra-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/testinfra-per-line.csv
 gnuplot -c stats/testinfra-per-line.plot > $output/testinfra-per-line.svg
 
