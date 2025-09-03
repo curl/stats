@@ -246,6 +246,9 @@ gnuplot -c stats/top-cwe.plot > $output/top-cwe.svg
 perl stats/testinfra-over-time.pl > $temp/testinfra-over-time.csv
 gnuplot -c stats/testinfra-over-time.plot > $output/testinfra-over-time.svg
 
+perl stats/project-age.pl > $temp/project-age.csv
+gnuplot -c stats/project-age.plot > $output/project-age.svg
+
 perl stats/plotdivision.pl $temp/testinfra-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/testinfra-per-line.csv
 gnuplot -c stats/testinfra-per-line.plot > $output/testinfra-per-line.svg
 
