@@ -135,12 +135,12 @@ gnuplot -c stats/authors-per-month.plot > $output/authors-per-month.svg
 perl stats/firsttimers.pl > $temp/firsttimers.csv
 gnuplot -c stats/firsttimers.plot > $output/firsttimers.svg
 
-perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > $temp/CI.csv
-gnuplot -c stats/CI-jobs-over-time.plot > $output/CI-jobs-over-time.svg
-gnuplot -c stats/CI-services.plot > $output/CI-services.svg
+#perl stats/CI-jobs-over-time.pl | cut '-d;' -f2-  > $temp/CI.csv
+#gnuplot -c stats/CI-jobs-over-time.plot > $output/CI-jobs-over-time.svg
+#gnuplot -c stats/CI-services.plot > $output/CI-services.svg
 
-perl stats/CI-platforms.pl > $temp/CI-platforms.csv
-gnuplot -c stats/CI-platforms.plot > $output/CI-platforms.svg
+#perl stats/CI-platforms.pl > $temp/CI-platforms.csv
+#gnuplot -c stats/CI-platforms.plot > $output/CI-platforms.svg
 
 perl stats/commits-per-month.pl > $temp/commits-per-month.csv
 gnuplot -c stats/commits-per-month.plot > $output/commits-per-month.svg
@@ -327,9 +327,6 @@ bug-bounty-amounts = $output/bugbounty-amounts.svg
 bugfix-frequency = $output/bugfix-frequency.svg
 c-mistakes = $output/c-vuln-code.svg
 c-vulnerability-share = $output/c-reports.svg
-ci-jobs = $output/CI-jobs-over-time.svg
-ci-platforms = $output/CI-platforms.svg
-ci-services = $output/CI-services.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 comments-in-source-code = $output/comments.svg
 commits = $output/commits-over-time.svg
@@ -423,9 +420,6 @@ bug-bounty-amounts = $temp/bugbounty-amounts.csv
 bugfix-frequency = $temp/bugfix-frequency.csv
 c-mistakes = $temp/c-vuln-code.csv
 c-vulnerability-share = $temp/c-vuln-reports.csv
-ci-jobs = $temp/CI.csv
-ci-platforms = $temp/CI-platforms.csv
-ci-services = $temp/CI.csv
 cmdline-options-over-time = $temp/cmdline-options-over-time.csv
 comments-in-source-code = $temp/comments.csv
 commits = $temp/commits-over-time.csv
