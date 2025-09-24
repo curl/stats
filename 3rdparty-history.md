@@ -38,7 +38,7 @@
 2019-08-11 nghttp3
 2019-08-11 ngtcp2
 2019-11-01 BearSSL
-2020-01-05 wolfssh
+2020-01-05 wolfSSH
 2020-01-16 -PolarSSL
 2020-05-25 zstd
 2020-12-14 hyper
@@ -55,3 +55,4 @@
 2025-06-11 -BearSSL
 2025-06-11 -Secure Transport
 2025-06-24 -msh3
+2025-09-24 -wolfSSH
