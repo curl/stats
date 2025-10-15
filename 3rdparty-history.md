@@ -8,6 +8,7 @@
 2005-03-10 winsspi
 2005-04-01 GnuTLS
 2005-08-29 MIT kerberos
+2005-08-29 GNU GSS
 2006-06-29 wolfSSL
 2006-11-02 libssh2
 2007-02-01 NSS
@@ -56,3 +57,4 @@
 2025-06-11 -Secure Transport
 2025-06-24 -msh3
 2025-09-24 -wolfSSH
+2025-10-08 -Heimdal
