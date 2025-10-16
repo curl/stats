@@ -23,7 +23,7 @@
 2013-07-01 GSKit
 2013-09-02 nghttp2
 2014-07-16 -fbopenssl
-2014-08-01 libressl
+2014-08-01 LibreSSL
 2014-10-10 -QsoSSL
 2015-01-01 BoringSSL
 2015-09-29 libpsl
@@ -44,8 +44,8 @@
 2020-05-25 zstd
 2020-12-14 hyper
 2020-12-24 libgsasl
-2021-02-09 rustls
-2021-03-11 quictls
+2021-02-09 Rustls
+2021-03-11 QuicTLS
 2022-01-10 -MesaLink
 2022-04-10 msquic
 2022-04-10 msh3
