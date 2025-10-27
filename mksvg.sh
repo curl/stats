@@ -110,6 +110,9 @@ gnuplot -c stats/setopts-over-time.plot > $output/setopts-over-time.svg
 perl stats/days-per-release.pl $webroot > $temp/days-per-release.csv
 gnuplot -c stats/days-per-release.plot > $output/days-per-release.svg
 
+perl stats/commits-per-release.pl $webroot > $temp/commits-per-release.csv
+gnuplot -c stats/commits-per-release.plot > $output/commits-per-release.svg
+
 perl stats/cmdline-options-over-time.pl > $temp/cmdline-options-over-time.csv
 gnuplot -c stats/cmdline-options-over-time.plot > $output/cmdline-options-over-time.svg
 
@@ -334,6 +337,7 @@ commits-by-daniel = $output/daniel-commit-share.svg
 commits-monthly = $output/month-of-year.svg
 commits-per-day = $output/date-of-year.svg
 commits-per-month = $output/commits-per-month.svg
+commits-per-release = $output/commits-per-release.svg
 commits-per-year = $output/commits-per-year.svg
 commits-weekly = $output/weekday-of-year.svg
 complexity = $output/complexity.svg
@@ -426,6 +430,7 @@ commits = $temp/commits-over-time.csv
 commits-by-daniel = $temp/daniel-commit-share.csv
 commits-per-day = $temp/date-of-year.csv
 commits-per-month = $temp/commits-per-month.csv
+commits-per-release = $temp/commits-per-release.csv
 commits-per-year = $temp/commits-per-year.csv
 commits-weekly = $temp/weekday-of-year.csv
 commits-monthly = $temp/month-of-year.csv
