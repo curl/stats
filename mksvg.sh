@@ -305,9 +305,15 @@ gnuplot -c stats/top-remains.plot > $output/top-remains.svg
 perl stats/cve-pie-chart.pl $webroot > $temp/cve-pie-chart.csv
 gnuplot -c stats/cve-pie-chart.plot > $output/cve-pie-chart.svg
 
+# atoi density over time
+perl stats/atoi-over-time.pl > $temp/atoi-over-time.csv
+perl stats/plotdivision.pl $temp/atoi-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/atoi-per-kloc.csv
+gnuplot -c stats/atoi-over-time.plot > $output/atoi-over-time.svg
+
 cat >stats.list <<EOF
 added-lines-per-line = $output/added-per-line.svg
 api-calls = $output/API-calls-over-time.svg
+atoi-density = $output/atoi-over-time.svg
 author-activity = $output/authors-active.svg
 author-density = $output/remains-per-kloc.svg
 authors = $output/authors.svg
@@ -402,6 +408,7 @@ EOF
 cat >stats.data <<EOF
 added-lines-per-line = $temp/added-per-line.csv
 api-calls = $temp/API-calls-over-time.csv
+atoi-density = $temp/atoi-over-time.csv
 author-activity = $temp/authors-active.csv
 author-density = $temp/remains-per-kloc.csv
 authors = $temp/authors.csv
