@@ -40,7 +40,7 @@ set xtics 3600*24*365.25 nomirror out
 unset mxtics
 set ytics nomirror
 
-plot 'stats/h1-reports.md' using (strcol(1)[1:8].dayoffset*2):4 with boxes title "AI slop" fc 'blue', \
+plot 'stats/h1-reports.md' using (strcol(1)[1:8].dayoffset*2):4 with boxes title "Likely AI slop" fc 'blue', \
  'stats/h1-reports.md' using 1:2 with boxes title "All reports" fc 'red', \
  'stats/h1-reports.md' using (strcol(1)[1:8].dayoffset):3 with boxes title "Confirmed vulnerabilities" fc 'green', \
  'stats/h1-reports.md' using 1:2:2 with labels title "" offset 0,.5 font ", 24" tc lt 1, \
