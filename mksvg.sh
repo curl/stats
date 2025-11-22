@@ -261,6 +261,10 @@ gnuplot -c stats/testinfra-per-line.plot > $output/testinfra-per-line.svg
 perl stats/plotdivision.pl $temp/testinfra-over-time.csv $temp/tests-over-time.csv 0:1 1:2 > $temp/testinfra-per-test.csv
 gnuplot -c stats/testinfra-per-test.plot > $output/testinfra-per-test.svg
 
+# no perl!
+cp stats/h1-reports.md $temp/h1-per-year.csv
+gnuplot -c stats/h1-per-year.plot > $output/h1-per-year.svg
+
 # Added LOC per LOC still present
 perl stats/addedcode.pl > $temp/addedcode.csv
 perl stats/plotdivision.pl $temp/addedcode.csv $temp/lines-over-time.csv  0:1 0:1 > $temp/added-per-line.csv
@@ -367,6 +371,7 @@ github-age = $output/gh-age.svg
 github-fixes = $output/gh-fixes.svg
 github-monthly = $output/gh-monthly.svg
 github-open = $output/gh-open.svg
+hackerone = $output/h1-per-year.svg
 http-versions = $output/http-over-time.svg
 lines-added = $output/lines-person.svg
 mail = $output/mail.svg
@@ -462,6 +467,7 @@ github-age = $temp/gh-age.csv
 github-fixes = $temp/gh-fixes.csv
 github-monthly = $temp/gh-monthly.csv
 github-open = $temp/gh-open.csv
+hackerone = $temp/h1-per-year.csv
 http-versions = $temp/http-over-time.csv
 lines-added = $temp/lines-person.csv
 mail = $temp/mail.csv
