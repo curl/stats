@@ -48,7 +48,7 @@ sub cpyuse {
     my $count;
     my $alloc;
 
-    open(G, "git show $cmd 2>/dev/null| grep -aE 'sscanf\\('|");
+    open(G, "git show $cmd 2>/dev/null| grep -aE ' = sscanf\\('|");
     while(<G>) {
         $count++;
     }
