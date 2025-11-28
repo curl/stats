@@ -26,8 +26,16 @@ foreach my $t (@alltags) {
     }
 }
 
+sub datum {
+    my ($d) = @_;
+    if($d =~ /^(\d\d\d\d)-(\d\d)-(\d\d)/) {
+        return $1 * 10000 + $2*100 + $3;
+    }
+    return 0;
+}
+
 sub cpyuse {
-    my ($tag, $path) = @_;
+    my ($tag, $d, $path) = @_;
 
     # Get source files to count
     my @files;
@@ -54,8 +62,13 @@ sub cpyuse {
     }
     close(G);
 
-    # the .* is here to work with typecast results
-    open(G, "git show $cmd 2>/dev/null| grep -E '\=.*\\W(Curl_safere|re|m|c)alloc\\('|");
+    # the .* in the regexes are there to work with typecast results
+    if(datum($d) > 20251127) {
+        open(G, "git show $cmd 2>/dev/null| grep -E '\=.*\\W(Curl_safere|curlx_re|curlx_m|curlx_c|m)alloc\\('|");
+    }
+    else {
+        open(G, "git show $cmd 2>/dev/null| grep -E '\=.*\\W(Curl_safere|re|m|c)alloc\\('|");
+    }
     while(<G>) {
         $alloc++;
     }
@@ -281,7 +294,7 @@ CACHE
 
 sub show {
     my ($t, $d) = @_;
-    my ($cpy, $alloc, $code) = cpyuse($t, "lib");
+    my ($cpy, $alloc, $code) = cpyuse($t, $d, "lib");
     printf "$d;%.3f;%u;%.3f;%u\n", $cpy * 1000 / $code, $cpy, $alloc * 1000 / $code, $alloc;
 }
 
