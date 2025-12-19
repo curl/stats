@@ -22,9 +22,7 @@ sub sortthem {
 foreach my $t (@alltags) {
     chomp $t;
     if($t =~ /^curl-([0-9_]*[0-9])\z/) {
-        if(num($t) > 801001) {
-            push @releases, $t;
-        }
+        push @releases, $t;
     }
 }
 
@@ -33,24 +31,6 @@ sub options {
 
     foreach $f (@file) {
         if($f =~ /ommand line options: *(\d+)/) {
-            return $1;
-        }
-    }
-    return 0;
-}
-
-sub loc {
-    my ($tag) = @_;
-    `git checkout -f $tag 2>/dev/null`;
-    my @wc = `find lib include src -name "*.[ch]" | xargs wc -l`;
-    return int($wc[$#wc]);
-}
-
-sub contribs {
-    my @file = @_;
-
-    foreach $f (@file) {
-        if($f =~ /ontributors: *(\d+)/) {
             return $1;
         }
     }
@@ -233,15 +213,26 @@ print <<MOO
 2024-07-31;263
 2024-09-11;265
 2024-09-18;265
+2024-11-06;266
+2024-12-11;266
+2025-02-05;267
+2025-02-13;267
+2025-04-02;268
+2025-05-28;269
+2025-06-04;269
+2025-07-16;269
+2025-09-10;272
+2025-11-05;273
 MOO
     ;
 
 foreach my $t (sort sortthem @releases) {
+    if(num($t) <= 81700) {
+        next;
+    }
     my $d = tag2date($t);
     my @out = `git show $t:RELEASE-NOTES 2>/dev/null`;
     my $n = options(@out);
-#    my $c = contribs(@out);
-#    my $loc = loc($t);
 
     if($n) {
         # prettyfy
@@ -251,11 +242,15 @@ foreach my $t (sort sortthem @releases) {
     }
 }
 
-my $current = 0 + `grep -E '^  {"... --' src/tool_listhelp.c | wc -l`;
+# now
+$t=`git describe --match "curl*"`;
+chomp $t;
 
-if($current) {
-    my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
-        localtime(time);
-    $date = sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
-    print "$date;$current\n";
-}
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
+    localtime(time);
+$date = sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
+my @out = `git show $t:RELEASE-NOTES 2>/dev/null`;
+my $n = options(@out);
+
+print "$date;$n\n";
+
