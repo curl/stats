@@ -227,6 +227,9 @@ gnuplot -c stats/cpy-over-time.plot > $output/cpy-over-time.svg
 perl stats/strncpy-over-time.pl > $temp/strncpy-over-time.csv
 gnuplot -c stats/strncpy-over-time.plot > $output/strncpy-over-time.svg
 
+perl stats/strcpy-over-time.pl > $temp/strcpy-over-time.csv
+gnuplot -c stats/strcpy-over-time.plot > $output/strcpy-over-time.svg
+
 perl stats/sscanf-over-time.pl > $temp/sscanf-over-time.csv
 gnuplot -c stats/sscanf-over-time.plot > $output/sscanf-over-time.svg
 
@@ -388,6 +391,7 @@ source-code-delta = $output/lines-per-month.svg
 source-code-lines = $output/lines-over-time.svg
 source-code-lines-per-day = $output/loc-per-day.svg
 sscanf-density = $output/sscanf-over-time.svg
+strcpy-density = $output/strcpy-over-time.svg
 strncpy-density = $output/strncpy-over-time.svg
 symbols = $output/symbols-over-time.svg
 test-infrastructure-lines = $output/testinfra-over-time.svg
@@ -484,6 +488,7 @@ source-code-delta = $temp/lines-per-month.csv
 source-code-lines = $temp/lines-over-time.csv
 source-code-lines-per-day = $temp/loc-per-day.csv
 sscanf-density = $temp/sscanf-over-time.csv
+strcpy-density = $temp/strcpy-over-time.csv
 strncpy-density = $temp/strncpy-over-time.csv
 symbols = $temp/symbols-over-time.csv
 test-infrastructure-lines = $temp/testinfra-over-time.csv
