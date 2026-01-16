@@ -317,6 +317,11 @@ perl stats/atoi-over-time.pl > $temp/atoi-over-time.csv
 perl stats/plotdivision.pl $temp/atoi-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/atoi-per-kloc.csv
 gnuplot -c stats/atoi-over-time.plot > $output/atoi-over-time.svg
 
+# if density over time
+perl stats/ifdef-over-time.pl > $temp/ifdef-over-time.csv
+perl stats/plotdivision.pl $temp/ifdef-over-time.csv $temp/lines-over-time.csv 0:1 0:1 1000 > $temp/ifdef-per-kloc.csv
+gnuplot -c stats/ifdef-over-time.plot > $output/ifdef-over-time.svg
+
 cat >stats.list <<EOF
 added-lines-per-line = $output/added-per-line.svg
 api-calls = $output/API-calls-over-time.svg
