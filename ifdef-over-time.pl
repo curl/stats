@@ -48,7 +48,7 @@ sub ifuse {
     my $count;
     my $alloc;
 
-    open(G, "git show $cmd 2>/dev/null| grep -a '^ *#if'|");
+    open(G, "git show $cmd 2>/dev/null| grep -Ea '^ *# *(if|elif)'|");
     while(<G>) {
         $count++;
     }
