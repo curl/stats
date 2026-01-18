@@ -33,7 +33,7 @@ Example:
 
 ### Render graph
 
-The rendering of the graph is separate from the data gathering part. We
+The rendering of the graph is separate from the data gathering part. The
 gnuplot script is named the same as the perl script and uses the CSV file as
 input to generate a SVG output:
 
