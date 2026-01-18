@@ -29,32 +29,15 @@ foreach my $t (@alltags) {
 sub ifuse {
     my ($tag, $path) = @_;
 
-    # Get source files to count
-    my @files;
-    open(G, "git ls-tree -r --name-only $tag -- $path 2>/dev/null|");
-    while(<G>) {
-        chomp;
-        if($_ =~ /[ch]\z/) {
-            push @files, $_;
-        }
-    }
-    close(G);
-
-    my $cmd;
-    for(@files) {
-        $cmd .= "$tag:$_ ";
-    }
-
     my $count;
-    my $alloc;
 
-    open(G, "git show $cmd 2>/dev/null| grep -Ea '^ *# *(if|elif)'|");
+    open(G, "git grep -Eah '^ *# *(if|elif)' $tag -- $path|");
     while(<G>) {
         $count++;
     }
     close(G);
 
-    return ($count, $code);
+    return $count;
 }
 
 print <<CACHE
@@ -265,7 +248,7 @@ CACHE
 
 sub show {
     my ($t, $d) = @_;
-    my ($ifdefs) = ifuse($t, "lib src");
+    my $ifdefs = ifuse($t, ":lib/**[ch] :src/**[ch]");
     printf "$d;%u\n", $ifdefs;
 }
 
