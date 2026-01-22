@@ -8,6 +8,12 @@ temp=tmp
 # store the SVG output here
 output=`mktemp -d svg-XXXXXX`
 
+cp stats/512-mb.csv stats/multi-handle.csv stats/easy-handle.csv stats/connectdata.csv $temp/
+gnuplot -c stats/512-mb.plot > $output/512-mb.svg
+gnuplot -c stats/multi-handle.plot > $output/multi-handle.svg
+gnuplot -c stats/easy-handle.plot > $output/easy-handle.svg
+gnuplot -c stats/connectdata.plot > $output/connectdata.svg
+
 perl stats/date-of-year.pl > $temp/date-of-year.csv
 gnuplot -c stats/date-of-year.plot > $output/date-of-year.svg
 
@@ -386,12 +392,16 @@ lines-added = $output/lines-person.svg
 mail = $output/mail.svg
 man-pages = $output/manpages-over-time.svg
 memory-function-density = $output/cpy-over-time.svg
+memory-spend-for-downloading-512-mb = $output/512-mb.svg
 project-age = $output/project-age.svg
 protocols = $output/protocols-over-time.svg
 release-frequency = $output/days-per-release.svg
 releases = $output/release-number.svg
 releases-per-year = $output/releases-per-year.svg
 setopts = $output/setopts-over-time.svg
+size-of-connectdata = $output/connectdata.svg
+size-of-easy-handle = $output/easy-handle.svg
+size-of-multi-handle = $output/multi-handle.svg
 source-code-age = $output/codeage.svg
 source-code-delta = $output/lines-per-month.svg
 source-code-lines = $output/lines-over-time.svg
@@ -436,10 +446,10 @@ authors-of-95-percent = $temp/95-percent.csv
 authors-per-kloc = $temp/lines-per-author.csv
 authors-per-month = $temp/authors-per-month.csv
 authors-per-year = $temp/authors-per-year.csv
-authors-top-40 = $temp/top-remains.csv
-authors-who-are-first-timers = $temp/firsttimers.csv
 authors-remaining = $temp/authorremains.csv
 authors-remaining-toplist = $temp/authorremains.csv
+authors-top-40 = $temp/top-remains.csv
+authors-who-are-first-timers = $temp/firsttimers.csv
 backends = $temp/tls-over-time.csv
 bug-bounty = $temp/bugbounty-over-time.csv
 bug-bounty-amounts = $temp/bugbounty-amounts.csv
@@ -450,12 +460,12 @@ cmdline-options-over-time = $temp/cmdline-options-over-time.csv
 comments-in-source-code = $temp/comments.csv
 commits = $temp/commits-over-time.csv
 commits-by-daniel = $temp/daniel-commit-share.csv
+commits-monthly = $temp/month-of-year.csv
 commits-per-day = $temp/date-of-year.csv
 commits-per-month = $temp/commits-per-month.csv
 commits-per-release = $temp/commits-per-release.csv
 commits-per-year = $temp/commits-per-year.csv
 commits-weekly = $temp/weekday-of-year.csv
-commits-monthly = $temp/month-of-year.csv
 complexity = $temp/complexity.csv
 complexity-averarge = $temp/line-complex.csv
 complexity-distribution = $temp/complex-dist.csv
@@ -484,12 +494,16 @@ lines-added = $temp/lines-person.csv
 mail = $temp/mail.csv
 man-pages = $temp/manpages-over-time.csv
 memory-function-density = $temp/cpy-over-time.csv
+memory-spend-for-downloading-512-mb = $temp/512-mb.csv
 project-age = $temp/project-age.csv
 protocols = $temp/protocols-over-time.csv
 release-frequency = $temp/days-per-release.csv
 releases = $temp/release-number.csv
 releases-per-year = $temp/releases-per-year.csv
 setopts = $temp/setopts-over-time.csv
+size-of-connectdata = $temp/connectdata.csv
+size-of-easy-handle = $temp/easy-handle.csv
+size-of-multi-handle = $temp/multi-handle.csv
 source-code-age = $temp/codeage.csv
 source-code-delta = $temp/lines-per-month.csv
 source-code-lines = $temp/lines-over-time.csv
@@ -509,10 +523,10 @@ vulnerabilities-in-code = $temp/vuln-dist-code.csv
 vulnerabilities-per-kloc = $temp/knownvulns-per-line.csv
 vulnerabilities-per-time = $temp/vulns-over-time.csv
 vulnerabilities-per-year = $temp/vulns-per-year.csv
-vulnerability-severity = $temp/high-vuln-reports.csv
-vulnerability-severity-distribution = $temp/severity.csv
 vulnerability-age = $temp/cve-age.csv
 vulnerability-high-low = $temp/sev-per-year.csv
+vulnerability-severity = $temp/high-vuln-reports.csv
+vulnerability-severity-distribution = $temp/severity.csv
 vulnerability-share = $temp/cve-pie-chart.csv
 vulnerability-time-to-fix = $temp/cve-fixtime.csv
 EOF
