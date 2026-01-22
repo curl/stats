@@ -43,5 +43,5 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%Y"
 set format y "%.0s%c"
 set datafile separator ";"
-plot 'stats/512-mb.csv' using 2:4 with lines linestyle 1 title "Total amount of memory used", \
- 'stats/512-mb.csv' using 2:3 axis x1y2 with lines linestyle 2 title "Number of allocations"
+plot 'tmp/512-mb.csv' using 2:4 with lines linestyle 1 title "Total amount of memory used", \
+ 'tmp/512-mb.csv' using 2:3 axis x1y2 with lines linestyle 2 title "Number of allocations"
