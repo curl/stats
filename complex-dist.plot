@@ -4,7 +4,7 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "Complexity distribution\n{/*0.4How big share of the source code is considered how complex}" font ",48"
 # where's the legend
-set key bottom left opaque
+set key center right outside
 
 # Identify the axes
 #set xlabel "Time"
@@ -28,14 +28,14 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/complex-dist.csv' using 1:12 with filledcurves above fc "#fe0000" title "> 200", \
- 'tmp/complex-dist.csv' using 1:11 with filledcurves above fc "#fe6a00" title "≤ 200", \
- 'tmp/complex-dist.csv' using 1:10 with filledcurves above fc "#ffd800" title "≤ 150", \
- 'tmp/complex-dist.csv' using 1:9 with filledcurves above fc "#ff40ff" title "≤ 100", \
- 'tmp/complex-dist.csv' using 1:8 with filledcurves above fc "#b100fe" title "≤ 90", \
- 'tmp/complex-dist.csv' using 1:7 with filledcurves above fc "#61006e" title "≤ 80", \
- 'tmp/complex-dist.csv' using 1:6 with filledcurves above fc "#0094fe" title "≤ 70", \
- 'tmp/complex-dist.csv' using 1:5 with filledcurves above fc "#0026ff" title "≤ 60", \
- 'tmp/complex-dist.csv' using 1:4 with filledcurves above fc "#00497e" title "≤ 50", \
- 'tmp/complex-dist.csv' using 1:3 with filledcurves above fc "#00c000" title "≤ 30", \
- 'tmp/complex-dist.csv' using 1:2 with filledcurves above fc "#007f0e" title "≤ 10"
+plot 'tmp/complex-dist.csv' using 1:12 with filledcurves above fc "#A80003" title "> 200", \
+ 'tmp/complex-dist.csv' using 1:11 with filledcurves above fc "#E40515" title "≤ 200", \
+ 'tmp/complex-dist.csv' using 1:10 with filledcurves above fc "#F94902" title "≤ 150", \
+ 'tmp/complex-dist.csv' using 1:9 with filledcurves above fc "#F6790B" title "≤ 100", \
+ 'tmp/complex-dist.csv' using 1:8 with filledcurves above fc "#F19903" title "≤ 90", \
+ 'tmp/complex-dist.csv' using 1:7 with filledcurves above fc "#E7B503" title "≤ 80", \
+ 'tmp/complex-dist.csv' using 1:6 with filledcurves above fc "#D5CE04" title "≤ 70", \
+ 'tmp/complex-dist.csv' using 1:5 with filledcurves above fc "#BBE453" title "≤ 60", \
+ 'tmp/complex-dist.csv' using 1:4 with filledcurves above fc "#A2F49B" title "≤ 50", \
+ 'tmp/complex-dist.csv' using 1:3 with filledcurves above fc "#C6F7D6" title "≤ 30", \
+ 'tmp/complex-dist.csv' using 1:2 with filledcurves above fc "#CEFFFF" title "≤ 10"
