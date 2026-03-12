@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Hackerone reports per year" font ",48"
+set title "curl security reports on Hackerone" font ",48"
 # where's the legend
 set key top left
 
@@ -31,8 +31,8 @@ set datafile separator ";"
 # start Y at 0
 set yrange [0:]
 
-# the dates need to be manipulated as strings - you can't do numerical arithmetic on them.
-# / Lee Philips
+# the dates need to be manipulated as strings - you can't do numerical
+# arithmetic on them. / Lee Philips
 
 dayoffset = '30'
 set xrange ["2018-06-01":]
