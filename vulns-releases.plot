@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Vulnerabilities in recent releases" font ",48"
+set title "Vulnerabilities in releases" font ",48"
 # where's the legend
 set key top left
 
@@ -30,7 +30,7 @@ set ytics 5
 set boxwidth 0.8 relative
 set style fill solid
 
-set xrange ["2020-01-01":]
+#set xrange ["2020-01-01":]
 
 set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
