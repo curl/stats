@@ -46,8 +46,8 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/authors.csv' using 1:3 with lines linestyle 1 title "All", \
- 'tmp/authors.csv' using 1:2 with lines linestyle 2 title "Single commit", \
- 'tmp/authors.csv' using 1:7 with lines linestyle 3 title "2+ commits", \
- 'tmp/authors.csv' using 1:6 with lines linestyle 4 title "5+ commits", \
- 'tmp/authors.csv' using 1:5 with lines linestyle 5 title "10+ commits"
+plot ARG1.'/authors.csv' using 1:3 with lines linestyle 1 title "All", \
+ ARG1.'/authors.csv' using 1:2 with lines linestyle 2 title "Single commit", \
+ ARG1.'/authors.csv' using 1:7 with lines linestyle 3 title "2+ commits", \
+ ARG1.'/authors.csv' using 1:6 with lines linestyle 4 title "5+ commits", \
+ ARG1.'/authors.csv' using 1:5 with lines linestyle 5 title "10+ commits"

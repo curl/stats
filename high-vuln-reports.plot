@@ -53,8 +53,8 @@ set style line 4 \
     pointtype 7 pointsize .5
 
 plot \
- 'tmp/high-vuln-reports.csv' using 1:3 with linespoints linestyle 1 title "Low", \
- 'tmp/high-vuln-reports.csv' using 1:4 with linespoints linestyle 2 title "Medium", \
- 'tmp/high-vuln-reports.csv' using 1:5 with linespoints linestyle 3 title "High", \
- 'tmp/high-vuln-reports.csv' using 1:6 with linespoints linestyle 4 title "Critical", \
- 'tmp/high-vuln-reports.csv' using 1:7 with lines lc "#000000" lw 4 title "% share High or Critical"
+ ARG1.'/high-vuln-reports.csv' using 1:3 with linespoints linestyle 1 title "Low", \
+ ARG1.'/high-vuln-reports.csv' using 1:4 with linespoints linestyle 2 title "Medium", \
+ ARG1.'/high-vuln-reports.csv' using 1:5 with linespoints linestyle 3 title "High", \
+ ARG1.'/high-vuln-reports.csv' using 1:6 with linespoints linestyle 4 title "Critical", \
+ ARG1.'/high-vuln-reports.csv' using 1:7 with lines lc "#000000" lw 4 title "% share High or Critical"

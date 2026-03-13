@@ -21,4 +21,4 @@ unset border
 
 set datafile separator ";"
 
-plot 'tmp/donors.csv' using 2:3 with lines linestyle 1 title ""
+plot ARG1.'/donors.csv' using 2:3 with lines linestyle 1 title ""

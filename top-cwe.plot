@@ -26,5 +26,5 @@ set datafile separator ";"
 set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
-plot 'tmp/top-cwe.csv' using 1:3 with boxes fc "#f0d0d0" title "", \
-'tmp/top-cwe.csv' using 1:-1:2 with labels title "" offset 0,1 font ", 24" rotate left tc lt 0
+plot ARG1.'/top-cwe.csv' using 1:3 with boxes fc "#f0d0d0" title "", \
+ARG1.'/top-cwe.csv' using 1:-1:2 with labels title "" offset 0,1 font ", 24" rotate left tc lt 0

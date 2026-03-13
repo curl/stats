@@ -139,10 +139,12 @@ print <<CACHE
 2025-12-17;92;259
 2025-12-27;93;261
 2026-01-14;93;262
+2026-01-16;94;264
+2026-01-22;98;269
 CACHE
     ;
 
-open(L, "git log --reverse --pretty=fuller --date=short --stat --since=2026-01-15 |");
+open(L, "git log --reverse --pretty=fuller --date=short --stat --since=2026-03-13 |");
 my $hash;
 my $prev="0.0";
 while(<L>) {
@@ -169,9 +171,25 @@ while(<L>) {
     }
 }
 
+# starting mid March 2026
+sub newplots {
+    my ($tag)=@_;
+
+    open(G, "git show $tag:Makefile 2>/dev/null |");
+    my @rl = <G>;
+    close(G);
+    my @plotfiles;
+    for my $r (@rl) {
+        if($r =~ /\/(.*)\.svg:/) {
+            push @plotfiles, "$1.plot";
+        }
+    }
+    return @plotfiles;
+}
 
 sub gnuplots {
     my ($tag)=@_;
+
     open(G, "git show $tag:mksvg.sh 2>/dev/null |");
     my @rl = <G>;
     close(G);
@@ -182,7 +200,10 @@ sub gnuplots {
         }
     }
 
-    return @plotfiles;
+    if(scalar(@plotfiles)) {
+        return @plotfiles;
+    }
+    return newplots();
 }
 
 sub graphs {
@@ -195,7 +216,7 @@ sub graphs {
         close(G);
         my $pre = $c;
         for my $r (@rl) {
-            while($r =~ s/tmp\///) {
+            while($r =~ s/\.csv//) {
                 $c++;
             }
         }

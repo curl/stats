@@ -34,4 +34,4 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%B"
 set datafile separator ";"
 
-plot 'tmp/date-of-year.csv' using 1:2 with boxes fc "#800080" title ""
+plot ARG1.'/date-of-year.csv' using 1:2 with boxes fc "#800080" title ""

@@ -1,3 +1,0 @@
-date - median - average - 12 month aver average - 75th percentile
-<p>
-This data is fetched from github daily using their API, then stored and massaged by scripts on our server.

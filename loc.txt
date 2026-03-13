@@ -1,3 +1,0 @@
-date - lines of code
-<p>
-Lines of code means lines in the src, lib and include directories and is extracted from the git history of the repository.

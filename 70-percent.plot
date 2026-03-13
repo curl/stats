@@ -34,6 +34,6 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%Y"
 set datafile separator ";"
 
-plot 'tmp/70-percent.csv' using 1:2 with boxes title "", \
-  'tmp/70-percent.csv' using 1:3 with lines title "5-year average" lw 4, \
-  'tmp/70-percent.csv' using 1:4 with lines title "All-time average" lw 4
+plot ARG1.'/70-percent.csv' using 1:2 with boxes title "", \
+  ARG1.'/70-percent.csv' using 1:3 with lines title "5-year average" lw 4, \
+  ARG1.'/70-percent.csv' using 1:4 with lines title "All-time average" lw 4

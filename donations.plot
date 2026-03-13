@@ -50,7 +50,7 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%b %Y"
 set datafile separator ";"
 
-plot 'tmp/donations.csv' using 1:2 with boxes linestyle 1 title "Monthly amount (before fees)", \
-  'tmp/donations.csv' using 1:3 with lines linestyle 2 title "12 month average", \
-  'tmp/donations.csv' using 1:5 with lines linestyle 3 title "All-time monthly average", \
-  'tmp/donations.csv' using 1:4 with lines title "Total net amount" axis x1y2 lw 4
+plot ARG1.'/donations.csv' using 1:2 with boxes linestyle 1 title "Monthly amount (before fees)", \
+  ARG1.'/donations.csv' using 1:3 with lines linestyle 2 title "12 month average", \
+  ARG1.'/donations.csv' using 1:5 with lines linestyle 3 title "All-time monthly average", \
+  ARG1.'/donations.csv' using 1:4 with lines title "Total net amount" axis x1y2 lw 4

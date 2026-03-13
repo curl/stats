@@ -37,5 +37,5 @@ set xtics rotate 3600*24*365.25 out nomirror
 unset mxtics
 
 set datafile separator ";"
-plot  'tmp/daniel-commit-share.csv' using 1:3 with boxes linestyle 3 title "Monthly share of commits", \
-'tmp/daniel-commit-share.csv' using 1:2 with lines linestyle 1 title "total share of commits"
+plot  ARG1.'/daniel-commit-share.csv' using 1:3 with boxes linestyle 3 title "Monthly share of commits", \
+ARG1.'/daniel-commit-share.csv' using 1:2 with lines linestyle 1 title "total share of commits"

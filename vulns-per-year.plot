@@ -46,7 +46,7 @@ set format x "%Y"
 set datafile separator ";"
 
 # plot the flaw periods and the project age with titles and line width 3
-plot  'tmp/vulns-per-year.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "Introduced" fc '#800000', \
- 'tmp/vulns-per-year.csv' using 1:2 with boxes title "Fixed" fc '#008000', \
- 'tmp/vulns-per-year.csv' using 1:5 with lines linestyle 1 title "5 year average fixed", \
- 'tmp/vulns-per-year.csv' using 1:6 with lines linestyle 2 title "5 year average introduced"
+plot  ARG1.'/vulns-per-year.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "Introduced" fc '#800000', \
+ ARG1.'/vulns-per-year.csv' using 1:2 with boxes title "Fixed" fc '#008000', \
+ ARG1.'/vulns-per-year.csv' using 1:5 with lines linestyle 1 title "5 year average fixed", \
+ ARG1.'/vulns-per-year.csv' using 1:6 with lines linestyle 2 title "5 year average introduced"

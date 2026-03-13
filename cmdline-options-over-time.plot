@@ -30,4 +30,4 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/cmdline-options-over-time.csv' using 1:2 with lines linestyle 1 title ""
+plot ARG1.'/cmdline-options-over-time.csv' using 1:2 with lines linestyle 1 title ""

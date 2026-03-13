@@ -49,7 +49,7 @@ set format x "%Y"
 set xrange ["2000-01-01":]
 set datafile separator ";"
 
-plot  'tmp/mail.csv' using 1:3 with lines linestyle 2 title "curl-users", \
-'tmp/mail.csv' using 1:5 with lines linestyle 4 title "curl-users 12 months average", \
-'tmp/mail.csv' using 1:2 with lines linestyle 1 title "curl-library", \
-'tmp/mail.csv' using 1:4 with lines linestyle 3 title "curl-library 12 months average"
+plot  ARG1.'/mail.csv' using 1:3 with lines linestyle 2 title "curl-users", \
+ARG1.'/mail.csv' using 1:5 with lines linestyle 4 title "curl-users 12 months average", \
+ARG1.'/mail.csv' using 1:2 with lines linestyle 1 title "curl-library", \
+ARG1.'/mail.csv' using 1:4 with lines linestyle 3 title "curl-library 12 months average"

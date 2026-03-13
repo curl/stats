@@ -27,5 +27,5 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set datafile separator ";"
 
-plot 'tmp/weekday-of-year.csv' using 1:3 with boxes fc "#000060" title "", \
- 'tmp/weekday-of-year.csv' using 1:3:2 with labels title "" offset 0,-.5 font ", 36" rotate right tc lt 5
+plot ARG1.'/weekday-of-year.csv' using 1:3 with boxes fc "#000060" title "", \
+ ARG1.'/weekday-of-year.csv' using 1:3:2 with labels title "" offset 0,-.5 font ", 36" rotate right tc lt 5

@@ -40,6 +40,6 @@ set xtics rotate 3600*24*365.25 nomirror out
 set ytics nomirror
 unset mxtics
 set datafile separator ";"
-plot 'tmp/lines-over-time.csv' using 1:2 with lines linestyle 1 title "all product code", \
- 'tmp/lines-over-time.csv' using 1:3 with lines linestyle 2 title "libcurl", \
- 'tmp/lines-over-time.csv' using 1:4 with lines linestyle 3 title "curl tool"
+plot ARG1.'/lines-over-time.csv' using 1:2 with lines linestyle 1 title "all product code", \
+ ARG1.'/lines-over-time.csv' using 1:3 with lines linestyle 2 title "libcurl", \
+ ARG1.'/lines-over-time.csv' using 1:4 with lines linestyle 3 title "curl tool"

@@ -37,5 +37,5 @@ set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror out
 unset mxtics
 set datafile separator ";"
-plot 'tmp/strncpy-over-time.csv' using 1:3 with lines linestyle 3 title "strncpy total count" axis x1y2, \
-'tmp/strncpy-over-time.csv' using 1:2 with lines linestyle 1 title "strncpy density"
+plot ARG1.'/strncpy-over-time.csv' using 1:3 with lines linestyle 3 title "strncpy total count" axis x1y2, \
+ARG1.'/strncpy-over-time.csv' using 1:2 with lines linestyle 1 title "strncpy density"

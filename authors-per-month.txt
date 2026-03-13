@@ -1,3 +1,0 @@
-date (month) - authots that month - 12 month author average
-<p>
-The data comes from the git repository.

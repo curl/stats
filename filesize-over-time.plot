@@ -41,6 +41,6 @@ set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
 set ytics nomirror
 set datafile separator ";"
-plot 'tmp/filesize-over-time.csv' using 1:2 with lines linestyle 1 title "largest", \
- 'tmp/filesize-over-time.csv' using 1:3 with lines linestyle 2 title "p90", \
- 'tmp/filesize-over-time.csv' using 1:4 with lines linestyle 3 title "median"
+plot ARG1.'/filesize-over-time.csv' using 1:2 with lines linestyle 1 title "largest", \
+ ARG1.'/filesize-over-time.csv' using 1:3 with lines linestyle 2 title "p90", \
+ ARG1.'/filesize-over-time.csv' using 1:4 with lines linestyle 3 title "median"

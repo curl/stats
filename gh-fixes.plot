@@ -44,7 +44,7 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/gh-fixes.csv' using 2:4 with lines linestyle 2 title "12 month median"#,\
-# 'tmp/gh-fixes.csv' using 2:5 with lines linestyle 3 title "12 month average"
+plot ARG1.'/gh-fixes.csv' using 2:4 with lines linestyle 2 title "12 month median"#,\
+# ARG1.'/gh-fixes.csv' using 2:5 with lines linestyle 3 title "12 month average"
 
-# plot 'tmp/gh-fixes.csv' using 2:3 with lines linestyle 1 title "Issue lifetime", \
+# plot ARG1.'/gh-fixes.csv' using 2:3 with lines linestyle 1 title "Issue lifetime", \

@@ -1,3 +1,0 @@
-date - all jobs accumulated - travis - cirrus - appveyor - azure pipelines - github actions
-<p>
-The data comes from parsing the CI services instruction meta data files as stored in git.

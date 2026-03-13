@@ -1,3 +1,0 @@
-date (month) - accumulated number of authors until then
-<p>
-The data comes from the git repository.

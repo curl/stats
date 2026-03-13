@@ -28,7 +28,7 @@ set yrange [0:100]
 set format x "%Y"
 set datafile separator ";"
 plot \
-'tmp/severity.csv' using 1:5 with filledcurves above fc "#fe0000" title "critical", \
-'tmp/severity.csv' using 1:4 with filledcurves above fc "#800000" title "high", \
-'tmp/severity.csv' using 1:3 with filledcurves above fc "#0080c0" title "medium", \
-'tmp/severity.csv' using 1:2 with filledcurves above fc "#2e8a00" title "low"
+ARG1.'/severity.csv' using 1:5 with filledcurves above fc "#fe0000" title "critical", \
+ARG1.'/severity.csv' using 1:4 with filledcurves above fc "#800000" title "high", \
+ARG1.'/severity.csv' using 1:3 with filledcurves above fc "#0080c0" title "medium", \
+ARG1.'/severity.csv' using 1:2 with filledcurves above fc "#2e8a00" title "low"

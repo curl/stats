@@ -1,3 +1,0 @@
-CVE id - date of publication - accumulated bounty - invidual bounty
-<p>
-This information comes from curl-www/docs/vuln.pm.

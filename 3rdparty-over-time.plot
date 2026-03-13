@@ -30,6 +30,6 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/3rdparty-over-time.csv' using 1:3 with linespoints linestyle 1 title "", \
- 'tmp/3rdparty-over-time.csv' using 1:3:2 every 2::1 with labels right offset 0,.2 font ",18" rotate by -45 tc "#0000ff" title "", \
- 'tmp/3rdparty-over-time.csv' using 1:3:2 every 2::0 with labels left offset 0.5,-.2 font ",18" rotate by -45 tc "#0000ff" title ""
+plot ARG1.'/3rdparty-over-time.csv' using 1:3 with linespoints linestyle 1 title "", \
+ ARG1.'/3rdparty-over-time.csv' using 1:3:2 every 2::1 with labels right offset 0,.2 font ",18" rotate by -45 tc "#0000ff" title "", \
+ ARG1.'/3rdparty-over-time.csv' using 1:3:2 every 2::0 with labels left offset 0.5,-.2 font ",18" rotate by -45 tc "#0000ff" title ""

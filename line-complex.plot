@@ -35,6 +35,6 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/line-complex.csv' using 1:2 with lines linestyle 1 title "average", \
- 'tmp/line-complex.csv' using 1:3 with lines linestyle 2 title "median"
+plot ARG1.'/line-complex.csv' using 1:2 with lines linestyle 1 title "average", \
+ ARG1.'/line-complex.csv' using 1:3 with lines linestyle 2 title "median"
 

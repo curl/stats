@@ -37,5 +37,5 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot  'tmp/authors-per-month.csv' using 1:2 with boxes fc "#60a060" title "Authors",\
- 'tmp/authors-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average"
+plot  ARG1.'/authors-per-month.csv' using 1:2 with boxes fc "#60a060" title "Authors",\
+ ARG1.'/authors-per-month.csv' using 1:3 with lines linestyle 2 title "12 month average"

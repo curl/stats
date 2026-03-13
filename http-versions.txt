@@ -1,4 +1,0 @@
-date - HTTP version
-<p>
-This data comes from a manually maintained file. Based on code inspection.
-

@@ -35,7 +35,7 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/authors-active.csv' using 1:2 with lines linestyle 1 title "Within 120 days", \
- 'tmp/authors-active.csv' using 1:4 with lines linestyle 2 title "Within 60 days", \
- 'tmp/authors-active.csv' using 1:5 with lines linestyle 5 title "Within 30 days", \
- 'tmp/authors-active.csv' using 1:6 with lines linestyle 3 title "Within 7 days"
+plot ARG1.'/authors-active.csv' using 1:2 with lines linestyle 1 title "Within 120 days", \
+ ARG1.'/authors-active.csv' using 1:4 with lines linestyle 2 title "Within 60 days", \
+ ARG1.'/authors-active.csv' using 1:5 with lines linestyle 5 title "Within 30 days", \
+ ARG1.'/authors-active.csv' using 1:6 with lines linestyle 3 title "Within 7 days"

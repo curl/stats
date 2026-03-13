@@ -24,4 +24,4 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/CI.csv' using 1:2 with lines lw 4 title ""
+plot ARG1.'/CI.csv' using 1:2 with lines lw 4 title ""

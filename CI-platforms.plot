@@ -24,7 +24,7 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%b %Y"
 set datafile separator ";"
 
-plot 'tmp/CI-platforms.csv' using 1:3 with lines lw 3 title "Linux", \
- 'tmp/CI-platforms.csv' using 1:4 with lines lw 3 title "macOS", \
- 'tmp/CI-platforms.csv' using 1:5 with lines lw 3 title "Windows", \
- 'tmp/CI-platforms.csv' using 1:6 with lines lw 3 title "FreeBSD"
+plot ARG1.'/CI-platforms.csv' using 1:3 with lines lw 3 title "Linux", \
+ ARG1.'/CI-platforms.csv' using 1:4 with lines lw 3 title "macOS", \
+ ARG1.'/CI-platforms.csv' using 1:5 with lines lw 3 title "Windows", \
+ ARG1.'/CI-platforms.csv' using 1:6 with lines lw 3 title "FreeBSD"

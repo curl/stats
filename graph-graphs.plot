@@ -30,4 +30,4 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%b %Y"
 set datafile separator ";"
-plot 'tmp/graph-graphs.csv' using 1:2 with steps linestyle 1 title ""
+plot ARG1.'/graph-graphs.csv' using 1:2 with steps linestyle 1 title ""

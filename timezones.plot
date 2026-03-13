@@ -29,5 +29,5 @@ set pixmap 1 at screen 0.06, 0.0 width screen 0.89 behind
 set pixmap 2 "stats/curl-symbol-light.png"
 set pixmap 2 at screen 0.35, 0.30 width screen 0.30 behind
 
-plot 'tmp/timezones.csv' using 1:3 with boxes fc "#602020" title ""
-# 'tmp/top-cwe.csv' using 1:-1:2 with labels title "" offset 0,1 font ", 24" rotate left tc lt 0
+plot ARG1.'/timezones.csv' using 1:3 with boxes fc "#602020" title ""
+# ARG1.'/top-cwe.csv' using 1:-1:2 with labels title "" offset 0,1 font ", 24" rotate left tc lt 0

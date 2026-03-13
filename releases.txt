@@ -1,3 +1,0 @@
-date - version - accumlated release number
-<p>
-This data comes from the main curl changelog's stored release dates.

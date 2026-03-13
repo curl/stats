@@ -44,7 +44,7 @@ set format x "%Y"
 set datafile separator ";"
 
 plot \
-'tmp/vuln-dist-code.csv' using 1:7 with filledcurves above fc "#2e8a00" title "low", \
-'tmp/vuln-dist-code.csv' using 1:6 with filledcurves above fc "#0080c0" title "medium", \
-'tmp/vuln-dist-code.csv' using 1:5 with filledcurves above fc "#800000" title "high", \
-'tmp/vuln-dist-code.csv' using 1:4 with filledcurves above fc "#fe0000" title "critical"
+ARG1.'/vuln-dist-code.csv' using 1:7 with filledcurves above fc "#2e8a00" title "low", \
+ARG1.'/vuln-dist-code.csv' using 1:6 with filledcurves above fc "#0080c0" title "medium", \
+ARG1.'/vuln-dist-code.csv' using 1:5 with filledcurves above fc "#800000" title "high", \
+ARG1.'/vuln-dist-code.csv' using 1:4 with filledcurves above fc "#fe0000" title "critical"

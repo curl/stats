@@ -1,4 +1,0 @@
-date - version - number of known vulnerabilities
-<p>
-This data comes from the release.csv table.
-

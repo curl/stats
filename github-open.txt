@@ -1,3 +1,0 @@
-date - number of open issues end of day - created that day - closed that day - 90 day average - 90 day minimum - 90 day maximum
-<p>
-This data is fetched from github daily using their API, then stored and massaged by scripts on our server.

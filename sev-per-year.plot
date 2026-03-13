@@ -36,5 +36,5 @@ set format x "%Y"
 set datafile separator ";"
 
 # plot the flaw periods and the project age with titles and line width 3
-plot 'tmp/sev-per-year.csv' using 1:2 with boxes title "Low or Medium severity" fc '#808000', \
-  'tmp/sev-per-year.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "High or Critical severity" fc '#800000'
+plot ARG1.'/sev-per-year.csv' using 1:2 with boxes title "Low or Medium severity" fc '#808000', \
+  ARG1.'/sev-per-year.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "High or Critical severity" fc '#800000'

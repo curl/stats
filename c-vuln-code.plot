@@ -40,6 +40,6 @@ set style line 1 \
     linetype 2 dt "." linewidth 3
 
 plot \
-'tmp/c-vuln-code.csv' using 1:3 with filledcurves above fc "#2e8a00" title "All vulnerabilities", \
-'tmp/c-vuln-code.csv' using 1:4 with filledcurves above fc "#a04040" title "C mistakes", \
-'tmp/c-vuln-code.csv' using 1:5 smooth bezier with lines linestyle 1 title "C mistake share" axis x1y2
+ARG1.'/c-vuln-code.csv' using 1:3 with filledcurves above fc "#2e8a00" title "All vulnerabilities", \
+ARG1.'/c-vuln-code.csv' using 1:4 with filledcurves above fc "#a04040" title "C mistakes", \
+ARG1.'/c-vuln-code.csv' using 1:5 smooth bezier with lines linestyle 1 title "C mistake share" axis x1y2

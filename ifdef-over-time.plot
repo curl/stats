@@ -37,5 +37,5 @@ set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
 set datafile separator ";"
-plot 'tmp/ifdef-over-time.csv' using 1:2 with lines linestyle 1 title "#if lines" axis x1y2, \
-'tmp/ifdef-per-kloc.csv' using 1:2 with lines linestyle 2 title "#if lines per KLOC"
+plot ARG1.'/ifdef-over-time.csv' using 1:2 with lines linestyle 1 title "#if lines" axis x1y2, \
+ARG1.'/ifdef-per-kloc.csv' using 1:2 with lines linestyle 2 title "#if lines per KLOC"

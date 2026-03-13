@@ -50,7 +50,7 @@ set style line 4 \
     pointtype 7 pointsize .3
 
 set datafile separator ";"
-plot 'tmp/c-vuln-reports.csv' using 1:2 axis x1y2 with linespoints linestyle 2 title "Number of vulnerabilities", \
- 'tmp/c-vuln-reports.csv' using 1:3 axis x1y2 with linespoints linestyle 3 title "C mistakes", \
- 'tmp/c-vuln-reports.csv' using 1:4 axis x1y2 with linespoints linestyle 4 title "Not C mistakes", \
- 'tmp/c-vuln-reports.csv' using 1:5 with lines linestyle 1 title "C mistake share"
+plot ARG1.'/c-vuln-reports.csv' using 1:2 axis x1y2 with linespoints linestyle 2 title "Number of vulnerabilities", \
+ ARG1.'/c-vuln-reports.csv' using 1:3 axis x1y2 with linespoints linestyle 3 title "C mistakes", \
+ ARG1.'/c-vuln-reports.csv' using 1:4 axis x1y2 with linespoints linestyle 4 title "Not C mistakes", \
+ ARG1.'/c-vuln-reports.csv' using 1:5 with lines linestyle 1 title "C mistake share"

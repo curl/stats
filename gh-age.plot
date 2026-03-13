@@ -46,7 +46,7 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/gh-age.csv' using 1:2 with lines linestyle 1 title "Median this month", \
-'tmp/gh-age.csv' using 1:3 with lines linestyle 2 title "Average this month", \
-'tmp/gh-age.csv' using 1:5 with lines linestyle 4 title "75 percentile this month", \
-'tmp/gh-age.csv' using 1:4 with lines linestyle 3 title "12 month average average"
+plot ARG1.'/gh-age.csv' using 1:2 with lines linestyle 1 title "Median this month", \
+ARG1.'/gh-age.csv' using 1:3 with lines linestyle 2 title "Average this month", \
+ARG1.'/gh-age.csv' using 1:5 with lines linestyle 4 title "75 percentile this month", \
+ARG1.'/gh-age.csv' using 1:4 with lines linestyle 3 title "12 month average average"

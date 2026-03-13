@@ -40,5 +40,5 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%Y"
 set datafile separator ";"
 
-plot  'tmp/contributors-per-release.csv' using 1:3 with lines linestyle 1 title "median over 7 releases ", \
- 'tmp/contributors-per-release.csv' using 1:2 with lines linestyle 2 title "Per release"
+plot  ARG1.'/contributors-per-release.csv' using 1:3 with lines linestyle 1 title "median over 7 releases ", \
+ ARG1.'/contributors-per-release.csv' using 1:2 with lines linestyle 2 title "Per release"

@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Graphs in the curl dashboard" font ",48"
+set title "Graphs in the curl dashboard\n{/*0.4Yes, it includes this one}" font ",48"
 # where's the legend
 set key top left horizontal
 
@@ -39,6 +39,6 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%b %Y"
 set datafile separator ";"
-plot  'tmp/graphs.csv' using 1:2 with lines linestyle 1 title "Graphs",\
- 'tmp/graphs.csv' using 1:3 with lines linestyle 2 axis x1y2 title "Plots"
+plot  ARG1.'/graphs.csv' using 1:2 with lines linestyle 1 title "Graphs",\
+ ARG1.'/graphs.csv' using 1:3 with lines linestyle 2 axis x1y2 title "Plots"
 

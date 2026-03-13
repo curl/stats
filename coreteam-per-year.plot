@@ -38,5 +38,5 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%Y"
 set datafile separator ";"
 
-plot 'tmp/coreteam-per-year.csv' using 1:2 with boxes title "size", \
-  'tmp/coreteam-percent.csv' using 1:2 with lines title "percent" axis x1y2 lw 4
+plot ARG1.'/coreteam-per-year.csv' using 1:2 with boxes title "size", \
+  ARG1.'/coreteam-percent.csv' using 1:2 with lines title "percent" axis x1y2 lw 4

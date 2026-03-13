@@ -37,5 +37,5 @@ set format x "%Y"
 set xtics rotate 3600*24*365.25 nomirror
 unset mxtics
 set datafile separator ";"
-plot 'tmp/atoi-over-time.csv' using 1:2 with lines linestyle 2 title "(atoi|strtol|strtoul|strtoll) total count" axis x1y2, \
-'tmp/atoi-per-kloc.csv' using 1:2 with lines linestyle 1 title "call density"
+plot ARG1.'/atoi-over-time.csv' using 1:2 with lines linestyle 2 title "(atoi|strtol|strtoul|strtoll) total count" axis x1y2, \
+ARG1.'/atoi-per-kloc.csv' using 1:2 with lines linestyle 1 title "call density"

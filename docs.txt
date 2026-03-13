@@ -1,3 +1,0 @@
-date - lines of documentation
-<p>
-This data comes from checking the docs/ subdiretory in git.

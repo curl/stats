@@ -34,5 +34,5 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/complexity.csv' using 1:4 with lines linestyle 2 title "P99", \
- 'tmp/complexity.csv' using 1:5 with lines linestyle 1 title "Worst"
+plot ARG1.'/complexity.csv' using 1:4 with lines linestyle 2 title "P99", \
+ ARG1.'/complexity.csv' using 1:5 with lines linestyle 1 title "Worst"

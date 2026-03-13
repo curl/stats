@@ -1,3 +1,0 @@
-date - number of tests
-<p>
-This data comes from counting the test files present in git at the time of releases.

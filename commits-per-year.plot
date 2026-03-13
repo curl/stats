@@ -35,6 +35,6 @@ set format x "%Y"
 set datafile separator ";"
 
 # plot the flaw periods and the project age with titles and line width 3
-plot 'tmp/commits-per-year.csv' using 1:2 with boxes fc "#e07000" title "", \
- 'tmp/commits-per-year.csv' using 1:2:2 with labels title "" offset 0,.5 font ", 20" tc lt 1, \
- 'tmp/commits-per-year.csv' using 1:3 with lines lw 3 title "5 year average"
+plot ARG1.'/commits-per-year.csv' using 1:2 with boxes fc "#e07000" title "", \
+ ARG1.'/commits-per-year.csv' using 1:2:2 with labels title "" offset 0,.5 font ", 20" tc lt 1, \
+ ARG1.'/commits-per-year.csv' using 1:3 with lines lw 3 title "5 year average"

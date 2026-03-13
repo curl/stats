@@ -34,5 +34,5 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/files-over-time.csv' using 1:2 with lines linestyle 1 title "All files", \
-  'tmp/files-over-time.csv' using 1:3 with lines linestyle 2 title "Non-test files"
+plot ARG1.'/files-over-time.csv' using 1:2 with lines linestyle 1 title "All files", \
+  ARG1.'/files-over-time.csv' using 1:3 with lines linestyle 2 title "Non-test files"

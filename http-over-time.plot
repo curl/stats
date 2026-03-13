@@ -32,6 +32,6 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/http-over-time.csv' using 1:3 with steps linestyle 1 title "", \
-'tmp/http-over-time.csv' using 1:3:2 with labels offset 0,1 font ",38" tc "#ff0000" title "", \
-'tmp/http-over-time.csv' using 1:3 with points pt 6 title ""
+plot ARG1.'/http-over-time.csv' using 1:3 with steps linestyle 1 title "", \
+ARG1.'/http-over-time.csv' using 1:3:2 with labels offset 0,1 font ",38" tc "#ff0000" title "", \
+ARG1.'/http-over-time.csv' using 1:3 with points pt 6 title ""

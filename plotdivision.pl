@@ -39,12 +39,12 @@ sub readall {
 my @p1 = readall($plot1);
 my @p2 = readall($plot2);
 
-print STDERR <<WILLDO
-Date column $coldate1 data $coldata1 from $plot1
- divided by
-Date column $coldate2 data $coldata2 from $plot2
-WILLDO
-    ;
+#print STDERR <<WILLDO
+#Date column $coldate1 data $coldata1 from $plot1
+# divided by
+#Date column $coldate2 data $coldata2 from $plot2
+#WILLDO
+#    ;
 
 for(@p1) {
     my $e = $_;

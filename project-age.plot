@@ -24,6 +24,6 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 set format x "%Y"
 set format y "%.0s%c"
 set datafile separator ";"
-plot 'tmp/project-age.csv' using 1:2 with lines linestyle 1 title "httpget 0.1", \
- 'tmp/project-age.csv' using 1:3 with lines linestyle 2 title "curl 4.0", \
- 'tmp/project-age.csv' using 1:4 with lines linestyle 3 title "libcurl 7.1"
+plot ARG1.'/project-age.csv' using 1:2 with lines linestyle 1 title "httpget 0.1", \
+ ARG1.'/project-age.csv' using 1:3 with lines linestyle 2 title "curl 4.0", \
+ ARG1.'/project-age.csv' using 1:4 with lines linestyle 3 title "libcurl 7.1"

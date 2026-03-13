@@ -28,14 +28,14 @@ set yrange [0:]
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/complex-dist.csv' using 1:12 with filledcurves above fc "#A80003" title "> 200", \
- 'tmp/complex-dist.csv' using 1:11 with filledcurves above fc "#E40515" title "≤ 200", \
- 'tmp/complex-dist.csv' using 1:10 with filledcurves above fc "#F94902" title "≤ 150", \
- 'tmp/complex-dist.csv' using 1:9 with filledcurves above fc "#F6790B" title "≤ 100", \
- 'tmp/complex-dist.csv' using 1:8 with filledcurves above fc "#F19903" title "≤ 90", \
- 'tmp/complex-dist.csv' using 1:7 with filledcurves above fc "#E7B503" title "≤ 80", \
- 'tmp/complex-dist.csv' using 1:6 with filledcurves above fc "#D5CE04" title "≤ 70", \
- 'tmp/complex-dist.csv' using 1:5 with filledcurves above fc "#BBE453" title "≤ 60", \
- 'tmp/complex-dist.csv' using 1:4 with filledcurves above fc "#A2F49B" title "≤ 50", \
- 'tmp/complex-dist.csv' using 1:3 with filledcurves above fc "#C6F7D6" title "≤ 30", \
- 'tmp/complex-dist.csv' using 1:2 with filledcurves above fc "#CEFFFF" title "≤ 10"
+plot ARG1.'/complex-dist.csv' using 1:12 with filledcurves above fc "#A80003" title "> 200", \
+ ARG1.'/complex-dist.csv' using 1:11 with filledcurves above fc "#E40515" title "≤ 200", \
+ ARG1.'/complex-dist.csv' using 1:10 with filledcurves above fc "#F94902" title "≤ 150", \
+ ARG1.'/complex-dist.csv' using 1:9 with filledcurves above fc "#F6790B" title "≤ 100", \
+ ARG1.'/complex-dist.csv' using 1:8 with filledcurves above fc "#F19903" title "≤ 90", \
+ ARG1.'/complex-dist.csv' using 1:7 with filledcurves above fc "#E7B503" title "≤ 80", \
+ ARG1.'/complex-dist.csv' using 1:6 with filledcurves above fc "#D5CE04" title "≤ 70", \
+ ARG1.'/complex-dist.csv' using 1:5 with filledcurves above fc "#BBE453" title "≤ 60", \
+ ARG1.'/complex-dist.csv' using 1:4 with filledcurves above fc "#A2F49B" title "≤ 50", \
+ ARG1.'/complex-dist.csv' using 1:3 with filledcurves above fc "#C6F7D6" title "≤ 30", \
+ ARG1.'/complex-dist.csv' using 1:2 with filledcurves above fc "#CEFFFF" title "≤ 10"

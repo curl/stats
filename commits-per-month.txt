@@ -1,3 +1,0 @@
-date (month) - commits that month - 12 month commit count average
-<p>
-The data comes from the git repository.

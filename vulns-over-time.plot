@@ -33,5 +33,5 @@ set style line 2 \
     linetype 2 linewidth 2
 
 set datafile separator ";"
-plot 'tmp/vulns-over-time.csv' using 2:3 with steps linestyle 1 title "Fixed in a release", \
- 'tmp/cve-intro.csv' using 1:2 with steps linestyle 2 title "Vulnerability introduced"
+plot ARG1.'/vulns-over-time.csv' using 2:3 with steps linestyle 1 title "Fixed in a release", \
+ ARG1.'/cve-intro.csv' using 1:2 with steps linestyle 2 title "Vulnerability introduced"

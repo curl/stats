@@ -40,5 +40,5 @@ set format x "%Y"
 set xtics out
 set datafile separator ";"
 set key autotitle col
-plot 'tmp/vulns-releases.csv' using 1:3 with points pt 7 ps 0.6 title "",\
-  'tmp/vulns-releases.csv' using 1:3:2 with labels left offset .2,.2 font ", 16" rotate by 60 title ""
+plot ARG1.'/vulns-releases.csv' using 1:3 with points pt 7 ps 0.3 title "",\
+  ARG1.'/vulns-releases.csv' using 1:3:2 with labels left offset .2,.2 font ", 10" rotate by 90 title ""

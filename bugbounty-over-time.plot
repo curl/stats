@@ -34,4 +34,4 @@ set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot 'tmp/bugbounty-over-time.csv' using 2:3 with linespoints linestyle 1 title ""
+plot ARG1.'/bugbounty-over-time.csv' using 2:3 with linespoints linestyle 1 title ""
