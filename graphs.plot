@@ -21,7 +21,7 @@ set style line 2 \
 
 set grid
 unset border
-set xtics nomirror
+set xtics autofreq nomirror
 set ytics nomirror
 set y2tics nomirror
 unset mxtics
@@ -31,13 +31,14 @@ set timefmt "%Y-%m-%d"
 set xdata time
 
 # start Y at 0
+set xrange ["2020-01-01":]
 set yrange [0:]
 
 set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 # set the format of the dates on the x axis
-set format x "%b %Y"
+set format x "%Y"
 set datafile separator ";"
 plot  ARG1.'/graphs.csv' using 1:2 with lines linestyle 1 title "Graphs",\
  ARG1.'/graphs.csv' using 1:3 with lines linestyle 2 axis x1y2 title "Plots"
