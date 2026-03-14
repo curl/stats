@@ -198,6 +198,8 @@ $(GDIR)/knownvulns-per-line.svg: $(DDIR)/knownvulns-per-line.csv
 	$(GNUPLOT)
 $(DDIR)/knownvulns-per-line.csv: $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv
 	perl $(SDIR)/plotdivision.pl $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv 0:2 0:1 1000 > $@
+$(DDIR)/vulns-releases.csv:
+	$(GENCSV)
 
 $(GDIR)/lines-per-test.svg: $(DDIR)/lines-per-test.csv
 	$(GNUPLOT)
