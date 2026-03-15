@@ -2,20 +2,12 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Vulnerabilities in releases" font ",48"
+set title "Vulnerabilities in releases\n{/*0.4Every 4th release has a label}" font ",48"
 # where's the legend
 set key top left
 
 # Identify the axes
 set ylabel "Number of vulnerabilities"
-
-set style line 1 \
-    linecolor rgb '#c0c0ff' \
-    linetype 1 linewidth 2
-
-set style line 2 \
-    linecolor rgb '#80a040' \
-    dt 1 linewidth 4
 
 set grid
 unset border
@@ -40,5 +32,5 @@ set format x "%Y"
 set xtics out
 set datafile separator ";"
 set key autotitle col
-plot ARG1.'/vulns-releases.csv' using 1:3 with points pt 7 ps 0.3 title "",\
-  ARG1.'/vulns-releases.csv' using 1:3:2 with labels left offset .2,.2 font ", 10" rotate by 90 title ""
+plot ARG1.'/vulns-releases.csv' using 1:3 with points pt 1 ps 0.4 title "",\
+  ARG1.'/vulns-releases.csv' using 1:3:2 every 4 with labels left offset 0,.2 font ", 14" rotate by 90 title ""

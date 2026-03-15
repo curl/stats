@@ -114,6 +114,7 @@ GRFCSV = \
  $(GDIR)/vuln-dist-code.svg \
  $(GDIR)/vulns-over-time.svg \
  $(GDIR)/vulns-per-year.svg \
+ $(GDIR)/vulns-releases.svg \
  $(GDIR)/weekday-of-year.svg
 
 # The CSVs for the backend graph
@@ -198,6 +199,10 @@ $(GDIR)/knownvulns-per-line.svg: $(DDIR)/knownvulns-per-line.csv
 	$(GNUPLOT)
 $(DDIR)/knownvulns-per-line.csv: $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv
 	perl $(SDIR)/plotdivision.pl $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv 0:2 0:1 1000 > $@
+
+$(GDIR)/vulns-releases.svg: $(DDIR)/vulns-releases.csv $(SDIR)/vulns-releases.plot
+	$(GNUPLOT)
+
 $(DDIR)/vulns-releases.csv:
 	$(GENCSV)
 
