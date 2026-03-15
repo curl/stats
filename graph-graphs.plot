@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "Number of graphs showing number of graphs on the dashboard" font ",48"
+set title "Number of graphs on the dashboard showing number of graphs on the dashboard" font ",32"
 # where's the legend
 set key top left
 
@@ -28,6 +28,6 @@ set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.35, 0.30 width screen 0.30 behind
 
 # set the format of the dates on the x axis
-set format x "%b %Y"
+set format x "%Y"
 set datafile separator ";"
 plot ARG1.'/graph-graphs.csv' using 1:2 with steps linestyle 1 title ""
