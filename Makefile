@@ -49,6 +49,7 @@ GRFCSV = \
  $(GDIR)/commits-per-year.svg \
  $(GDIR)/complex-dist.svg \
  $(GDIR)/complexity.svg \
+ $(GDIR)/commit-sizes.svg \
  $(GDIR)/connectdata.svg \
  $(GDIR)/contrib-tail.svg \
  $(GDIR)/contributors-over-time.svg \
@@ -145,6 +146,11 @@ GENCSV=perl $(SDIR)/$(basename $(notdir $@)).pl $(WDIR) > $@
 NAMES=$(GDIR)/stats.list
 
 all: $(GRAPHS) $(NAMES)
+
+$(GDIR)/commit-sizes.svg: $(DDIR)/commit-sizes.csv $(SDIR)/commit-sizes.plot
+	$(GNUPLOT)
+$(DDIR)/commit-sizes.csv: $(SDIR)/commit-sizes.pl
+	$(GENCSV)
 
 $(GDIR)/graphs.svg: $(DDIR)/graphs.csv $(SDIR)/graphs.plot
 	$(GNUPLOT)

@@ -31,6 +31,7 @@ c-mistakes = $output/c-vuln-code.svg
 c-vulnerability-share = $output/c-vuln-reports.svg
 cmdline-options-over-time = $output/cmdline-options-over-time.svg
 comments-in-source-code = $output/comments.svg
+commit-size-distribution = $output/commit-sizes.svg
 commits = $output/commits-over-time.svg
 commits-by-daniel = $output/daniel-commit-share.svg
 commits-monthly = $output/month-of-year.svg
