@@ -10,8 +10,8 @@ set key top center
 set ylabel "Used in commits this many times"
 
 # for the boxes
-set boxwidth 0.6 relative
-set style fill solid 0.9
+set boxwidth 0.7 relative
+set style fill solid 0.6
 
 set grid
 unset border
@@ -30,4 +30,3 @@ set pixmap 1 "stats/curl-symbol-light.png"
 set pixmap 1 at screen 0.28, 0.30 width screen 0.20 front
 
 plot ARG1.'/timezones.csv' using 1:3 with boxes fc "#602020" title ""
-# ARG1.'/top-cwe.csv' using 1:-1:2 with labels title "" offset 0,1 font ", 24" rotate left tc lt 0
