@@ -93,6 +93,7 @@ test-infrastructure-per-test = $output/testinfra-per-test.svg
 tests = $output/tests-over-time.svg
 tests-per-kloc = $output/lines-per-test.svg
 third-parties = $output/3rdparty-over-time.svg
+time-zone-use-in-commits = $output/timezones.svg
 todo = $output/todo-over-time.svg
 vulnerabilities-in-releases = $output/vulns-releases.svg
 vulnerabilities-in-code = $output/vuln-dist-code.svg
