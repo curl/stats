@@ -20,8 +20,7 @@ set xtics rotate 3600*24*365.25 nomirror out
 set ytics out
 unset mxtics
 
-set pixmap 1 "stats/curl-symbol-light.png"
-set pixmap 1 at screen 0.35, 0.15 width screen 0.30
+load "stats/logo.include"
 
 set yrange [0:]
 
