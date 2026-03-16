@@ -109,6 +109,7 @@ GRFCSV = \
  $(GDIR)/testinfra-per-line.svg \
  $(GDIR)/testinfra-per-test.svg \
  $(GDIR)/tests-over-time.svg \
+ $(GDIR)/timezones.svg \
  $(GDIR)/todo-over-time.svg \
  $(GDIR)/top-cwe.svg \
  $(GDIR)/top-remains.svg \
@@ -148,6 +149,11 @@ GENCSV=perl $(SDIR)/$(basename $(notdir $@)).pl $(WDIR) > $@
 NAMES=$(GDIR)/stats.list
 
 all: $(GRAPHS) $(NAMES)
+
+$(GDIR)/timezones.svg: $(INCLUDE) $(SDIR)/timezones.plot $(DDIR)/timezones.csv
+	$(GNUPLOT)
+$(DDIR)/timezones.csv: $(SDIR)/timezones.pl
+	$(GENCSV)
 
 $(GDIR)/commit-sizes.svg: $(INCLUDE) $(DDIR)/commit-sizes.csv $(SDIR)/commit-sizes.plot
 	$(GNUPLOT)
