@@ -39,7 +39,7 @@ the curl source code root.
 
 Example:
 
-    perl stats/script.pl > tmp/script.csv
+    perl stats/image.pl > tmp/image.csv
 
 ### Render graph
 
@@ -47,13 +47,19 @@ The rendering of the graph is separate from the data gathering part. The
 gnuplot script is named the same as the perl script and uses the CSV file as
 input to generate a SVG output:
 
-    gnuplot -c stats/script.plot > tmp/script.svg
+    gnuplot -c stats/image.plot tmp > image.svg
 
 ### The curl dashboard
 
-The entire collection of scripts is run by the `mksvg.sh` script once per day
-in the curl webserver to generate the [curl
+The entire collection of is built with the Makefile, used once per day in the
+curl webserver to generate the [curl
 dashboard](https://curl.se/dashboard.html).
+
+Run the command in the curl git source tree root:
+
+    $ mkdir tmp
+    $ mkdir svg
+    $ make -f stats/Makefile
 
 ## Output
 
