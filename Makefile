@@ -58,6 +58,7 @@ GRFCSV = \
  $(GDIR)/cpy-over-time.svg \
  $(GDIR)/cve-age.svg \
  $(GDIR)/cve-fixtime.svg \
+ $(GDIR)/cve-oldest.svg \
  $(GDIR)/cve-pie-chart.svg \
  $(GDIR)/daniel-commit-share.svg \
  $(GDIR)/daniel-vs-rest.svg \
@@ -149,6 +150,11 @@ GENCSV=perl $(SDIR)/$(basename $(notdir $@)).pl $(WDIR) > $@
 NAMES=$(GDIR)/all.txt
 
 all: $(GRAPHS) $(NAMES)
+
+$(GDIR)/cve-oldest.svg: $(INCLUDE) $(SDIR)/cve-oldest.plot $(DDIR)/cve-oldest.csv
+	$(GNUPLOT)
+$(DDIR)/cve-oldest.csv: $(SDIR)/cve-oldest.pl
+	$(GENCSV)
 
 $(GDIR)/timezones.svg: $(INCLUDE) $(SDIR)/timezones.plot $(DDIR)/timezones.csv
 	$(GNUPLOT)
