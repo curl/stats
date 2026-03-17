@@ -43,12 +43,14 @@ my $i = decode_json(join("", @j));
 #print Dumper($i);
 my $lastnum = $$i[0]{number};
 
-if($lastnum < 6592) {
+if($lastnum < 20900) {
     print STDERR "Error, bail out!\n";
     exit;
 }
 
 my $top = $lastnum;
+
+my $dlcmd = "curl -Z -sf -u $creds -A 'curl/curl-repo-stats-bot'";
 
 my @dl;
 my $c;
@@ -59,12 +61,19 @@ for my $i (1 .. $top) {
     else {
         $c .= "$github/$i -o $cache/$i.json ";
         push @dl, "$i";
+        if(scalar(@dl) > 1000) {
+            printf "Download %d issues\n", scalar(@dl);
+            my $cmd = "$dlcmd $c";
+            system($cmd);
+            $c = "";
+            undef @dl;
+        }
     }
 }
 
 if(scalar(@dl)) {
     printf "Download %d issues\n", scalar(@dl);
-    my $cmd = "curl -Z -sf -u $creds -A 'curl/curl-repo-stats-bot' $c";
+    my $cmd = "$dlcmd $c";
     my $s = system($cmd);
 }
 print "Range download phase done. Now redownload the open issues\n";
@@ -116,5 +125,5 @@ for my $j (@json) {
 }
 
 printf "Redownload %d issues\n", scalar(@dl);
-my $cmd = "curl -Z -u $creds -A 'curl/curl-repo-stats-bot' $c";
+my $cmd = "$dlcmd $c";
 my $s = system($cmd);
