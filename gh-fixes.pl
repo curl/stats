@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+require "./stats/median.pm";
+
 # 1. figure out when all known issues and PRs were created
 # 2. find git commits that "fixed" or "closed" issues/PRs - give
 #    preference to "fixes". Sometimes more than one commit fix or
@@ -17,35 +19,11 @@ if(!$c) {
     exit;
 }
 
-sub median {
-    my @a = @_;
-    my @vals = sort {$a <=> $b} @a;
-    my $len = @vals;
-    if($len%2) { #odd?
-        return $vals[int($len/2)];
-    }
-    else {
-        #even
-        return ($vals[int($len/2)-1] + $vals[int($len/2)])/2;
-    }
-}
-
-sub average {
-    my @p = @_;
-    my $sum;
-    for my $y (@p) {
-        $sum += $y;
-    }
-    return $sum / scalar(@p);
-}
-
 sub epoch2date {
     my ($epoch)=@_;
     my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) =
         gmtime($epoch);
-    return sprintf "%04d-%02d-%02d %02d:%02d:%02d",
-        $year + 1900, $mon + 1, $mday,
-        $hour, $min, $sec;
+    return sprintf "%04d-%02d-%02d", $year + 1900, $mon + 1, $mday;
 }
 
 ## scan the github CSV
@@ -104,6 +82,7 @@ foreach $i (sort {$a <=> $b} keys %handled) {
 
 my $oneyear = (24*3600*365);
 
+my $p;
 # iterate over all "handled" issues, sorted by done time
 foreach $i (sort {$done{$a} <=> $done{$b}} keys %handled) {
     # issue, done date, life time in number of hours
@@ -123,7 +102,11 @@ foreach $i (sort {$done{$a} <=> $done{$b}} keys %handled) {
         exit;
     }
 
-    # index, done date, life time, 12 month median, 12 month average
-    printf "%s;%s;%.3f;%.3f;%.3f\n", $i, epoch2date($done{$i}),
-        $lifetime, median(@times), average(@times);
+    # done date, 12 month median
+    my $n = epoch2date($done{$i});
+    if($n ne $p) {
+        # show each date only once
+        printf "%s;%.2f\n", epoch2date($done{$i}), median(@times);
+        $p = $n;
+    }
 }

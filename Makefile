@@ -605,14 +605,14 @@ $(DDIR)/idn-over-time.csv:
 $(DDIR)/resolver-over-time.csv:
 	$(GENCSV)
 
-$(GDIR)/gh-fixes.svg: $(INCLUDE) $(DDIR)/gh-fixes.csv
+$(GDIR)/gh-fixes.svg: $(INCLUDE) $(DDIR)/gh-fixes.csv $(SDIR)/gh-fixes.plot
 	$(GNUPLOT)
-$(DDIR)/gh-fixes.csv: $(DDIR)/github.csv
+$(DDIR)/gh-fixes.csv: $(DDIR)/github.csv $(SDIR)/gh-fixes.pl
 	perl stats/gh-fixes.pl $(DDIR)/github.csv > $@
 
 $(GDIR)/gh-age.svg: $(INCLUDE) $(DDIR)/gh-age.csv
 	$(GNUPLOT)
-$(DDIR)/gh-age.csv: $(DDIR)/github.csv
+$(DDIR)/gh-age.csv: $(DDIR)/github.csv $(DDIR)/github.csv
 	perl stats/gh-age.pl $(DDIR)/github.csv > $@
 
 $(GDIR)/gh-monthly.svg: $(INCLUDE) $(DDIR)/gh-monthly.csv
