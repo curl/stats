@@ -146,7 +146,7 @@ GNUPLOT=gnuplot -c $(SDIR)/$(basename $(notdir $@)).plot $(DDIR) > $@
 
 GENCSV=perl $(SDIR)/$(basename $(notdir $@)).pl $(WDIR) > $@
 
-NAMES=$(GDIR)/stats.list
+NAMES=$(GDIR)/all.txt
 
 all: $(GRAPHS) $(NAMES)
 
@@ -165,8 +165,8 @@ $(GDIR)/graphs.svg: $(INCLUDE) $(DDIR)/graphs.csv $(SDIR)/graphs.plot
 $(DDIR)/graphs.csv:
 	$(GENCSV)
 
-$(NAMES): $(SDIR)/stats.sh $(SDIR)/Makefile
-	$(SDIR)/stats.sh $(GDIR) > $(GDIR)/stats.list
+$(NAMES): $(SDIR)/all.txt
+	cp $(SDIR)/all.txt $@
 
 $(GDIR)/ifdef-over-time.svg: $(INCLUDE) $(DDIR)/ifdef-over-time.csv $(DDIR)/ifdef-per-kloc.csv
 	$(GNUPLOT)
