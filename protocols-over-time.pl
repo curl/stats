@@ -4,8 +4,16 @@ open(T, "<stats/protocol-history.md");
 while(<T>) {
     chomp;
     if($_ =~ /^([^ ]*) (\d\d\d\d-\d\d-\d\d)/) {
-        $c++;
-        print "$2;$1;$c\n";
+        my $p = $1;
+        my $d = $2;
+        if($p =~ /^-/) {
+            $c--;
+        }
+        else {
+            $c++;
+        }
+
+        print "$d;$p;$c\n";
         $end = $c;
     }
 }
