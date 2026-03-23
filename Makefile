@@ -56,6 +56,7 @@ GRFCSV = \
  $(GDIR)/contributors-per-release.svg \
  $(GDIR)/coreteam-per-year.svg \
  $(GDIR)/cpy-over-time.svg \
+ $(GDIR)/curlmopts-over-time.svg \
  $(GDIR)/cve-age.svg \
  $(GDIR)/cve-fixtime.svg \
  $(GDIR)/cve-oldest.svg \
@@ -150,6 +151,12 @@ GENCSV=perl $(SDIR)/$(basename $(notdir $@)).pl $(WDIR) > $@
 NAMES=$(GDIR)/all.txt
 
 all: $(GRAPHS) $(NAMES)
+
+$(GDIR)/curlmopts-over-time.svg: $(INCLUDE) $(SDIR)/curlmopts-over-time.plot $(DDIR)/curlmopts-over-time.csv
+	$(GNUPLOT)
+
+$(DDIR)/curlmopts-over-time.csv: $(SDIR)/curlmopts-over-time.pl
+	$(GENCSV)
 
 $(GDIR)/cve-oldest.svg: $(INCLUDE) $(SDIR)/cve-oldest.plot $(DDIR)/cve-oldest.csv
 	$(GNUPLOT)
