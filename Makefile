@@ -77,6 +77,7 @@ GRFCSV = \
  $(GDIR)/gh-open.svg \
  $(GDIR)/graphs.svg \
  $(GDIR)/h1-per-year.svg \
+ $(GDIR)/heatmap-releasedays.svg \
  $(GDIR)/high-vuln-reports.svg \
  $(GDIR)/http-over-time.svg \
  $(GDIR)/ifdef-over-time.svg \
@@ -151,6 +152,11 @@ GENCSV=perl $(SDIR)/$(basename $(notdir $@)).pl $(WDIR) > $@
 NAMES=$(GDIR)/all.txt
 
 all: $(GRAPHS) $(NAMES)
+
+$(GDIR)/heatmap-releasedays.svg: $(INCLUDE) $(SDIR)/heatmap-releasedays.plot $(DDIR)/heatmap-releasedays.csv
+	$(GNUPLOT)
+$(DDIR)/heatmap-releasedays.csv: $(SDIR)/heatmap-releasedays.awk
+	$(GENCSV)
 
 $(GDIR)/curlmopts-over-time.svg: $(INCLUDE) $(SDIR)/curlmopts-over-time.plot $(DDIR)/curlmopts-over-time.csv
 	$(GNUPLOT)
