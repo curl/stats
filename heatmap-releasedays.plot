@@ -1,5 +1,7 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+set terminal svg size 1920,380 dynamic font ",24"
+
+set title "Release weekday heatmap" font ",48"
 
 set datafile separator ","
 
@@ -13,12 +15,12 @@ set xrange  [0.5:53.5]
 set x2range [0.5:53.5]
 unset xtics
 set x2tics 1,1,53 \
-  scale 0 offset 0,-0.5 font "Sans,8"
+  scale 0 offset 0,-0.5 font "Sans,22"
 
 # Weekdays Mon..Sun, top-to-bottom
 set yrange [7.5:0.5]
 set ytics ("Mon" 1, "Tue" 2, "Wed" 3, "Thu" 4, "Fri" 5, "Sat" 6, "Sun" 7) \
-  scale 0 offset 0,0 font "Sans,8"
+  scale 0 offset 0,0 font "Sans,28"
 
 # GitHub-ish palette (0 = empty gray)
 set palette defined ( \
