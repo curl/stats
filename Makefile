@@ -156,7 +156,7 @@ all: $(GRAPHS) $(NAMES)
 $(GDIR)/heatmap-releasedays.svg: $(INCLUDE) $(SDIR)/heatmap-releasedays.plot $(DDIR)/heatmap-releasedays.csv
 	$(GNUPLOT)
 $(DDIR)/heatmap-releasedays.csv: $(SDIR)/heatmap-releasedays.awk
-	sh $(SDIR)/$(basename $(notdir $@)).sh > $@
+	$(GENCSV)
 
 $(GDIR)/curlmopts-over-time.svg: $(INCLUDE) $(SDIR)/curlmopts-over-time.plot $(DDIR)/curlmopts-over-time.csv
 	$(GNUPLOT)
