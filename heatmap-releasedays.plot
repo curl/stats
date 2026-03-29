@@ -43,7 +43,8 @@ empty_col  = "#ebedf0"   # empty tile fill
 
 unset object
 
-load "stats/logo.include"
+set pixmap 1 "stats/curl-symbol-light.png"
+set pixmap 1 at screen 0.40, 0.15 width screen 0.20 behind
 
 # Draw the full grid of "empty" cells
 do for [w=1:53] {
