@@ -1,28 +1,15 @@
 #!/usr/bin/perl
-my @a = `git log --no-color --date=unix`;
-
-# This lists all commits showing the author date in UTC epoch time.
-
-# return day + hour
-# day is oddly 1 for Monday and 7 for Sunday
-sub epoch2daytime {
-    my ($ep) = @_;
-   # print STDERR "EP: $ep\n";
-   # print STDERR "cmd: date -ud \@$ep \"+%u %H\"\n";
-    my $o = `date -ud \@$ep "+%u %H"`;
-    my ($d, $h) = split(/ /, $o);
-    return (0 + $d), (0 + $h);
-}
+my @a= `TZ=UTC git log --oneline --date='format-local:%w %H' --decorate --format='format:%ad'`;
 
 my @commit;
+my $count;
 for(@a) {
     chomp;
     my $line = $_;
-    if($line =~ /^Date: *(\d+)/) {
-        my ($d, $h) = epoch2daytime($1);
-        $commit[$d][$h]++;
-        #printf "IN: %d,%d,%d\n", $d, $h, $commit{$d, $h};
-    }
+    my ($d, $h)=split(/ /, $line);
+    $d = 7 if(!$d);
+    $commit[$d][$h]++;
+    $count++;
 }
 
 my @allhours;
@@ -41,6 +28,8 @@ $levels[1] = $sall[168/5];     # p20
 $levels[2] = $sall[168/5 * 2]; # p40
 $levels[3] = $sall[168/5 * 3]; # p60
 $levels[4] = $sall[168/5 * 4]; # p80
+
+printf STDERR "Hours: %u, commits: %d\n", scalar(@allhours), $count;
 
 for my $e (0 .. 4) {
     printf STDERR "LEVEL $e: %u\n", $levels[$e];
