@@ -41,6 +41,7 @@ GRFCSV = \
  $(GDIR)/c-vuln-code.svg \
  $(GDIR)/c-vuln-reports.svg \
  $(GDIR)/cmdline-options-over-time.svg \
+ $(GDIR)/days-per-cmdline-option.svg \
  $(GDIR)/codeage.svg \
  $(GDIR)/comments.svg \
  $(GDIR)/commits-over-time.svg \
@@ -152,6 +153,11 @@ GENCSV=perl $(SDIR)/$(basename $(notdir $@)).pl $(WDIR) > $@
 NAMES=$(GDIR)/all.txt
 
 all: $(GRAPHS) $(NAMES)
+
+$(GDIR)/days-per-cmdline-option.svg: $(INCLUDE) $(SDIR)/days-per-cmdline-option.plot $(DDIR)/days-per-cmdline-option.csv
+	$(GNUPLOT)
+$(DDIR)/days-per-cmdline-option.csv: $(DDIR)/cmdline-options-over-time.csv $(DDIR)/project-age.csv
+	perl $(SDIR)/plotdivision.pl $(DDIR)/project-age.csv $(DDIR)/cmdline-options-over-time.csv 0:1 0:1 > $@
 
 $(GDIR)/heatmap-releasedays.svg: $(INCLUDE) $(SDIR)/heatmap-releasedays.plot $(DDIR)/heatmap-releasedays.csv
 	$(GNUPLOT)
