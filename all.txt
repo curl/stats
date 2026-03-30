@@ -70,6 +70,7 @@ memory spend for downloading 512 mb = 512-mb.svg
 multi setopt options = curlmopts-over-time.svg
 project age = project-age.svg
 protocols = protocols-over-time.svg
+release weekdays heatmap = heatmap-releasedays.svg
 release frequency = days-per-release.svg
 releases = release-number.svg
 releases per year = releases-per-year.svg
