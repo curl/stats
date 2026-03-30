@@ -7,7 +7,7 @@ set title "Project days per new command line option" font ",48"
 set key top center
 
 # Identify the axes
-set ylabel "Project age in days / command line options"
+set ylabel "Project age in days / number of command line options"
 
 set style line 1 \
     linecolor rgb '#c060ad' \
