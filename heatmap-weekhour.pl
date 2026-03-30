@@ -38,7 +38,7 @@ for my $e (0 .. 4) {
 sub level {
     my ($l, @levels) = @_;
     for my $e (0 .. 4) {
-        if($l < $levels[$e]) {
+        if($l <= $levels[$e]) {
             return $e;
         }
     }
