@@ -49,6 +49,7 @@ curl man page size = manpage.svg
 curl man size per option = manpage-lines-per-option.svg
 CWE top = top-cwe.svg
 Daniel vs rest = daniel-vs-rest.svg
+days per new command line option = days-per-cmdline-option.svg
 documentation = docs-over-time.svg
 documentation per kloc = lines-per-docs.svg
 examples = examples-over-time.svg
