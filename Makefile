@@ -283,14 +283,14 @@ $(GDIR)/testinfra-per-line.svg: $(INCLUDE) $(DDIR)/testinfra-per-line.csv
 $(DDIR)/testinfra-per-line.csv: $(DDIR)/testinfra-over-time.csv $(DDIR)/lines-over-time.csv
 	perl $(SDIR)/plotdivision.pl $(DDIR)/testinfra-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
 
-$(GDIR)/loc-per-day.svg: $(INCLUDE) $(DDIR)/loc-per-day.csv
+$(GDIR)/loc-per-day.svg: $(INCLUDE) $(DDIR)/loc-per-day.csv $(SDIR)/loc-per-day.plot
 	$(GNUPLOT)
 $(DDIR)/loc-per-day.csv: $(DDIR)/lines-over-time.csv $(DDIR)/project-age.csv
 	perl $(SDIR)/plotdivision.pl $(DDIR)/lines-over-time.csv $(DDIR)/project-age.csv 0:1 0:1 > $@
 
-$(GDIR)/project-age.svg: $(INCLUDE) $(DDIR)/project-age.csv
+$(GDIR)/project-age.svg: $(INCLUDE) $(DDIR)/project-age.csv $(SDIR)/project-age.plot
 	$(GNUPLOT)
-$(DDIR)/project-age.csv:
+$(DDIR)/project-age.csv: $(SDIR)/project-age.pl
 	$(GENCSV)
 
 $(GDIR)/testinfra-over-time.svg: $(INCLUDE) $(DDIR)/testinfra-over-time.csv
