@@ -16,6 +16,7 @@ set timefmt "%Y-%m-%d"
 set xdata time
 
 set yrange [0:]
+set xrange ["1996-12-20":]
 
 load "stats/logo.include"
 
