@@ -1,44 +1,26 @@
 #!/usr/bin/perl
 
-# NOTE:
-#
-# This accesses the web site git repo to find the 'vuln.pm' file with the
-# proper meta-data!
-#
-# Shows the number of days each CVE was present in a curl release before
-# fixed.
-#
+my $httpget = 847710000; # Mon 11 Nov 1996 12:00:00 PM CET
+my $curl4 =   890391600; # Fri Mar 20 12:00:00 PM CET 1998
+my $curl71 =  965642400; #Mon Aug  7 12:00:00 PM CEST 2000
 
-my $webroot = $ARGV[0] || "../curl-www";
+my $eday = 3;  # this many day bumps
+my $every = $eday*24*3600;
 
-require "$webroot/docs/vuln.pm";
-$csv = "$webroot/docs/releases.csv";
+my $c4delta = int(($curl4 - $httpget) / (24*3600));
+my $c7delta = int(($curl71 - $httpget) /  (24*3600));
 
-sub relinfo {
-    open(C, "<$csv");
-    while(<C>) {
-        chomp;
-        my ($index, $version, $vulns, $date, $since, $ddays, $adays, $dbugs, $abugs,
-            $dchanges, $achanges) = split(';', $_);
-        $release{$version}=$date;
-        push @inorder, $version;
-        $p = $date; # remmeber the last date, which is the earliest
-    }
-    close(C);
-}
+#print "$c4delta $c7delta\n";
 
-relinfo();
-
-sub deltadays {
-    my ($prev, $date) = @_;
-    my $psecs = `date +%s -d "$prev"`;
-    my $secs = `date +%s -d "$date"`;
-    return int(($secs-$psecs)/86400);
-}
-
-for my $r (reverse @inorder) {
-    printf "%s;%u;%d;%d\n", $release{$r},
-        deltadays("1996-11-11", $release{$r}),
-        deltadays("1998-03-20", $release{$r}),
-        deltadays("2000-08-07", $release{$r});
+my $days = 0;
+my $e;
+my $now = time();
+for($e = $httpget;
+    $e < $now;
+    $e += $every) {
+    my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) =
+        localtime($e);
+    printf "%04d-%02d-%02d;%d;%d;%d\n", $year + 1900, $mon + 1, $mday,
+        $days, $days - $c4delta, $days - $c7delta;
+    $days += $eday;
 }
