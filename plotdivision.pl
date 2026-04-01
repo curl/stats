@@ -80,9 +80,9 @@ for(@p2) {
 }
 
 my $d1, $d2;
-my $start;
 
 for my $d (sort keys %anyday) {
+    my $start = 0;
     if($anyday{$d} & 1) {
         $d1 = $day1{$d};
         $start |= 1;
