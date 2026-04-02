@@ -122,7 +122,8 @@ GRFCSV = \
  $(GDIR)/vulns-over-time.svg \
  $(GDIR)/vulns-per-year.svg \
  $(GDIR)/vulns-releases.svg \
- $(GDIR)/weekday-of-year.svg
+ $(GDIR)/weekday-of-year.svg \
+ $(GDIR)/words-over-time.svg
 
 # The CSVs for the backend graph
 BACKENDCSV= \
@@ -155,6 +156,11 @@ NAMES=$(GDIR)/all.txt
 
 all: $(GRAPHS) $(NAMES)
 
+$(GDIR)/words-over-time.svg: $(INCLUDE) $(SDIR)/words-over-time.plot $(DDIR)/words-over-time.csv
+	$(GNUPLOT)
+$(DDIR)/words-over-time.csv: $(SDIR)/words-over-time.pl
+	$(GENCSV)
+
 $(GDIR)/heatmap-weekhour.svg: $(INCLUDE) $(SDIR)/heatmap-weekhour.plot $(DDIR)/heatmap-weekhour.csv
 	$(GNUPLOT)
 $(DDIR)/heatmap-weekhour.csv: $(SDIR)/heatmap-weekhour.pl
@@ -162,7 +168,7 @@ $(DDIR)/heatmap-weekhour.csv: $(SDIR)/heatmap-weekhour.pl
 
 $(GDIR)/days-per-cmdline-option.svg: $(INCLUDE) $(SDIR)/days-per-cmdline-option.plot $(DDIR)/days-per-cmdline-option.csv
 	$(GNUPLOT)
-$(DDIR)/days-per-cmdline-option.csv: $(DDIR)/cmdline-options-over-time.csv $(DDIR)/project-age.csv
+$(DDIR)/days-per-cmdline-option.csv: $(DDIR)/cmdline-options-over-time.csv $(DDIR)/project-age.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/project-age.csv $(DDIR)/cmdline-options-over-time.csv 0:1 0:1 > $@
 
 $(GDIR)/heatmap-releasedays.svg: $(INCLUDE) $(SDIR)/heatmap-releasedays.plot $(DDIR)/heatmap-releasedays.csv
@@ -203,14 +209,14 @@ $(GDIR)/ifdef-over-time.svg: $(INCLUDE) $(DDIR)/ifdef-over-time.csv $(DDIR)/ifde
 	$(GNUPLOT)
 $(DDIR)/ifdef-over-time.csv:
 	$(GENCSV)
-$(DDIR)/ifdef-per-kloc.csv: $(DDIR)/ifdef-over-time.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/ifdef-per-kloc.csv: $(DDIR)/ifdef-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/ifdef-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
 
 $(GDIR)/atoi-over-time.svg: $(INCLUDE) $(DDIR)/atoi-over-time.csv $(DDIR)/atoi-per-kloc.csv
 	$(GNUPLOT)
 $(DDIR)/atoi-over-time.csv:
 	$(GENCSV)
-$(DDIR)/atoi-per-kloc.csv: $(DDIR)/atoi-over-time.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/atoi-per-kloc.csv: $(DDIR)/atoi-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/atoi-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
 
 $(GDIR)/cve-pie-chart.svg: $(INCLUDE) $(DDIR)/cve-pie-chart.csv
@@ -225,24 +231,24 @@ $(DDIR)/top-remains.csv:
 
 $(GDIR)/remains-per-kloc.svg: $(INCLUDE) $(DDIR)/remains-per-kloc.csv
 	$(GNUPLOT)
-$(DDIR)/remains-per-kloc.csv: $(DDIR)/authorremains.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/remains-per-kloc.csv: $(DDIR)/authorremains.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/authorremains.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
 
 $(GDIR)/manpage-lines-per-option.svg: $(INCLUDE) $(DDIR)/manpage-lines-per-option.csv
 	$(GNUPLOT)
-$(DDIR)/manpage-lines-per-option.csv: $(DDIR)/manpage.csv $(DDIR)/cmdline-options-over-time.csv
+$(DDIR)/manpage-lines-per-option.csv: $(DDIR)/manpage.csv $(DDIR)/cmdline-options-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/manpage.csv $(DDIR)/cmdline-options-over-time.csv 1:2 0:1 > $@
 
 $(GDIR)/lines-per-author.svg: $(INCLUDE) $(DDIR)/lines-per-author.csv $(DDIR)/lines-per-contributor.csv
 	$(GNUPLOT)
-$(DDIR)/lines-per-contributor.csv:$(DDIR)/contributors-over-time.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/lines-per-contributor.csv:$(DDIR)/contributors-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/contributors-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
-$(DDIR)/lines-per-author.csv: $(DDIR)/authors.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/lines-per-author.csv: $(DDIR)/authors.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/authors.csv $(DDIR)/lines-over-time.csv 0:2 0:1 1000 > $@
 
 $(GDIR)/knownvulns-per-line.svg: $(INCLUDE) $(DDIR)/knownvulns-per-line.csv
 	$(GNUPLOT)
-$(DDIR)/knownvulns-per-line.csv: $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/knownvulns-per-line.csv: $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv 0:2 0:1 1000 > $@
 
 $(GDIR)/vulns-releases.svg: $(INCLUDE) $(DDIR)/vulns-releases.csv $(SDIR)/vulns-releases.plot
@@ -253,19 +259,19 @@ $(DDIR)/vulns-releases.csv:
 
 $(GDIR)/lines-per-test.svg: $(INCLUDE) $(DDIR)/lines-per-test.csv
 	$(GNUPLOT)
-$(DDIR)/lines-per-test.csv: $(DDIR)/tests-over-time.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/lines-per-test.csv: $(DDIR)/tests-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/tests-over-time.csv $(DDIR)/lines-over-time.csv 1:2 0:1 1000 > $@
 
 $(GDIR)/lines-per-docs.svg: $(INCLUDE) $(DDIR)/lines-per-docs.csv
 	$(GNUPLOT)
-$(DDIR)/lines-per-docs.csv: $(DDIR)/docs-over-time.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/lines-per-docs.csv: $(DDIR)/docs-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/docs-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
 
 $(GDIR)/added-per-line.svg: $(INCLUDE) $(DDIR)/added-per-line.csv
 	$(GNUPLOT)
 $(DDIR)/addedcode.csv:
 	perl stats/addedcode.pl >$@
-$(DDIR)/added-per-line.csv: $(DDIR)/addedcode.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/added-per-line.csv: $(DDIR)/addedcode.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/addedcode.csv $(DDIR)/lines-over-time.csv 0:1 0:1 >$@
 
 $(GDIR)/h1-per-year.svg: $(INCLUDE) $(DDIR)/h1-reports.csv
@@ -275,17 +281,17 @@ $(DDIR)/h1-reports.csv:
 
 $(GDIR)/testinfra-per-test.svg: $(INCLUDE) $(DDIR)/testinfra-per-test.csv
 	$(GNUPLOT)
-$(DDIR)/testinfra-per-test.csv: $(DDIR)/testinfra-over-time.csv $(DDIR)/tests-over-time.csv
+$(DDIR)/testinfra-per-test.csv: $(DDIR)/testinfra-over-time.csv $(DDIR)/tests-over-time.csv $(SDIR)/plotdivision.pl
 	perl stats/plotdivision.pl $(DDIR)/testinfra-over-time.csv $(DDIR)/tests-over-time.csv 0:1 1:2 > $@
 
 $(GDIR)/testinfra-per-line.svg: $(INCLUDE) $(DDIR)/testinfra-per-line.csv
 	$(GNUPLOT)
-$(DDIR)/testinfra-per-line.csv: $(DDIR)/testinfra-over-time.csv $(DDIR)/lines-over-time.csv
+$(DDIR)/testinfra-per-line.csv: $(DDIR)/testinfra-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/testinfra-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
 
 $(GDIR)/loc-per-day.svg: $(INCLUDE) $(DDIR)/loc-per-day.csv $(SDIR)/loc-per-day.plot
 	$(GNUPLOT)
-$(DDIR)/loc-per-day.csv: $(DDIR)/lines-over-time.csv $(DDIR)/project-age.csv
+$(DDIR)/loc-per-day.csv: $(DDIR)/lines-over-time.csv $(DDIR)/project-age.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/lines-over-time.csv $(DDIR)/project-age.csv 0:1 0:1 > $@
 
 $(GDIR)/project-age.svg: $(INCLUDE) $(DDIR)/project-age.csv $(SDIR)/project-age.plot

@@ -70,6 +70,7 @@ man pages = manpages-over-time.svg
 memory function density = cpy-over-time.svg
 memory spend for downloading 512 mb = 512-mb.svg
 multi setopt options = curlmopts-over-time.svg
+number of words = words-over-time.svg
 project age = project-age.svg
 protocols = protocols-over-time.svg
 release frequency = days-per-release.svg
