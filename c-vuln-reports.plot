@@ -2,7 +2,7 @@
 set terminal svg size 1920,1080 dynamic font ",24"
 
 # title
-set title "curl C vulnerability share since 2010\n{/*0.4per report date}" font ",48"
+set title "C vulnerability share\n{/*0.4per report date}" font ",48"
 # where's the legend
 set key top left
 
