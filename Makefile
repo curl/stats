@@ -199,7 +199,7 @@ $(DDIR)/commit-sizes.csv: $(SDIR)/commit-sizes.pl
 
 $(GDIR)/graphs.svg: $(INCLUDE) $(DDIR)/graphs.csv $(SDIR)/graphs.plot
 	$(GNUPLOT)
-$(DDIR)/graphs.csv:
+$(DDIR)/graphs.csv: $(SDIR)/graphs.pl
 	$(GENCSV)
 
 $(NAMES): $(SDIR)/all.txt
@@ -270,7 +270,7 @@ $(DDIR)/lines-per-docs.csv: $(DDIR)/docs-over-time.csv $(DDIR)/lines-over-time.c
 $(GDIR)/added-per-line.svg: $(INCLUDE) $(DDIR)/added-per-line.csv
 	$(GNUPLOT)
 $(DDIR)/addedcode.csv:
-	perl stats/addedcode.pl >$@
+	perl $(SDIR)/addedcode.pl >$@
 $(DDIR)/added-per-line.csv: $(DDIR)/addedcode.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/addedcode.csv $(DDIR)/lines-over-time.csv 0:1 0:1 >$@
 
@@ -282,7 +282,7 @@ $(DDIR)/h1-reports.csv:
 $(GDIR)/testinfra-per-test.svg: $(INCLUDE) $(DDIR)/testinfra-per-test.csv
 	$(GNUPLOT)
 $(DDIR)/testinfra-per-test.csv: $(DDIR)/testinfra-over-time.csv $(DDIR)/tests-over-time.csv $(SDIR)/plotdivision.pl
-	perl stats/plotdivision.pl $(DDIR)/testinfra-over-time.csv $(DDIR)/tests-over-time.csv 0:1 1:2 > $@
+	perl $(SDIR)/plotdivision.pl $(DDIR)/testinfra-over-time.csv $(DDIR)/tests-over-time.csv 0:1 1:2 > $@
 
 $(GDIR)/testinfra-per-line.svg: $(INCLUDE) $(DDIR)/testinfra-per-line.csv
 	$(GNUPLOT)
@@ -614,94 +614,94 @@ $(GDIR)/http-over-time.svg: $(INCLUDE) $(DDIR)/http-over-time.csv
 $(DDIR)/http-over-time.csv:
 	$(GENCSV)
 
-$(GDIR)/3rdparty-over-time.svg: $(INCLUDE) $(DDIR)/3rdparty-over-time.csv
+$(GDIR)/3rdparty-over-time.svg: $(INCLUDE) $(DDIR)/3rdparty-over-time.csv $(SDIR)/3rdparty-over-time.plot
 	$(GNUPLOT)
-$(DDIR)/3rdparty-over-time.csv:
+$(DDIR)/3rdparty-over-time.csv: $(SDIR)/3rdparty-over-time.pl
 	$(GENCSV)
 
-$(GDIR)/backends-over-time.svg: $(INCLUDE) $(BACKENDCSV)
+$(GDIR)/backends-over-time.svg: $(INCLUDE) $(BACKENDCSV) $(SDIR)/backends-over-time.plot
 	$(GNUPLOT)
-$(DDIR)/tls-over-time.csv:
+$(DDIR)/tls-over-time.csv: $(SDIR)/tls-over-time.pl
 	$(GENCSV)
-$(DDIR)/ssh-over-time.csv:
+$(DDIR)/ssh-over-time.csv: $(SDIR)/ssh-over-time.pl
 	$(GENCSV)
-$(DDIR)/h1-over-time.csv:
+$(DDIR)/h1-over-time.csv: $(SDIR)/h1-over-time.pl
 	$(GENCSV)
-$(DDIR)/h2-over-time.csv:
+$(DDIR)/h2-over-time.csv: $(SDIR)/h2-over-time.pl
 	$(GENCSV)
-$(DDIR)/h3-over-time.csv:
+$(DDIR)/h3-over-time.csv: $(SDIR)/h3-over-time.pl
 	$(GENCSV)
-$(DDIR)/idn-over-time.csv:
+$(DDIR)/idn-over-time.csv: $(SDIR)/idn-over-time.pl
 	$(GENCSV)
-$(DDIR)/resolver-over-time.csv:
+$(DDIR)/resolver-over-time.csv: $(SDIR)/resolver-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/gh-fixes.svg: $(INCLUDE) $(DDIR)/gh-fixes.csv $(SDIR)/gh-fixes.plot
 	$(GNUPLOT)
 $(DDIR)/gh-fixes.csv: $(DDIR)/github.csv $(SDIR)/gh-fixes.pl
-	perl stats/gh-fixes.pl $(DDIR)/github.csv > $@
+	perl $(SDIR)/gh-fixes.pl $(DDIR)/github.csv > $@
 
 $(GDIR)/gh-age.svg: $(INCLUDE) $(DDIR)/gh-age.csv
 	$(GNUPLOT)
 $(DDIR)/gh-age.csv: $(DDIR)/github.csv $(DDIR)/github.csv
-	perl stats/gh-age.pl $(DDIR)/github.csv > $@
+	perl $(SDIR)/gh-age.pl $(DDIR)/github.csv > $@
 
 $(GDIR)/gh-monthly.svg: $(INCLUDE) $(DDIR)/gh-monthly.csv
 	$(GNUPLOT)
 $(DDIR)/gh-monthly.csv: $(DDIR)/github.csv
-	perl stats/gh-monthly.pl $(DDIR)/github.csv > $@
+	perl $(SDIR)/gh-monthly.pl $(DDIR)/github.csv > $@
 
-$(GDIR)/gh-open.svg: $(INCLUDE) $(DDIR)/gh-open.csv
+$(GDIR)/gh-open.svg: $(INCLUDE) $(DDIR)/gh-open.csv $(SDIR)/gh-open.plot
 	$(GNUPLOT)
-$(DDIR)/gh-open.csv: $(DDIR)/github.csv
-	perl stats/gh-open.pl $(DDIR)/github.csv > $@
+$(DDIR)/gh-open.csv: $(DDIR)/github.csv $(SDIR)/gh-open.pl
+	perl $(SDIR)/gh-open.pl $(DDIR)/github.csv > $@
 
-$(DDIR)/github.csv:
+$(DDIR)/github.csv: $(SDIR)/github-json.pl
 	perl $(SDIR)/github-json.pl > $@
 
 $(GDIR)/protocols-over-time.svg: $(INCLUDE) $(DDIR)/protocols-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/protocols-over-time.csv:
+$(DDIR)/protocols-over-time.csv: $(SDIR)/protocols-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/API-calls-over-time.svg: $(INCLUDE) $(DDIR)/API-calls-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/API-calls-over-time.csv:
+$(DDIR)/API-calls-over-time.csv: $(SDIR)/API-calls-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/bugfix-frequency.svg: $(INCLUDE) $(DDIR)/bugfix-frequency.csv
 	$(GNUPLOT)
-$(DDIR)/bugfix-frequency.csv:
+$(DDIR)/bugfix-frequency.csv: $(SDIR)/bugfix-frequency.pl
 	$(GENCSV)
 
 $(GDIR)/files-over-time.svg: $(INCLUDE) $(DDIR)/files-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/files-over-time.csv:
+$(DDIR)/files-over-time.csv: $(SDIR)/files-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/mail.svg: $(INCLUDE) $(DDIR)/mail.csv
 	$(GNUPLOT)
-$(DDIR)/mail.csv:
+$(DDIR)/mail.csv: $(SDIR)/mail.pl
 	$(GENCSV)
 
 $(GDIR)/contrib-tail.svg: $(INCLUDE) $(DDIR)/contrib-tail.csv
 	$(GNUPLOT)
-$(DDIR)/contrib-tail.csv:
+$(DDIR)/contrib-tail.csv: $(SDIR)/contrib-tail.pl
 	$(GENCSV)
 
 $(GDIR)/weekday-of-year.svg: $(INCLUDE) $(DDIR)/weekday-of-year.csv
 	$(GNUPLOT)
-$(DDIR)/weekday-of-year.csv:
+$(DDIR)/weekday-of-year.csv: $(SDIR)/weekday-of-year.pl
 	$(GENCSV)
 
 $(GDIR)/date-of-year.svg: $(INCLUDE) $(DDIR)/date-of-year.csv
 	$(GNUPLOT)
-$(DDIR)/date-of-year.csv:
+$(DDIR)/date-of-year.csv: $(SDIR)/date-of-year.pl
 	$(GENCSV)
 
 $(GDIR)/month-of-year.svg: $(INCLUDE) $(DDIR)/month-of-year.csv
 	$(GNUPLOT)
-$(DDIR)/month-of-year.csv:
+$(DDIR)/month-of-year.csv: $(SDIR)/month-of-year.pl
 	$(GENCSV)
 
 $(GDIR)/512-mb.svg: $(INCLUDE) $(DDIR)/512-mb.csv
