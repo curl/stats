@@ -4,12 +4,11 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "Graphs in the curl dashboard\n{/*0.4Yes, it includes this one}" font ",48"
 # where's the legend
-set key top left horizontal
+set key top left
 
 # Identify the axes
 #set xlabel "Time"
 set ylabel "Number of graphs"
-set y2label "Number of individual plots"
 
 set style line 1 \
     linecolor rgb '#a0202d' \
@@ -23,7 +22,6 @@ set grid
 unset border
 set xtics autofreq nomirror
 set ytics nomirror
-set y2tics nomirror
 unset mxtics
 
 # time formated using this format
@@ -39,6 +37,6 @@ load "stats/logo.include"
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot  ARG1.'/graphs.csv' using 1:2 with lines linestyle 1 title "Graphs",\
- ARG1.'/graphs.csv' using 1:3 with lines linestyle 2 axis x1y2 title "Plots"
+plot  ARG1.'/graphs.csv' using 1:3 with lines linestyle 2 title "Individual plots", \
+ARG1.'/graphs.csv' using 1:2 with lines linestyle 1 title "Graphs (images)"
 
