@@ -141,10 +141,21 @@ print <<CACHE
 2026-01-14;93;262
 2026-01-16;94;264
 2026-01-22;98;269
+2026-03-14;99;277
+2026-03-15;100;279
+2026-03-16;101;285
+2026-03-16;102;286
+2026-03-17;103;288
+2026-03-17;103;286
+2026-03-23;104;287
+2026-03-30;105;288
+2026-03-30;106;289
+2026-03-30;107;290
+2026-04-02;108;291
 CACHE
     ;
 
-open(L, "git log --reverse --pretty=fuller --date=short --stat --since=2026-03-13 |");
+open(L, "git log --reverse --pretty=fuller --date=short --stat --since=2026-04-02 |");
 my $hash;
 my $prev="0.0";
 while(<L>) {
@@ -203,7 +214,7 @@ sub gnuplots {
     if(scalar(@plotfiles)) {
         return @plotfiles;
     }
-    return newplots();
+    return newplots($tag);
 }
 
 sub graphs {
