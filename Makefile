@@ -207,26 +207,26 @@ $(NAMES): $(SDIR)/all.txt
 
 $(GDIR)/ifdef-over-time.svg: $(INCLUDE) $(DDIR)/ifdef-over-time.csv $(DDIR)/ifdef-per-kloc.csv
 	$(GNUPLOT)
-$(DDIR)/ifdef-over-time.csv:
+$(DDIR)/ifdef-over-time.csv: $(SDIR)/ifdef-over-time.pl
 	$(GENCSV)
 $(DDIR)/ifdef-per-kloc.csv: $(DDIR)/ifdef-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/ifdef-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
 
 $(GDIR)/atoi-over-time.svg: $(INCLUDE) $(DDIR)/atoi-over-time.csv $(DDIR)/atoi-per-kloc.csv
 	$(GNUPLOT)
-$(DDIR)/atoi-over-time.csv:
+$(DDIR)/atoi-over-time.csv: $(SDIR)/atoi-over-time.pl
 	$(GENCSV)
 $(DDIR)/atoi-per-kloc.csv: $(DDIR)/atoi-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/atoi-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
 
 $(GDIR)/cve-pie-chart.svg: $(INCLUDE) $(DDIR)/cve-pie-chart.csv
 	$(GNUPLOT)
-$(DDIR)/cve-pie-chart.csv:
+$(DDIR)/cve-pie-chart.csv: $(SDIR)/cve-pie-chart.pl
 	$(GENCSV)
 
 $(GDIR)/top-remains.svg: $(INCLUDE) $(DDIR)/top-remains.csv
 	$(GNUPLOT)
-$(DDIR)/top-remains.csv:
+$(DDIR)/top-remains.csv: $(SDIR)/top-remains.pl
 	$(GENCSV)
 
 $(GDIR)/remains-per-kloc.svg: $(INCLUDE) $(DDIR)/remains-per-kloc.csv
@@ -253,8 +253,7 @@ $(DDIR)/knownvulns-per-line.csv: $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-t
 
 $(GDIR)/vulns-releases.svg: $(INCLUDE) $(DDIR)/vulns-releases.csv $(SDIR)/vulns-releases.plot
 	$(GNUPLOT)
-
-$(DDIR)/vulns-releases.csv:
+$(DDIR)/vulns-releases.csv: $(SDIR)/vulns-releases.pl
 	$(GENCSV)
 
 $(GDIR)/lines-per-test.svg: $(INCLUDE) $(DDIR)/lines-per-test.csv
@@ -269,7 +268,7 @@ $(DDIR)/lines-per-docs.csv: $(DDIR)/docs-over-time.csv $(DDIR)/lines-over-time.c
 
 $(GDIR)/added-per-line.svg: $(INCLUDE) $(DDIR)/added-per-line.csv
 	$(GNUPLOT)
-$(DDIR)/addedcode.csv:
+$(DDIR)/addedcode.csv: $(SDIR)/addedcode.pl
 	perl $(SDIR)/addedcode.pl >$@
 $(DDIR)/added-per-line.csv: $(DDIR)/addedcode.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/addedcode.csv $(DDIR)/lines-over-time.csv 0:1 0:1 >$@
@@ -301,27 +300,27 @@ $(DDIR)/project-age.csv: $(SDIR)/project-age.pl
 
 $(GDIR)/testinfra-over-time.svg: $(INCLUDE) $(DDIR)/testinfra-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/testinfra-over-time.csv:
+$(DDIR)/testinfra-over-time.csv: $(SDIR)/testinfra-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/top-cwe.svg: $(INCLUDE) $(DDIR)/top-cwe.csv
 	$(GNUPLOT)
-$(DDIR)/top-cwe.csv:
+$(DDIR)/top-cwe.csv: $(SDIR)/top-cwe.pl
 	$(GENCSV)
 
 $(GDIR)/codeage.svg: $(INCLUDE) $(DDIR)/codeage.csv
 	$(GNUPLOT)
-$(DDIR)/codeage.csv:
+$(DDIR)/codeage.csv: $(SDIR)/codeage.pl
 	$(GENCSV)
 
 $(GDIR)/complex-dist.svg: $(INCLUDE) $(DDIR)/complex-dist.csv
 	$(GNUPLOT)
-$(DDIR)/complex-dist.csv:
+$(DDIR)/complex-dist.csv: $(SDIR)/complex-dist.pl
 	$(GENCSV)
 
 $(GDIR)/line-complex.svg: $(INCLUDE) $(DDIR)/line-complex.csv
 	$(GNUPLOT)
-$(DDIR)/line-complex.csv:
+$(DDIR)/line-complex.csv: $(SDIR)/line-complex.pl
 	$(GENCSV)
 
 $(GDIR)/funclen.svg: $(INCLUDE) $(DDIR)/complexity.csv
@@ -329,169 +328,169 @@ $(GDIR)/funclen.svg: $(INCLUDE) $(DDIR)/complexity.csv
 
 $(GDIR)/complexity.svg: $(INCLUDE) $(DDIR)/complexity.csv
 	$(GNUPLOT)
-$(DDIR)/complexity.csv:
+$(DDIR)/complexity.csv: $(SDIR)/complexity.pl
 	$(GENCSV)
 
 $(GDIR)/sscanf-over-time.svg: $(INCLUDE) $(DDIR)/sscanf-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/sscanf-over-time.csv:
+$(DDIR)/sscanf-over-time.csv: $(SDIR)/sscanf-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/strcpy-over-time.svg: $(INCLUDE) $(DDIR)/strcpy-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/strcpy-over-time.csv:
+$(DDIR)/strcpy-over-time.csv: $(SDIR)/strcpy-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/strncpy-over-time.svg: $(INCLUDE) $(DDIR)/strncpy-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/strncpy-over-time.csv:
+$(DDIR)/strncpy-over-time.csv: $(SDIR)/strncpy-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/cpy-over-time.svg: $(INCLUDE) $(DDIR)/cpy-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/cpy-over-time.csv:
+$(DDIR)/cpy-over-time.csv: $(SDIR)/cpy-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/releases-per-year.svg: $(INCLUDE) $(DDIR)/releases-per-year.csv
 	$(GNUPLOT)
-$(DDIR)/releases-per-year.csv:
+$(DDIR)/releases-per-year.csv: $(SDIR)/releases-per-year.pl
 	$(GENCSV)
 
 $(GDIR)/release-number.svg: $(INCLUDE) $(DDIR)/release-number.csv
 	$(GNUPLOT)
-$(DDIR)/release-number.csv:
+$(DDIR)/release-number.csv: $(SDIR)/release-number.pl
 	$(GENCSV)
 
 $(GDIR)/lines-person.svg: $(INCLUDE) $(DDIR)/lines-person.csv
 	$(GNUPLOT)
-$(DDIR)/lines-person.csv:
+$(DDIR)/lines-person.csv: $(SDIR)/lines-person.pl
 	$(GENCSV)
 
 $(GDIR)/contributors-per-release.svg: $(INCLUDE) $(DDIR)/contributors-per-release.csv
 	$(GNUPLOT)
-$(DDIR)/contributors-per-release.csv:
+$(DDIR)/contributors-per-release.csv: $(SDIR)/contributors-per-release.pl
 	$(GENCSV)
 
 $(GDIR)/bugbounty-amounts.svg: $(INCLUDE) $(DDIR)/bugbounty-amounts.csv
 	$(GNUPLOT)
-$(DDIR)/bugbounty-amounts.csv:
+$(DDIR)/bugbounty-amounts.csv: $(SDIR)/bugbounty-amounts.pl
 	$(GENCSV)
 
 $(GDIR)/bugbounty-over-time.svg: $(INCLUDE) $(DDIR)/bugbounty-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/bugbounty-over-time.csv:
+$(DDIR)/bugbounty-over-time.csv: $(SDIR)/bugbounty-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/examples-over-time.svg: $(INCLUDE) $(DDIR)/examples-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/examples-over-time.csv:
+$(DDIR)/examples-over-time.csv: $(SDIR)/examples-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/manpage.svg: $(INCLUDE) $(DDIR)/manpage.csv
 	$(GNUPLOT)
-$(DDIR)/manpage.csv:
+$(DDIR)/manpage.csv: $(SDIR)/manpage.pl
 	$(GENCSV)
 
 $(GDIR)/manpages-over-time.svg: $(INCLUDE) $(DDIR)/manpages-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/manpages-over-time.csv:
+$(DDIR)/manpages-over-time.csv: $(SDIR)/manpages-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/tests-over-time.svg: $(INCLUDE) $(DDIR)/tests-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/tests-over-time.csv:
+$(DDIR)/tests-over-time.csv: $(SDIR)/tests-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/lines-per-month.svg: $(INCLUDE) $(DDIR)/lines-per-month.csv
 	$(GNUPLOT)
-$(DDIR)/lines-per-month.csv:
+$(DDIR)/lines-per-month.csv: $(SDIR)/lines-per-month.pl
 	$(GENCSV)
 
 $(GDIR)/lines-over-time.svg: $(INCLUDE) $(DDIR)/lines-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/lines-over-time.csv:
+$(DDIR)/lines-over-time.csv: $(SDIR)/lines-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/severity.svg: $(INCLUDE) $(DDIR)/severity.csv
 	$(GNUPLOT)
-$(DDIR)/severity.csv:
+$(DDIR)/severity.csv: $(SDIR)/severity.pl
 	$(GENCSV)
 
 $(GDIR)/sev-per-year.svg: $(INCLUDE) $(DDIR)/sev-per-year.csv
 	$(GNUPLOT)
-$(DDIR)/sev-per-year.csv:
+$(DDIR)/sev-per-year.csv: $(SDIR)/sev-per-year.pl
 	$(GENCSV)
 
 $(GDIR)/high-vuln-reports.svg: $(INCLUDE) $(DDIR)/high-vuln-reports.csv
 	$(GNUPLOT)
-$(DDIR)/high-vuln-reports.csv:
+$(DDIR)/high-vuln-reports.csv: $(SDIR)/high-vuln-reports.pl
 	$(GENCSV)
 
 $(GDIR)/c-vuln-reports.svg: $(INCLUDE) $(DDIR)/c-vuln-reports.csv
 	$(GNUPLOT)
-$(DDIR)/c-vuln-reports.csv:
+$(DDIR)/c-vuln-reports.csv: $(SDIR)/c-vuln-reports.pl
 	$(GENCSV)
 
 $(GDIR)/c-vuln-code.svg: $(INCLUDE) $(DDIR)/c-vuln-code.csv
 	$(GNUPLOT)
-$(DDIR)/c-vuln-code.csv:
+$(DDIR)/c-vuln-code.csv: $(SDIR)/c-vuln-code.pl
 	$(GENCSV)
 
 $(GDIR)/vulns-per-year.svg: $(INCLUDE) $(DDIR)/vulns-per-year.csv
 	$(GNUPLOT)
-$(DDIR)/vulns-per-year.csv:
+$(DDIR)/vulns-per-year.csv: $(SDIR)/vulns-per-year.pl
 	perl $(SDIR)/vulns-per-year.pl $(WDIR) $(DDIR)/cve-intro.csv > $@
 
 $(GDIR)/vulns-over-time.svg: $(INCLUDE) $(DDIR)/vulns-over-time.csv $(DDIR)/cve-intro.csv
 	$(GNUPLOT)
-$(DDIR)/vulns-over-time.csv:
+$(DDIR)/vulns-over-time.csv: $(SDIR)/vulns-over-time.pl
 	$(GENCSV)
-$(DDIR)/cve-intro.csv:
+$(DDIR)/cve-intro.csv: $(SDIR)/cve-intro.pl
 	$(GENCSV)
 
 $(GDIR)/cve-fixtime.svg: $(INCLUDE) $(DDIR)/cve-fixtime.csv
 	$(GNUPLOT)
-$(DDIR)/cve-fixtime.csv:
+$(DDIR)/cve-fixtime.csv: $(SDIR)/cve-fixtime.pl
 	$(GENCSV)
 
 $(GDIR)/cve-age.svg: $(INCLUDE) $(DDIR)/cve-age.csv
 	$(GNUPLOT)
-$(DDIR)/cve-age.csv:
+$(DDIR)/cve-age.csv: $(SDIR)/cve-age.pl
 	$(GENCSV)
 
 $(GDIR)/vuln-dist-code.svg: $(INCLUDE) $(DDIR)/vuln-dist-code.csv
 	$(GNUPLOT)
-$(DDIR)/vuln-dist-code.csv:
+$(DDIR)/vuln-dist-code.csv: $(SDIR)/vuln-dist-code.pl
 	$(GENCSV)
 
 $(GDIR)/docs-over-time.svg: $(INCLUDE) $(DDIR)/docs-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/docs-over-time.csv:
+$(DDIR)/docs-over-time.csv: $(SDIR)/docs-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/commits-per-month.svg: $(INCLUDE) $(DDIR)/commits-per-month.csv
 	$(GNUPLOT)
-$(DDIR)/commits-per-month.csv:
+$(DDIR)/commits-per-month.csv: $(SDIR)/commits-per-month.pl
 	$(GENCSV)
 
 $(GDIR)/firsttimers.svg: $(INCLUDE) $(DDIR)/firsttimers.csv
 	$(GNUPLOT)
-$(DDIR)/firsttimers.csv:
+$(DDIR)/firsttimers.csv: $(SDIR)/firsttimers.pl
 	$(GENCSV)
 
 $(GDIR)/authors-per-month.svg: $(INCLUDE) $(DDIR)/authors-per-month.csv
 	$(GNUPLOT)
-$(DDIR)/authors-per-month.csv:
+$(DDIR)/authors-per-month.csv: $(SDIR)/authors-per-month.pl
 	$(GENCSV)
 
 $(GDIR)/symbols-over-time.svg: $(INCLUDE) $(DDIR)/symbols-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/symbols-over-time.csv:
+$(DDIR)/symbols-over-time.csv: $(SDIR)/symbols-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/todo-over-time.svg: $(INCLUDE) $(DDIR)/todo-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/todo-over-time.csv:
+$(DDIR)/todo-over-time.csv: $(SDIR)/todo-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/authorremains-top.svg: $(INCLUDE) $(DDIR)/authorremains.csv
@@ -499,32 +498,32 @@ $(GDIR)/authorremains-top.svg: $(INCLUDE) $(DDIR)/authorremains.csv
 
 $(GDIR)/authorremains.svg: $(INCLUDE) $(DDIR)/authorremains.csv
 	$(GNUPLOT)
-$(DDIR)/authorremains.csv:
+$(DDIR)/authorremains.csv: $(SDIR)/authorremains.pl
 	$(GENCSV)
 
 $(GDIR)/authors.svg: $(INCLUDE) $(DDIR)/authors.csv
 	$(GNUPLOT)
-$(DDIR)/authors.csv:
+$(DDIR)/authors.csv: $(SDIR)/authors.pl
 	$(GENCSV)
 
 $(GDIR)/contributors-over-time.svg: $(INCLUDE) $(DDIR)/contributors-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/contributors-over-time.csv:
+$(DDIR)/contributors-over-time.csv: $(SDIR)/contributors-over-time.pl
 	perl $(SDIR)/contributors-over-time.pl | cut '-d;' -f2- > $@
 
 $(GDIR)/cmdline-options-over-time.svg: $(INCLUDE) $(DDIR)/cmdline-options-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/cmdline-options-over-time.csv:
+$(DDIR)/cmdline-options-over-time.csv: $(SDIR)/cmdline-options-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/commits-per-release.svg: $(INCLUDE) $(DDIR)/commits-per-release.csv
 	$(GNUPLOT)
-$(DDIR)/commits-per-release.csv:
+$(DDIR)/commits-per-release.csv: $(SDIR)/commits-per-release.pl
 	$(GENCSV)
 
 $(GDIR)/days-per-release.svg: $(INCLUDE) $(DDIR)/days-per-release.csv
 	$(GNUPLOT)
-$(DDIR)/days-per-release.csv:
+$(DDIR)/days-per-release.csv: $(SDIR)/days-per-release.pl
 	$(GENCSV)
 
 $(GDIR)/setopts-over-time.svg: $(INCLUDE) $(DDIR)/setopts-over-time.csv
@@ -534,84 +533,84 @@ $(DDIR)/setopts-over-time.csv:
 
 $(GDIR)/filesize-over-time.svg: $(INCLUDE) $(DDIR)/filesize-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/filesize-over-time.csv:
+$(DDIR)/filesize-over-time.csv: $(SDIR)/filesize-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/comments.svg: $(INCLUDE) $(DDIR)/comments.csv
 	$(GNUPLOT)
-$(DDIR)/comments.csv:
+$(DDIR)/comments.csv: $(SDIR)/comments.pl
 	$(GENCSV)
 
 $(GDIR)/50-percent.svg: $(INCLUDE) $(DDIR)/50-percent.csv
 	$(GNUPLOT)
-$(DDIR)/50-percent.csv:
+$(DDIR)/50-percent.csv: $(SDIR)/80-percent.pl
 	perl $(SDIR)/80-percent.pl 50 > $@
 
 $(GDIR)/60-percent.svg: $(INCLUDE) $(DDIR)/60-percent.csv
 	$(GNUPLOT)
-$(DDIR)/60-percent.csv:
+$(DDIR)/60-percent.csv: $(SDIR)/80-percent.pl
 	perl $(SDIR)/80-percent.pl 60 > $@
 
 $(GDIR)/70-percent.svg: $(INCLUDE) $(DDIR)/70-percent.csv
 	$(GNUPLOT)
-$(DDIR)/70-percent.csv:
+$(DDIR)/70-percent.csv: $(SDIR)/80-percent.pl
 	perl $(SDIR)/80-percent.pl 70 > $@
 
 $(GDIR)/80-percent.svg: $(INCLUDE) $(DDIR)/80-percent.csv
 	$(GNUPLOT)
-$(DDIR)/80-percent.csv:
+$(DDIR)/80-percent.csv: $(SDIR)/80-percent.pl
 	perl $(SDIR)/80-percent.pl 80 > $@
 
 $(GDIR)/90-percent.svg: $(INCLUDE) $(DDIR)/90-percent.csv
 	$(GNUPLOT)
-$(DDIR)/90-percent.csv:
+$(DDIR)/90-percent.csv: $(SDIR)/80-percent.pl
 	perl $(SDIR)/80-percent.pl 90 > $@
 
 $(GDIR)/95-percent.svg: $(INCLUDE) $(DDIR)/95-percent.csv
 	$(GNUPLOT)
-$(DDIR)/95-percent.csv:
+$(DDIR)/95-percent.csv: $(SDIR)/80-percent.pl
 	perl $(SDIR)/80-percent.pl 95 > $@
 
 $(GDIR)/coreteam-per-year.svg: $(INCLUDE) $(DDIR)/coreteam-per-year.csv $(DDIR)/coreteam-percent.csv
 	$(GNUPLOT)
-$(DDIR)/coreteam-per-year.csv:
+$(DDIR)/coreteam-per-year.csv: $(SDIR)/coreteam-over-time.pl
 	perl $(SDIR)/coreteam-over-time.pl | grep "^[12]" | tr -d '(' | awk '{ print $$1"-01-01;"$$2; }' >$@
-$(DDIR)/coreteam-percent.csv:
+$(DDIR)/coreteam-percent.csv: $(SDIR)/coreteam-over-time.pl
 	perl $(SDIR)/coreteam-over-time.pl | grep '^[12]' | cut -d" " -f 1,5 | tr -d '%' | awk '{ if($$2 > 0) {print $$1"-01-01;"$$2; }}' > $@
 
 $(GDIR)/commits-over-time.svg: $(INCLUDE) $(DDIR)/commits-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/commits-over-time.csv:
+$(DDIR)/commits-over-time.csv: $(SDIR)/commits-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/commits-per-year.svg: $(INCLUDE) $(DDIR)/commits-per-year.csv
 	$(GNUPLOT)
-$(DDIR)/commits-per-year.csv:
+$(DDIR)/commits-per-year.csv: $(SDIR)/commits-per-year.pl
 	$(GENCSV)
 
 $(GDIR)/authors-active.svg: $(INCLUDE) $(DDIR)/authors-active.csv
 	$(GNUPLOT)
-$(DDIR)/authors-active.csv:
+$(DDIR)/authors-active.csv: $(SDIR)/authors-active.pl
 	$(GENCSV)
 
 $(GDIR)/authors-per-year.svg: $(INCLUDE) $(DDIR)/authors-per-year.csv
 	$(GNUPLOT)
-$(DDIR)/authors-per-year.csv:
+$(DDIR)/authors-per-year.csv: $(SDIR)/authors-per-year.pl
 	$(GENCSV)
 
 $(GDIR)/daniel-commit-share.svg: $(INCLUDE) $(DDIR)/daniel-commit-share.csv
 	$(GNUPLOT)
-$(DDIR)/daniel-commit-share.csv:
+$(DDIR)/daniel-commit-share.csv: $(SDIR)/daniel-commit-share.pl
 	$(GENCSV)
 
 $(GDIR)/daniel-vs-rest.svg: $(INCLUDE) $(DDIR)/daniel-vs-rest.csv
 	$(GNUPLOT)
-$(DDIR)/daniel-vs-rest.csv:
+$(DDIR)/daniel-vs-rest.csv: $(SDIR)/daniel-vs-rest.pl
 	$(GENCSV)
 
 $(GDIR)/http-over-time.svg: $(INCLUDE) $(DDIR)/http-over-time.csv
 	$(GNUPLOT)
-$(DDIR)/http-over-time.csv:
+$(DDIR)/http-over-time.csv: $(SDIR)/http-over-time.pl
 	$(GENCSV)
 
 $(GDIR)/3rdparty-over-time.svg: $(INCLUDE) $(DDIR)/3rdparty-over-time.csv $(SDIR)/3rdparty-over-time.plot
