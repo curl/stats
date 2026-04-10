@@ -41,16 +41,15 @@ GRFCSV = \
  $(GDIR)/c-vuln-code.svg \
  $(GDIR)/c-vuln-reports.svg \
  $(GDIR)/cmdline-options-over-time.svg \
- $(GDIR)/days-per-cmdline-option.svg \
  $(GDIR)/codeage.svg \
  $(GDIR)/comments.svg \
+ $(GDIR)/commit-sizes.svg \
  $(GDIR)/commits-over-time.svg \
  $(GDIR)/commits-per-month.svg \
  $(GDIR)/commits-per-release.svg \
  $(GDIR)/commits-per-year.svg \
  $(GDIR)/complex-dist.svg \
  $(GDIR)/complexity.svg \
- $(GDIR)/commit-sizes.svg \
  $(GDIR)/connectdata.svg \
  $(GDIR)/contrib-tail.svg \
  $(GDIR)/contributors-over-time.svg \
@@ -62,9 +61,11 @@ GRFCSV = \
  $(GDIR)/cve-fixtime.svg \
  $(GDIR)/cve-oldest.svg \
  $(GDIR)/cve-pie-chart.svg \
+ $(GDIR)/cvuln-per-year.svg \
  $(GDIR)/daniel-commit-share.svg \
  $(GDIR)/daniel-vs-rest.svg \
  $(GDIR)/date-of-year.svg \
+ $(GDIR)/days-per-cmdline-option.svg \
  $(GDIR)/days-per-release.svg \
  $(GDIR)/docs-over-time.svg \
  $(GDIR)/easy-handle.svg \
@@ -416,9 +417,14 @@ $(GDIR)/severity.svg: $(INCLUDE) $(DDIR)/severity.csv
 $(DDIR)/severity.csv: $(SDIR)/severity.pl
 	$(GENCSV)
 
-$(GDIR)/sev-per-year.svg: $(INCLUDE) $(DDIR)/sev-per-year.csv
+$(GDIR)/sev-per-year.svg: $(INCLUDE) $(DDIR)/sev-per-year.csv $(SDIR)/sev-per-year.plot
 	$(GNUPLOT)
 $(DDIR)/sev-per-year.csv: $(SDIR)/sev-per-year.pl
+	$(GENCSV)
+
+$(GDIR)/cvuln-per-year.svg: $(INCLUDE) $(DDIR)/cvuln-per-year.csv $(SDIR)/cvuln-per-year.plot
+	$(GNUPLOT)
+$(DDIR)/cvuln-per-year.csv: $(SDIR)/cvuln-per-year.pl
 	$(GENCSV)
 
 $(GDIR)/high-vuln-reports.svg: $(INCLUDE) $(DDIR)/high-vuln-reports.csv
