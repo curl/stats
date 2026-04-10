@@ -106,6 +106,7 @@ vulnerabilities per year = vulns-per-year.svg
 vulnerability age = cve-age.svg
 vulnerability high vs low = sev-per-year.svg
 vulnerability C mistakes = cvuln-per-year.svg
+vulnerability C mistakes introduced = cvuln-per-year-intro.svg
 vulnerability severity = high-vuln-reports.svg
 vulnerability severity distribution = severity.svg
 vulnerability share = cve-pie-chart.svg

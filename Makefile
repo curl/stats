@@ -62,6 +62,7 @@ GRFCSV = \
  $(GDIR)/cve-oldest.svg \
  $(GDIR)/cve-pie-chart.svg \
  $(GDIR)/cvuln-per-year.svg \
+ $(GDIR)/cvuln-per-year-intro.svg \
  $(GDIR)/daniel-commit-share.svg \
  $(GDIR)/daniel-vs-rest.svg \
  $(GDIR)/date-of-year.svg \
@@ -425,6 +426,11 @@ $(DDIR)/sev-per-year.csv: $(SDIR)/sev-per-year.pl
 $(GDIR)/cvuln-per-year.svg: $(INCLUDE) $(DDIR)/cvuln-per-year.csv $(SDIR)/cvuln-per-year.plot
 	$(GNUPLOT)
 $(DDIR)/cvuln-per-year.csv: $(SDIR)/cvuln-per-year.pl
+	$(GENCSV)
+
+$(GDIR)/cvuln-per-year-intro.svg: $(INCLUDE) $(DDIR)/cvuln-per-year-intro.csv $(SDIR)/cvuln-per-year-intro.plot
+	$(GNUPLOT)
+$(DDIR)/cvuln-per-year-intro.csv: $(SDIR)/cvuln-per-year-intro.pl
 	$(GENCSV)
 
 $(GDIR)/high-vuln-reports.svg: $(INCLUDE) $(DDIR)/high-vuln-reports.csv
