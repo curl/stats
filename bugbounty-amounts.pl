@@ -19,9 +19,7 @@ for(reverse @vuln) {
     $date{$cve} = $nice;
     $money{$cve} = $total;
     $bounty{$cve} = $usd;
-    if($usd) {
-        push @all, $cve;
-    }
+    push @all, $cve;
 }
 
 my $l;
