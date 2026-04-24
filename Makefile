@@ -438,7 +438,7 @@ $(GDIR)/high-vuln-reports.svg: $(INCLUDE) $(DDIR)/high-vuln-reports.csv
 $(DDIR)/high-vuln-reports.csv: $(SDIR)/high-vuln-reports.pl
 	$(GENCSV)
 
-$(GDIR)/c-vuln-reports.svg: $(INCLUDE) $(DDIR)/c-vuln-reports.csv
+$(GDIR)/c-vuln-reports.svg: $(INCLUDE) $(DDIR)/c-vuln-reports.csv $(SDIR)/c-vuln-reports.plot
 	$(GNUPLOT)
 $(DDIR)/c-vuln-reports.csv: $(SDIR)/c-vuln-reports.pl
 	$(GENCSV)

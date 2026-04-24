@@ -4,7 +4,7 @@ set terminal svg size 1920,1080 dynamic font ",24"
 # title
 set title "C vulnerability share\n{/*0.4per report date}" font ",48"
 # where's the legend
-set key top left
+set key bottom right
 
 # Identify the axes
 set ylabel "C mistake share %"
@@ -31,25 +31,19 @@ set xrange ["2010-01-01":]
 
 set style line 1 \
     linecolor rgb '#FF4040' \
-    linetype 2 linewidth 3
-
-set style line 2 \
-    linecolor rgb '#800080' \
-    linetype 1 linewidth 2 \
-    pointtype 7 pointsize .3
+    linetype 2 linewidth 5 dt "..."
 
 set style line 3 \
-    linecolor rgb '#404040' \
-    linetype 1 linewidth 2 \
+    linecolor rgb '#40a040' \
+    linetype 1 linewidth 3 \
     pointtype 7 pointsize .3
 
 set style line 4 \
     linecolor rgb '#4040e0' \
-    linetype 1 linewidth 2 \
+    linetype 1 linewidth 3 \
     pointtype 7 pointsize .3
 
 set datafile separator ";"
-plot ARG1.'/c-vuln-reports.csv' using 1:2 axis x1y2 with linespoints linestyle 2 title "Number of vulnerabilities", \
- ARG1.'/c-vuln-reports.csv' using 1:3 axis x1y2 with linespoints linestyle 3 title "C mistakes", \
- ARG1.'/c-vuln-reports.csv' using 1:4 axis x1y2 with linespoints linestyle 4 title "Not C mistakes", \
+plot ARG1.'/c-vuln-reports.csv' using 1:3 axis x1y2 with lines linestyle 3 title "C mistake vulnerabilities", \
+ ARG1.'/c-vuln-reports.csv' using 1:4 axis x1y2 with lines linestyle 4 title "Not C mistake vulnerabilities", \
  ARG1.'/c-vuln-reports.csv' using 1:5 with lines linestyle 1 title "C mistake share"
