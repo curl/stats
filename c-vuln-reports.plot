@@ -27,7 +27,7 @@ unset mxtics
 set ytics 10 nomirror
 
 set yrange [0:]
-set xrange ["2010-01-01":]
+set xrange ["2015-01-01":]
 
 set style line 1 \
     linecolor rgb '#FF4040' \
