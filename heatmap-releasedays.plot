@@ -1,5 +1,4 @@
-# SVG output
-set terminal svg size 1920,380 dynamic font ",24"
+set terminal svg size 1920,380 dynamic font ",24" background rgb 'white'
 
 set title "Release weekday heatmap" font ",48"
 

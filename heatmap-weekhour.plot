@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,580 dynamic font ",24"
+set terminal svg size 1920,580 dynamic font ",24" background rgb 'white'
 
 set title "commits authored at this UTC week hour" font ",48"
 
