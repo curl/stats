@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 set title "Commit size distribution\n{/*.5As a share of commits done over a rolling 365 day period}" font ",48"
 set key bottom center horizontal out

@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Number of graphs on the dashboard showing number of graphs on the dashboard" font ",32"

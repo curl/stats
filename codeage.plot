@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Source code age\n{/*0.5Lines of code written per two-year segment}" font ",48"

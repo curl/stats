@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "GitHub: issue life time until fixed\n{/*0.6For issues closed via a git commit message keyword}" font ",48"

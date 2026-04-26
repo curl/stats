@@ -1,5 +1,4 @@
-# SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Commit authors" font ",48"

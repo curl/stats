@@ -1,0 +1,1 @@
+set terminal svg size 1920,1080 dynamic font ",24" background rgb 'white'

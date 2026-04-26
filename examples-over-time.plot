@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Stand-alone libcurl examples\n{/*0.4in the docs/examples subdirectory}" font ",48"

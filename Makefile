@@ -513,7 +513,7 @@ $(GDIR)/authorremains.svg: $(INCLUDE) $(DDIR)/authorremains.csv
 $(DDIR)/authorremains.csv: $(SDIR)/authorremains.pl
 	$(GENCSV)
 
-$(GDIR)/authors.svg: $(INCLUDE) $(DDIR)/authors.csv
+$(GDIR)/authors.svg: $(INCLUDE) $(DDIR)/authors.csv $(SDIR)/authors.plot
 	$(GNUPLOT)
 $(DDIR)/authors.csv: $(SDIR)/authors.pl
 	$(GENCSV)

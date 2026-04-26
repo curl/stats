@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Added LOC per LOC still present\n{/*0.6in product code only}" font ",48"
