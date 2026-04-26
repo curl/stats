@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Function length\n{/*0.4Lines of code for the 99th percentile and worst function. Includes comments and blank lines.}" font ",48"

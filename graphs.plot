@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Graphs in the curl dashboard\n{/*0.4Yes, it includes this one}" font ",48"

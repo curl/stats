@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Complexity\n{/*0.4Cyclomatic complexity used for the 99th percentile and worst function}" font ",48"

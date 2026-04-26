@@ -148,7 +148,7 @@ GRAPHS=$(GRFCSV) \
  $(GDIR)/authorremains-top.svg \
  $(GDIR)/funclen.svg
 
-INCLUDE=$(SDIR)/logo.include
+INCLUDE=$(SDIR)/logo.include $(SDIR)/terminal.include
 
 GNUPLOT=gnuplot -c $(SDIR)/$(basename $(notdir $@)).plot $(DDIR) > $@
 
@@ -513,7 +513,7 @@ $(GDIR)/authorremains.svg: $(INCLUDE) $(DDIR)/authorremains.csv
 $(DDIR)/authorremains.csv: $(SDIR)/authorremains.pl
 	$(GENCSV)
 
-$(GDIR)/authors.svg: $(INCLUDE) $(DDIR)/authors.csv
+$(GDIR)/authors.svg: $(INCLUDE) $(DDIR)/authors.csv $(SDIR)/authors.plot
 	$(GNUPLOT)
 $(DDIR)/authors.csv: $(SDIR)/authors.pl
 	$(GENCSV)

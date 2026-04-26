@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 set title "Lines of code growth" font ",48"
 set key top left
 set ylabel "Lines of code per day of existence"

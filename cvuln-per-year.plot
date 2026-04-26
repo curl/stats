@@ -1,5 +1,5 @@
 # SVG output
-set terminal svg size 1920,1080 dynamic font ",24"
+load "stats/terminal.include"
 
 # title
 set title "Vulnerability reports C mistakes vs not C mistakes\n{/*0.6per year the vulnerability was published}" font ",48"
