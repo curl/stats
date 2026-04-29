@@ -58,6 +58,7 @@ GRFCSV = \
  $(GDIR)/cpy-over-time.svg \
  $(GDIR)/curlmopts-over-time.svg \
  $(GDIR)/cve-age.svg \
+ $(GDIR)/cve-average.svg \
  $(GDIR)/cve-fixtime.svg \
  $(GDIR)/cve-oldest.svg \
  $(GDIR)/cve-pie-chart.svg \
@@ -469,6 +470,9 @@ $(GDIR)/cve-age.svg: $(INCLUDE) $(DDIR)/cve-age.csv
 	$(GNUPLOT)
 $(DDIR)/cve-age.csv: $(SDIR)/cve-age.pl
 	$(GENCSV)
+
+$(GDIR)/cve-average.svg: $(INCLUDE) $(DDIR)/cve-age.csv $(SDIR)/cve-average.plot
+	$(GNUPLOT)
 
 $(GDIR)/vuln-dist-code.svg: $(INCLUDE) $(DDIR)/vuln-dist-code.csv
 	$(GNUPLOT)
