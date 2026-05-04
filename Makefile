@@ -326,7 +326,7 @@ $(GDIR)/line-complex.svg: $(INCLUDE) $(DDIR)/line-complex.csv
 $(DDIR)/line-complex.csv: $(SDIR)/line-complex.pl
 	$(GENCSV)
 
-$(GDIR)/funclen.svg: $(INCLUDE) $(DDIR)/complexity.csv
+$(GDIR)/funclen.svg: $(INCLUDE) $(DDIR)/complexity.csv $(SDIR)/funclen.plot
 	$(GNUPLOT)
 
 $(GDIR)/complexity.svg: $(INCLUDE) $(DDIR)/complexity.csv
