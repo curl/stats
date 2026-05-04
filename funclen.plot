@@ -34,4 +34,4 @@ set yrange [0:]
 set format x "%Y"
 set datafile separator ";"
 plot ARG1.'/complexity.csv' using 1:4 with lines linestyle 2 title "P99", \
- ARG1.'/complexity.csv' using 1:5 with lines linestyle 1 title "Worst"
+ ARG1.'/complexity.csv' using 1:6 with lines linestyle 1 title "Worst"
