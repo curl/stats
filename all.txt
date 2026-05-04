@@ -64,6 +64,7 @@ graphs on the dashboard = graphs.svg
 hackerone = h1-per-year.svg
 http versions = http-over-time.svg
 ifdef density = ifdef-over-time.svg
+install history = install-history.svg
 lines added = lines-person.svg
 mail = mail.svg
 man pages = manpages-over-time.svg

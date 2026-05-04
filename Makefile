@@ -62,8 +62,8 @@ GRFCSV = \
  $(GDIR)/cve-fixtime.svg \
  $(GDIR)/cve-oldest.svg \
  $(GDIR)/cve-pie-chart.svg \
- $(GDIR)/cvuln-per-year.svg \
  $(GDIR)/cvuln-per-year-intro.svg \
+ $(GDIR)/cvuln-per-year.svg \
  $(GDIR)/daniel-commit-share.svg \
  $(GDIR)/daniel-vs-rest.svg \
  $(GDIR)/date-of-year.svg \
@@ -86,6 +86,7 @@ GRFCSV = \
  $(GDIR)/high-vuln-reports.svg \
  $(GDIR)/http-over-time.svg \
  $(GDIR)/ifdef-over-time.svg \
+ $(GDIR)/install-history.svg \
  $(GDIR)/knownvulns-per-line.svg \
  $(GDIR)/line-complex.svg \
  $(GDIR)/lines-over-time.svg \
@@ -280,6 +281,11 @@ $(GDIR)/h1-per-year.svg: $(INCLUDE) $(DDIR)/h1-reports.csv
 	$(GNUPLOT)
 $(DDIR)/h1-reports.csv:
 	cp $(SDIR)/h1-reports.md $@
+
+$(GDIR)/install-history.svg: $(INCLUDE) $(DDIR)/install-history.csv $(SDIR)/install-history.plot
+	$(GNUPLOT)
+$(DDIR)/install-history.csv: $(SDIR)/install-history.md
+	cp $(SDIR)/install-history.md $@
 
 $(GDIR)/testinfra-per-test.svg: $(INCLUDE) $(DDIR)/testinfra-per-test.csv
 	$(GNUPLOT)
