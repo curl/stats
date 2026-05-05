@@ -725,24 +725,24 @@ $(GDIR)/month-of-year.svg: $(INCLUDE) $(DDIR)/month-of-year.csv
 $(DDIR)/month-of-year.csv: $(SDIR)/month-of-year.pl
 	$(GENCSV)
 
-$(GDIR)/512-mb.svg: $(INCLUDE) $(DDIR)/512-mb.csv
+$(GDIR)/512-mb.svg: $(INCLUDE) $(DDIR)/512-mb.csv $(SDIR)/512-mb.plot
 	$(GNUPLOT)
-$(DDIR)/512-mb.csv:
+$(DDIR)/512-mb.csv: $(SDIR)/512-mb.csv
 	cp $(SDIR)/512-mb.csv $@
 
-$(GDIR)/multi-handle.svg: $(INCLUDE) $(DDIR)/multi-handle.csv
+$(GDIR)/multi-handle.svg: $(INCLUDE) $(DDIR)/multi-handle.csv $(SDIR)/multi-handle.plot
 	$(GNUPLOT)
-$(DDIR)/multi-handle.csv:
+$(DDIR)/multi-handle.csv: $(SDIR)/multi-handle.csv
 	cp $(SDIR)/multi-handle.csv $@
 
-$(GDIR)/easy-handle.svg: $(INCLUDE) $(DDIR)/easy-handle.csv
+$(GDIR)/easy-handle.svg: $(INCLUDE) $(DDIR)/easy-handle.csv $(SDIR)/easy-handle.plot
 	$(GNUPLOT)
-$(DDIR)/easy-handle.csv:
+$(DDIR)/easy-handle.csv: $(SDIR)/easy-handle.csv
 	cp $(SDIR)/easy-handle.csv $@
 
-$(GDIR)/connectdata.svg: $(INCLUDE) $(DDIR)/connectdata.csv
+$(GDIR)/connectdata.svg: $(INCLUDE) $(DDIR)/connectdata.csv $(SDIR)/connectdata.plot
 	$(GNUPLOT)
-$(DDIR)/connectdata.csv:
+$(DDIR)/connectdata.csv: $(SDIR)/connectdata.csv
 	cp $(SDIR)/connectdata.csv $@
 
 clean:
