@@ -4,7 +4,7 @@ load "stats/terminal.include"
 # title
 set title "512MB download alloc spend" font ",48"
 # where's the legend
-set key bottom right
+set key bottom left
 
 # Identify the axes
 #set xlabel "Time"
