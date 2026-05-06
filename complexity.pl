@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 
+require "./stats/median.pm";
 require "./stats/tag2date.pm";
 
 sub num {
@@ -22,19 +23,6 @@ foreach my $t (@alltags) {
     chomp $t;
     if($t =~ /^curl-([0-9_]*[0-9])\z/) {
         push @releases, $t;
-    }
-}
-
-sub median {
-    my @a = @_;
-    my @vals = sort {$a <=> $b} @a;
-    my $len = @vals;
-    if($len%2) { #odd?
-        return $vals[int($len/2)];
-    }
-    else {
-        #even
-        return ($vals[int($len/2)-1] + $vals[int($len/2)])/2;
     }
 }
 

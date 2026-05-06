@@ -1,5 +1,7 @@
 #!/usr/bin/perl
 
+require "./stats/median.pm";
+
 # get the main CSV and output a new one
 my $c = $ARGV[0];
 
@@ -52,19 +54,6 @@ sub addperiod {
         $open = nextday($open);;
     }
     return $countdays;
-}
-
-sub median {
-    my @a = @_;
-    my @vals = sort {$a <=> $b} @a;
-    my $len = @vals;
-    if($len%2) { #odd?
-        return $vals[int($len/2)];
-    }
-    else {
-        #even
-        return ($vals[int($len/2)-1] + $vals[int($len/2)])/2;
-    }
 }
 
 sub percentile75 {
