@@ -75,6 +75,7 @@ GRFCSV = \
  $(GDIR)/files-over-time.svg \
  $(GDIR)/filesize-over-time.svg \
  $(GDIR)/firsttimers.svg \
+ $(GDIR)/function-size.svg \
  $(GDIR)/gh-age.svg \
  $(GDIR)/gh-fixes.svg \
  $(GDIR)/gh-monthly.svg \
@@ -159,6 +160,11 @@ GENCSV=perl $(SDIR)/$(basename $(notdir $@)).pl $(WDIR) > $@
 NAMES=$(GDIR)/all.txt
 
 all: $(GRAPHS) $(NAMES)
+
+$(GDIR)/function-size.svg: $(INCLUDE) $(SDIR)/function-size.plot $(DDIR)/function-size.csv
+	$(GNUPLOT)
+$(DDIR)/function-size.csv: $(SDIR)/function-size.pl
+	$(GENCSV)
 
 $(GDIR)/words-over-time.svg: $(INCLUDE) $(SDIR)/words-over-time.plot $(DDIR)/words-over-time.csv
 	$(GNUPLOT)
