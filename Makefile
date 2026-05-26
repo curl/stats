@@ -411,7 +411,7 @@ $(GDIR)/manpages-over-time.svg: $(INCLUDE) $(DDIR)/manpages-over-time.csv
 $(DDIR)/manpages-over-time.csv: $(SDIR)/manpages-over-time.pl
 	$(GENCSV)
 
-$(GDIR)/tests-over-time.svg: $(INCLUDE) $(DDIR)/tests-over-time.csv
+$(GDIR)/tests-over-time.svg: $(INCLUDE) $(DDIR)/tests-over-time.csv $(SDIR)/tests-over-time.plot
 	$(GNUPLOT)
 $(DDIR)/tests-over-time.csv: $(SDIR)/tests-over-time.pl
 	$(GENCSV)

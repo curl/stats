@@ -20,7 +20,7 @@ set style line 1 \
 
 set style line 2 \
     linecolor rgb '#a00000' \
-    linetype 2 dt "_" linewidth 2
+    linetype 2 linewidth 1
 
 set grid
 unset border
