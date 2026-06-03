@@ -328,7 +328,7 @@ $(GDIR)/codeage.svg: $(INCLUDE) $(DDIR)/codeage.csv
 $(DDIR)/codeage.csv: $(SDIR)/codeage.pl
 	$(GENCSV)
 
-$(GDIR)/complex-dist.svg: $(INCLUDE) $(DDIR)/complex-dist.csv
+$(GDIR)/complex-dist.svg: $(INCLUDE) $(DDIR)/complex-dist.csv $(SDIR)/complex-dist.plot
 	$(GNUPLOT)
 $(DDIR)/complex-dist.csv: $(SDIR)/complex-dist.pl
 	$(GENCSV)
