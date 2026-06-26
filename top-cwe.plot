@@ -2,7 +2,7 @@
 load "stats/terminal.include"
 
 # title
-set title "Top CWE reasons used in curl CVE reports" font ",48"
+set title "Top CWE reasons used in CVE reports" font ",48"
 # where's the legend
 set key top center
 

@@ -2,7 +2,7 @@
 load "stats/terminal.include"
 
 # title
-set title "Severity distribution among all curl vulnerability reports accumulated" font ",48"
+set title "Severity distribution among all vulnerability reports accumulated" font ",48"
 # where's the legend
 set key top left opaque
 

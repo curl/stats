@@ -2,7 +2,7 @@
 load "stats/terminal.include"
 
 # title
-set title "Accumulated curl bug-bounty payouts since 2018" font ",48"
+set title "Accumulated bug-bounty payouts since 2018" font ",48"
 # where's the legend
 set key top left
 

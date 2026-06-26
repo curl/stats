@@ -2,7 +2,7 @@
 load "stats/terminal.include"
 
 # title
-set title "Graphs in the curl dashboard\n{/*0.4Yes, it includes this one}" font ",48"
+set title "Graphs in the dashboard\n{/*0.4Yes, it includes this one}" font ",48"
 # where's the legend
 set key top left
 

@@ -2,7 +2,7 @@
 load "stats/terminal.include"
 
 # title
-set title "Open Collective Donations to curl" font ",48"
+set title "Open Collective Donations" font ",48"
 # where's the legend
 set key top left
 

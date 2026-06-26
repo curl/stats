@@ -2,7 +2,7 @@
 load "stats/terminal.include"
 
 # title
-set title "Vulnerabilities present in curl code" font ",48"
+set title "Vulnerabilities present in code" font ",48"
 # where's the legend
 set key top left
 
