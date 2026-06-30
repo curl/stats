@@ -80,11 +80,16 @@ for(@p2) {
 }
 
 my $d1, $d2;
-
+my $pd;
 for my $d (sort keys %anyday) {
     my $start = 0;
     if($anyday{$d} & 1) {
         $d1 = $day1{$d};
+        $start |= 1;
+    }
+    elsif($anyday{$pd} & 1) {
+        # use the previous date's value as a backup
+        $d1 = $day1{$pd};
         $start |= 1;
     }
     if($anyday{$d} & 2) {
@@ -95,5 +100,6 @@ for my $d (sort keys %anyday) {
     if(($by == 0) || ($start != 3)) {
         next;
     }
+    $pd = $d;
     printf "$d;%.6f\n", $d1 / ($by / $scaler);
 }
