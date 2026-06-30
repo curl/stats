@@ -93,13 +93,18 @@ sub allreleases {
         '0.2',
         '0.1');
 
+    my %seen;
+
     foreach my $t (@tags) {
         $t =~ s/curl-//;
         $t =~ s/_/./g;
-        push @releases, $t;
+        push @releases, $t if !$seen{$t}++;
     }
 
-    push @releases, @vers;
+    foreach my $v (@vers) {
+        push @releases, $v if !$seen{$v}++;
+    }
+
     return sort sortthem @releases;
 }
 
