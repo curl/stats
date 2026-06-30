@@ -23,11 +23,11 @@ load "stats/logo.include"
 set format x "%Y"
 set datafile separator ";"
 
-set arrow from ARG2, 0.0 to ARG2, 1 nohead linecolor rgb "#000000" linewidth 5 front
+set arrow from ARG2, 1 to ARG2, 0 linecolor rgb "#000000" linewidth 5 front
 
 set label "median vulnerability age ".ARG2 at ARG2, 1.05 center textcolor rgb "#666666" font ",22" rotate by -22
 
-set arrow 2 from ARG3, 0.0 to ARG3, 1.2 nohead linecolor rgb "#000000" linewidth 5 front
+set arrow 2 from ARG3, 1.2 to ARG3, 0 linecolor rgb "#000000" linewidth 5 front
 
 set label "average vulnerability age ".ARG3 at ARG3, 1.25 center textcolor rgb "#666666" font ",22" rotate by -22
 
