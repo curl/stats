@@ -30,7 +30,7 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 
-set xtics rotate 3600*24*365.25 nomirror out
+set xtics rotate time 1 years nomirror out
 #set mytics 5
 set xrange ["1998-01-01":]
 set yrange [0.1:]

@@ -39,7 +39,7 @@ set xrange ["2009-01-01":]
 #set y2label "% share of total LOC" tc "#40a040"
 #set y2tics
 
-set xtics rotate 3600*24*365.25 nomirror
+set xtics rotate time 1 years nomirror
 set ytics nomirror
 unset mxtics
 

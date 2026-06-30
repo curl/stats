@@ -35,7 +35,7 @@ set yrange [0:]
 
 dayoffset = '30'
 set xrange ["2009-06-".dayoffset:]
-set xtics rotate 3600*24*365.25 nomirror out
+set xtics rotate time 1 years nomirror out
 unset mxtics
 set ytics nomirror
 

@@ -18,7 +18,7 @@ unset border
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set xtics 3600*24*365.25 nomirror
+set xtics time 1 years nomirror
 unset mxtics
 set ytics nomirror
 

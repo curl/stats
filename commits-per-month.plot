@@ -34,7 +34,7 @@ set timefmt "%Y-%m-%d"
 set xdata time
 
 set ytics nomirror
-set xtics 3600*24*365.25 nomirror rotate out
+set xtics time 1 years nomirror rotate out
 unset mxtics
 
 load "stats/logo.include"

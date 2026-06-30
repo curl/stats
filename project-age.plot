@@ -9,7 +9,7 @@ set style line 2 linecolor rgb '#af6000' linetype 1 linewidth 4
 set style line 3 linecolor rgb '#40c040' linetype 1 linewidth 4
 set grid
 unset border
-set xtics rotate 3600*24*365.26 nomirror out
+set xtics rotate time 1 years nomirror out
 unset mxtics
 set ytics 1000 nomirror
 

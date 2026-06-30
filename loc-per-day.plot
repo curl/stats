@@ -7,7 +7,7 @@ set ylabel "Lines of code per day of existence"
 set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 4
 set grid
 unset border
-set xtics rotate 3600*24*365.26 nomirror
+set xtics rotate time 1 years nomirror
 unset mxtics
 set ytics nomirror
 

@@ -32,7 +32,7 @@ load "stats/logo.include"
 # set the format of the dates on the x axis
 set format x "%Y"
 set xrange ["2010-01-01":]
-set xtics rotate 3600*24*365.25 nomirror out
+set xtics rotate time 1 years nomirror out
 set datafile separator ";"
 plot ARG1.'/firsttimers.csv' using 1:2 with boxes linestyle 1 title "First timers", \
  ARG1.'/firsttimers.csv' using 1:3 with lines linestyle 2 title "12 month average"

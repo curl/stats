@@ -7,7 +7,7 @@ set key bottom right
 set ylabel "Percent of lines that are comments"
 
 set ytics nomirror
-set xtics rotate 3600*24*365.25 nomirror
+set xtics rotate time 1 years nomirror
 unset mxtics
 
 set style line 1 \

@@ -39,7 +39,7 @@ load "stats/logo.include"
 set format x "%Y"
 set format y "%.0s%c"
 
-set xtics rotate 3600*24*365.25 nomirror out
+set xtics rotate time 1 years nomirror out
 set ytics nomirror
 unset mxtics
 set datafile separator ";"

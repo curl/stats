@@ -24,7 +24,7 @@ set yrange [0:]
 # cut off the first wild months after the sourceforge import
 set xrange ["2000-04-01":]
 
-set xtics rotate 3600*24*365.25 nomirror
+set xtics rotate time 1 years nomirror
 set ytics 10 nomirror
 unset mxtics
 

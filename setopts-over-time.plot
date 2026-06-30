@@ -9,7 +9,7 @@ set key top left
 # Identify the axes
 #set xlabel "Time"
 set ylabel "Number of options"
-set xtics rotate 3600*24*365.25 nomirror
+set xtics rotate time 1 years nomirror
 unset mxtics
 set ytics nomirror
 

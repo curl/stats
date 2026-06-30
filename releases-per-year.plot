@@ -23,7 +23,7 @@ set style fill solid
 # time formated using this format
 set timefmt "%Y"
 set xdata time
-set xtics rotate 3600*24*365.25 nomirror in
+set xtics rotate time 1 years nomirror in
 unset mxtics
 unset ytics
 

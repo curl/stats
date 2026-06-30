@@ -20,7 +20,7 @@ set xdata time
 set y2range [0:]
 set xrange ["2000-01-01":]
 
-set xtics rotate 3600*24*365.25 nomirror out
+set xtics rotate time 1 years nomirror out
 unset mxtics
 #set ytics out
 set y2tics mirror out

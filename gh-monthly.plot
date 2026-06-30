@@ -35,7 +35,7 @@ set xdata time
 # limit the xrange simply because we didn't use github much before 2015
 set yrange [0:]
 set xrange ["2014-11-30":]
-set xtics 3600*24*365.25 nomirror out
+set xtics time 1 years nomirror out
 set ytics nomirror
 unset mxtics
 

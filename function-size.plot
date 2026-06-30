@@ -29,7 +29,7 @@ set y2tics
 # time formatted using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set xtics 3600*24*365.25 nomirror rotate
+set xtics time 1 years nomirror rotate
 set ytics nomirror
 unset mxtics
 

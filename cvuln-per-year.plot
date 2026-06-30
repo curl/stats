@@ -22,7 +22,7 @@ set xdata time
 
 dayoffset = '90'
 
-set xtics rotate 3600*24*365.25 nomirror out
+set xtics rotate time 1 years nomirror out
 set xrange ["1998-01-01":]
 set ytics nomirror
 
