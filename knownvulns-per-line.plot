@@ -1,34 +1,28 @@
 # SVG output
 load "stats/terminal.include"
 
-# title
 set title "Vulnerability density" font ",48"
-# where's the legend
-set key top left
+set key top right
 
 # Identify the axes
-#set xlabel "Time"
 set ylabel "Number of known CVEs present / KLOC"
-
-set style line 1 \
-    linecolor rgb '#4000ff' \
-    linetype 1 linewidth 2
 
 set grid
 unset border
 
-# time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics rotate 3600*24*365.25 nomirror
-set ytics nomirror
+set ytics out
 unset mxtics
 set yrange [0:]
-set xrange ["2000-01-01":]
+set xrange ["1998-01-01":]
 
 load "stats/logo.include"
 
-# set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot ARG1.'/knownvulns-per-line.csv' using 1:2 with lines linestyle 1 title ""
+plot ARG1.'/known-low-per-line.csv' using 1:2 with filledcurves fc "#2e8a00" title "Low", \
+ ARG1.'/known-med-per-line.csv' using 1:2 with filledcurves fc "#0080c0" title "Medium", \
+ ARG1.'/known-high-per-line.csv' using 1:2 with filledcurves fc "#800000" title "High", \
+ ARG1.'/known-crit-per-line.csv' using 1:2 with filledcurves fc "#fe0000" title "Critical"
