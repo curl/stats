@@ -256,8 +256,11 @@ $(DDIR)/lines-per-contributor.csv:$(DDIR)/contributors-over-time.csv $(DDIR)/lin
 $(DDIR)/lines-per-author.csv: $(DDIR)/authors.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/authors.csv $(DDIR)/lines-over-time.csv 0:2 0:1 1000 > $@
 
-$(GDIR)/knownvulns-per-line.svg: $(INCLUDE) $(DDIR)/knownvulns-per-line.csv $(DDIR)/known-low-per-line.csv $(DDIR)/known-med-per-line.csv $(DDIR)/known-high-per-line.csv $(DDIR)/known-crit-per-line.csv $(SDIR)/knownvulns-per-line.plot
-	$(GNUPLOT)
+$(DDIR)/dates.csv: $(DDIR)/cve-age.csv
+	perl $(SDIR)/gendates.pl $< > $@
+
+$(GDIR)/knownvulns-per-line.svg: $(INCLUDE) $(DDIR)/knownvulns-per-line.csv $(DDIR)/known-low-per-line.csv $(DDIR)/known-med-per-line.csv $(DDIR)/known-high-per-line.csv $(DDIR)/known-crit-per-line.csv $(SDIR)/knownvulns-per-line.plot $(DDIR)/dates.csv
+	gnuplot -c $(SDIR)/$(basename $(notdir $@)).plot $(DDIR) `cut -d";" -f1 < $(DDIR)/dates.csv` `cut -d";" -f2 < $(DDIR)/dates.csv` > $@
 $(DDIR)/knownvulns-per-line.csv: $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv 0:2 0:1 1000 > $@
 $(DDIR)/known-low-per-line.csv: $(DDIR)/vulns-releases.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
