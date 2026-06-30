@@ -252,7 +252,7 @@ $(DDIR)/manpage-lines-per-option.csv: $(DDIR)/manpage.csv $(DDIR)/cmdline-option
 $(GDIR)/lines-per-author.svg: $(INCLUDE) $(DDIR)/lines-per-author.csv $(DDIR)/lines-per-contributor.csv
 	$(GNUPLOT)
 $(DDIR)/lines-per-contributor.csv:$(DDIR)/contributors-over-time.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
-	perl $(SDIR)/plotdivision.pl $(DDIR)/contributors-over-time.csv $(DDIR)/lines-over-time.csv 0:1 0:1 1000 > $@
+	perl $(SDIR)/plotdivision.pl $(DDIR)/contributors-over-time.csv $(DDIR)/lines-over-time.csv 1:2 0:1 1000 > $@
 $(DDIR)/lines-per-author.csv: $(DDIR)/authors.csv $(DDIR)/lines-over-time.csv $(SDIR)/plotdivision.pl
 	perl $(SDIR)/plotdivision.pl $(DDIR)/authors.csv $(DDIR)/lines-over-time.csv 0:2 0:1 1000 > $@
 
@@ -547,10 +547,10 @@ $(GDIR)/authors.svg: $(INCLUDE) $(DDIR)/authors.csv $(SDIR)/authors.plot
 $(DDIR)/authors.csv: $(SDIR)/authors.pl
 	$(GENCSV)
 
-$(GDIR)/contributors-over-time.svg: $(INCLUDE) $(DDIR)/contributors-over-time.csv
+$(GDIR)/contributors-over-time.svg: $(INCLUDE) $(DDIR)/contributors-over-time.csv $(SDIR)/contributors-over-time.plot
 	$(GNUPLOT)
 $(DDIR)/contributors-over-time.csv: $(SDIR)/contributors-over-time.pl
-	perl $(SDIR)/contributors-over-time.pl | cut '-d;' -f2- > $@
+	$(GENCSV)
 
 $(GDIR)/cmdline-options-over-time.svg: $(INCLUDE) $(DDIR)/cmdline-options-over-time.csv
 	$(GNUPLOT)

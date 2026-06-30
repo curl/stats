@@ -4,7 +4,7 @@ load "stats/terminal.include"
 # title
 set title "Contributors" font ",48"
 # where's the legend
-set key top left
+unset key
 
 # Identify the axes
 #set xlabel "Time"
@@ -16,7 +16,7 @@ set style line 1 \
 
 set grid
 unset border
-set xtics rotate time 1 years nomirror
+set xtics time 1 years nomirror rotate
 set ytics nomirror
 unset mxtics
 
@@ -32,4 +32,4 @@ load "stats/logo.include"
 # set the format of the dates on the x axis
 set format x "%Y"
 set datafile separator ";"
-plot ARG1.'/contributors-over-time.csv' using 1:2 with lines linestyle 1 title ""
+plot ARG1.'/contributors-over-time.csv' using 2:3 with lines linestyle 1
