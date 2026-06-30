@@ -25,4 +25,4 @@ set datafile separator ";"
 plot ARG1.'/known-low-per-line.csv' using 1:2 with filledcurves fc "#2e8a00" title "Low", \
  ARG1.'/known-med-per-line.csv' using 1:2 with filledcurves fc "#0080c0" title "Medium", \
  ARG1.'/known-high-per-line.csv' using 1:2 with filledcurves fc "#800000" title "High", \
- ARG1.'/known-crit-per-line.csv' using 1:2 with filledcurves fc "#fe0000" title "Criticial"
+ ARG1.'/known-crit-per-line.csv' using 1:2 with filledcurves fc "#fe0000" title "Critical"
