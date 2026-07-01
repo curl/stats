@@ -17,7 +17,7 @@ set timefmt "%Y-%m-%d"
 set xdata time
 set xtics time 1 years nomirror rotate
 unset mxtics
-set ytics 5
+set ytics out nomirror
 
 set boxwidth 0.8 relative
 set style fill solid
