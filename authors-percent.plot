@@ -1,7 +1,7 @@
 # SVG output
 load "stats/terminal.include"
 
-set title "Number of authors did X% of all commits" font ",48"
+set title "Number of authors who did X% of all commits" font ",48"
 set key top left
 
 set ylabel "Number of authors"
