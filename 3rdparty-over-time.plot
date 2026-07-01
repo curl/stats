@@ -20,8 +20,8 @@ unset border
 # time formated using this format
 set timefmt "%Y-%m-%d"
 set xdata time
-set ytics 2
-set xtics rotate time 1 years nomirror
+set ytics out nomirror
+set xtics rotate time 1 years nomirror out
 unset mxtics
 
 load "stats/logo.include"
