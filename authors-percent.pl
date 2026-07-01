@@ -7,15 +7,12 @@ my @a = `git log --use-mailmap --reverse --pretty=fuller --no-color --date=short
 my $percent = $ARGV[0] || 90;
 
 sub amount {
-    my $share;
-    my $count = 1;
+    my $share = 0;
+    my $count = 0;
     for my $a (sort {$uniq{$b} <=> $uniq{$a}} keys %uniq) {
         $share += $uniq{$a} * 100 / $total;
-        #printf "%s: %u (%u%%)\n", $a, $uniq{$a}, $share;
-        if($share > $percent) {
-            last;
-        }
         $count++;
+        last if($share >= $percent);
     }
     return $count;
 }
