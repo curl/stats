@@ -16,7 +16,7 @@ set style line 1 \
 
 set grid
 unset border
-set xtics time 1 years nomirror rotate
+set xtics time 1 years nomirror rotate out scale 0.5
 set ytics nomirror
 unset mxtics
 
