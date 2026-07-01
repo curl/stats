@@ -7,7 +7,7 @@ set title "Vulnerability reports high vs low" font ",48"
 set key top left
 
 # Identify the axes
-set ylabel "CVEs reported within that year"
+set ylabel "Published vulnerabilities that year"
 
 # for the boxes
 set boxwidth 0.6 relative
@@ -22,10 +22,8 @@ set xdata time
 
 dayoffset = '90'
 
-set xtics rotate time 1 years nomirror out
-set mytics 5
-set xrange ["1998-01-01":]
-set mxtics 1
+set xtics rotate time 1 years nomirror out scale 0.5
+set xrange ["1999-01-01":]
 set ytics nomirror
 
 load "stats/logo.include"
