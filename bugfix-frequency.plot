@@ -20,7 +20,7 @@ set style line 2 \
 
 # don't draw the left-yaxies tics on the right side
 set ytics nomirror
-set xtics time 1 years nomirror rotate
+set xtics time 1 years nomirror rotate out
 unset mxtics
 
 set y2label "Bugfixes per day" tc "#ff60ad"

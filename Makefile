@@ -709,7 +709,7 @@ $(GDIR)/API-calls-over-time.svg: $(INCLUDE) $(DDIR)/API-calls-over-time.csv
 $(DDIR)/API-calls-over-time.csv: $(SDIR)/API-calls-over-time.pl
 	$(GENCSV)
 
-$(GDIR)/bugfix-frequency.svg: $(INCLUDE) $(DDIR)/bugfix-frequency.csv
+$(GDIR)/bugfix-frequency.svg: $(INCLUDE) $(DDIR)/bugfix-frequency.csv $(SDIR)/bugfix-frequency.plot
 	$(GNUPLOT)
 $(DDIR)/bugfix-frequency.csv: $(SDIR)/bugfix-frequency.pl
 	$(GENCSV)
