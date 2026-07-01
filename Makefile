@@ -384,7 +384,7 @@ $(GDIR)/releases-per-year.svg: $(INCLUDE) $(DDIR)/releases-per-year.csv
 $(DDIR)/releases-per-year.csv: $(SDIR)/releases-per-year.pl
 	$(GENCSV)
 
-$(GDIR)/release-number.svg: $(INCLUDE) $(DDIR)/release-number.csv
+$(GDIR)/release-number.svg: $(INCLUDE) $(DDIR)/release-number.csv $(SDIR)/release-number.plot
 	$(GNUPLOT)
 $(DDIR)/release-number.csv: $(SDIR)/release-number.pl
 	$(GENCSV)

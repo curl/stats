@@ -3,12 +3,10 @@ load "stats/terminal.include"
 
 # title
 set title "releases" font ",48"
-# where's the legend
-set key top left
+unset key
 
 # Identify the axes
-#set xlabel "Time"
-set ylabel "Number of curl releases"
+set ylabel "Number of releases"
 
 set style line 1 \
     linecolor rgb '#c0303d' \
@@ -22,7 +20,7 @@ unset border
 set timefmt "%Y-%m-%d"
 set xdata time
 set xtics rotate time 1 years nomirror out
-set ytics 25 nomirror
+set ytics nomirror
 unset mxtics
 
 load "stats/logo.include"
@@ -31,4 +29,4 @@ load "stats/logo.include"
 set format x "%Y"
 set datafile separator ";"
 plot ARG1.'/release-number.csv' using 1:3 with points linestyle 1 title "", \
- ARG1.'/release-number.csv' using 1:3:2 every 5 with labels left offset 0.2,-0.2 font ",18" rotate by -45 tc "#00c000" title ""
+ ARG1.'/release-number.csv' using 1:3:2 every 5 with labels left offset 0.2,-0.2 font ",18" rotate by -45 tc "#008000"
