@@ -8,6 +8,7 @@ set key top left
 
 # Identify the axes
 set ylabel "USD"
+set xlabel "All reported vulnerabilities"
 set grid
 set ytics nomirror
 unset xtics
@@ -27,5 +28,4 @@ load "stats/logo.include"
 
 set datafile separator ";"
 plot ARG1.'/bugbounty-amounts.csv' using 1:4 with boxes title 'Individual reward' lc "#80c040", \
- ARG1.'/bugbounty-amounts.csv' using 1:5 with lines title '5-reward average' linestyle 1, \
- ARG1.'/bugbounty-amounts.csv' using 1:0:2 with labels offset 0.1,-2.1 font ", 8" rotate by 90 title ''
+ ARG1.'/bugbounty-amounts.csv' using 1:5 with lines title '5-reward average' linestyle 1

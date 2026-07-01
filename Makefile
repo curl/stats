@@ -399,7 +399,7 @@ $(GDIR)/contributors-per-release.svg: $(INCLUDE) $(DDIR)/contributors-per-releas
 $(DDIR)/contributors-per-release.csv: $(SDIR)/contributors-per-release.pl
 	$(GENCSV)
 
-$(GDIR)/bugbounty-amounts.svg: $(INCLUDE) $(DDIR)/bugbounty-amounts.csv
+$(GDIR)/bugbounty-amounts.svg: $(INCLUDE) $(DDIR)/bugbounty-amounts.csv $(SDIR)/bugbounty-amounts.plot
 	$(GNUPLOT)
 $(DDIR)/bugbounty-amounts.csv: $(SDIR)/bugbounty-amounts.pl
 	$(GENCSV)
