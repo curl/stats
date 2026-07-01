@@ -6,6 +6,7 @@ api calls = API-calls-over-time.svg
 atoi density = atoi-over-time.svg
 author activity = authors-active.svg
 author density = remains-per-kloc.svg
+author share of all commits = authors-percent.svg
 authors = authors.svg
 authors of 50 percent = 50-percent.svg
 authors of 60 percent = 60-percent.svg
