@@ -34,6 +34,7 @@ GRFCSV = \
  $(GDIR)/authors-active.svg \
  $(GDIR)/authors-per-month.svg \
  $(GDIR)/authors-per-year.svg \
+ $(GDIR)/authors-percent.svg \
  $(GDIR)/authors.svg \
  $(GDIR)/bugbounty-amounts.svg \
  $(GDIR)/bugbounty-over-time.svg \
@@ -581,6 +582,15 @@ $(GDIR)/comments.svg: $(INCLUDE) $(DDIR)/comments.csv
 	$(GNUPLOT)
 $(DDIR)/comments.csv: $(SDIR)/comments.pl
 	$(GENCSV)
+
+$(GDIR)/authors-percent.svg: $(INCLUDE) $(DDIR)/authors-percent-90.csv $(DDIR)/authors-percent-80.csv $(DDIR)/authors-percent-70.csv $(SDIR)/authors-percent.plot
+	$(GNUPLOT)
+$(DDIR)/authors-percent-90.csv: $(SDIR)/authors-percent.pl
+	perl $(SDIR)/authors-percent.pl 90 > $@
+$(DDIR)/authors-percent-80.csv: $(SDIR)/authors-percent.pl
+	perl $(SDIR)/authors-percent.pl 80 > $@
+$(DDIR)/authors-percent-70.csv: $(SDIR)/authors-percent.pl
+	perl $(SDIR)/authors-percent.pl 70 > $@
 
 $(GDIR)/50-percent.svg: $(INCLUDE) $(DDIR)/50-percent.csv
 	$(GNUPLOT)
