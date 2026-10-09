@@ -34,9 +34,7 @@ set xdata time
 dayoffset = '90'
 
 set xtics rotate time 1 years nomirror out
-set mytics 5
 set xrange ["1998-01-01":]
-set mxtics 1
 
 load "stats/logo.include"
 
