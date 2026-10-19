@@ -2,7 +2,7 @@
 load "stats/terminal.include"
 
 # title
-set title "security reports on Hackerone" font ",48"
+set title "Vulnerability reports on Hackerone" font ",48"
 # where's the legend
 set key top left
 
@@ -39,9 +39,9 @@ set xtics time 1 years nomirror out
 unset mxtics
 set ytics nomirror
 
-plot ARG1.'/h1-reports.csv' using (strcol(1)[1:8].dayoffset*2):4 with boxes title "Likely AI slop" fc 'blue', \
- ARG1.'/h1-reports.csv' using 1:2 with boxes title "All reports" fc 'red', \
- ARG1.'/h1-reports.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "Confirmed vulnerabilities" fc 'green', \
+plot ARG1.'/h1-reports.csv' using 1:2 with boxes title "All reports" fc 'red', \
+ ARG1.'/h1-reports.csv' using (strcol(1)[1:8].dayoffset):3 with boxes title "Published CVE" fc 'green', \
+ ARG1.'/h1-reports.csv' using (strcol(1)[1:8].dayoffset*2):4 with boxes title "AI slop" fc 'blue', \
  ARG1.'/h1-reports.csv' using 1:2:2 with labels title "" offset 0,.5 font ", 24" tc lt 1, \
  ARG1.'/h1-reports.csv' using 1:3:3 with labels title "" offset -4.5,.5 font ", 24" tc lt 6, \
  ARG1.'/h1-reports.csv' using 1:4:4 with labels title "" offset 5,.5 font ", 24" tc lt 0
