@@ -26,6 +26,20 @@ foreach my $t (@alltags) {
     }
 }
 
+sub gitcount {
+    my ($cmd) = @_;
+    my $lines;
+    open(G, "git show $cmd 2>/dev/null| wc -l |");
+    while(<G>) {
+        if($_ =~ /^(\d*)/) {
+            $lines = $1;
+            last;
+        }
+    }
+    close(G);
+    return $lines;
+}
+
 sub linecount {
     my ($tag, $path) = @_;
 
@@ -38,20 +52,18 @@ sub linecount {
     }
     close(G);
 
+    my $lines;
     my $cmd;
     for(@files) {
         $cmd .= "$tag:$_ ";
-    }
-
-    my $blanks, $comments, $code;
-    open(G, "git show $cmd 2>/dev/null| wc -l |");
-    while(<G>) {
-        if($_ =~ /^(\d*)/) {
-            $lines = $1;
-            last;
+        if(length($cmd) > 10000) {
+            $lines += gitcount($cmd);
+            $cmd = "";
         }
     }
-    close(G);
+    if($cmd ne "") {
+        $lines += gitcount($cmd);
+    }
 
     return ($lines);
 }
