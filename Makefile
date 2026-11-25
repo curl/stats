@@ -79,7 +79,8 @@ GRFCSV = \
  $(GDIR)/function-size.svg \
  $(GDIR)/gh-age.svg \
  $(GDIR)/gh-fixes.svg \
- $(GDIR)/gh-monthly.svg \
+ $(GDIR)/gh-monthly-prs.svg \
+ $(GDIR)/gh-monthly-issues.svg \
  $(GDIR)/gh-open.svg \
  $(GDIR)/graphs.svg \
  $(GDIR)/h1-per-year.svg \
@@ -696,7 +697,9 @@ $(GDIR)/gh-age.svg: $(INCLUDE) $(DDIR)/gh-age.csv
 $(DDIR)/gh-age.csv: $(DDIR)/github.csv $(DDIR)/github.csv
 	perl $(SDIR)/gh-age.pl $(DDIR)/github.csv > $@
 
-$(GDIR)/gh-monthly.svg: $(INCLUDE) $(DDIR)/gh-monthly.csv
+$(GDIR)/gh-monthly-prs.svg: $(INCLUDE) $(DDIR)/gh-monthly.csv
+	$(GNUPLOT)
+$(GDIR)/gh-monthly-issues.svg: $(INCLUDE) $(DDIR)/gh-monthly.csv
 	$(GNUPLOT)
 $(DDIR)/gh-monthly.csv: $(DDIR)/github.csv
 	perl $(SDIR)/gh-monthly.pl $(DDIR)/github.csv > $@
